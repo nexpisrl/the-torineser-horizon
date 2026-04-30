@@ -50,8 +50,9 @@
                     aria-current="page"
                   {% endif %}
                 >
-                  {% render 'menu-link-per-colore-swatches', link: link %}
+                  {% render 'menu-link-torineser-nav', link: link %}
                   {{- link.title -}}
+                  {% render 'menu-link-torineser-nav', link: link, part: 'after' %}
                 </a>
               </li>
             {% endfor %}
@@ -110,8 +111,9 @@
             ref="menuitem"
           >
             <span class="menu-list__link-label">
-              {% render 'menu-link-per-colore-swatches', link: link %}
+              {% render 'menu-link-torineser-nav', link: link %}
               <span class="menu-list__link-title">{{- link.title -}}</span>
+              {% render 'menu-link-torineser-nav', link: link, part: 'after' %}
             </span>
           </a>
           {%- if link.links != blank -%}
