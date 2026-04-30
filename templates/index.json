@@ -821,7 +821,26 @@
             "padding-inline-start": 0,
             "padding-inline-end": 0
           },
-          "blocks": {}
+          "blocks": {
+            "collection_quad_gallery_mBrEJV": {
+              "type": "collection-quad-gallery",
+              "name": "t:names.collection_quad_gallery",
+              "settings": {
+                "collection": "ultime-uscite",
+                "gap": 4,
+                "aspect_ratio": "square",
+                "color_scheme": "scheme-2",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "collection_quad_gallery_mBrEJV"
+          ]
         }
       },
       "block_order": [
