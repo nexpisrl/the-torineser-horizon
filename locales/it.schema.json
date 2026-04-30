@@ -598,6 +598,7 @@
     "auto_load_products": "Carica automaticamente i prodotti durante lo scorrimento",
     "products_per_page": "Prodotti per pagina",
     "custom_mobile_media": "Mostra contenuti multimediali diversi su mobile",
+    "custom_class": "Classi CSS aggiuntive",
     "stack_media_on_mobile": "Impila contenuti multimediali",
     "media_type_1": "Tipo di contenuto multimediale",
     "media_type_2": "Tipo di contenuto multimediale 2",
