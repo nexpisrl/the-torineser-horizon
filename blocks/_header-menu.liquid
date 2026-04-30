@@ -7,6 +7,16 @@
 
 {% liquid
   assign block_settings = block.settings
+
+  # Second menu (header-menu-2): eredita stile dal menu principale; menu/links restano di questo blocco.
+  if block.id == 'header-menu-2'
+    assign primary_menu_block = section.blocks | where: 'id', 'header-menu' | first
+    if primary_menu_block != blank
+      assign block_settings = primary_menu_block.settings
+    endif
+  endif
+
+  assign menu_links = block.settings.menu
 %}
 
 {% case variant %}
@@ -17,7 +27,7 @@
       data-hydration-key="header-drawer-mobile"
       {{ block.shopify_attributes }}
     >
-      {% render 'header-drawer', linklist: block_settings.menu, data_header_drawer_type: 'mobile-drawer' %}
+      {% render 'header-drawer', linklist: menu_links, data_header_drawer_type: 'mobile-drawer' %}
     </div>
 
   {% when 'navigation_bar' %}
@@ -32,7 +42,7 @@
             class="menu-list__list list-unstyled"
             role="list"
           >
-            {% for link in block_settings.menu.links %}
+            {% for link in menu_links.links %}
               <li>
                 <a
                   href="{{ link.url }}"
@@ -52,7 +62,6 @@
     {% endif %}
   {% else %}
     {% liquid
-      assign block_settings = block.settings
       assign menu_content_type = block_settings.menu_style | default: 'text'
       assign image_border_radius = block_settings.image_border_radius
       assign color_scheme_classes = ''
@@ -77,7 +86,8 @@
     %}
 
     {% capture children %}
-      {% for link in block_settings.menu.links %}
+      {% assign submenu_uid = block.id | default: 'header-menu' %}
+      {% for link in menu_links.links %}
         <li
           role="presentation"
           class="menu-list__list-item"
@@ -91,7 +101,7 @@
             data-skip-node-update="true"
             class="menu-list__link{% if link.active %} menu-list__link--active{% endif %}"
             {%- if link.links != blank -%}
-              aria-controls="submenu-{{ forloop.index }}"
+              aria-controls="submenu-{{ submenu_uid }}-{{ forloop.index }}"
               aria-haspopup="true"
               aria-expanded="false"
             {%- endif -%}
@@ -105,11 +115,11 @@
           {%- if link.links != blank -%}
             <div class="menu-list__submenu{{ color_scheme_classes }}" ref="submenu[]">
               <div
-                id="submenu-{{ forloop.index }}"
+                id="submenu-{{ submenu_uid }}-{{ forloop.index }}"
                 class="menu-list__submenu-inner"
                 style="{% render 'submenu-font-styles', settings: block_settings %}"
               >
-                {% assign list_id = 'MegaMenuList-' | append: forloop.index %}
+                {% assign list_id = 'MegaMenuList-' | append: submenu_uid | append: '-' | append: forloop.index %}
                 <div class="mega-menu section section--full-width-margin section--{{ section.settings.section_width }}">
                   <div
                     class="mega-menu__grid"
