@@ -31,7 +31,7 @@
             "background": false,
             "background_color": "#00000026",
             "corner_radius": 0,
-            "custom_class": "",
+            "custom_class": "the_torineser-pre_title",
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
