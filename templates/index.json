@@ -1194,8 +1194,8 @@
           "name": "t:names.group",
           "settings": {
             "content_direction": "row",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "space-between",
             "vertical_alignment": "center",
             "align_baseline": false,
             "horizontal_alignment_flex_direction_column": "flex-start",
@@ -1229,14 +1229,156 @@
             "padding-inline-end": 0
           },
           "blocks": {
+            "group_dnD7wT": {
+              "type": "group",
+              "name": "t:names.group",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 12,
+                "width": "custom",
+                "custom_width": 50,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "text_KAbhYw": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Il regalo perfetto</p>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "text_NBJeMa": {
+                  "type": "text",
+                  "name": "t:names.heading",
+                  "settings": {
+                    "text": "<h2>Regala un pezzetto<br/>di Torino</h2>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "text_xk6JCj": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Con la nostra gift card, lascia che sia chi ami a scegliere la sua anima torineser(a).</p>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "button_MJ7PbK": {
+                  "type": "button",
+                  "name": "t:names.button",
+                  "settings": {
+                    "label": "Regala una gift card",
+                    "link": "shopify://collections/all",
+                    "open_in_new_tab": false,
+                    "style_class": "button",
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 100
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_KAbhYw",
+                "text_NBJeMa",
+                "text_xk6JCj",
+                "button_MJ7PbK"
+              ]
+            },
             "image_zeAJTC": {
               "type": "image",
               "name": "t:names.image",
               "settings": {
+                "image": "shopify://shop_images/buoni_regalo_verticale_telefono_1.webp",
                 "link": "",
                 "image_ratio": "adapt",
-                "width": "fill",
-                "custom_width": 100,
+                "width": "custom",
+                "custom_width": 50,
                 "width_mobile": "fill",
                 "custom_width_mobile": 100,
                 "height": "fit",
@@ -1294,13 +1436,87 @@
             }
           },
           "block_order": [
+            "group_dnD7wT",
             "image_zeAJTC",
             "group_9XKTBi"
+          ]
+        },
+        "group_7b7Brf": {
+          "type": "group",
+          "name": "t:names.group",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "notizie_preview_xDb4bV": {
+              "type": "notizie-preview",
+              "name": "t:names.notizie_preview",
+              "settings": {
+                "blog_handle": "notizie",
+                "article_limit": 3,
+                "eyebrow": "Dal vivo",
+                "heading_line_1": "Prossimi",
+                "heading_line_2": "eventi.",
+                "cta_url": "",
+                "cta_label": "Tutti gli eventi →",
+                "active_tag_handle": "evento-aperto",
+                "metafield_namespace": "custom",
+                "metafield_open_key": "evento_aperto",
+                "metafield_detail_key": "dettaglio_evento",
+                "color_scheme": "scheme-2",
+                "border_radius": 24,
+                "border": "solid",
+                "border_width": 1,
+                "border_opacity": 20,
+                "padding-block-start": 40,
+                "padding-block-end": 40,
+                "padding-inline-start": 36,
+                "padding-inline-end": 36
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "notizie_preview_xDb4bV"
           ]
         }
       },
       "block_order": [
-        "group_4aUrPb"
+        "group_4aUrPb",
+        "group_7b7Brf"
       ],
       "name": "t:names.custom_section",
       "settings": {
