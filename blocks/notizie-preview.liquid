@@ -369,7 +369,7 @@
       "step": 1,
       "unit": "px",
       "default": 1,
-      "visible_if": "{{ block.settings.border != \"none\" }}"
+      "visible_if": "{{ block.settings.border != 'none' }}"
     },
     {
       "type": "range",
@@ -380,7 +380,7 @@
       "step": 1,
       "unit": "%",
       "default": 20,
-      "visible_if": "{{ block.settings.border != \"none\" }}"
+      "visible_if": "{{ block.settings.border != 'none' }}"
     },
     {
       "type": "header",
@@ -427,6 +427,28 @@
       "default": 36
     }
   ],
-  "presets": []
+  "presets": [
+    {
+      "name": "t:names.notizie_preview",
+      "category": "t:categories.custom",
+      "settings": {
+        "blog_handle": "notizie",
+        "article_limit": 3,
+        "eyebrow": "Dal vivo",
+        "heading_line_1": "Prossimi",
+        "heading_line_2": "eventi.",
+        "cta_label": "Tutti gli eventi →",
+        "color_scheme": "scheme-2",
+        "border_radius": 24,
+        "border": "solid",
+        "border_width": 1,
+        "border_opacity": 20,
+        "padding-block-start": 40,
+        "padding-block-end": 40,
+        "padding-inline-start": 36,
+        "padding-inline-end": 36
+      }
+    }
+  ]
 }
 {% endschema %}
