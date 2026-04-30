@@ -2,7 +2,7 @@
   assign order = 'logo,menu,menu_2,localization,search,drawer_search,actions'
 
   if shop.customer_accounts_enabled
-    assign order = 'drawer_search,logo,menu,localization,search,actions'
+    assign order = 'drawer_search,logo,menu,menu_2,localization,search,actions'
   endif
 
   assign rows = 'top,bottom' | split: ','
@@ -126,6 +126,10 @@
 
   if section.settings.menu_row == 'bottom'
     assign bottom_row_blocks = bottom_row_blocks | append: 'menu,'
+  endif
+
+  if section.settings.menu_2_row == 'bottom'
+    assign bottom_row_blocks = bottom_row_blocks | append: 'menu_2,'
   endif
 
   if section.settings.search_style != 'none'
@@ -1177,6 +1181,46 @@
     {
       "type": "select",
       "id": "menu_row",
+      "label": "t:settings.row",
+      "options": [
+        {
+          "value": "top",
+          "label": "t:options.top"
+        },
+        {
+          "value": "bottom",
+          "label": "t:options.bottom"
+        }
+      ],
+      "default": "top"
+    },
+    {
+      "type": "header",
+      "content": "t:content.secondary_menu"
+    },
+    {
+      "type": "select",
+      "id": "menu_2_position",
+      "label": "t:settings.position",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:options.left"
+        },
+        {
+          "value": "center",
+          "label": "t:options.center"
+        },
+        {
+          "value": "right",
+          "label": "t:options.right"
+        }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "select",
+      "id": "menu_2_row",
       "label": "t:settings.row",
       "options": [
         {
