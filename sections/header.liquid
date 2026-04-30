@@ -49,6 +49,10 @@
     content_for 'block', type: '_header-menu', id: 'header-menu'
   endcapture
 
+  capture menu_2
+    content_for 'block', type: '_header-menu', id: 'header-menu-2'
+  endcapture
+
   capture drawer_menu
     content_for 'block', type: '_header-menu', id: 'header-menu', variant: 'mobile'
   endcapture
@@ -363,6 +367,7 @@
         first: first,
         logo: logo,
         menu: menu,
+        menu_2: menu_2,
         actions: actions,
         localization: localization_markup,
         search: search,
