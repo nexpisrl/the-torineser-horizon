@@ -6,79 +6,16 @@
       assign quad_ratio = '4 / 5'
     when 'landscape'
       assign quad_ratio = '16 / 9'
-    when 'adapt'
-      assign quad_ratio = 1
-      if col != blank and col.products_count > 0
-        assign first_p = col.products.first
-        if first_p.featured_media
-          assign quad_ratio = 1 | divided_by: first_p.featured_media.aspect_ratio | times: first_p.featured_media.aspect_ratio
-        endif
-      endif
-      comment
-        adapt: usiamo 1 — il rapporto medio da 4 prodotti complica Liquid; manteniamo quadrato.
-      endcomment
-      assign quad_ratio = '1 / 1'
     else
       assign quad_ratio = '1 / 1'
   endcase
 %}
-{%- stylesheet -%}
-  .collection-quad-gallery {
-    width: 100%;
-    aspect-ratio: var(--collection-quad-aspect-ratio, 1);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .collection-quad-gallery__grid {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: var(--collection-quad-gap, 4px);
-  }
-
-  .collection-quad-gallery__cell {
-    min-height: 0;
-    min-width: 0;
-    overflow: hidden;
-    background: rgb(var(--color-foreground-rgb) / var(--opacity-5));
-  }
-
-  .collection-quad-gallery__cell--filled {
-    background: transparent;
-  }
-
-  .collection-quad-gallery__img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-
-  .collection-quad-gallery__placeholder {
-    align-items: center;
-    justify-content: center;
-    padding: var(--padding-sm);
-  }
-
-  .collection-quad-gallery__placeholder svg {
-    width: min(48px, 50%);
-    height: auto;
-    opacity: var(--opacity-40);
-  }
-{%- endstylesheet -%}
 <div
-  class="collection-quad-gallery spacing-style{% if block.settings.color_scheme %} color-{{ block.settings.color_scheme }}{% endif %}"
+  class="collection-quad-gallery spacing-style color-{{ block.settings.color_scheme }}"
   style="
     {% render 'spacing-style', settings: block.settings %}
     --collection-quad-aspect-ratio: {{ quad_ratio }};
     --collection-quad-gap: {{ gap_px }}px;
-    {% unless block.settings.color_scheme %}
-      --color-background: rgba(var(--color-foreground-rgb) / var(--opacity-10));
-    {% endunless %}
   "
   {{ block.shopify_attributes }}
 >
@@ -88,7 +25,7 @@
       aria-hidden="true"
     >
       {% for _ in (1..4) %}
-        <div class="collection-quad-gallery__cell collection-quad-gallery__placeholder flex flex-center">
+        <div class="collection-quad-gallery__cell collection-quad-gallery__placeholder">
           {{- 'detailed-apparel-1' | placeholder_svg_tag: 'collection-quad-gallery__svg' -}}
         </div>
       {% endfor %}
@@ -99,23 +36,30 @@
       aria-hidden="true"
     >
       {% for _ in (1..4) %}
-        <div class="collection-quad-gallery__cell collection-quad-gallery__placeholder flex flex-center">
+        <div class="collection-quad-gallery__cell collection-quad-gallery__placeholder">
           {{- 'collection-apparel-1' | placeholder_svg_tag: 'collection-quad-gallery__svg' -}}
         </div>
       {% endfor %}
     </div>
   {% else %}
     {% liquid
-      assign cell_count = 0
       assign widths_list = '200, 400, 600, 800, 1000'
-      assign sizes_grid = '(min-width: 990px) 25vw, (min-width: 750px) 35vw, 50vw'
+      assign sizes_grid = '(min-width: 990px) 22vw, (min-width: 750px) 40vw, 88vw'
     %}
     <div class="collection-quad-gallery__grid">
+      {% liquid
+        assign cell_count = 0
+      %}
       {% for product in col.products limit: 4 %}
-        {% assign cell_count = cell_count | plus: 1 %}
+        {% liquid
+          assign cell_count = cell_count | plus: 1
+        %}
         <div class="collection-quad-gallery__cell collection-quad-gallery__cell--filled">
           {% assign media = product.featured_media %}
           {% if media %}
+            {% liquid
+              assign img_alt = media.alt | default: product.title
+            %}
             {{
               media
               | image_url: width: 1000
@@ -124,11 +68,10 @@
                 class: 'collection-quad-gallery__img',
                 widths: widths_list,
                 sizes: sizes_grid,
-                alt: media.alt
-              | default: product.title
+                alt: img_alt
             }}
           {% else %}
-            <div class="collection-quad-gallery__placeholder flex flex-center" style="height: 100%">
+            <div class="collection-quad-gallery__placeholder collection-quad-gallery__placeholder--stretch">
               {{- 'product-apparel-1' | placeholder_svg_tag: 'collection-quad-gallery__svg' -}}
             </div>
           {% endif %}
@@ -148,6 +91,63 @@
   {% endif %}
 </div>
 
+{% stylesheet %}
+  .collection-quad-gallery {
+    width: 100%;
+    aspect-ratio: var(--collection-quad-aspect-ratio, 1 / 1);
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-background);
+  }
+
+  .collection-quad-gallery__grid {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: var(--collection-quad-gap, 4px);
+  }
+
+  .collection-quad-gallery__cell {
+    min-height: 0;
+    min-width: 0;
+    overflow: hidden;
+    background-color: rgb(var(--color-foreground-rgb) / var(--opacity-5));
+  }
+
+  .collection-quad-gallery__cell--filled {
+    background-color: transparent;
+  }
+
+  .collection-quad-gallery__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .collection-quad-gallery__placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-xs);
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  .collection-quad-gallery__svg {
+    width: min(48px, 46%);
+    height: auto;
+    opacity: var(--opacity-subdued-svg, 0.35);
+  }
+
+  .collection-quad-gallery__placeholder--stretch {
+    min-height: 100%;
+  }
+{% endstylesheet %}
+
 {% schema %}
 {
   "name": "t:names.collection_quad_gallery",
@@ -165,7 +165,7 @@
       "max": 24,
       "step": 1,
       "unit": "px",
-      "label": "t:settings.spacing",
+      "label": "t:settings.gap",
       "default": 4
     },
     {
@@ -191,17 +191,17 @@
     {
       "type": "color_scheme",
       "id": "color_scheme",
-      "label": "t:settings.background",
+      "label": "t:settings.color_scheme",
       "default": "scheme-2"
     },
     {
       "type": "header",
-      "content": "t:spacing.padding_heading"
+      "content": "t:content.padding"
     },
     {
       "type": "range",
       "id": "padding-block-start",
-      "label": "t:spacing.padding_top",
+      "label": "t:settings.top",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -211,7 +211,7 @@
     {
       "type": "range",
       "id": "padding-block-end",
-      "label": "t:spacing.padding_bottom",
+      "label": "t:settings.bottom",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -221,7 +221,7 @@
     {
       "type": "range",
       "id": "padding-inline-start",
-      "label": "t:spacing.padding_left",
+      "label": "t:settings.left",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -231,7 +231,7 @@
     {
       "type": "range",
       "id": "padding-inline-end",
-      "label": "t:spacing.padding_right",
+      "label": "t:settings.right",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -239,6 +239,20 @@
       "default": 0
     }
   ],
-  "presets": []
+  "presets": [
+    {
+      "name": "t:names.collection_quad_gallery",
+      "category": "t:categories.collection",
+      "settings": {
+        "gap": 4,
+        "aspect_ratio": "square",
+        "color_scheme": "scheme-2",
+        "padding-block-start": 0,
+        "padding-block-end": 0,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0
+      }
+    }
+  ]
 }
 {% endschema %}
