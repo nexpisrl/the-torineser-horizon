@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "blocks": {
     "load_video": "Videoyu yükle: {{ description }}",
@@ -17,7 +26,12 @@
       "post_success": "Bizimle iletişime geçtiğiniz için teşekkür ederiz. Mümkün olan en kısa sürede size dönüş yapacağız.",
       "error_heading": "Lütfen aşağıdakileri düzenleyin:"
     },
-    "slider_label": "Kaydırıcı"
+    "slider_label": "Kaydırıcı",
+    "notizie_preview": {
+      "badge_open": "Open",
+      "badge_closed": "Closed",
+      "empty_state": "No blog at this handle yet, or no published articles."
+    }
   },
   "accessibility": {
     "play_model": "3B modeli oynat",
