@@ -2,23 +2,15 @@
   assign bh = block.settings.blog_handle | default: 'notizie' | strip
   assign target_blog = blogs[bh]
   assign limit_n = block.settings.article_limit | default: 3
-  assign active_tag = block.settings.active_tag_handle | default: 'evento-aperto' | strip
+  assign active_tag = block.settings.active_tag_handle | strip
 
   assign mf_ns = block.settings.metafield_namespace | default: 'custom' | strip
   assign mf_open_key = block.settings.metafield_open_key | default: 'evento_aperto' | strip
   assign mf_detail_key = block.settings.metafield_detail_key | default: 'dettaglio_evento' | strip
 %}
 <div
-  class="
-    notizie-preview spacing-style border-style color-{{ block.settings.color_scheme }}
-    {% if settings.edges_type == 'rounded_corners' %}notizie-preview--rounded{% endif %}
-  "
-  style="
-    {% render 'spacing-style', settings: block.settings %}
-    {% render 'border-radius', settings: block.settings %}
-    {% render 'border-style', settings: block.settings %}
-    --notizie-preview-radius: {{ block.settings.corner_radius }}px;
-  "
+  class="notizie-preview spacing-style border-style color-{{ block.settings.color_scheme }}"
+  style="{% render 'spacing-style', settings: block.settings %}{% render 'border-override', settings: block.settings %}"
   {{ block.shopify_attributes }}
 >
   {% if block.settings.eyebrow != blank %}
@@ -50,14 +42,14 @@
           assign is_open = false
           if open_mf.value == true or open_mf.value == 'true'
             assign is_open = true
-          elsif article.tags contains active_tag
+          elsif active_tag != blank and article.tags contains active_tag
             assign is_open = true
           endif
 
-          assign detail_mf = article.metafields[mf_ns][mf_detail_key].value
-          assign meta_line = detail_mf | default: article.excerpt | strip_html | strip
-          if meta_line == blank
-            assign meta_line = article.published_at | time_tag: format: 'date'
+          assign detail_mf_val = article.metafields[mf_ns][mf_detail_key].value
+          assign meta_plain = detail_mf_val | default: '' | strip_html | strip
+          if meta_plain == blank
+            assign meta_plain = article.excerpt | strip_html | strip
           endif
         %}
         <li class="notizie-preview__item{% if forloop.last %} notizie-preview__item--last{% endif %}">
@@ -68,7 +60,11 @@
             <div class="notizie-preview__row-main">
               <p class="notizie-preview__title">{{ article.title | escape }}</p>
               <div class="notizie-preview__meta muted">
-                {{ meta_line }}
+                {% if meta_plain != blank %}
+                  {{ meta_plain }}
+                {% else %}
+                  {{ article.published_at | time_tag: format: 'date' }}
+                {% endif %}
               </div>
             </div>
             <div class="notizie-preview__status">
@@ -105,13 +101,10 @@
 </div>
 
 {% stylesheet %}
+  /* Padding da impostazioni “Spaziatura interna”; bordo/raggio tramite classe border-style + border-override */
   .notizie-preview {
-    --notizie-preview-radius: 24px;
-    border-radius: var(--notizie-preview-radius);
     background-color: var(--color-background);
-    border: var(--style-border-swatch-width, 1px) solid rgb(var(--color-border-rgb) / var(--style-border-swatch-opacity, 0.2));
-    padding-block: 2.5rem;
-    padding-inline: 2.25rem;
+    box-sizing: border-box;
     max-width: 100%;
   }
 
@@ -343,7 +336,7 @@
     },
     {
       "type": "range",
-      "id": "corner_radius",
+      "id": "border_radius",
       "label": "t:settings.border_radius",
       "min": 0,
       "max": 40,
@@ -352,20 +345,9 @@
       "default": 24
     },
     {
-      "type": "range",
-      "id": "border_width",
-      "label": "t:settings.border_width",
-      "min": 0,
-      "max": 4,
-      "step": 1,
-      "unit": "px",
-      "default": 1
-    },
-    {
       "type": "select",
-      "id": "border_style",
-      "label": "t:settings.border",
-      "visible_if": "{{ block.settings.border_width > 0 }}",
+      "id": "border",
+      "label": "t:settings.borders",
       "options": [
         {
           "value": "none",
@@ -380,14 +362,25 @@
     },
     {
       "type": "range",
+      "id": "border_width",
+      "label": "t:settings.border_width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "default": 1,
+      "visible_if": "{{ block.settings.border != \"none\" }}"
+    },
+    {
+      "type": "range",
       "id": "border_opacity",
-      "label": "t:settings.opacity",
+      "label": "t:settings.border_opacity",
       "min": 0,
       "max": 100,
       "step": 1,
       "unit": "%",
-      "default": 20,
-      "visible_if": "{{ block.settings.border_width > 0 }}"
+      "default": 22,
+      "visible_if": "{{ block.settings.border != \"none\" }}"
     },
     {
       "type": "header",
@@ -401,7 +394,7 @@
       "max": 100,
       "step": 1,
       "unit": "px",
-      "default": 32
+      "default": 40
     },
     {
       "type": "range",
@@ -411,7 +404,7 @@
       "max": 100,
       "step": 1,
       "unit": "px",
-      "default": 32
+      "default": 40
     },
     {
       "type": "range",
