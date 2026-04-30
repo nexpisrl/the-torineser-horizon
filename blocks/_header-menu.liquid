@@ -8,12 +8,10 @@
 {% liquid
   assign block_settings = block.settings
 
-  # Second menu (header-menu-2): eredita stile dal menu principale; menu/links restano di questo blocco.
-  if block.id == 'header-menu-2'
-    assign primary_menu_block = section.blocks | where: 'id', 'header-menu' | first
-    if primary_menu_block != blank
-      assign block_settings = primary_menu_block.settings
-    endif
+  # Ogni ulteriore menu header eredita stile dal primo blocco Menu del tema; i link restano quelli di questo blocco.
+  assign primary_menu_block = section.blocks | where: 'type', '_header-menu' | first
+  if primary_menu_block != blank and block.id != primary_menu_block.id
+    assign block_settings = primary_menu_block.settings
   endif
 
   assign menu_links = block.settings.menu
