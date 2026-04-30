@@ -1,0 +1,15 @@
+{%- doc -%}
+  Pallini colorati prima della voce «Per Colore».
+  In Navigazione l’handle del link deve essere `per-colore`.
+{%- enddoc -%}
+{%- if link.handle == 'per-colore' -%}
+  <span
+    class="menu-link-per-colore-swatches"
+    style="display:inline-flex;align-items:center;margin-inline-end:6px;"
+    aria-hidden="true"
+  >
+    <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#B85C38;border:1.5px solid var(--color-background);box-sizing:border-box;flex-shrink:0;"></span>
+    <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#1E3A5F;border:1.5px solid var(--color-background);margin-inline-start:-3px;box-sizing:border-box;flex-shrink:0;"></span>
+    <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#C9A25A;border:1.5px solid var(--color-background);margin-inline-start:-3px;box-sizing:border-box;flex-shrink:0;"></span>
+  </span>
+{%- endif -%}

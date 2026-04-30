@@ -50,6 +50,7 @@
                     aria-current="page"
                   {% endif %}
                 >
+                  {% render 'menu-link-per-colore-swatches', link: link %}
                   {{- link.title -}}
                 </a>
               </li>
@@ -108,7 +109,10 @@
             {% endif %}
             ref="menuitem"
           >
-            <span class="menu-list__link-title">{{- link.title -}}</span>
+            <span class="menu-list__link-label">
+              {% render 'menu-link-per-colore-swatches', link: link %}
+              <span class="menu-list__link-title">{{- link.title -}}</span>
+            </span>
           </a>
           {%- if link.links != blank -%}
             <div class="menu-list__submenu{{ color_scheme_classes }}" ref="submenu[]">
@@ -244,6 +248,12 @@
     & a {
       color: var(--color-foreground);
     }
+
+    & a.menu-list__item {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--gap-3xs);
+    }
   }
 
   .menu-list__scroll-container {
@@ -302,6 +312,13 @@
     @media screen and (min-width: 750px) {
       font-size: var(--menu-top-level-font-size-desktop);
     }
+  }
+
+  .menu-list__link-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
   }
 
   .menu-list__link-title {

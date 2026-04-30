@@ -126,6 +126,7 @@
                         id="HeaderDrawer-{{ link.handle }}"
                         class="menu-drawer__menu-item menu-drawer__menu-item--mainlist menu-drawer__animated-element focus-inset"
                       >
+                        {% render 'menu-link-per-colore-swatches', link: link %}
                         <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | escape }}</span>
                         <span class="svg-wrapper icon-plus">
                           {{- 'icon-plus.svg' | inline_asset_content -}}
@@ -186,6 +187,7 @@
                       aria-current="page"
                     {% endif %}
                   >
+                    {% render 'menu-link-per-colore-swatches', link: link %}
                     <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | escape }}</span>
                   </a>
                   {% liquid
@@ -240,6 +242,7 @@
                       aria-current="page"
                     {% endif %}
                   >
+                    {% render 'menu-link-per-colore-swatches', link: link %}
                     <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | escape }}</span>
                   </a>
                 {% endif %}
@@ -557,6 +560,7 @@
                       aria-current="page"
                     {% endif %}
                   >
+                    {% render 'menu-link-per-colore-swatches', link: link %}
                     <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | escape }}</span>
                   </a>
                 {%- endif -%}
