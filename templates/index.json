@@ -1168,12 +1168,30 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "artists_marquee_bFHik7": {
+      "type": "artists-marquee",
+      "name": "t:names.artists_marquee",
+      "settings": {
+        "heading": "Oltre 100 artisti · Una sola città",
+        "metaobject_definition": "artista",
+        "nome_field": "nome_completo",
+        "show_section_borders": true,
+        "movement_direction": "normal",
+        "color_scheme": "scheme-1",
+        "gap_between_segments": 56,
+        "padding-block-start": 40,
+        "padding-block-end": 40,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0
+      }
     }
   },
   "order": [
     "hero_jVaWmY",
     "product_list_97iLf8",
     "section_wXzB9V",
-    "product_list_weKyhA"
+    "product_list_weKyhA",
+    "artists_marquee_bFHik7"
   ]
 }
