@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "names": {
     "404": "404",
@@ -62,6 +71,7 @@
     "collection_card": "Scheda della collezione",
     "collection_columns": "Colonne della collezione",
     "collection_container": "Collezione",
+    "collection_quad_gallery": "Griglia 2×2 immagini (collezione)",
     "collection_description": "Descrizione della collezione",
     "collection_image": "Immagine della collezione",
     "collection_info": "Informazioni sulla collezione",
@@ -904,6 +914,7 @@
     "media_1": "Contenuto multimediale 1",
     "media_2": "Contenuto multimediale 2",
     "menu": "Menu",
+    "secondary_menu": "Secondo menu",
     "mobile_layout": "Layout per dispositivi mobili",
     "padding": "Spaziatura interna",
     "padding_desktop": "Spaziatura interna per desktop",
