@@ -438,6 +438,18 @@
     "pills": "Pills",
     "comparison_slider": "Comparison slider"
   },
+  "sections": {
+    "artists_marquee": {
+      "info_metaobjects_limit": "Shows names from metaobject entries of the selected definition. Shopify limits looping to about 50 published entries.",
+      "setting_heading": "Heading",
+      "setting_metaobject_type": "Metaobject definition handle",
+      "info_metaobject_type": "Matches the metaobject definition in Admin → Content → Metaobjects (example: artista).",
+      "setting_field_key": "Name field handle",
+      "info_field_key": "Single-line field that stores the scrolling label (example: nome_completo).",
+      "setting_borders": "Top and bottom borders",
+      "setting_gap": "Spacing between names"
+    }
+  },
   "options": {
     "above_carousel": "Above carousel",
     "accent": "Accent",

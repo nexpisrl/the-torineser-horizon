@@ -8,13 +8,19 @@
   assign mo_type = section.settings.metaobject_definition | default: 'artista' | strip
   assign field_key = section.settings.nome_field | default: 'nome_completo' | strip
   assign gap_px = section.settings.gap_between_segments | default: 56
+  assign visible_count = 0
+  for entry in metaobjects[mo_type].values
+    assign nome_check = entry[field_key].value | default: '' | strip
+    if nome_check != blank
+      assign visible_count = visible_count | plus: 1
+    endif
+  endfor
 %}
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 
 <div
   class="section spacing-style color-{{ section.settings.color_scheme }}{% if section.settings.show_section_borders %} artists-marquee--bordered{% endif %}"
   style="{% render 'spacing-style', settings: section.settings %}"
-  id="shopify-section-{{ section.id }}"
 >
   {% if section.settings.heading != blank %}
     <p class="artists-marquee__subtitle">
@@ -22,22 +28,7 @@
     </p>
   {% endif %}
 
-  {% liquid
-    assign mo_values = metaobjects[mo_type].values | default: null
-    assign has_artists = false
-    assign safe_count = 0
-    for entry in metaobjects[mo_type].values
-      assign fn = entry[field_key].value | strip
-      if fn != blank
-        assign safe_count = safe_count | plus: 1
-      endif
-    endfor
-    if safe_count > 0
-      assign has_artists = true
-    endif
-  %}
-
-  {% if has_artists %}
+  {% if visible_count > 0 %}
     <marquee-component
       class="artists-marquee gap-style color-{{ section.settings.color_scheme }}"
       style="
@@ -46,7 +37,6 @@
       "
       data-speed-factor="28"
       data-movement-direction="{{ section.settings.movement_direction }}"
-      data-shopify-visual-preview
     >
       <div
         class="marquee__wrapper"
@@ -80,10 +70,7 @@
       </div>
     </marquee-component>
   {% else %}
-    <div
-      class="artists-marquee__empty muted"
-      style="padding-block: var(--padding-md); text-align: center;"
-    >
+    <div class="artists-marquee__empty">
       {{- 'sections.artists_marquee.empty_state' | t -}}
     </div>
   {% endif %}
@@ -101,20 +88,15 @@
     text-transform: uppercase;
     text-align: center;
     color: var(--color-primary);
-    margin-block: 0 var(--spacing-scale-5, 20px);
+    margin-block: 0 20px;
     padding-inline: var(--padding-sm);
     line-height: 1.3;
-    font-weight: var(--font-body--weight-medium, 400);
   }
 
   .section .artists-marquee {
     display: block;
     width: 100%;
     overflow: hidden;
-  }
-
-  marquee-component.artists-marquee:not([data-disabled]) .marquee__wrapper {
-    animation-duration: unset;
   }
 
   .artists-marquee .marquee__wrapper {
@@ -143,6 +125,12 @@
     }
   }
 
+  @keyframes marquee-motion {
+    to {
+      transform: translate3d(calc(-50% - (var(--marquee-gap) / 2)), 0, 0);
+    }
+  }
+
   .artists-marquee__segment {
     display: inline-flex;
     align-items: baseline;
@@ -163,7 +151,14 @@
   .artists-marquee__sep {
     color: var(--color-primary);
     font-style: normal;
-    padding-inline-start: var(--padding-4xs);
+    padding-inline-start: var(--padding-4xs, 2px);
+  }
+
+  .artists-marquee__empty {
+    padding-block: var(--padding-md);
+    text-align: center;
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-60));
+    font-size: var(--font-size--sm, 0.875rem);
   }
 {% endstylesheet %}
 
