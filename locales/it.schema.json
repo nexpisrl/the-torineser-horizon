@@ -57,6 +57,7 @@
     "spacer": "Spaziatore",
     "accelerated_checkout": "Check-out veloce",
     "accordion": "Accordion",
+    "artists_marquee": "Marquee artisti",
     "accordion_row": "Riga accordion",
     "animations": "Animazioni",
     "announcement": "Annuncio",
@@ -199,6 +200,18 @@
     "hotspot_product": "Hotspot",
     "product_sku": "SKU",
     "layered_slideshow": "Presentazione a livelli"
+  },
+  "sections": {
+    "artists_marquee": {
+      "info_metaobjects_limit": "Mostra i nomi degli elementi della definizione metaobject selezionata. Su Shopify si possono ciclarne al massimo circa 50 (pubblicati).",
+      "setting_heading": "Titolo sopra alla fascia",
+      "setting_metaobject_type": "Handle definizione metaobject",
+      "info_metaobject_type": "Deve coincidere con la definizione in Shopify Admin → Contenuti → Metaobject (es. artista).",
+      "setting_field_key": "Handle campo nome",
+      "info_field_key": "Campo testo sulla riga che contiene l’etichetta da mostrare (es. nome_completo).",
+      "setting_borders": "Bordo superiore e inferiore",
+      "setting_gap": "Spazio tra i nomi"
+    }
   },
   "settings": {
     "alignment": "Allineamento",
