@@ -128,6 +128,7 @@
                       >
                         {% render 'menu-link-torineser-nav', link: link %}
                         <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | escape }}</span>
+                        {% render 'menu-link-torineser-nav', link: link, part: 'after' %}
                         <span class="svg-wrapper icon-plus">
                           {{- 'icon-plus.svg' | inline_asset_content -}}
                         </span>
@@ -189,6 +190,7 @@
                   >
                     {% render 'menu-link-torineser-nav', link: link %}
                     <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | escape }}</span>
+                    {% render 'menu-link-torineser-nav', link: link, part: 'after' %}
                   </a>
                   {% liquid
                     assign render_link_image = false
@@ -244,6 +246,7 @@
                   >
                     {% render 'menu-link-torineser-nav', link: link %}
                     <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | escape }}</span>
+                    {% render 'menu-link-torineser-nav', link: link, part: 'after' %}
                   </a>
                 {% endif %}
               </li>
@@ -274,6 +277,7 @@
                     >
                       {% render 'menu-link-torineser-nav', link: link %}
                       <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | escape }}</span>
+                      {% render 'menu-link-torineser-nav', link: link, part: 'after' %}
                       <span class="svg-wrapper icon-caret icon-caret--forward">
                         {{- 'icon-caret.svg' | inline_asset_content -}}
                       </span>
@@ -297,6 +301,7 @@
                             </span>
                             {% render 'menu-link-torineser-nav', link: link %}
                             <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | escape }}</span>
+                            {% render 'menu-link-torineser-nav', link: link, part: 'after' %}
                           </button>
                           <button
                             class="button button-unstyled close-button menu-drawer__close-button"
@@ -564,6 +569,7 @@
                   >
                     {% render 'menu-link-torineser-nav', link: link %}
                     <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | escape }}</span>
+                    {% render 'menu-link-torineser-nav', link: link, part: 'after' %}
                   </a>
                 {%- endif -%}
               </li>
