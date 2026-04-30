@@ -175,6 +175,7 @@
     "description": "Descrizione",
     "featured_image": "Immagine in evidenza",
     "multicolumn": "Multicolonna",
+    "notizie_preview": "Anteprima articoli (blog)",
     "rich_text_section": "Rich text",
     "product_custom_property": "Istruzioni speciali",
     "hero_bottom_aligned": "Hero: Allineato in basso",
@@ -200,6 +201,28 @@
     "hotspot_product": "Hotspot",
     "product_sku": "SKU",
     "layered_slideshow": "Presentazione a livelli"
+  },
+  "blocks": {
+    "notizie_preview": {
+      "info_blog": "Mostra gli articoli più recenti del blog il cui handle imposti (predefinito: notizie).",
+      "setting_blog_handle": "Handle del blog",
+      "setting_article_limit": "Numero di articoli",
+      "setting_eyebrow": "Testo sopra il titolo",
+      "setting_heading_1": "Intestazione (prima riga)",
+      "setting_heading_2": "Intestazione (seconda riga)",
+      "setting_cta_url": "Link al blog / «vedi tutti»",
+      "info_cta_url": "Se vuoto, viene usato l’URL della lista del blog (/blogs/handle).",
+      "setting_cta_label": "Testo del link",
+      "header_status": "Badge «Aperto»",
+      "setting_active_tag": "Tag per articolo «aperto»",
+      "info_active_tag": "Coincidenza esatta (es. evento-aperto). Lascia vuoto e usa solo il metafield booleano se preferisci.",
+      "header_metafields": "Metafields articolo (opzionali)",
+      "setting_mf_namespace": "Namespace metafield",
+      "setting_mf_open": "Handle booleano (aperto/attivo)",
+      "info_mf_open": "Esempio: custom.evento_aperto (booleano). Se vero appare «Aperto».",
+      "setting_mf_detail": "Handle sottotitolo / dettaglio",
+      "info_mf_detail": "Testo sotto al titolo (es. date · luogo). Fallback: estratto, poi data di pubblicazione."
+    }
   },
   "sections": {
     "artists_marquee": {

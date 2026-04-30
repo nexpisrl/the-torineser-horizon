@@ -128,7 +128,12 @@
     "load_video": "Load video: {{ description }}",
     "sold_out": "Sold out",
     "payment_methods": "Payment methods",
-    "slider_label": "Slider"
+    "slider_label": "Slider",
+    "notizie_preview": {
+      "badge_open": "Open",
+      "badge_closed": "Closed",
+      "empty_state": "No blog at this handle yet, or no published articles."
+    }
   },
   "blogs": {
     "article": {
