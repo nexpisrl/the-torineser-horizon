@@ -1,0 +1,439 @@
+{% liquid
+  assign bh = block.settings.blog_handle | default: 'notizie' | strip
+  assign target_blog = blogs[bh]
+  assign limit_n = block.settings.article_limit | default: 3
+  assign active_tag = block.settings.active_tag_handle | default: 'evento-aperto' | strip
+
+  assign mf_ns = block.settings.metafield_namespace | default: 'custom' | strip
+  assign mf_open_key = block.settings.metafield_open_key | default: 'evento_aperto' | strip
+  assign mf_detail_key = block.settings.metafield_detail_key | default: 'dettaglio_evento' | strip
+%}
+<div
+  class="
+    notizie-preview spacing-style border-style color-{{ block.settings.color_scheme }}
+    {% if settings.edges_type == 'rounded_corners' %}notizie-preview--rounded{% endif %}
+  "
+  style="
+    {% render 'spacing-style', settings: block.settings %}
+    {% render 'border-radius', settings: block.settings %}
+    {% render 'border-style', settings: block.settings %}
+    --notizie-preview-radius: {{ block.settings.corner_radius }}px;
+  "
+  {{ block.shopify_attributes }}
+>
+  {% if block.settings.eyebrow != blank %}
+    <p class="notizie-preview__eyebrow">
+      {{- block.settings.eyebrow | escape -}}
+    </p>
+  {% endif %}
+
+  {% if block.settings.heading_line_1 != blank or block.settings.heading_line_2 != blank %}
+    <h3 class="notizie-preview__heading">
+      {% if block.settings.heading_line_1 != blank %}
+        <span class="notizie-preview__heading-line">{{ block.settings.heading_line_1 | escape }}</span>
+      {% endif %}
+      {% if block.settings.heading_line_2 != blank %}
+        <br>
+        <span class="notizie-preview__heading-line">{{ block.settings.heading_line_2 | escape }}</span>
+      {% endif %}
+    </h3>
+  {% endif %}
+
+  {% if target_blog != blank and target_blog.articles_count > 0 %}
+    <ul
+      class="notizie-preview__list list-unstyled"
+      role="list"
+    >
+      {% for article in target_blog.articles limit: limit_n %}
+        {% liquid
+          assign open_mf = article.metafields[mf_ns][mf_open_key]
+          assign is_open = false
+          if open_mf.value == true or open_mf.value == 'true'
+            assign is_open = true
+          elsif article.tags contains active_tag
+            assign is_open = true
+          endif
+
+          assign detail_mf = article.metafields[mf_ns][mf_detail_key].value
+          assign meta_line = detail_mf | default: article.excerpt | strip_html | strip
+          if meta_line == blank
+            assign meta_line = article.published_at | time_tag: format: 'date'
+          endif
+        %}
+        <li class="notizie-preview__item{% if forloop.last %} notizie-preview__item--last{% endif %}">
+          <a
+            href="{{ article.url }}"
+            class="notizie-preview__row"
+          >
+            <div class="notizie-preview__row-main">
+              <p class="notizie-preview__title">{{ article.title | escape }}</p>
+              <div class="notizie-preview__meta muted">
+                {{ meta_line }}
+              </div>
+            </div>
+            <div class="notizie-preview__status">
+              {% if is_open %}
+                <span class="notizie-preview__pill">{{ 'blocks.notizie_preview.badge_open' | t }}</span>
+              {% else %}
+                <span class="notizie-preview__closed">{{ 'blocks.notizie_preview.badge_closed' | t }}</span>
+              {% endif %}
+            </div>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="notizie-preview__empty">
+      {{- 'blocks.notizie_preview.empty_state' | t -}}
+    </p>
+  {% endif %}
+
+  {% liquid
+    assign cta_href = block.settings.cta_url
+    if cta_href == blank and target_blog != blank
+      assign cta_href = target_blog.url
+    endif
+  %}
+  {% if block.settings.cta_label != blank and cta_href != blank %}
+    <a
+      href="{{ cta_href }}"
+      class="notizie-preview__cta"
+    >
+      {{- block.settings.cta_label | escape -}}
+    </a>
+  {% endif %}
+</div>
+
+{% stylesheet %}
+  .notizie-preview {
+    --notizie-preview-radius: 24px;
+    border-radius: var(--notizie-preview-radius);
+    background-color: var(--color-background);
+    border: var(--style-border-swatch-width, 1px) solid rgb(var(--color-border-rgb) / var(--style-border-swatch-opacity, 0.2));
+    padding-block: 2.5rem;
+    padding-inline: 2.25rem;
+    max-width: 100%;
+  }
+
+  .notizie-preview__eyebrow {
+    font-family: var(--font-body--family);
+    font-size: 0.6875rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin: 0 0 12px;
+    line-height: 1.3;
+  }
+
+  .notizie-preview__heading {
+    font-family: var(--font-heading--family);
+    font-weight: 400;
+    font-size: clamp(1.75rem, 2.5vw + 1rem, 2.5rem);
+    line-height: 1.1;
+    color: rgb(var(--color-foreground-rgb));
+    margin: 0 0 28px;
+  }
+
+  .notizie-preview__list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .notizie-preview__item {
+    border-bottom: 1px solid rgb(var(--color-border-rgb) / var(--opacity-30));
+  }
+
+  .notizie-preview__item--last {
+    border-bottom: none;
+  }
+
+  .notizie-preview__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 18px 0;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .notizie-preview__row:hover .notizie-preview__title {
+    color: var(--color-primary);
+  }
+
+  .notizie-preview__row-main {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .notizie-preview__title {
+    font-family: var(--font-heading--family);
+    font-size: 1.25rem;
+    line-height: 1.25;
+    color: rgb(var(--color-foreground-rgb));
+    margin: 0 0 4px;
+    transition: color var(--animation-speed) var(--animation-easing);
+  }
+
+  .notizie-preview__meta {
+    font-family: var(--font-body--family);
+    font-size: 0.75rem;
+    line-height: 1.4;
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-70));
+  }
+
+  .notizie-preview__meta .time {
+    white-space: nowrap;
+  }
+
+  .notizie-preview__status {
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .notizie-preview__pill {
+    display: inline-block;
+    background: var(--color-primary);
+    color: rgb(var(--color-white-rgb, 255 255 255));
+    border-radius: 100px;
+    padding: 4px 12px;
+    font-family: var(--font-body--family);
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    line-height: 1.3;
+  }
+
+  .notizie-preview__closed {
+    font-family: var(--font-body--family);
+    font-size: 0.625rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-60));
+    white-space: nowrap;
+    line-height: 1.3;
+  }
+
+  .notizie-preview__cta {
+    display: inline-block;
+    margin-top: 24px;
+    font-family: var(--font-body--family);
+    font-size: 0.8125rem;
+    color: var(--color-primary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-primary);
+    padding-bottom: 3px;
+    line-height: 1.3;
+  }
+
+  .notizie-preview__cta:hover {
+    color: var(--color-primary-hover);
+    border-bottom-color: var(--color-primary-hover);
+  }
+
+  .notizie-preview__empty {
+    margin: 0;
+    font-size: var(--font-size--sm, 0.875rem);
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-60));
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.notizie_preview",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:blocks.notizie_preview.info_blog"
+    },
+    {
+      "type": "text",
+      "id": "blog_handle",
+      "label": "t:blocks.notizie_preview.setting_blog_handle",
+      "default": "notizie"
+    },
+    {
+      "type": "range",
+      "id": "article_limit",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "label": "t:blocks.notizie_preview.setting_article_limit",
+      "default": 3
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "t:blocks.notizie_preview.setting_eyebrow",
+      "default": "Dal vivo"
+    },
+    {
+      "type": "text",
+      "id": "heading_line_1",
+      "label": "t:blocks.notizie_preview.setting_heading_1",
+      "default": "Prossimi"
+    },
+    {
+      "type": "text",
+      "id": "heading_line_2",
+      "label": "t:blocks.notizie_preview.setting_heading_2",
+      "default": "eventi."
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "t:blocks.notizie_preview.setting_cta_url",
+      "info": "t:blocks.notizie_preview.info_cta_url"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "t:blocks.notizie_preview.setting_cta_label",
+      "default": "Tutti gli eventi →"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.notizie_preview.header_status"
+    },
+    {
+      "type": "text",
+      "id": "active_tag_handle",
+      "label": "t:blocks.notizie_preview.setting_active_tag",
+      "default": "evento-aperto",
+      "info": "t:blocks.notizie_preview.info_active_tag"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.notizie_preview.header_metafields"
+    },
+    {
+      "type": "text",
+      "id": "metafield_namespace",
+      "label": "t:blocks.notizie_preview.setting_mf_namespace",
+      "default": "custom"
+    },
+    {
+      "type": "text",
+      "id": "metafield_open_key",
+      "label": "t:blocks.notizie_preview.setting_mf_open",
+      "default": "evento_aperto",
+      "info": "t:blocks.notizie_preview.info_mf_open"
+    },
+    {
+      "type": "text",
+      "id": "metafield_detail_key",
+      "label": "t:blocks.notizie_preview.setting_mf_detail",
+      "default": "dettaglio_evento",
+      "info": "t:blocks.notizie_preview.info_mf_detail"
+    },
+    {
+      "type": "header",
+      "content": "t:content.colors"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "range",
+      "id": "corner_radius",
+      "label": "t:settings.border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "label": "t:settings.border_width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "select",
+      "id": "border_style",
+      "label": "t:settings.border",
+      "visible_if": "{{ block.settings.border_width > 0 }}",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:options.none"
+        },
+        {
+          "value": "solid",
+          "label": "t:options.solid"
+        }
+      ],
+      "default": "solid"
+    },
+    {
+      "type": "range",
+      "id": "border_opacity",
+      "label": "t:settings.opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 20,
+      "visible_if": "{{ block.settings.border_width > 0 }}"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-start",
+      "label": "t:settings.left",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-end",
+      "label": "t:settings.right",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 36
+    }
+  ],
+  "presets": []
+}
+{% endschema %}
