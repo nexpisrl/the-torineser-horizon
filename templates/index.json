@@ -134,7 +134,7 @@
               "type": "button",
               "name": "t:names.button",
               "settings": {
-                "label": "Acquista ora",
+                "label": "Scopri il catalogo →",
                 "link": "shopify://collections/all",
                 "open_in_new_tab": false,
                 "style_class": "button",
@@ -149,7 +149,7 @@
               "type": "button",
               "name": "t:names.button",
               "settings": {
-                "label": "Acquista ora",
+                "label": "Il Progetto",
                 "link": "shopify://collections/all",
                 "open_in_new_tab": false,
                 "style_class": "button",
@@ -313,7 +313,7 @@
                   "type": "text",
                   "name": "t:names.heading",
                   "settings": {
-                    "text": "<h2>Nuovi arrivi</h2>",
+                    "text": "<h2>Le ultime stampe</h2>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -372,7 +372,7 @@
               "type": "_product-list-button",
               "name": "t:names.product_list_button",
               "settings": {
-                "label": "Visualizza tutto",
+                "label": "Vedi tutte le novità →",
                 "open_in_new_tab": false,
                 "style_class": "link",
                 "width": "fit-content",
@@ -546,7 +546,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>Realizziamo articoli che funzionano meglio e durano più a lungo. I nostri prodotti risolvono problemi reali con un design pulito e materiali autentici.</p>",
+                "text": "<p>Dal 2020 · Oltre 100 artisti</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -572,7 +572,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>Nuovi arrivi</h2>",
+                "text": "<h2>Un progetto<br/>fatto di <em>passione.</em></h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -598,7 +598,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>Realizziamo articoli che funzionano meglio e durano più a lungo. I nostri prodotti risolvono problemi reali con un design pulito e materiali autentici.</p>",
+                "text": "<p>Ogni copertina racconta un angolo di Torino attraverso gli occhi di artisti che la vivono ogni giorno. Stampe numerate, in edizione limitata, nate dalla nostra Open Call mensile — aperta a tutti, non solo ai torinesi di nascita.</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -676,7 +676,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Realizziamo articoli che funzionano meglio e durano più a lungo. I nostri prodotti risolvono problemi reali con un design pulito e materiali autentici.</p>",
+                    "text": "<p>109</p><p>Stampe</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -702,7 +702,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Realizziamo articoli che funzionano meglio e durano più a lungo. I nostri prodotti risolvono problemi reali con un design pulito e materiali autentici.</p>",
+                    "text": "<p>100+</p><p>Artisti</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -728,7 +728,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Realizziamo articoli che funzionano meglio e durano più a lungo. I nostri prodotti risolvono problemi reali con un design pulito e materiali autentici.</p>",
+                    "text": "<p>6</p><p>Anni</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -761,7 +761,7 @@
               "type": "button",
               "name": "t:names.button",
               "settings": {
-                "label": "Acquista ora",
+                "label": "Scopri il progetto →",
                 "link": "shopify://collections/all",
                 "open_in_new_tab": false,
                 "style_class": "button",
@@ -957,7 +957,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Il meglio del catalogo</p>",
+                    "text": "<p>IL MEGLIO DEL CATALOGO</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -1042,7 +1042,7 @@
               "type": "_product-list-button",
               "name": "t:names.product_list_button",
               "settings": {
-                "label": "Visualizza tutto",
+                "label": "Tutto il catalogo →",
                 "open_in_new_tab": false,
                 "style_class": "link",
                 "width": "fit-content",
