@@ -1468,7 +1468,7 @@
       "step": 0.5,
       "unit": "px",
       "default": 0,
-      "visible_if": "{{ section.settings.menu_row == 'bottom' or section.settings.localization_row == 'bottom' or section.settings.search_row == 'bottom' }}"
+      "visible_if": "{{ section.settings.menu_row == 'bottom' or section.settings.menu_2_row == 'bottom' or section.settings.localization_row == 'bottom' or section.settings.search_row == 'bottom' }}"
     },
     {
       "type": "select",
@@ -1484,7 +1484,7 @@
           "label": "t:options.full"
         }
       ],
-      "visible_if": "{{ section.settings.divider_width > 0 and section.settings.menu_row == 'bottom' or section.settings.localization_row == 'bottom' or section.settings.search_row == 'bottom' }}"
+      "visible_if": "{{ section.settings.divider_width > 0 and section.settings.menu_row == 'bottom' or section.settings.localization_row == 'bottom' or section.settings.search_row == 'bottom' or section.settings.menu_2_row == 'bottom' }}"
     },
     {
       "type": "range",
@@ -1599,7 +1599,7 @@
       "id": "color_scheme_bottom",
       "label": "t:settings.bottom_row",
       "default": "primary",
-      "visible_if": "{{ section.settings.menu_row == 'bottom' or section.settings.localization_row == 'bottom' or section.settings.search_row == 'bottom' }}"
+      "visible_if": "{{ section.settings.menu_row == 'bottom' or section.settings.menu_2_row == 'bottom' or section.settings.localization_row == 'bottom' or section.settings.search_row == 'bottom' }}"
     },
     {
       "type": "color_scheme",
