@@ -2,7 +2,7 @@
   assign order = 'logo,menu,menu_2,localization,search,drawer_search,actions'
 
   if shop.customer_accounts_enabled
-    assign order = 'drawer_search,logo,menu,menu_2,localization,search,actions'
+    assign order = 'drawer_search,logo,menu,localization,search,actions'
   endif
 
   assign rows = 'top,bottom' | split: ','
@@ -367,7 +367,6 @@
         first: first,
         logo: logo,
         menu: menu,
-        menu_2: menu_2,
         actions: actions,
         localization: localization_markup,
         search: search,
