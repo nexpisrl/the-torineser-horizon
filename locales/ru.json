@@ -17,7 +17,12 @@
       "post_success": "Спасибо за обращение. Мы свяжемся с вами как можно скорее.",
       "error_heading": "Измените следующие элементы:"
     },
-    "slider_label": "Ползунок"
+    "slider_label": "Ползунок",
+    "notizie_preview": {
+      "badge_open": "Open",
+      "badge_closed": "Closed",
+      "empty_state": "No blog at this handle yet, or no published articles."
+    }
   },
   "accessibility": {
     "play_model": "Открыть объемную модель",

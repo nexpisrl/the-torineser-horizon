@@ -17,7 +17,12 @@
       "post_success": "Danke, dass du uns kontaktiert hast. Wir werden uns so schnell wie möglich bei dir melden.",
       "error_heading": "Bitte passe Folgendes an:"
     },
-    "slider_label": "Slider"
+    "slider_label": "Slider",
+    "notizie_preview": {
+      "badge_open": "Open",
+      "badge_closed": "Closed",
+      "empty_state": "No blog at this handle yet, or no published articles."
+    }
   },
   "accessibility": {
     "play_model": "3D-Modell abspielen",

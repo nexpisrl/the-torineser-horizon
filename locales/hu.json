@@ -17,7 +17,12 @@
       "post_success": "Köszönjük, hogy írtál nekünk. A lehető legrövidebb időn belül válaszolni fogunk.",
       "error_heading": "Kérjük, helyesbítsd a következőket:"
     },
-    "slider_label": "Csúszka"
+    "slider_label": "Csúszka",
+    "notizie_preview": {
+      "badge_open": "Open",
+      "badge_closed": "Closed",
+      "empty_state": "No blog at this handle yet, or no published articles."
+    }
   },
   "accessibility": {
     "play_model": "3D-modell lejátszása",

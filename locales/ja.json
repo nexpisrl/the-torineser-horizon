@@ -17,7 +17,12 @@
       "post_success": "お問い合わせいただきありがとうございます。早急に返信いたします。",
       "error_heading": "以下を確認してください。"
     },
-    "slider_label": "スライダー"
+    "slider_label": "スライダー",
+    "notizie_preview": {
+      "badge_open": "Open",
+      "badge_closed": "Closed",
+      "empty_state": "No blog at this handle yet, or no published articles."
+    }
   },
   "accessibility": {
     "play_model": "3Dモデルを再生",

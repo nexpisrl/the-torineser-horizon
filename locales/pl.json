@@ -17,7 +17,12 @@
       "post_success": "Dziękujemy za skontaktowanie się z nami. Odpowiemy tak szybko, jak to możliwe.",
       "error_heading": "Dostosuj następujące dane:"
     },
-    "slider_label": "Suwak"
+    "slider_label": "Suwak",
+    "notizie_preview": {
+      "badge_open": "Open",
+      "badge_closed": "Closed",
+      "empty_state": "No blog at this handle yet, or no published articles."
+    }
   },
   "accessibility": {
     "play_model": "Odtwórz model 3D",

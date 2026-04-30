@@ -17,7 +17,12 @@
       "post_success": "感謝您聯絡我們。我們會盡快回覆您。",
       "error_heading": "請調整以下內容："
     },
-    "slider_label": "投影播放器"
+    "slider_label": "投影播放器",
+    "notizie_preview": {
+      "badge_open": "Open",
+      "badge_closed": "Closed",
+      "empty_state": "No blog at this handle yet, or no published articles."
+    }
   },
   "accessibility": {
     "play_model": "播放 3D 模型",

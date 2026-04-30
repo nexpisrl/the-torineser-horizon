@@ -17,7 +17,12 @@
       "post_success": "문의해 주셔서 감사합니다. 최대한 빨리 답변드리겠습니다.",
       "error_heading": "다음을 조정하세요."
     },
-    "slider_label": "슬라이더"
+    "slider_label": "슬라이더",
+    "notizie_preview": {
+      "badge_open": "Open",
+      "badge_closed": "Closed",
+      "empty_state": "No blog at this handle yet, or no published articles."
+    }
   },
   "accessibility": {
     "play_model": "3D 모델 재생",

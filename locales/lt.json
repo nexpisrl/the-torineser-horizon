@@ -17,7 +17,12 @@
       "post_success": "Dėkojame, kad kreipėtės. Atsakysime kaip galėdami greičiau.",
       "error_heading": "Pakoreguokite toliau pateiktą informaciją:"
     },
-    "slider_label": "Slankiklis"
+    "slider_label": "Slankiklis",
+    "notizie_preview": {
+      "badge_open": "Open",
+      "badge_closed": "Closed",
+      "empty_state": "No blog at this handle yet, or no published articles."
+    }
   },
   "accessibility": {
     "play_model": "Paleisti 3D modelį",

@@ -17,7 +17,12 @@
       "post_success": "Grazie per averci contattato. Risponderemo il prima possibile.",
       "error_heading": "Correggi gli errori seguenti:"
     },
-    "slider_label": "Cursore"
+    "slider_label": "Cursore",
+    "notizie_preview": {
+      "badge_open": "Aperto",
+      "badge_closed": "Chiuso",
+      "empty_state": "Il blog non esiste, l’handle è errato oppure non ci sono articoli pubblicati."
+    }
   },
   "accessibility": {
     "play_model": "Riproduci modello 3D",
@@ -318,6 +323,11 @@
     "blog_post_author": "Autore",
     "blog_post_date": "Data",
     "blog_post_description": "Un estratto dal contenuto del tuo articolo del blog"
+  },
+  "sections": {
+    "artists_marquee": {
+      "empty_state": "Nessun nome disponibile. Pubblica le voci metaobject della definizione corretta o verifica gli handle nella sezione."
+    }
   },
   "products": {
     "product": {

@@ -17,7 +17,12 @@
       "post_success": "Ευχαριστούμε που επικοινωνήσατε μαζί μας. Θα σας απαντήσουμε το συντομότερο δυνατόν.",
       "error_heading": "Προσαρμόστε τα παρακάτω:"
     },
-    "slider_label": "Ρυθμιστικό"
+    "slider_label": "Ρυθμιστικό",
+    "notizie_preview": {
+      "badge_open": "Open",
+      "badge_closed": "Closed",
+      "empty_state": "No blog at this handle yet, or no published articles."
+    }
   },
   "accessibility": {
     "play_model": "Αναπαραγωγή μοντέλου 3D",

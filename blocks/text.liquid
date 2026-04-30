@@ -1,4 +1,7 @@
-{% render 'text', block: block %}
+{% liquid
+  assign text_extra_class = block.settings.custom_class | strip
+%}
+{% render 'text', block: block, class: text_extra_class %}
 
 {% schema %}
 {
@@ -335,6 +338,16 @@
       "max": 50,
       "step": 1,
       "visible_if": "{{ block.settings.background }}"
+    },
+    {
+      "type": "header",
+      "content": "t:content.custom_css_classes"
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "t:settings.custom_class",
+      "info": "t:info.text_block_custom_class"
     },
     {
       "type": "header",

@@ -17,7 +17,12 @@
       "post_success": "ขอบคุณที่ติดต่อเรา เราจะติดต่อกลับหาคุณโดยเร็วที่สุด",
       "error_heading": "โปรดแก้ไขข้อมูลดังต่อไปนี้"
     },
-    "slider_label": "แถบเลื่อน"
+    "slider_label": "แถบเลื่อน",
+    "notizie_preview": {
+      "badge_open": "Open",
+      "badge_closed": "Closed",
+      "empty_state": "No blog at this handle yet, or no published articles."
+    }
   },
   "accessibility": {
     "play_model": "เล่นโมเดล 3 มิติ",

@@ -17,7 +17,12 @@
       "post_success": "Tack för att du kontaktar oss. Vi återkommer till dig så snart som möjligt.",
       "error_heading": "Justera följande:"
     },
-    "slider_label": "Bild"
+    "slider_label": "Bild",
+    "notizie_preview": {
+      "badge_open": "Open",
+      "badge_closed": "Closed",
+      "empty_state": "No blog at this handle yet, or no published articles."
+    }
   },
   "accessibility": {
     "play_model": "Spela 3D-modell",

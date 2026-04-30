@@ -17,7 +17,12 @@
       "post_success": "Agradecemos seu contato. Retornaremos o mais rápido possível.",
       "error_heading": "Ajuste o seguinte:"
     },
-    "slider_label": "Controle deslizante"
+    "slider_label": "Controle deslizante",
+    "notizie_preview": {
+      "badge_open": "Open",
+      "badge_closed": "Closed",
+      "empty_state": "No blog at this handle yet, or no published articles."
+    }
   },
   "accessibility": {
     "play_model": "Reproduzir modelo 3D",

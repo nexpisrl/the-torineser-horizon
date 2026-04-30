@@ -17,7 +17,12 @@
       "post_success": "Ďakujeme, že ste nás kontaktovali. Budeme sa vám venovať čo najskôr.",
       "error_heading": "Upravte tieto údaje:"
     },
-    "slider_label": "Jazdec"
+    "slider_label": "Jazdec",
+    "notizie_preview": {
+      "badge_open": "Open",
+      "badge_closed": "Closed",
+      "empty_state": "No blog at this handle yet, or no published articles."
+    }
   },
   "accessibility": {
     "play_model": "Prehrať 3D model",

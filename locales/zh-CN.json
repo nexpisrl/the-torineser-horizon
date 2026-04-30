@@ -17,7 +17,12 @@
       "post_success": "感谢您联系我们。我们会尽快回复您。",
       "error_heading": "请调整以下内容："
     },
-    "slider_label": "滑块"
+    "slider_label": "滑块",
+    "notizie_preview": {
+      "badge_open": "Open",
+      "badge_closed": "Closed",
+      "empty_state": "No blog at this handle yet, or no published articles."
+    }
   },
   "accessibility": {
     "play_model": "演示 3D 模型",

@@ -17,7 +17,12 @@
       "post_success": "Takk for at du kontaktet oss. Vi svarer så snart som mulig.",
       "error_heading": "Juster følgende:"
     },
-    "slider_label": "Glidefelt"
+    "slider_label": "Glidefelt",
+    "notizie_preview": {
+      "badge_open": "Open",
+      "badge_closed": "Closed",
+      "empty_state": "No blog at this handle yet, or no published articles."
+    }
   },
   "accessibility": {
     "play_model": "Spill av 3D-modell",

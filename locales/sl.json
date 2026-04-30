@@ -17,7 +17,12 @@
       "post_success": "Hvala za vaše sporočilo. Z vami bomo v stiku takoj, ko bo mogoče.",
       "error_heading": "Prilagodite naslednje:"
     },
-    "slider_label": "Drsnik"
+    "slider_label": "Drsnik",
+    "notizie_preview": {
+      "badge_open": "Open",
+      "badge_closed": "Closed",
+      "empty_state": "No blog at this handle yet, or no published articles."
+    }
   },
   "accessibility": {
     "play_model": "Predvajaj 3D-model",

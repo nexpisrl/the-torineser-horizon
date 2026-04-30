@@ -17,7 +17,12 @@
       "post_success": "Bedankt dat je contact met ons hebt opgenomen. Je hoort zo snel mogelijk van ons.",
       "error_heading": "Pas het volgende aan:"
     },
-    "slider_label": "Schuifregelaar"
+    "slider_label": "Schuifregelaar",
+    "notizie_preview": {
+      "badge_open": "Open",
+      "badge_closed": "Closed",
+      "empty_state": "No blog at this handle yet, or no published articles."
+    }
   },
   "accessibility": {
     "play_model": "3D-model afspelen",

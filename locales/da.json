@@ -17,7 +17,12 @@
       "post_success": "Tak for din henvendelse. Vi kontakter dig hurtigst muligt.",
       "error_heading": "Juster følgende:"
     },
-    "slider_label": "Billedkarrusel"
+    "slider_label": "Billedkarrusel",
+    "notizie_preview": {
+      "badge_open": "Open",
+      "badge_closed": "Closed",
+      "empty_state": "No blog at this handle yet, or no published articles."
+    }
   },
   "accessibility": {
     "play_model": "Afspil 3D-model",

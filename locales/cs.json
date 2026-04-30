@@ -17,7 +17,12 @@
       "post_success": "Děkujeme, že jste nás kontaktovali. Ozveme se vám co možná nejdříve.",
       "error_heading": "Upravte prosím následující informace:"
     },
-    "slider_label": "Posuvník"
+    "slider_label": "Posuvník",
+    "notizie_preview": {
+      "badge_open": "Open",
+      "badge_closed": "Closed",
+      "empty_state": "No blog at this handle yet, or no published articles."
+    }
   },
   "accessibility": {
     "play_model": "Přehrát 3D model",

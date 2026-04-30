@@ -1,0 +1,8 @@
+/* Regole progetto Torineser (aggiungi qui gli stili per classi dai blocchi tema). */
+.the_torineser-pre_title{
+  font-family: "DM Sans";
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgb(192, 76, 53); 
+}

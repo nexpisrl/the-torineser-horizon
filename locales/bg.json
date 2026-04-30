@@ -17,7 +17,12 @@
       "post_success": "Благодарим, че се свързахте с нас. Ще се свържем с вас възможно най-скоро.",
       "error_heading": "Коригирайте следното:"
     },
-    "slider_label": "Плъзгач"
+    "slider_label": "Плъзгач",
+    "notizie_preview": {
+      "badge_open": "Open",
+      "badge_closed": "Closed",
+      "empty_state": "No blog at this handle yet, or no published articles."
+    }
   },
   "accessibility": {
     "play_model": "Възпроизвеждане на 3D модел",

@@ -57,6 +57,7 @@
     "content_layout": "Content layout",
     "content_width": "Content width only applies when the section width is set to full width.",
     "copyright": "Copyright",
+    "custom_css_classes": "Custom CSS classes",
     "customer_account": "Customer account",
     "describe_the_video_for": "Describe the video for customers using screen readers. [Learn more](https://help.shopify.com/manual/online-store/themes/theme-structure/theme-features#video-block)",
     "edit_empty_state_collection_in_theme_settings": "Edit empty state collection in [theme settings](/editor?context=theme&category=search)",
@@ -96,6 +97,7 @@
     "mobile_media_2": "Mobile media 2",
     // Section header for navigation menu settings in theme editor
     "menu": "Menu",
+    "secondary_menu": "Second menu",
     "mobile_column_optimization": "Columns will automatically optimize for mobile",
     "mobile_layout": "Mobile layout",
     "mobile_size": "Mobile size",
@@ -218,6 +220,7 @@
     "carousel_layout_on_mobile": "Carousel is always used on mobile",
     "checkout_buttons": "Allows buyers to check out faster and can improve conversion. [Learn more](https://help.shopify.com/manual/online-store/dynamic-checkout)",
     "custom_heading": "Custom heading",
+    "text_block_custom_class": "Space-separated classes on the text block wrapper (e.g. torineser-gift-copy). Define styles in torineser-custom.css or base.css.",
     "custom_liquid": "Add app snippets or other code to create advanced customizations. [Learn more](https://shopify.dev/docs/api/liquid)",
     "edit_presets_in_theme_settings": "Edit presets in [theme settings](/editor?context=theme&category=typography)",
     "enable_filtering_info": "Customize filters with the [Search & Discovery app](https://help.shopify.com/manual/online-store/search-and-discovery/filters)",
@@ -243,6 +246,7 @@
     "accelerated_checkout": "Accelerated checkout",
     "accordion": "Accordion",
     "accordion_row": "Accordion row",
+    "artists_marquee": "Artists marquee",
     "add_to_cart": "Add to cart",
     "alternating_content_rows": "Alternating rows",
     "animations": "Animations",
@@ -273,6 +277,7 @@
     "collection_card_image": "Image",
     "collection_columns": "Collection columns",
     "collection_container": "Collection",
+    "collection_quad_gallery": "Collection 2×2 images",
     "collection_description": "Collection description",
     "collection_image": "Collection image",
     "collection_info": "Collection info",
@@ -350,6 +355,7 @@
     "menu": "Menu",
     "mobile_layout": "Mobile layout",
     "multicolumn": "Multicolumn",
+    "notizie_preview": "Blog news preview",
     "rich_text_section": "Rich text",
     "overlapping_blocks": "Overlapping blocks",
     "page": "Page",
@@ -435,6 +441,40 @@
     "view_all_button": "View all",
     "pills": "Pills",
     "comparison_slider": "Comparison slider"
+  },
+  "blocks": {
+    "notizie_preview": {
+      "info_blog": "Lists the newest articles from the blog with the handle you set (default: notizie).",
+      "setting_blog_handle": "Blog handle",
+      "setting_article_limit": "Number of articles",
+      "setting_eyebrow": "Eyebrow text",
+      "setting_heading_1": "Heading (first line)",
+      "setting_heading_2": "Heading (second line)",
+      "setting_cta_url": "Blog / «view all» link",
+      "info_cta_url": "If empty, Shopify uses the blog’s index URL (/blogs/handle).",
+      "setting_cta_label": "Link label",
+      "header_status": "Open badge",
+      "setting_active_tag": "Tag that marks an «open» article",
+      "info_active_tag": "Exact tag match (e.g. evento-aperto). Leave empty and use only the boolean metafield if you prefer.",
+      "header_metafields": "Article metafields (optional)",
+      "setting_mf_namespace": "Metafield namespace",
+      "setting_mf_open": "Boolean handle (open/active)",
+      "info_mf_open": "Example: custom.evento_aperto (boolean). When true the badge reads «Open».",
+      "setting_mf_detail": "Subtitle / detail handle",
+      "info_mf_detail": "Single-line text shown under the title (e.g. dates · venue). Falls back to excerpt, then publish date."
+    }
+  },
+  "sections": {
+    "artists_marquee": {
+      "info_metaobjects_limit": "Shows names from metaobject entries of the selected definition. Shopify limits looping to about 50 published entries.",
+      "setting_heading": "Heading",
+      "setting_metaobject_type": "Metaobject definition handle",
+      "info_metaobject_type": "Matches the metaobject definition in Admin → Content → Metaobjects (example: artista).",
+      "setting_field_key": "Name field handle",
+      "info_field_key": "Single-line field that stores the scrolling label (example: nome_completo).",
+      "setting_borders": "Top and bottom borders",
+      "setting_gap": "Spacing between names"
+    }
   },
   "options": {
     "above_carousel": "Above carousel",
@@ -762,6 +802,7 @@
     "always_stack_buttons": "Always stack buttons",
     "aspect_ratio": "Aspect ratio",
     "custom_mobile_media": "Show different media on mobile",
+    "custom_class": "Additional CSS classes",
     "stack_media_on_mobile": "Stack media",
     "auto_rotate_announcements": "Auto-rotate announcements",
     "auto_rotate_slides": "Auto-rotate slides",

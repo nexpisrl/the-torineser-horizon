@@ -17,7 +17,12 @@
       "post_success": "Merci de nous avoir contactés. Nous vous répondrons dès que possible.",
       "error_heading": "Veuillez ajuster les éléments suivants :"
     },
-    "slider_label": "Carrousel"
+    "slider_label": "Carrousel",
+    "notizie_preview": {
+      "badge_open": "Open",
+      "badge_closed": "Closed",
+      "empty_state": "No blog at this handle yet, or no published articles."
+    }
   },
   "accessibility": {
     "play_model": "Jouer le modèle 3D",

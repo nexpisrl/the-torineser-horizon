@@ -17,7 +17,12 @@
       "error_heading": "Ajustează următoarele:"
     },
     "payment_methods": "Metode de plată",
-    "slider_label": "Cursor"
+    "slider_label": "Cursor",
+    "notizie_preview": {
+      "badge_open": "Open",
+      "badge_closed": "Closed",
+      "empty_state": "No blog at this handle yet, or no published articles."
+    }
   },
   "accessibility": {
     "play_model": "Redă modelul 3D",

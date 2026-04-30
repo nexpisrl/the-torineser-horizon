@@ -17,7 +17,12 @@
       "post_success": "Cảm ơn bạn đã liên hệ với chúng tôi. Chúng tôi sẽ liên hệ lại với bạn trong thời gian sớm nhất.",
       "error_heading": "Vui lòng điều chỉnh các mục sau:"
     },
-    "slider_label": "Thanh trượt"
+    "slider_label": "Thanh trượt",
+    "notizie_preview": {
+      "badge_open": "Open",
+      "badge_closed": "Closed",
+      "empty_state": "No blog at this handle yet, or no published articles."
+    }
   },
   "accessibility": {
     "play_model": "Phát mô hình 3D",
