@@ -2,7 +2,7 @@
   assign order = 'logo,menu,menu_2,localization,search,drawer_search,actions'
 
   if shop.customer_accounts_enabled
-    assign order = 'drawer_search,logo,menu,localization,search,actions'
+    assign order = 'drawer_search,logo,menu,menu_2,localization,search,actions'
   endif
 
   assign rows = 'top,bottom' | split: ','
@@ -73,23 +73,23 @@
   if section.settings.localization_position == 'left'
     if section.settings.search_position == 'left'
       if shop.customer_accounts_enabled
-        assign order = 'drawer_search,logo,search,localization,menu,actions'
+        assign order = 'drawer_search,logo,search,localization,menu,menu_2,actions'
       else
-        assign order = 'logo,search,localization,menu,drawer_search,actions'
+        assign order = 'logo,search,localization,menu,menu_2,drawer_search,actions'
       endif
     else
       if shop.customer_accounts_enabled
-        assign order = 'drawer_search,logo,localization,menu,search,actions'
+        assign order = 'drawer_search,logo,localization,menu,menu_2,search,actions'
       else
-        assign order = 'logo,localization,menu,search,drawer_search,actions'
+        assign order = 'logo,localization,menu,menu_2,search,drawer_search,actions'
       endif
     endif
   else
     if section.settings.search_position == 'left'
       if shop.customer_accounts_enabled
-        assign order = 'drawer_search,logo,search,menu,localization,actions'
+        assign order = 'drawer_search,logo,search,menu,menu_2,localization,actions'
       else
-        assign order = 'logo,search,menu,localization,drawer_search,actions'
+        assign order = 'logo,search,menu,menu_2,localization,drawer_search,actions'
       endif
     endif
   endif
