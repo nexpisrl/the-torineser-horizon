@@ -1,0 +1,306 @@
+<script
+  src="{{ 'marquee.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+
+{% liquid
+  assign mo_type = section.settings.metaobject_definition | default: 'artista' | strip
+  assign field_key = section.settings.nome_field | default: 'nome_completo' | strip
+  assign gap_px = section.settings.gap_between_segments | default: 56
+%}
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+
+<div
+  class="section spacing-style color-{{ section.settings.color_scheme }}{% if section.settings.show_section_borders %} artists-marquee--bordered{% endif %}"
+  style="{% render 'spacing-style', settings: section.settings %}"
+  id="shopify-section-{{ section.id }}"
+>
+  {% if section.settings.heading != blank %}
+    <p class="artists-marquee__subtitle">
+      {{- section.settings.heading | escape -}}
+    </p>
+  {% endif %}
+
+  {% liquid
+    assign mo_values = metaobjects[mo_type].values | default: null
+    assign has_artists = false
+    assign safe_count = 0
+    for entry in metaobjects[mo_type].values
+      assign fn = entry[field_key].value | strip
+      if fn != blank
+        assign safe_count = safe_count | plus: 1
+      endif
+    endfor
+    if safe_count > 0
+      assign has_artists = true
+    endif
+  %}
+
+  {% if has_artists %}
+    <marquee-component
+      class="artists-marquee gap-style color-{{ section.settings.color_scheme }}"
+      style="
+        {% render 'gap-style', value: gap_px, name: 'marquee-gap' %}
+        --marquee-direction: {{ section.settings.movement_direction }};
+      "
+      data-speed-factor="28"
+      data-movement-direction="{{ section.settings.movement_direction }}"
+      data-shopify-visual-preview
+    >
+      <div
+        class="marquee__wrapper"
+        ref="wrapper"
+      >
+        <div
+          class="marquee__content"
+          ref="content"
+        >
+          <div
+            class="marquee__repeated-items"
+            ref="marqueeItems[]"
+          >
+            {% for entry in metaobjects[mo_type].values %}
+              {% liquid
+                assign nome = entry[field_key].value | default: '' | strip
+              %}
+              {% if nome != blank %}
+                <span class="artists-marquee__segment">
+                  <span class="artists-marquee__name">{{ nome | escape }}</span>
+                  <span
+                    class="artists-marquee__sep"
+                    aria-hidden="true"
+                    > · </span
+                  >
+                </span>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </marquee-component>
+  {% else %}
+    <div
+      class="artists-marquee__empty muted"
+      style="padding-block: var(--padding-md); text-align: center;"
+    >
+      {{- 'sections.artists_marquee.empty_state' | t -}}
+    </div>
+  {% endif %}
+</div>
+
+{% stylesheet %}
+  .artists-marquee--bordered {
+    border-block: 1px solid rgb(var(--color-border-rgb) / var(--opacity-30));
+  }
+
+  .artists-marquee__subtitle {
+    font-family: var(--font-body--family);
+    font-size: clamp(0.625rem, 0.72vw + 0.55rem, 0.6875rem);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--color-primary);
+    margin-block: 0 var(--spacing-scale-5, 20px);
+    padding-inline: var(--padding-sm);
+    line-height: 1.3;
+    font-weight: var(--font-body--weight-medium, 400);
+  }
+
+  .section .artists-marquee {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  marquee-component.artists-marquee:not([data-disabled]) .marquee__wrapper {
+    animation-duration: unset;
+  }
+
+  .artists-marquee .marquee__wrapper {
+    display: flex;
+    gap: var(--marquee-gap);
+    width: fit-content;
+    white-space: nowrap;
+  }
+
+  .artists-marquee .marquee__content {
+    min-width: max-content;
+    display: flex;
+    gap: var(--marquee-gap);
+  }
+
+  .artists-marquee .marquee__repeated-items {
+    min-width: max-content;
+    display: flex;
+    gap: var(--marquee-gap);
+    align-items: center;
+  }
+
+  @media screen and (prefers-reduced-motion: no-preference) {
+    marquee-component.artists-marquee:not([data-disabled]) .marquee__wrapper {
+      animation: marquee-motion var(--marquee-speed, 55s) linear infinite var(--marquee-direction);
+    }
+  }
+
+  .artists-marquee__segment {
+    display: inline-flex;
+    align-items: baseline;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .artists-marquee__name {
+    font-family: var(--font-heading--family);
+    font-style: italic;
+    font-weight: var(--font-heading--weight);
+    font-size: clamp(1.5rem, 2.5vw + 0.5rem, 2.25rem);
+    color: rgb(var(--color-foreground-rgb));
+    opacity: 0.85;
+    letter-spacing: -0.02em;
+  }
+
+  .artists-marquee__sep {
+    color: var(--color-primary);
+    font-style: normal;
+    padding-inline-start: var(--padding-4xs);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.artists_marquee",
+  "tag": "section",
+  "class": "artists-marquee-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.artists_marquee.info_metaobjects_limit"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.artists_marquee.setting_heading",
+      "default": "Oltre 100 artisti · Una sola città"
+    },
+    {
+      "type": "text",
+      "id": "metaobject_definition",
+      "label": "t:sections.artists_marquee.setting_metaobject_type",
+      "default": "artista",
+      "info": "t:sections.artists_marquee.info_metaobject_type"
+    },
+    {
+      "type": "text",
+      "id": "nome_field",
+      "label": "t:sections.artists_marquee.setting_field_key",
+      "default": "nome_completo",
+      "info": "t:sections.artists_marquee.info_field_key"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_section_borders",
+      "label": "t:sections.artists_marquee.setting_borders",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "movement_direction",
+      "label": "t:settings.motion_direction",
+      "options": [
+        {
+          "value": "reverse",
+          "label": "t:options.forward"
+        },
+        {
+          "value": "normal",
+          "label": "t:options.reverse"
+        }
+      ],
+      "default": "normal"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "gap_between_segments",
+      "label": "t:sections.artists_marquee.setting_gap",
+      "min": 8,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-start",
+      "label": "t:settings.left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-end",
+      "label": "t:settings.right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.artists_marquee",
+      "category": "t:categories.storytelling",
+      "settings": {
+        "heading": "Oltre 100 artisti · Una sola città",
+        "metaobject_definition": "artista",
+        "nome_field": "nome_completo",
+        "show_section_borders": true,
+        "movement_direction": "normal",
+        "color_scheme": "scheme-1",
+        "gap_between_segments": 56,
+        "padding-block-start": 40,
+        "padding-block-end": 40,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0
+      }
+    }
+  ]
+}
+{% endschema %}
