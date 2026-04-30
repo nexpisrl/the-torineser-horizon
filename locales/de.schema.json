@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "names": {
     "404": "404",
@@ -188,7 +197,8 @@
     "product_hotspots": "Produkt-Hotspots",
     "hotspot_product": "Hotspot",
     "product_sku": "SKU",
-    "layered_slideshow": "Überlagerte Slideshow"
+    "layered_slideshow": "Überlagerte Slideshow",
+    "notizie_preview": "Blog news preview"
   },
   "settings": {
     "autoplay": "Autoplay",
@@ -1110,5 +1120,27 @@
     "other_sections": "Sonstige",
     "storytelling": "Storytelling",
     "text": "Text"
+  },
+  "blocks": {
+    "notizie_preview": {
+      "info_blog": "Lists the newest articles from the blog with the handle you set (default: notizie).",
+      "setting_blog_handle": "Blog handle",
+      "setting_article_limit": "Number of articles",
+      "setting_eyebrow": "Eyebrow text",
+      "setting_heading_1": "Heading (first line)",
+      "setting_heading_2": "Heading (second line)",
+      "setting_cta_url": "Blog / view all link",
+      "info_cta_url": "If empty, Shopify uses the blog index URL (/blogs/handle).",
+      "setting_cta_label": "Link label",
+      "header_status": "Open badge",
+      "setting_active_tag": "Tag that marks an open article",
+      "info_active_tag": "Exact tag match (e.g. evento-aperto). Leave empty if you use only the metafield.",
+      "header_metafields": "Article metafields (optional)",
+      "setting_mf_namespace": "Metafield namespace",
+      "setting_mf_open": "Boolean handle (open/active)",
+      "info_mf_open": "Example: custom.evento_aperto (boolean). When true the badge reads Open.",
+      "setting_mf_detail": "Subtitle / detail handle",
+      "info_mf_detail": "Single-line text under the title. Falls back to excerpt, then publish date."
+    }
   }
 }
