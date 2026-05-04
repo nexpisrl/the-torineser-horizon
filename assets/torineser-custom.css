@@ -287,3 +287,58 @@
     --width: min(100%, 92vw);
   }
 }
+
+/* ─── Sezione "Ultime uscite" (solo testi + spaziature) ───────────────────────── */
+[id*='product_list_97iLf8'] .section-resource-list {
+  --padding-block-start: 120px;
+  --padding-block-end: 80px;
+}
+
+[id*='product_list_97iLf8'] .section-resource-list__header {
+  margin-bottom: 48px;
+}
+
+[id*='product_list_97iLf8'] .section-resource-list__header .the_torineser-pre_title {
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgb(192, 76, 53);
+  margin-bottom: 12px;
+}
+
+[id*='product_list_97iLf8'] .section-resource-list__header .the_torineser-section-title > * {
+  font-family: "Cormorant Garamond", var(--font-heading--family), serif;
+  font-weight: 400;
+  font-size: 3.5rem;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: rgb(var(--color-foreground-rgb));
+  margin-bottom: 16px;
+}
+
+[id*='product_list_97iLf8'] .section-resource-list__header .the_torineser-section-description > * {
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgb(var(--color-foreground-rgb) / 0.72);
+  max-inline-size: 520px;
+}
+
+[id*='product_list_97iLf8'] .section-resource-list__content .link {
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: rgb(var(--color-foreground-rgb));
+  text-decoration: none;
+  border-bottom: 1px solid rgb(192, 76, 53);
+  padding-bottom: 4px;
+}
+
+@media screen and (max-width: 989px) {
+  [id*='product_list_97iLf8'] .section-resource-list {
+    --padding-block-start: 96px;
+    --padding-block-end: 64px;
+  }
+}
