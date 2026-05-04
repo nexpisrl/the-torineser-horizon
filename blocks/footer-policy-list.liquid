@@ -6,15 +6,11 @@
       {% if block.settings.font_size != "" %}custom-font-size{% endif %}
     "
     style="{% render 'typography-style', preset: 'custom', settings: block.settings %}"
-    {{ block.shopify_attributes }}
-  >
+    {{ block.shopify_attributes }}>
     {%- for policy in shop.policies -%}
       {%- if policy != blank -%}
         <li>
-          <a
-            href="{{ policy.url }}"
-            class="footer-utilities__text"
-          >
+          <a href="{{ policy.url }}" class="footer-utilities__text">
             {{- policy.title | escape -}}
           </a>
         </li>
@@ -47,64 +43,60 @@
 {% endstylesheet %}
 
 {% schema %}
-{
-  "name": "t:names.policy_list",
-  "tag": null,
-  "settings": [
-    {
-      "type": "paragraph",
-      "content": "t:content.manage_policies"
-    },
-    {
-      "type": "select",
-      "id": "font_size",
-      "label": "t:settings.size",
-      "options": [
-        {
-          "value": "0.625rem",
-          "label": "10px"
-        },
-        {
-          "value": "0.75rem",
-          "label": "12px"
-        },
-        {
-          "value": "0.875rem",
-          "label": "14px"
-        },
-        {
-          "value": "1rem",
-          "label": "16px"
-        },
-        {
-          "value": "1.125rem",
-          "label": "18px"
-        }
-      ],
-      "default": "0.75rem"
-    },
-    {
-      "type": "select",
-      "id": "case",
-      "label": "t:settings.case",
-      "options": [
-        {
-          "value": "none",
-          "label": "t:options.default"
-        },
-        {
-          "value": "uppercase",
-          "label": "t:options.uppercase"
-        }
-      ],
-      "default": "none"
-    }
-  ],
-  "presets": [
-    {
-      "name": "t:names.policy_list",
-      "category": "t:categories.footer"
-    }
-  ]
-}
+  {
+    "name": "t:names.policy_list",
+    "tag": null,
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "t:content.manage_policies"
+      }, {
+        "type": "select",
+        "id": "font_size",
+        "label": "t:settings.size",
+        "options": [
+          {
+            "value": "0.625rem",
+            "label": "10px"
+          },
+          {
+            "value": "0.75rem",
+            "label": "12px"
+          },
+          {
+            "value": "0.875rem",
+            "label": "14px"
+          },
+          {
+            "value": "1rem",
+            "label": "16px"
+          }, {
+            "value": "1.125rem",
+            "label": "18px"
+          }
+        ],
+        "default": "0.75rem"
+      }, {
+        "type": "select",
+        "id": "case",
+        "label": "t:settings.case",
+        "options": [
+          {
+            "value": "none",
+            "label": "t:options.default"
+          }, {
+            "value": "uppercase",
+            "label": "t:options.uppercase"
+          }
+        ],
+        "default": "none"
+      }
+    ],
+    "presets": [
+      {
+        "name": "t:names.policy_list",
+        "category": "t:categories.footer"
+      }
+    ]
+  }
 {% endschema %}
