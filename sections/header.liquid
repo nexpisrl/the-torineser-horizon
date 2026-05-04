@@ -191,8 +191,8 @@
 
   {% capture localization_markup %}
   {% liquid
-  assign localization_font = ' - -menu-localization-font: var(--font-[localization_font]--family); ' | replace: ' [ localization_font]', section.settings.localization_font
-  assign localization_font_size = ' - -menu-localization-font-size:[localization_font_size]; ' | replace: ' [ localization_font_size]', section.settings.localization_font_size
+  assign localization_font = ' - -menu-localization-font: var(--font-[localization_font]--family); ' | replace: ' [localization_font]', section.settings.localization_font
+  assign localization_font_size = ' - -menu-localization-font-size: [localization_font_size]; ' | replace: ' [localization_font_size]', section.settings.localization_font_size
   assign color_shadow = ' - -color-shadow: rgb(var(--color-foreground-rgb) / var(--opacity-10-25));'
   assign form_style = localization_font | append: localization_font_size | append: color_shadow
   %}
@@ -334,7 +334,7 @@
   {% for row in rows %}
   {% liquid
   assign scheme = ' c olor_scheme_' | append: row
-  assign class = ' h eader__row header__row--[row] color-[row_scheme] section section--full-width-margin section--[section-width]' | replace: ' [ row]', row | replace: ' [ row_scheme]', section.settings[scheme] | replace: ' [ section-width]', section.settings.section_width
+  assign class = ' h eader__row header__row--[row] color-[row_scheme] section section--full-width-margin section--[section-width]' | replace: ' [row]', row | replace: ' [row_scheme]', section.settings[scheme] | replace: ' [section-width]', section.settings.section_width
 
   case row
     when ' t op'
@@ -356,10 +356,10 @@
       assign border_bottom_setting_id = ' b order_width'
   endcase
 
-  assign style = ' - -border-bottom-width:[width]px; ' | replace: ' [ width]', section.settings[border_bottom_setting_id]
+  assign style = ' - -border-bottom-width: [width]px; ' | replace: ' [width]', section.settings[border_bottom_setting_id]
 
   if row == ' t op'
-    assign style = style | append: ' - -border-bottom-width-mobile:[width]px; ' | replace: ' [ width]', section.settings.border_width
+    assign style = style | append: ' - -border-bottom-width-mobile: [width]px; ' | replace: ' [width]', section.settings.border_width
   endif
   %}
 
@@ -1692,4 +1692,4 @@
   ],
   "presets": []
   }
-  {% endschema % }
+  {% endschema%}
