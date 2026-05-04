@@ -205,6 +205,7 @@
         "gradient_direction": "to bottom",
         "blurred_reflection": false,
         "reflection_opacity": 75,
+        "custom_class": "torineser-home-hero",
         "padding-block-start": 0,
         "padding-block-end": 80
       }
@@ -501,6 +502,7 @@
         "horizontal_alignment": "flex-start",
         "gap": 28,
         "color_scheme": "scheme-1",
+        "custom_class": "torineser-home-latest",
         "padding-block-start": 100,
         "padding-block-end": 80
       }
@@ -567,7 +569,7 @@
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
-                "custom_class": "the_torineser-pre_title",
+                "custom_class": "the_torineser-pre_title torineser-project-eyebrow",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -594,7 +596,7 @@
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
-                "custom_class": "",
+                "custom_class": "torineser-project-title",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -621,7 +623,7 @@
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
-                "custom_class": "",
+                "custom_class": "torineser-project-description",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -700,7 +702,7 @@
                     "background": false,
                     "background_color": "#00000026",
                     "corner_radius": 0,
-                    "custom_class": "",
+                    "custom_class": "torineser-project-stat",
                     "padding-block-start": 0,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
@@ -727,7 +729,7 @@
                     "background": false,
                     "background_color": "#00000026",
                     "corner_radius": 0,
-                    "custom_class": "",
+                    "custom_class": "torineser-project-stat",
                     "padding-block-start": 0,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
@@ -754,7 +756,7 @@
                     "background": false,
                     "background_color": "#00000026",
                     "corner_radius": 0,
-                    "custom_class": "",
+                    "custom_class": "torineser-project-stat",
                     "padding-block-start": 0,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
@@ -884,8 +886,9 @@
         "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 0,
-        "padding-block-end": 0
+        "custom_class": "torineser-project-big",
+        "padding-block-start": 40,
+        "padding-block-end": 40
       }
     },
     "product_list_weKyhA": {
