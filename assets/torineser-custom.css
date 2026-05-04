@@ -485,7 +485,7 @@
 }
 
 .section-wrapper:has(> .torineser-gift-events) > .section-background {
-  background-color: #FAF7F2;
+  background-color: #FFFFFF;
 }
 
 .torineser-gift-events [data-testid='section-content'] {
@@ -494,7 +494,7 @@
 }
 
 .torineser-gift-card.group-block {
-  background: #F2EDE5;
+  background: #FFF4F1;
   border: 1px solid #E8E4DF;
   border-radius: 24px;
   overflow: hidden;
