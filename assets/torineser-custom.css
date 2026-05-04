@@ -19,3 +19,101 @@
 .announcement-bar .announcement-bar__slides {
   max-width: none;
 }
+
+/* ─── Header menu Torineser (palette handoff «luce») ─── */
+.menu-link-per-colore-swatches {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-inline-end: 4px;
+}
+
+.menu-link-per-colore-swatches__dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-background);
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.menu-link-per-colore-swatches__dot--1 {
+  background: #b85c38;
+}
+
+.menu-link-per-colore-swatches__dot--2 {
+  margin-inline-start: -3px;
+  background: #1e3a5f;
+}
+
+.menu-link-per-colore-swatches__dot--3 {
+  margin-inline-start: -3px;
+  background: #c9a25a;
+}
+
+.menu-link-la-mappa-icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-inline-end: 5px;
+  color: currentcolor;
+}
+
+.menu-link-la-mappa-icon svg {
+  display: block;
+}
+
+.menu-link-la-mappa-badge {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-inline-start: 5px;
+  padding: 2px 6px;
+  border-radius: 100px;
+  background: rgb(192, 76, 53);
+  color: #fff;
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+/* Voce «Per colore» / «La Mappa»: rosso sabaudo handoff (#C04C35 ≈ rgb(192,76,53)) */
+#header-component .menu-list .menu-list__link.menu-list__link--torineser-accent,
+#header-component .menu-list .menu-list__link.menu-list__link--torineser-accent .menu-list__link-title {
+  color: rgb(192, 76, 53);
+}
+
+#header-component .menu-list .menu-list__link.menu-list__link--torineser-accent .menu-list__link-title {
+  padding-inline: 0;
+}
+
+#header-component .menu-list .menu-list__list-item:hover .menu-list__link.menu-list__link--torineser-accent,
+#header-component .menu-list .menu-list__list-item:focus-within .menu-list__link.menu-list__link--torineser-accent {
+  color: rgb(192, 76, 53);
+}
+
+/* Resta leggibile quando altre voci del mega-menu sono in hover */
+#header-component .menu-list:where(:has(.menu-list__list-item:hover)) .menu-list__link.menu-list__link--torineser-accent {
+  color: rgb(192 76 53 / 0.62);
+}
+
+#header-component .menu-list .menu-list__list-item:where(:hover, :focus-within) .menu-list__link.menu-list__link--torineser-accent {
+  color: rgb(192, 76, 53);
+}
+
+.menu-list__item.menu-list__item--torineser-accent {
+  color: rgb(192, 76, 53);
+}
+
+.menu-drawer__menu-item--torineser-accent,
+.menu-drawer__menu-item--torineser-accent .menu-drawer__menu-item-text {
+  color: rgb(192, 76, 53);
+}
+
+/* Rimuove il «bordo» del .button sulla lingua/valuta (box-shadow inset da base.css) */
+#header-component .dropdown-localization__button.button {
+  box-shadow: none;
+}

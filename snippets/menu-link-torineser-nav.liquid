@@ -12,18 +12,16 @@
   {%- if link.handle == 'per-colore' -%}
     <span
       class="menu-link-per-colore-swatches"
-      style="display:inline-flex;align-items:center;margin-inline-end:6px;"
       aria-hidden="true"
     >
-      <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#B85C38;border:1.5px solid var(--color-background);box-sizing:border-box;flex-shrink:0;"></span>
-      <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#1E3A5F;border:1.5px solid var(--color-background);margin-inline-start:-3px;box-sizing:border-box;flex-shrink:0;"></span>
-      <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#C9A25A;border:1.5px solid var(--color-background);margin-inline-start:-3px;box-sizing:border-box;flex-shrink:0;"></span>
+      <span class="menu-link-per-colore-swatches__dot menu-link-per-colore-swatches__dot--1"></span>
+      <span class="menu-link-per-colore-swatches__dot menu-link-per-colore-swatches__dot--2"></span>
+      <span class="menu-link-per-colore-swatches__dot menu-link-per-colore-swatches__dot--3"></span>
     </span>
   {%- endif -%}
   {%- if link.handle == 'la-mappa' -%}
     <span
       class="menu-link-la-mappa-icon"
-      style="display:inline-flex;margin-inline-end:8px;flex-shrink:0;"
       aria-hidden="true"
     >
       <svg
@@ -32,7 +30,6 @@
         height="13"
         viewBox="0 0 14 14"
         fill="none"
-        style="display:block;color:var(--color-primary);"
       >
         <path d="M1 3l4-1.5 4 1.5 4-1.5v9l-4 1.5-4-1.5-4 1.5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
         <line x1="5" y1="1.5" x2="5" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
@@ -44,7 +41,6 @@
   {%- if link.handle == 'la-mappa' -%}
     <span
       class="menu-link-la-mappa-badge"
-      style="display:inline-flex;align-items:center;flex-shrink:0;background:var(--color-primary);color:#fff;font-size:8px;padding:2px 6px;border-radius:100px;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;margin-inline-start:8px;line-height:1.2;"
     >
       Nuovo
     </span>
