@@ -674,6 +674,106 @@
   display: none !important;
 }
 
+/* ─── Sezione "Newsletter" ─────────────────────────────────────────────────────── */
+.section-wrapper:has(> .torineser-newsletter) > .section-background {
+  background: #FFFFFF;
+  border-top: 1px solid #E8E4DF;
+}
+
+.torineser-newsletter.section {
+  --padding-block-start: 80px;
+  --padding-block-end: 80px;
+  padding-inline: 48px;
+}
+
+.torineser-newsletter [data-testid='section-content'] {
+  max-inline-size: 900px;
+  margin-inline: auto;
+  text-align: center;
+  align-items: center;
+  --gap: 0 !important;
+}
+
+.torineser-newsletter .the_torineser-pre_title {
+  margin: 0 0 16px;
+}
+
+.torineser-newsletter .the_torineser-pre_title > * {
+  margin: 0;
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #C04C35;
+}
+
+.torineser-newsletter .torineser-newsletter-title {
+  margin: 0 0 16px;
+}
+
+.torineser-newsletter .torineser-newsletter-title > * {
+  margin: 0;
+  font-family: "Cormorant Garamond", var(--font-heading--family), serif;
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 1.15;
+  color: #1C1915;
+}
+
+.torineser-newsletter .torineser-newsletter-description {
+  margin: 0 0 32px;
+}
+
+.torineser-newsletter .torineser-newsletter-description > * {
+  margin: 0;
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: #8C857C;
+}
+
+.torineser-newsletter .email-signup-block {
+  max-inline-size: 480px;
+  width: 100%;
+}
+
+.torineser-newsletter .email-signup__form {
+  margin: 0;
+}
+
+.torineser-newsletter .email-signup__input-group--integrated {
+  border: 1px solid #E8E4DF;
+  border-radius: 100px;
+  background: #FAFAF9;
+  overflow: hidden;
+}
+
+.torineser-newsletter .email-signup__input-group--integrated .email-signup__input {
+  padding: 16px 24px;
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-size: 14px;
+  color: #1C1915;
+  outline: none;
+}
+
+.torineser-newsletter .email-signup__button--integrated {
+  margin: 0;
+  border-radius: 0;
+}
+
+.torineser-newsletter .email-signup__button--integrated.email-signup__button--text {
+  background: #1C1915;
+  color: #FFFFFF;
+  border: none;
+  padding: 0 28px;
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 989px) {
   .torineser-gift-events.section {
     --padding-block-start: 96px;
@@ -699,6 +799,12 @@
 
   .torineser-open-call .torineser-open-call-title > * {
     font-size: 48px;
+  }
+
+  .torineser-newsletter.section {
+    --padding-block-start: 64px;
+    --padding-block-end: 64px;
+    padding-inline: 24px;
   }
 }
 
