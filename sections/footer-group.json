@@ -112,8 +112,50 @@
           "type": "menu",
           "name": "t:names.menu",
           "settings": {
-            "menu": "main-menu",
+            "menu": "footer",
             "heading": "SHOP",
+            "menu_spacing": 12,
+            "show_as_accordion": false,
+            "accordion_icon": "caret",
+            "accordion_dividers": false,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "heading_preset": "h3",
+            "link_preset": "paragraph",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "menu_dGePYe": {
+          "type": "menu",
+          "name": "t:names.menu",
+          "settings": {
+            "menu": "men-footer-progetto",
+            "heading": "Progetto",
+            "menu_spacing": 12,
+            "show_as_accordion": false,
+            "accordion_icon": "caret",
+            "accordion_dividers": false,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "heading_preset": "h3",
+            "link_preset": "paragraph",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "menu_FnLMQf": {
+          "type": "menu",
+          "name": "t:names.menu",
+          "settings": {
+            "menu": "men-footer-aiuto",
+            "heading": "Aiuto",
             "menu_spacing": 12,
             "show_as_accordion": false,
             "accordion_icon": "caret",
@@ -132,7 +174,9 @@
       },
       "block_order": [
         "group_TDVRzx",
-        "menu_rWnRkV"
+        "menu_rWnRkV",
+        "menu_dGePYe",
+        "menu_FnLMQf"
       ],
       "name": "t:names.footer",
       "settings": {
