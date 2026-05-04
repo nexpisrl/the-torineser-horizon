@@ -172,21 +172,21 @@
 }
 
 /* ─── Hero home handoff — testo e bottoni ─── */
-[id^='Hero-'][id*='hero_jVaWmY'] .hero__content-wrapper {
+.torineser-home-hero .hero__content-wrapper {
   justify-content: flex-end;
   gap: 0;
   padding-inline: 48px;
 }
 
-[id^='Hero-'][id*='hero_jVaWmY'] .the_torineser-pre_title {
+.torineser-home-hero .the_torineser-pre_title {
   margin-bottom: 20px;
 }
 
-[id^='Hero-'][id*='hero_jVaWmY'] .the_torineser-hero-title {
+.torineser-home-hero .the_torineser-hero-title {
   --width: min(100%, 680px);
 }
 
-[id^='Hero-'][id*='hero_jVaWmY'] .the_torineser-hero-title > * {
+.torineser-home-hero .the_torineser-hero-title > * {
   font-family: "Cormorant Garamond", var(--font-heading--family), serif;
   font-weight: 300 !important;
   font-size: 5.75rem !important;
@@ -197,17 +197,17 @@
 }
 
 @media screen and (min-width: 750px) {
-  [id^='Hero-'][id*='hero_jVaWmY'] .the_torineser-hero-title > * {
+  .torineser-home-hero .the_torineser-hero-title > * {
     /* Manteniamo solo la larghezza; i ritorni riga sono gestiti direttamente nel testo del blocco. */
     max-inline-size: 680px !important;
   }
 }
 
-[id^='Hero-'][id*='hero_jVaWmY'] .the_torineser-hero-description {
+.torineser-home-hero .the_torineser-hero-description {
   --width: min(100%, 520px);
 }
 
-[id^='Hero-'][id*='hero_jVaWmY'] .the_torineser-hero-description > * {
+.torineser-home-hero .the_torineser-hero-description > * {
   font-family: "DM Sans", var(--font-body--family), sans-serif;
   font-weight: 300 !important;
   font-size: 1.0625rem !important;
@@ -216,7 +216,7 @@
   margin-bottom: 40px;
 }
 
-[id^='Hero-'][id*='hero_jVaWmY'] .group-block .button:not(.button-secondary) {
+.torineser-home-hero .group-block .button:not(.button-secondary) {
   --button-color: #FAF7F2;
   --button-background-color: #C04C35;
   --button-border-color: transparent;
@@ -231,14 +231,14 @@
   text-transform: none;
 }
 
-[id^='Hero-'][id*='hero_jVaWmY'] .group-block .button:not(.button-secondary):hover,
-[id^='Hero-'][id*='hero_jVaWmY'] .group-block .button:not(.button-secondary):focus-visible {
+.torineser-home-hero .group-block .button:not(.button-secondary):hover,
+.torineser-home-hero .group-block .button:not(.button-secondary):focus-visible {
   --button-color: #FAF7F2;
   --button-background-color: #a8442f;
   --button-border-color: transparent;
 }
 
-[id^='Hero-'][id*='hero_jVaWmY'] .group-block .button-secondary {
+.torineser-home-hero .group-block .button-secondary {
   --button-color: #FAF7F2;
   --button-background-color: transparent;
   --button-border-color: rgba(250, 247, 242, 0.35);
@@ -252,53 +252,53 @@
   text-transform: none;
 }
 
-[id^='Hero-'][id*='hero_jVaWmY'] .group-block .button-secondary:hover,
-[id^='Hero-'][id*='hero_jVaWmY'] .group-block .button-secondary:focus-visible {
+.torineser-home-hero .group-block .button-secondary:hover,
+.torineser-home-hero .group-block .button-secondary:focus-visible {
   --button-color: #FAF7F2;
   --button-background-color: transparent;
   --button-border-color: rgba(250, 247, 242, 0.35);
 }
 
 @media screen and (max-width: 1199px) {
-  [id^='Hero-'][id*='hero_jVaWmY'] .hero__content-wrapper {
+  .torineser-home-hero .hero__content-wrapper {
     padding-inline: 32px;
   }
 
-  [id^='Hero-'][id*='hero_jVaWmY'] .the_torineser-hero-title > * {
+  .torineser-home-hero .the_torineser-hero-title > * {
     font-size: 4.75rem !important;
   }
 }
 
 @media screen and (max-width: 749px) {
-  [id^='Hero-'][id*='hero_jVaWmY'] .hero__content-wrapper {
+  .torineser-home-hero .hero__content-wrapper {
     padding-inline: 20px;
   }
 
-  [id^='Hero-'][id*='hero_jVaWmY'] .the_torineser-hero-title {
+  .torineser-home-hero .the_torineser-hero-title {
     --width: min(100%, 92vw);
   }
 
-  [id^='Hero-'][id*='hero_jVaWmY'] .the_torineser-hero-title > * {
+  .torineser-home-hero .the_torineser-hero-title > * {
     font-size: 3rem !important;
     line-height: 1.05 !important;
   }
 
-  [id^='Hero-'][id*='hero_jVaWmY'] .the_torineser-hero-description {
+  .torineser-home-hero .the_torineser-hero-description {
     --width: min(100%, 92vw);
   }
 }
 
 /* ─── Sezione "Ultime uscite" (solo testi + spaziature) ───────────────────────── */
-[id*='product_list_97iLf8'] .section-resource-list {
+.torineser-home-latest.section-resource-list {
   --padding-block-start: 120px;
   --padding-block-end: 80px;
 }
 
-[id*='product_list_97iLf8'] .section-resource-list__header {
+.torineser-home-latest .section-resource-list__header {
   margin-bottom: 48px;
 }
 
-[id*='product_list_97iLf8'] .section-resource-list__header .the_torineser-pre_title {
+.torineser-home-latest .section-resource-list__header .the_torineser-pre_title {
   font-family: "DM Sans", var(--font-body--family), sans-serif;
   font-size: 11px;
   letter-spacing: 0.2em;
@@ -307,7 +307,7 @@
   margin-bottom: 12px;
 }
 
-[id*='product_list_97iLf8'] .section-resource-list__header .the_torineser-section-title > * {
+.torineser-home-latest .section-resource-list__header .the_torineser-section-title > * {
   font-family: "Cormorant Garamond", var(--font-heading--family), serif;
   font-weight: 400;
   font-size: 3.5rem;
@@ -317,7 +317,7 @@
   margin-bottom: 16px;
 }
 
-[id*='product_list_97iLf8'] .section-resource-list__header .the_torineser-section-description > * {
+.torineser-home-latest .section-resource-list__header .the_torineser-section-description > * {
   font-family: "DM Sans", var(--font-body--family), sans-serif;
   font-weight: 300;
   font-size: 15px;
@@ -326,7 +326,7 @@
   max-inline-size: 520px;
 }
 
-[id*='product_list_97iLf8'] .section-resource-list__header .link {
+.torineser-home-latest .section-resource-list__header .link {
   font-family: "DM Sans", var(--font-body--family), sans-serif;
   font-size: 13px;
   letter-spacing: 0.02em;
@@ -337,8 +337,8 @@
   padding-bottom: 4px;
 }
 
-[id*='product_list_97iLf8'] .section-resource-list__header .link:hover,
-[id*='product_list_97iLf8'] .section-resource-list__header .link:focus-visible {
+.torineser-home-latest .section-resource-list__header .link:hover,
+.torineser-home-latest .section-resource-list__header .link:focus-visible {
   color: #1C1915;
   text-decoration: none;
   text-decoration-color: transparent;
@@ -346,62 +346,62 @@
 }
 
 @media screen and (max-width: 989px) {
-  [id*='product_list_97iLf8'] .section-resource-list {
+  .torineser-home-latest.section-resource-list {
     --padding-block-start: 96px;
     --padding-block-end: 64px;
   }
 }
 
 /* ─── Sezione "Ultime uscite" — card prodotto ─────────────────────────────────── */
-[id*='product_list_97iLf8'] .resource-list__item .product-card {
+.torineser-home-latest .resource-list__item .product-card {
   transition: transform 0.3s ease;
 }
 
-[id*='product_list_97iLf8'] .resource-list__item .product-card:hover {
+.torineser-home-latest .resource-list__item .product-card:hover {
   transform: translateY(-6px);
 }
 
-[id*='product_list_97iLf8'] .resource-list__item .card-gallery {
+.torineser-home-latest .resource-list__item .card-gallery {
   border-radius: 8px;
   overflow: hidden;
   background: #F7F5F3;
   margin-bottom: 0;
 }
 
-[id*='product_list_97iLf8'] .resource-list__item .card-gallery img {
+.torineser-home-latest .resource-list__item .card-gallery img {
   transition: transform 0.6s ease;
 }
 
-[id*='product_list_97iLf8'] .resource-list__item .product-card:hover .card-gallery img {
+.torineser-home-latest .resource-list__item .product-card:hover .card-gallery img {
   transform: scale(1.04);
 }
 
-[id*='product_list_97iLf8'] .resource-list__item .product-badges {
+.torineser-home-latest .resource-list__item .product-badges {
   display: none;
 }
 
-[id*='product_list_97iLf8'] .resource-list__item slideshow-arrows,
-[id*='product_list_97iLf8'] .resource-list__item .slideshow-dots,
-[id*='product_list_97iLf8'] .resource-list__item .slideshow-control {
+.torineser-home-latest .resource-list__item slideshow-arrows,
+.torineser-home-latest .resource-list__item .slideshow-dots,
+.torineser-home-latest .resource-list__item .slideshow-control {
   display: none !important;
 }
 
-[id*='product_list_97iLf8'] .resource-list__item .torineser-product-card-meta {
+.torineser-home-latest .resource-list__item .torineser-product-card-meta {
   text-decoration: none;
   color: inherit;
 }
 
-[id*='product_list_97iLf8'] .resource-list__item .torineser-product-card-meta__inner {
+.torineser-home-latest .resource-list__item .torineser-product-card-meta__inner {
   display: flex;
   flex-direction: column;
   gap: 0;
 }
 
-[id*='product_list_97iLf8'] .resource-list__item .product-card__content {
+.torineser-home-latest .resource-list__item .product-card__content {
   --product-card-gap: 0;
 }
 
-[id*='product_list_97iLf8'] .resource-list__item .torineser-product-card-meta__title {
+.torineser-home-latest .resource-list__item .torineser-product-card-meta__title {
   margin: 0;
   font-family: "Cormorant Garamond", var(--font-heading--family), serif;
   font-size: 22px;
@@ -410,7 +410,7 @@
   color: #1C1915;
 }
 
-[id*='product_list_97iLf8'] .resource-list__item .torineser-product-card-meta__artist {
+.torineser-home-latest .resource-list__item .torineser-product-card-meta__artist {
   margin: 0;
   font-family: "DM Sans", var(--font-body--family), sans-serif;
   font-size: 12px;
@@ -419,12 +419,12 @@
   color: #8C857C;
 }
 
-[id*='product_list_97iLf8'] .resource-list__item product-price {
+.torineser-home-latest .resource-list__item product-price {
   width: 100%;
   margin-top: 0;
 }
 
-[id*='product_list_97iLf8'] .resource-list__item .torineser-product-card-price-row {
+.torineser-home-latest .resource-list__item .torineser-product-card-price-row {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -432,7 +432,7 @@
   width: 100%;
 }
 
-[id*='product_list_97iLf8'] .resource-list__item .torineser-product-card-price-row__artist {
+.torineser-home-latest .resource-list__item .torineser-product-card-price-row__artist {
   margin: 0;
   font-family: "DM Sans", var(--font-body--family), sans-serif;
   font-size: 12px;
@@ -441,18 +441,18 @@
   color: #8C857C;
 }
 
-[id*='product_list_97iLf8'] .resource-list__item .torineser-product-card-price-row__value {
+.torineser-home-latest .resource-list__item .torineser-product-card-price-row__value {
   margin-left: auto;
   text-align: right;
 }
 
-[id*='product_list_97iLf8'] .resource-list__item .torineser-product-card-price-row__value > div {
+.torineser-home-latest .resource-list__item .torineser-product-card-price-row__value > div {
   display: inline-flex;
   align-items: baseline;
   gap: 6px;
 }
 
-[id*='product_list_97iLf8'] .resource-list__item .torineser-product-card-price-row__value .price {
+.torineser-home-latest .resource-list__item .torineser-product-card-price-row__value .price {
   font-family: "DM Sans", var(--font-body--family), sans-serif;
   font-size: 14px;
   font-weight: 500;
