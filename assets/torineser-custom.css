@@ -196,6 +196,14 @@
   margin-bottom: 24px;
 }
 
+@media screen and (min-width: 750px) {
+  [id^='Hero-'][id*='hero_jVaWmY'] .the_torineser-hero-title > * {
+    /* In Horizon entra anche il text-wrap "pretty": sul mockup la prima riga resta compatta fino al <br>. */
+    max-inline-size: 680px !important;
+    text-wrap: nowrap;
+  }
+}
+
 [id^='Hero-'][id*='hero_jVaWmY'] .the_torineser-hero-description {
   --width: min(100%, 520px);
 }
