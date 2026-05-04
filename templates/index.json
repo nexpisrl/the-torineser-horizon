@@ -45,7 +45,7 @@
           "settings": {
             "text": "<p>Ogni angolo <em>racconta</em><br/>una storia.</p>",
             "width": "fit-content",
-            "max_width": "normal",
+            "max_width": "none",
             "alignment": "left",
             "type_preset": "h2",
             "font": "var(--font-body--family)",
@@ -72,7 +72,7 @@
           "settings": {
             "text": "<p>Oltre 109 opere originali, numerate e firmate da artisti che vivono Torino ogni giorno.</p>",
             "width": "fit-content",
-            "max_width": "normal",
+            "max_width": "none",
             "alignment": "left",
             "type_preset": "rte",
             "font": "var(--font-body--family)",
@@ -205,8 +205,8 @@
         "gradient_direction": "to bottom",
         "blurred_reflection": false,
         "reflection_opacity": 75,
-        "padding-block-start": 100,
-        "padding-block-end": 72
+        "padding-block-start": 0,
+        "padding-block-end": 80
       }
     },
     "product_list_97iLf8": {
