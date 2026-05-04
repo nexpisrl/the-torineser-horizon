@@ -499,7 +499,7 @@
 
   <div
   class="hero__container spacing-style section section--full-width"
-  style="{% render ' s pacing-style', settings: section.settings %}"
+  style="{% render 'spacing-style', settings: section.settings %}"
   >
   {%- if section.settings.link != blank -%}
   <a
@@ -515,29 +515,29 @@
   style="--hero-media-count: {{ media_count }};--hero-media-count-mobile: {{ media_count_mobile }};{%- if section.settings.image_1 != blank -%} --hero-media-aspect-ratio: {{ section.settings.image_1.aspect_ratio }};{% endif %}"
   data-testid="hero-media-wrapper"
   >
-  {% liquid
-  if section.settings.toggle_overlay
-    render ' o verlay', settings: section.settings
-  endif
-  %}
-  {{ media }}
+      {% liquid
+        if section.settings.toggle_overlay
+          render 'overlay', settings: section.settings
+        endif
+      %}
+      {{ media }}
+    </div>
+    <div
+      class="
+        hero__content-wrapper
+        layout-panel-flex
+        layout-panel-flex--{{ section.settings.content_direction }}
+        {% if section.settings.vertical_on_mobile %}mobile-column{% endif %}
+        section-content-wrapper
+        {{ section.settings.section_width }}
+        {% if request.design_mode %}hero__content-wrapper--design-mode{% endif %}
+      "
+      style="{% render 'layout-panel-style', settings: section.settings %}"
+    >
+      {% content_for 'blocks' %}
+    </div>
   </div>
-  <div
-  class="
-  hero__content-wrapper
-  layout-panel-flex
-  layout-panel-flex--{{ section.settings.content_direction }}
-  {% if section.settings.vertical_on_mobile %}mobile-column{% endif %}
-  section-content-wrapper
-  {{section.settings.section_width}}
-  {% if request.design_mode %}hero__content-wrapper--design-mode{% endif %}
-  "
-  style="{% render ' l ayout-panel-style', settings: section.settings %}"
-  >
-  {% content_for ' b locks' %}
-  </div>
-  </div>
-  </div>
+</div>
 
   {% stylesheet %}
   .hero-wrapper {
@@ -1218,16 +1218,7 @@
   "step": 1,
   "unit": "%",
   "default": 75,
-  "visible_if": "{{ section.settings.blurred_reflection and section.settings.media_type_1 != ' v ideo' or section.settings.media_type_2 != ' v ideo' }}"
-  },
-  {
-  "type": "header",
-  "content": "t:content.custom_css_classes"
-  },
-  {
-  "type": "text",
-  "id": "custom_class",
-  "label": "t:settings.custom_class"
+  "visible_if": "{{ section.settings.blurred_reflection and section.settings.media_type_1 != 'video' or section.settings.media_type_2 != 'video' }}"
   },
   {
   "type": "header",
