@@ -317,7 +317,7 @@
   --color-scheme-top-row: rgba({{ section.settings.color_scheme_top.settings.background.rgba }});
   --color-scheme-bottom-row: rgba({{ section.settings.color_scheme_bottom.settings.background.rgba }});
   {% if section.settings.actions_display_style == 'text' %}
-  --header-actions-font-size: {{ section.settings.actions_font_size | default: ' 1 rem' }};
+  --header-actions-font-size: {{ section.settings.actions_font_size | default: '1rem' }};
   --header-actions-font-family: var(--font-{{ section.settings.actions_font | default: 'heading' }}--family);
   --header-actions-font-weight: var(--font-{{ section.settings.actions_font | default: 'heading' }}--weight);
   --header-actions-text-case: {{ section.settings.actions_text_case | default: 'none' }};
@@ -351,7 +351,7 @@
       endif
     when 'bottom'
       assign first = ''
-      assign class = class | append: ' mobile: hidden'
+      assign class = class | append: ' mobile:hidden'
 
       assign border_bottom_setting_id = 'border_width'
   endcase
@@ -1692,4 +1692,4 @@
   ],
   "presets": []
   }
-  {% endschema%}
+  {% endschema %}
