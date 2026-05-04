@@ -501,6 +501,10 @@
   line-height: 1.05;
   letter-spacing: -0.01em;
   color: #1C1915;
+  margin: 0;
+}
+
+.torineser-project-left .torineser-project-title {
   margin-bottom: 28px;
 }
 
@@ -511,6 +515,10 @@
   line-height: 1.8;
   color: rgb(28 25 21 / 0.67);
   max-inline-size: 480px;
+  margin: 0;
+}
+
+.torineser-project-left .torineser-project-description {
   margin-bottom: 36px;
 }
 
