@@ -301,6 +301,11 @@
   --padding-block-end: 80px;
 }
 
+/* ─── Sezione "Le più amate" — sfondo grigio chiaro come demo ─────────────────── */
+.torineser-home-beloved.section-resource-list {
+  background: #F7F5F3;
+}
+
 .torineser-home-latest .section-resource-list__header {
   margin-bottom: 48px;
 }
