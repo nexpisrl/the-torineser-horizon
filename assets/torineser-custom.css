@@ -477,8 +477,9 @@
 }
 
 .torineser-project-left.group-block .group-block-content {
-  padding: 80px;
-  justify-content: center;
+  padding: 2rem 0;
+  margin: 0;
+  justify-content: flex-start;
 }
 
 .torineser-project-left.group-block {
