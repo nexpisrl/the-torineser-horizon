@@ -507,7 +507,7 @@
 }
 
 .torineser-gift-card.group-block > .group-block-content > .torineser-gift-card-copy.group-block > .group-block-content {
-  padding: 3rem !important;
+  padding: 0 !important;
   justify-content: center;
 }
 
@@ -574,7 +574,7 @@
   }
 
   .torineser-gift-card.group-block > .group-block-content > .torineser-gift-card-copy.group-block > .group-block-content {
-    padding: 3rem !important;
+    padding: 0 !important;
   }
 
   .torineser-gift-card .torineser-gift-card-title > * {
