@@ -181,9 +181,9 @@
   endif
 
   if top_transparent and bottom_transparent
-    assign transparent_color_scheme_value = ' b oth'
+    assign transparent_color_scheme_value = 'both'
   elsif top_transparent
-    assign transparent_color_scheme_value = ' t op'
+    assign transparent_color_scheme_value = 'top'
   elsif bottom_transparent
     assign transparent_color_scheme_value = 'bottom'
   endif
@@ -198,10 +198,10 @@
   %}
   {% if show_language and show_country == false %}
   <div class="dropdown-localization mobile:hidden">
-  {% render ' l ocalization-form',
+  {% render 'localization-form',
   show_country: show_country,
   show_language: show_language,
-  localization_style: ' d ropdown',
+  localization_style: 'dropdown',
   form_style: form_style,
   form_id: section.id
   %}
@@ -249,7 +249,7 @@
   class="visually-hidden"
   data-testid="localization-visually-hidden"
   >
-  {{- ' a ccessibility.localization_region_and_language' | t -}}
+  {{- 'accessibility.localization_region_and_language' | t -}}
   </span>
 
   {%- if show_country and show_language -%}
@@ -262,7 +262,7 @@
   </span>
   {%- endif -%}
   <span class="svg-wrapper icon-caret">
-  {{- ' i con-caret.svg' | inline_asset_content -}}
+  {{- 'icon-caret.svg' | inline_asset_content -}}
   </span>
   </button>
 
@@ -271,10 +271,10 @@
   hidden
   ref="panel"
   >
-  {% render ' l ocalization-form',
+  {% render 'localization-form',
   show_country: show_country,
   show_language: show_language,
-  localization_style: ' d ropdown',
+  localization_style: 'dropdown',
   form_style: form_style,
   form_id: section.id
   %}
@@ -307,7 +307,7 @@
   {% endif %}
   data-skip-node-update
   data-scroll-direction="none"
-  {% if section.settings.menu_row == ' t op' and bottom_row_blocks.size > 0 %}
+  {% if section.settings.menu_row == 'top' and bottom_row_blocks.size > 0 %}
   data-submenu-overlap-bottom-row
   {% endif %}
   {% if transparent_color_scheme_value %}
@@ -316,10 +316,10 @@
   style="
   --color-scheme-top-row: rgba({{ section.settings.color_scheme_top.settings.background.rgba }});
   --color-scheme-bottom-row: rgba({{ section.settings.color_scheme_bottom.settings.background.rgba }});
-  {% if section.settings.actions_display_style == ' t ext' %}
+  {% if section.settings.actions_display_style == 'text' %}
   --header-actions-font-size: {{ section.settings.actions_font_size | default: ' 1 rem' }};
-  --header-actions-font-family: var(--font-{{ section.settings.actions_font | default: ' h eading' }}--family);
-  --header-actions-font-weight: var(--font-{{ section.settings.actions_font | default: ' h eading' }}--weight);
+  --header-actions-font-family: var(--font-{{ section.settings.actions_font | default: 'heading' }}--family);
+  --header-actions-font-weight: var(--font-{{ section.settings.actions_font | default: 'heading' }}--weight);
   --header-actions-text-case: {{ section.settings.actions_text_case | default: 'none' }};
   {% endif %}
   "
@@ -328,37 +328,37 @@
   <div
   class="header__underlay header__underlay-open"
   ></div>
-  {%- if request.page_type == ' i ndex' -%}
+  {%- if request.page_type == 'index' -%}
   <h1 class="visually-hidden">{{ shop.name }}</h1>
   {%- endif -%}
   {% for row in rows %}
   {% liquid
-  assign scheme = ' c olor_scheme_' | append: row
-  assign class = ' h eader__row header__row--[row] color-[row_scheme] section section--full-width-margin section--[section-width]' | replace: ' [row]', row | replace: ' [row_scheme]', section.settings[scheme] | replace: ' [section-width]', section.settings.section_width
+  assign scheme = 'color_scheme_' | append: row
+  assign class = 'header__row header__row--[row] color-[row_scheme] section section--full-width-margin section--[section-width]' | replace: ' [row]', row | replace: ' [row_scheme]', section.settings[scheme] | replace: ' [section-width]', section.settings.section_width
 
   case row
-    when ' t op'
+    when 'top'
       assign first = drawer_menu
 
-      if bottom_row_blocks.size > 0 and section.settings.divider_size == ' p age-width'
+      if bottom_row_blocks.size > 0 and section.settings.divider_size == 'page-width'
         assign class = class | append: ' divider--page-width'
       endif
 
       if bottom_row_blocks.size > 0
-        assign border_bottom_setting_id = ' d ivider_width'
+        assign border_bottom_setting_id = 'divider_width'
       else
-        assign border_bottom_setting_id = ' b order_width'
+        assign border_bottom_setting_id = 'border_width'
       endif
     when 'bottom'
       assign first = ''
       assign class = class | append: ' mobile: hidden'
 
-      assign border_bottom_setting_id = ' b order_width'
+      assign border_bottom_setting_id = 'border_width'
   endcase
 
   assign style = ' - -border-bottom-width: [width]px; ' | replace: ' [width]', section.settings[border_bottom_setting_id]
 
-  if row == ' t op'
+  if row == 'top'
     assign style = style | append: ' - -border-bottom-width-mobile: [width]px; ' | replace: ' [width]', section.settings.border_width
   endif
   %}
@@ -1540,7 +1540,7 @@
   }
   ],
   "default": "0.875rem",
-  "visible_if": "{{ section.settings.actions_display_style == ' t ext' }}"
+  "visible_if": "{{ section.settings.actions_display_style == 'text' }}"
   },
   {
   "type": "select",
@@ -1565,7 +1565,7 @@
   }
   ],
   "default": "body",
-  "visible_if": "{{ section.settings.actions_display_style == ' t ext' }}"
+  "visible_if": "{{ section.settings.actions_display_style == 'text' }}"
   },
   {
   "type": "select",
@@ -1582,7 +1582,7 @@
   }
   ],
   "default": "none",
-  "visible_if": "{{ section.settings.actions_display_style == ' t ext' }}"
+  "visible_if": "{{ section.settings.actions_display_style == 'text' }}"
   },
   {
   "type": "header",
