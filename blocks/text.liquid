@@ -11,6 +11,12 @@
     "tag": null,
     "settings": [
       {
+        "type": "text",
+        "id": "custom_class",
+        "label": "t:settings.custom_class",
+        "info": "t:info.text_block_custom_class"
+      },
+      {
         "type": "richtext",
         "id": "text",
         "label": "t:settings.text"
@@ -293,14 +299,6 @@
         "max": 50,
         "step": 1,
         "visible_if": "{{ block.settings.background }}"
-      }, {
-        "type": "header",
-        "content": "t:content.custom_css_classes"
-      }, {
-        "type": "text",
-        "id": "custom_class",
-        "label": "t:settings.custom_class",
-        "info": "t:info.text_block_custom_class"
       }, {
         "type": "header",
         "content": "t:content.padding"

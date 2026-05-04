@@ -1,5 +1,6 @@
 {% liquid
   assign max_items = section.settings.max_products
+  assign section_custom_class = section.settings.custom_class | strip
 %}
 
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
@@ -12,6 +13,7 @@
     section-resource-list
     spacing-style
     gap-style
+    {{ section_custom_class }}
   "
   style="
     {% render 'spacing-style', settings: section.settings %}
@@ -97,6 +99,11 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "t:settings.custom_class"
+    },
     {
       "type": "collection",
       "id": "collection",

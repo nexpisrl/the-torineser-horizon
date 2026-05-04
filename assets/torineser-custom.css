@@ -6,3 +6,589 @@
   text-transform: uppercase;
   color: rgb(192, 76, 53); 
 }
+
+/* Barra annunci — design handoff (variante luce: sfondo fg #1C1915, testo bianco, DM Sans 12px, tracking 0.08em) */
+.announcement-bar {
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+}
+
+.announcement-bar .announcement-bar__text {
+  letter-spacing: 0.08em;
+}
+
+.announcement-bar .announcement-bar__slides {
+  max-width: none;
+}
+
+/* ─── Header menu Torineser (palette handoff «luce») ─── */
+.menu-link-per-colore-swatches {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-inline-end: 4px;
+}
+
+.menu-link-per-colore-swatches__dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-background);
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.menu-link-per-colore-swatches__dot--1 {
+  background: #b85c38;
+}
+
+.menu-link-per-colore-swatches__dot--2 {
+  margin-inline-start: -3px;
+  background: #1e3a5f;
+}
+
+.menu-link-per-colore-swatches__dot--3 {
+  margin-inline-start: -3px;
+  background: #c9a25a;
+}
+
+.menu-link-la-mappa-icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-inline-end: 5px;
+  color: currentcolor;
+}
+
+.menu-link-la-mappa-icon svg {
+  display: block;
+}
+
+.menu-link-la-mappa-badge {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-inline-start: 5px;
+  padding: 2px 6px;
+  border-radius: 100px;
+  background: rgb(192, 76, 53);
+  color: #fff;
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+/* Voce «Per colore» / «La Mappa»: rosso sabaudo handoff (#C04C35 ≈ rgb(192,76,53)) */
+#header-component .menu-list .menu-list__link.menu-list__link--torineser-accent,
+#header-component .menu-list .menu-list__link.menu-list__link--torineser-accent .menu-list__link-title {
+  color: rgb(192, 76, 53);
+}
+
+#header-component .menu-list .menu-list__link.menu-list__link--torineser-accent .menu-list__link-title {
+  padding-inline: 0;
+}
+
+#header-component .menu-list .menu-list__list-item:hover .menu-list__link.menu-list__link--torineser-accent,
+#header-component .menu-list .menu-list__list-item:focus-within .menu-list__link.menu-list__link--torineser-accent {
+  color: rgb(192, 76, 53);
+}
+
+/* Resta leggibile quando altre voci del mega-menu sono in hover */
+#header-component .menu-list:where(:has(.menu-list__list-item:hover)) .menu-list__link.menu-list__link--torineser-accent {
+  color: rgb(192 76 53 / 0.62);
+}
+
+#header-component .menu-list .menu-list__list-item:where(:hover, :focus-within) .menu-list__link.menu-list__link--torineser-accent {
+  color: rgb(192, 76, 53);
+}
+
+.menu-list__item.menu-list__item--torineser-accent {
+  color: rgb(192, 76, 53);
+}
+
+.menu-drawer__menu-item--torineser-accent,
+.menu-drawer__menu-item--torineser-accent .menu-drawer__menu-item-text {
+  color: rgb(192, 76, 53);
+}
+
+/* Rimuove il «bordo» del .button sulla lingua/valuta (box-shadow inset da base.css) */
+#header-component .dropdown-localization__button.button {
+  box-shadow: none;
+}
+
+/* ─── Header layout handoff (Nav desktop): 13px testo, gap 26px, padding verticale 18px, separatore prima delle icône ─── */
+@media screen and (min-width: 750px) {
+  /* Padding verticale contenitore nav mockup: 18px */
+  #header-component.header:not(.header--compact) .header__row--top .header__columns {
+    --padding-block-start: 18px;
+    --padding-block-end: 18px;
+  }
+
+  #header-component[data-menu-style='menu'] .header-menu .menu-list {
+    --menu-horizontal-gap: 26px;
+  }
+
+  #header-component[data-menu-style='menu'] .menu-list__link {
+    letter-spacing: 0.02em;
+  }
+
+  #header-component[data-menu-style='menu'] .header__column--right > .header-menu {
+    border-inline-end: 1px solid var(--color-border);
+    padding-inline-end: 14px;
+    margin-inline-end: 2px;
+  }
+
+  #header-component[data-menu-style='menu'] .header__column--right header-actions {
+    gap: 14px;
+    margin-inline-start: 0;
+  }
+
+  #header-component[data-menu-style='menu'] .header__column--right .search-action {
+    margin-inline: 0;
+  }
+}
+
+/*
+ * Sticky (scroll): forziamo un header opaco quando attivo.
+ * Su Horizon la trasparenza è gestita dagli underlay, quindi chiudiamo anche quella catena.
+ */
+#header-component[data-sticky-state='active'] {
+  --color-scheme-top-row: rgb(var(--color-background-rgb));
+  --color-scheme-bottom-row: rgb(var(--color-background-rgb));
+  background-color: rgb(var(--color-background-rgb)) !important;
+}
+
+#header-component[data-sticky-state='active'] .header__row,
+#header-component[data-sticky-state='active'] .header__underlay-open,
+#header-component[data-sticky-state='active'] .header__underlay-closed {
+  background-color: rgb(var(--color-background-rgb)) !important;
+  background-image: none !important;
+}
+
+#header-component[data-sticky-state='active'] .header__underlay-open::after {
+  background-color: rgb(var(--color-background-rgb));
+}
+
+/* ─── Hero home handoff — testo e bottoni ─── */
+.torineser-home-hero .hero__content-wrapper {
+  justify-content: flex-end;
+  gap: 0;
+  padding-inline: 48px;
+}
+
+.torineser-home-hero .the_torineser-pre_title {
+  margin-bottom: 20px;
+}
+
+.torineser-home-hero .the_torineser-hero-title {
+  --width: min(100%, 680px);
+}
+
+.torineser-home-hero .the_torineser-hero-title > * {
+  font-family: "Cormorant Garamond", var(--font-heading--family), serif;
+  font-weight: 300 !important;
+  font-size: 5.75rem !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.01em !important;
+  color: #FAF7F2 !important;
+  margin-bottom: 24px;
+}
+
+@media screen and (min-width: 750px) {
+  .torineser-home-hero .the_torineser-hero-title > * {
+    /* Manteniamo solo la larghezza; i ritorni riga sono gestiti direttamente nel testo del blocco. */
+    max-inline-size: 680px !important;
+  }
+}
+
+.torineser-home-hero .the_torineser-hero-description {
+  --width: min(100%, 520px);
+}
+
+.torineser-home-hero .the_torineser-hero-description > * {
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-weight: 300 !important;
+  font-size: 1.0625rem !important;
+  line-height: 1.6 !important;
+  color: rgba(250, 247, 242, 0.78) !important;
+  margin-bottom: 40px;
+}
+
+.torineser-home-hero .group-block .button:not(.button-secondary) {
+  --button-color: #FAF7F2;
+  --button-background-color: #C04C35;
+  --button-border-color: transparent;
+  --button-border-width: 0;
+  border-radius: 100px;
+  padding-block: 16px;
+  padding-inline: 32px;
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.torineser-home-hero .group-block .button:not(.button-secondary):hover,
+.torineser-home-hero .group-block .button:not(.button-secondary):focus-visible {
+  --button-color: #FAF7F2;
+  --button-background-color: #a8442f;
+  --button-border-color: transparent;
+}
+
+.torineser-home-hero .group-block .button-secondary {
+  --button-color: #FAF7F2;
+  --button-background-color: transparent;
+  --button-border-color: rgba(250, 247, 242, 0.35);
+  --button-border-width: 1px;
+  border-radius: 100px;
+  padding-block: 16px;
+  padding-inline: 28px;
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: none;
+}
+
+.torineser-home-hero .group-block .button-secondary:hover,
+.torineser-home-hero .group-block .button-secondary:focus-visible {
+  --button-color: #FAF7F2;
+  --button-background-color: transparent;
+  --button-border-color: rgba(250, 247, 242, 0.35);
+}
+
+@media screen and (max-width: 1199px) {
+  .torineser-home-hero .hero__content-wrapper {
+    padding-inline: 32px;
+  }
+
+  .torineser-home-hero .the_torineser-hero-title > * {
+    font-size: 4.75rem !important;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .torineser-home-hero .hero__content-wrapper {
+    padding-inline: 20px;
+  }
+
+  .torineser-home-hero .the_torineser-hero-title {
+    --width: min(100%, 92vw);
+  }
+
+  .torineser-home-hero .the_torineser-hero-title > * {
+    font-size: 3rem !important;
+    line-height: 1.05 !important;
+  }
+
+  .torineser-home-hero .the_torineser-hero-description {
+    --width: min(100%, 92vw);
+  }
+}
+
+/* ─── Sezione "Ultime uscite" (solo testi + spaziature) ───────────────────────── */
+.torineser-home-latest.section-resource-list {
+  --padding-block-start: 120px;
+  --padding-block-end: 80px;
+}
+
+.torineser-home-latest .section-resource-list__header {
+  margin-bottom: 48px;
+}
+
+.torineser-home-latest .section-resource-list__header .the_torineser-pre_title {
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #C04C35;
+  margin-bottom: 12px;
+}
+
+.torineser-home-latest .section-resource-list__header .the_torineser-section-title > * {
+  font-family: "Cormorant Garamond", var(--font-heading--family), serif;
+  font-weight: 400;
+  font-size: 3.5rem;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: #1C1915;
+  margin-bottom: 16px;
+}
+
+.torineser-home-latest .section-resource-list__header .the_torineser-section-description > * {
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #8C857C;
+  max-inline-size: 520px;
+}
+
+.torineser-home-latest .section-resource-list__header .link {
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: #1C1915;
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 1px solid #C04C35;
+  padding-bottom: 4px;
+}
+
+.torineser-home-latest .section-resource-list__header .link:hover,
+.torineser-home-latest .section-resource-list__header .link:focus-visible {
+  color: #1C1915;
+  text-decoration: none;
+  text-decoration-color: transparent;
+  border-bottom-color: #C04C35;
+}
+
+@media screen and (max-width: 989px) {
+  .torineser-home-latest.section-resource-list {
+    --padding-block-start: 96px;
+    --padding-block-end: 64px;
+  }
+}
+
+/* ─── Sezione "Ultime uscite" — card prodotto ─────────────────────────────────── */
+.torineser-home-latest .resource-list__item .product-card {
+  transition: transform 0.3s ease;
+}
+
+.torineser-home-latest .resource-list__item .product-card:hover {
+  transform: translateY(-6px);
+}
+
+.torineser-home-latest .resource-list__item .card-gallery {
+  border-radius: 8px;
+  overflow: hidden;
+  background: #F7F5F3;
+  margin-bottom: 0;
+}
+
+.torineser-home-latest .resource-list__item .card-gallery img {
+  transition: transform 0.6s ease;
+}
+
+.torineser-home-latest .resource-list__item .product-card:hover .card-gallery img {
+  transform: scale(1.04);
+}
+
+.torineser-home-latest .resource-list__item .product-badges {
+  display: none;
+}
+
+.torineser-home-latest .resource-list__item slideshow-arrows,
+.torineser-home-latest .resource-list__item .slideshow-dots,
+.torineser-home-latest .resource-list__item .slideshow-control {
+  display: none !important;
+}
+
+.torineser-home-latest .resource-list__item .torineser-product-card-meta {
+  text-decoration: none;
+  color: inherit;
+}
+
+.torineser-home-latest .resource-list__item .torineser-product-card-meta__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.torineser-home-latest .resource-list__item .product-card__content {
+  --product-card-gap: 0;
+}
+
+.torineser-home-latest .resource-list__item .torineser-product-card-meta__title {
+  margin: 0;
+  font-family: "Cormorant Garamond", var(--font-heading--family), serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #1C1915;
+}
+
+.torineser-home-latest .resource-list__item .torineser-product-card-meta__artist {
+  margin: 0;
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: #8C857C;
+}
+
+.torineser-home-latest .resource-list__item product-price {
+  width: 100%;
+  margin-top: 0;
+}
+
+.torineser-home-latest .resource-list__item .torineser-product-card-price-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+}
+
+.torineser-home-latest .resource-list__item .torineser-product-card-price-row__artist {
+  margin: 0;
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: #8C857C;
+}
+
+.torineser-home-latest .resource-list__item .torineser-product-card-price-row__value {
+  margin-left: auto;
+  text-align: right;
+}
+
+.torineser-home-latest .resource-list__item .torineser-product-card-price-row__value > div {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.torineser-home-latest .resource-list__item .torineser-product-card-price-row__value .price {
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: #1C1915;
+}
+
+/* ─── Sezione "Progetto (BIG)" ─────────────────────────────────────────────────── */
+.torineser-project-big.section {
+  padding-inline: 48px;
+}
+
+.torineser-project-big .custom-section-content {
+  border-radius: 0;
+  overflow: visible;
+  background: transparent;
+}
+
+.torineser-project-big [data-testid='section-content'] {
+  min-height: 560px;
+  --gap: 0 !important;
+}
+
+.torineser-project-left.group-block .group-block-content {
+  padding: 80px;
+  justify-content: center;
+}
+
+.torineser-project-left.group-block {
+  background: #F2EDE5;
+  border-radius: 28px 0 0 28px;
+  overflow: hidden;
+}
+
+.torineser-project-left .torineser-project-eyebrow {
+  --max-width: none;
+  margin-bottom: 20px;
+}
+
+.torineser-project-left .torineser-project-eyebrow > * {
+  margin: 0;
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #C04C35;
+}
+
+.torineser-project-left .torineser-project-title {
+  --max-width: none;
+}
+
+.torineser-project-left .torineser-project-title > * {
+  margin: 0 0 28px;
+  font-family: "Cormorant Garamond", var(--font-heading--family), serif;
+  font-weight: 300;
+  font-size: 4rem;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: #1C1915;
+}
+
+.torineser-project-left .torineser-project-description {
+  --max-width: none;
+}
+
+.torineser-project-left .torineser-project-description > * {
+  margin: 0 0 36px;
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgb(28 25 21 / 0.667);
+  max-inline-size: 480px;
+}
+
+.torineser-project-left .torineser-project-stat {
+  min-width: 72px;
+}
+
+.torineser-project-left .torineser-project-stat p:first-child {
+  font-family: "Cormorant Garamond", var(--font-heading--family), serif;
+  font-size: 44px;
+  line-height: 1;
+  color: #1C1915;
+  margin: 0;
+}
+
+.torineser-project-left .torineser-project-stat p:last-child {
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(28 25 21 / 0.5);
+  margin-top: 6px;
+  margin-bottom: 0;
+}
+
+.torineser-project-stats .group-block-content {
+  gap: 40px;
+  margin-bottom: 40px;
+  padding-top: 32px;
+  border-top: 1px solid rgb(28 25 21 / 0.13);
+  align-items: flex-start;
+}
+
+.torineser-project-left .button:not(.button-secondary) {
+  --button-color: #ffffff;
+  --button-background-color: #C04C35;
+  --button-border-color: transparent;
+  --button-border-width: 0;
+  border-radius: 100px;
+  padding-block: 14px;
+  padding-inline: 30px;
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  align-self: flex-start;
+}
+
+.torineser-project-left .button:not(.button-secondary):hover {
+  --button-color: #ffffff;
+  --button-background-color: #a8442f;
+  --button-border-color: transparent;
+}
+
+@media screen and (max-width: 989px) {
+  .torineser-project-big.section {
+    padding-inline: 24px;
+  }
+
+  .torineser-project-left.group-block .group-block-content {
+    padding: 48px 28px;
+  }
+
+  .torineser-project-left .torineser-project-title > * {
+    font-size: 3rem;
+  }
+}

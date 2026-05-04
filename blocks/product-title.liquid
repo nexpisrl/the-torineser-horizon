@@ -3,14 +3,77 @@
   {% assign product_title = '<p>' | append: text | append: '</p>' %}
   {% render 'text', fallback_text: product_title, block: block %}
 {% else %}
-  {% assign product_title = '<p>' | append: closest.product.title | append: '</p>' %}
-  <a
-    class="contents user-select-text"
-    ref="productTitleLink"
-    href="{{ closest.product.selected_or_first_available_variant.url }}"
-  >
-    {% render 'text', fallback_text: product_title, block: block %}
-  </a>
+  {% liquid
+    assign is_torineser_latest_section = false
+    if section.settings.custom_class contains 'torineser-home-latest'
+      assign is_torineser_latest_section = true
+    endif
+  %}
+
+  {% if is_torineser_latest_section %}
+    {% liquid
+      assign raw_title = closest.product.title | strip
+      assign artwork_number = ''
+      assign artwork_title = raw_title
+      assign artwork_artist = ''
+
+      assign first_char = raw_title | slice: 0, 1
+      if first_char == '#'
+        assign artwork_number = raw_title | split: ' ' | first | strip
+      endif
+
+      if raw_title contains '"'
+        assign quote_parts = raw_title | split: '"'
+        if quote_parts.size > 2
+          assign artwork_title = quote_parts[1] | strip
+          assign after_quote = quote_parts[2] | strip
+          if after_quote contains 'di '
+            assign artwork_artist = after_quote | remove_first: 'di ' | strip
+          endif
+        endif
+      endif
+
+      if artwork_artist == blank and raw_title contains ' di '
+        assign di_parts = raw_title | split: ' di '
+        assign artwork_artist = di_parts | last | strip
+        assign before_di = di_parts | first | strip
+
+        if artwork_title == raw_title
+          if artwork_number != blank and before_di contains artwork_number
+            assign artwork_title = before_di | remove_first: artwork_number | strip
+          else
+            assign artwork_title = before_di
+          endif
+          assign artwork_title = artwork_title | replace: '"', '' | strip
+        endif
+      endif
+
+      if artwork_title == raw_title
+        if artwork_number != blank and raw_title contains artwork_number
+          assign artwork_title = raw_title | remove_first: artwork_number | strip
+        endif
+        assign artwork_title = artwork_title | replace: '"', '' | strip
+      endif
+    %}
+    <a
+      class="contents user-select-text torineser-product-card-meta"
+      ref="productTitleLink"
+      href="{{ closest.product.selected_or_first_available_variant.url }}"
+    >
+      <div class="torineser-product-card-meta__inner">
+        <p class="torineser-product-card-meta__title">{{ artwork_title }}</p>
+      </div>
+    </a>
+  {% else %}
+    {% assign product_title = '<p>' | append: closest.product.title | append: '</p>' %}
+    <a
+      class="contents user-select-text"
+      ref="productTitleLink"
+      href="{{ closest.product.selected_or_first_available_variant.url }}"
+    >
+      {% render 'text', fallback_text: product_title, block: block %}
+    </a>
+  {% endif %}
 {% endif %}
 
 {% schema %}
