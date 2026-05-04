@@ -631,6 +631,45 @@
             "selected_variant_hover_border_color": "#1a1a1a"
           }
         },
+        "scheme-torineser-announcement": {
+          "settings": {
+            "background": "#1c1915",
+            "foreground_heading": "#ffffff",
+            "foreground": "#ffffff",
+            "primary": "#ffffff",
+            "primary_hover": "#ffffffb0",
+            "border": "#ffffff33",
+            "shadow": "#000000",
+            "primary_button_background": "#ffffff",
+            "primary_button_text": "#1c1915",
+            "primary_button_border": "#ffffff",
+            "primary_button_hover_background": "#f7f5f3",
+            "primary_button_hover_text": "#1c1915",
+            "primary_button_hover_border": "#f7f5f3",
+            "secondary_button_background": "rgba(0,0,0,0)",
+            "secondary_button_text": "#ffffff",
+            "secondary_button_border": "#ffffff66",
+            "secondary_button_hover_background": "#ffffff0f",
+            "secondary_button_hover_text": "#ffffff",
+            "secondary_button_hover_border": "#ffffff66",
+            "input_background": "#1c1915",
+            "input_text_color": "#ffffff",
+            "input_border_color": "#ffffff66",
+            "input_hover_background": "#ffffff0f",
+            "variant_background_color": "#ffffff",
+            "variant_text_color": "#000000",
+            "variant_border_color": "#e6e6e6",
+            "variant_hover_background_color": "#f5f5f5",
+            "variant_hover_text_color": "#000000",
+            "variant_hover_border_color": "#e6e6e6",
+            "selected_variant_background_color": "#000000",
+            "selected_variant_text_color": "#ffffff",
+            "selected_variant_border_color": "#000000",
+            "selected_variant_hover_background_color": "#1a1a1a",
+            "selected_variant_hover_text_color": "#ffffff",
+            "selected_variant_hover_border_color": "#1a1a1a"
+          }
+        },
         "scheme-58084d4c-a86e-4d0a-855e-a0966e5043f7": {
           "settings": {
             "background": "rgba(0,0,0,0)",
