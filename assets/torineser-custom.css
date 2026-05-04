@@ -351,3 +351,66 @@
     --padding-block-end: 64px;
   }
 }
+
+/* ─── Sezione "Ultime uscite" — card prodotto ─────────────────────────────────── */
+[id*='product_list_97iLf8'] .resource-list__item .product-card {
+  transition: transform 0.3s ease;
+}
+
+[id*='product_list_97iLf8'] .resource-list__item .product-card:hover {
+  transform: translateY(-6px);
+}
+
+[id*='product_list_97iLf8'] .resource-list__item .card-gallery {
+  border-radius: 8px;
+  overflow: hidden;
+  background: #F7F5F3;
+  margin-bottom: 16px;
+}
+
+[id*='product_list_97iLf8'] .resource-list__item .card-gallery img {
+  transition: transform 0.6s ease;
+}
+
+[id*='product_list_97iLf8'] .resource-list__item .product-card:hover .card-gallery img {
+  transform: scale(1.04);
+}
+
+[id*='product_list_97iLf8'] .resource-list__item .product-badges {
+  display: none;
+}
+
+[id*='product_list_97iLf8'] .resource-list__item slideshow-arrows,
+[id*='product_list_97iLf8'] .resource-list__item .slideshow-dots,
+[id*='product_list_97iLf8'] .resource-list__item .slideshow-control {
+  display: none !important;
+}
+
+[id*='product_list_97iLf8'] .resource-list__item .torineser-product-card-meta {
+  text-decoration: none;
+  color: inherit;
+}
+
+[id*='product_list_97iLf8'] .resource-list__item .torineser-product-card-meta__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+[id*='product_list_97iLf8'] .resource-list__item .torineser-product-card-meta__title {
+  margin: 0;
+  font-family: "Cormorant Garamond", var(--font-heading--family), serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #1C1915;
+}
+
+[id*='product_list_97iLf8'] .resource-list__item .torineser-product-card-meta__artist {
+  margin: 0;
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: #8C857C;
+}
