@@ -41,11 +41,17 @@
             role="list"
           >
             {% for link in menu_links.links %}
+              {% liquid
+                assign torineser_nav_href = link.url
+                if link.handle == 'per-colore' or link.handle == 'la-mappa'
+                  assign torineser_nav_href = '#'
+                endif
+              %}
               <li>
                 <a
-                  href="{{ link.url }}"
+                  href="{{ torineser_nav_href }}"
                   id="MenuItem-{{ link.handle }}"
-                  class="menu-list__item"
+                  class="menu-list__item{% if link.handle == 'per-colore' or link.handle == 'la-mappa' %} menu-list__item--torineser-accent{% endif %}"
                   {% if link.current %}
                     aria-current="page"
                   {% endif %}
@@ -88,6 +94,16 @@
     {% capture children %}
       {% assign submenu_uid = block.id | default: 'header-menu' %}
       {% for link in menu_links.links %}
+        {% liquid
+          assign torineser_nav_href = link.url
+          if link.handle == 'per-colore' or link.handle == 'la-mappa'
+            assign torineser_nav_href = '#'
+          endif
+          assign torineser_link_has_submenu = false
+          if link.links != blank and link.handle != 'per-colore'
+            assign torineser_link_has_submenu = true
+          endif
+        %}
         <li
           role="presentation"
           class="menu-list__list-item"
@@ -97,10 +113,10 @@
           on:pointerleave="/deactivate"
         >
           <a
-            href="{{ link.url }}"
+            href="{{ torineser_nav_href }}"
             data-skip-node-update="true"
-            class="menu-list__link{% if link.active %} menu-list__link--active{% endif %}"
-            {%- if link.links != blank -%}
+            class="menu-list__link{% if link.active %} menu-list__link--active{% endif %}{% if link.handle == 'per-colore' or link.handle == 'la-mappa' %} menu-list__link--torineser-accent{% endif %}"
+            {%- if torineser_link_has_submenu -%}
               aria-controls="submenu-{{ submenu_uid }}-{{ forloop.index }}"
               aria-haspopup="true"
               aria-expanded="false"
@@ -116,7 +132,7 @@
               {% render 'menu-link-torineser-nav', link: link, part: 'after' %}
             </span>
           </a>
-          {%- if link.links != blank -%}
+          {%- if torineser_link_has_submenu -%}
             <div class="menu-list__submenu{{ color_scheme_classes }}" ref="submenu[]">
               <div
                 id="submenu-{{ submenu_uid }}-{{ forloop.index }}"

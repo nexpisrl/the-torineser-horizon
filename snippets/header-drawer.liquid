@@ -107,7 +107,7 @@
                 style="--menu-drawer-animation-index: {{ animation_index }};"
                 class="{%- if block_settings.drawer_accordion -%}menu-drawer__list-item--deep{%- else -%}menu-drawer__list-item--flat{%- endif -%}{% if block_settings.drawer_dividers %} menu-drawer__list-item--divider{% endif %}"
               >
-                {% if block_settings.drawer_accordion and link.links != blank %}
+                {% if block_settings.drawer_accordion and torineser_link_has_submenu %}
                   {%- comment -%}
                     Accordion for links with children, in menus with fewer than 3 levels of links
                   {%- endcomment -%}
@@ -176,14 +176,14 @@
                       </ul>
                     </details>
                   </accordion-custom>
-                {% elsif block_settings.drawer_accordion == false and link.links != blank %}
+                {% elsif block_settings.drawer_accordion == false and torineser_link_has_submenu %}
                   {%- comment -%}
                     Flat menus for links with children, in menus with fewer than 3 levels of links
                   {%- endcomment -%}
                   <a
                     id="HeaderDrawer-{{ link.handle }}"
-                    href="{{ link.url }}"
-                    class="menu-drawer__menu-item menu-drawer__menu-item--mainlist menu-drawer__animated-element focus-inset"
+                    href="{{ torineser_nav_href }}"
+                    class="menu-drawer__menu-item menu-drawer__menu-item--mainlist menu-drawer__animated-element focus-inset{% if link.handle == 'per-colore' or link.handle == 'la-mappa' %} menu-drawer__menu-item--torineser-accent{% endif %}"
                     {% if link.current %}
                       aria-current="page"
                     {% endif %}
