@@ -281,10 +281,10 @@
                 "link": "",
                 "open_in_new_tab": false,
                 "placeholder": "",
-                "padding-block-start": 56,
-                "padding-block-end": 56,
-                "padding-inline-start": 48,
-                "padding-inline-end": 48
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
               },
               "blocks": {
                 "text_YxQkHj": {
@@ -951,7 +951,6 @@
                 "link": "",
                 "open_in_new_tab": false,
                 "placeholder": "",
-                "custom_class": "torineser-gift-card-copy",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -1273,10 +1272,11 @@
                 "link": "",
                 "open_in_new_tab": false,
                 "placeholder": "",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "custom_class": "torineser-gift-card-copy",
+                "padding-block-start": 56,
+                "padding-block-end": 56,
+                "padding-inline-start": 48,
+                "padding-inline-end": 48
               },
               "blocks": {
                 "text_KAbhYw": {
