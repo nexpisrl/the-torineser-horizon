@@ -398,7 +398,7 @@
 }
 
 [id*='product_list_97iLf8'] .resource-list__item .product-card__content {
-  --product-card-gap: 8px;
+  --product-card-gap: 0;
 }
 
 [id*='product_list_97iLf8'] .resource-list__item .torineser-product-card-meta__title {
