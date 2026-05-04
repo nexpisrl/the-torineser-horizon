@@ -17,9 +17,9 @@
         "announcement_BxgCk9": {
           "type": "_announcement",
           "settings": {
-            "text": "Welcome to our store",
+            "text": "✦ Spedizione gratuita in Italia sopra 60€ · Stampe numerate in edizione limitata ✦",
             "link": "",
-            "font": "var(--font-subheading--family)",
+            "font": "var(--font-body--family)",
             "font_size": "0.75rem",
             "weight": "",
             "letter_spacing": "normal",
@@ -34,11 +34,11 @@
       "name": "t:names.announcement_bar",
       "settings": {
         "speed": 5,
-        "section_width": "page-width",
-        "color_scheme": "scheme-1",
-        "divider_width": 1,
-        "padding-block-start": 15,
-        "padding-block-end": 15
+        "section_width": "full-width",
+        "color_scheme": "scheme-torineser-announcement",
+        "divider_width": 0,
+        "padding-block-start": 8,
+        "padding-block-end": 8
       }
     },
     "header_section": {

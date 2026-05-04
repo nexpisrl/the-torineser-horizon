@@ -6,3 +6,16 @@
   text-transform: uppercase;
   color: rgb(192, 76, 53); 
 }
+
+/* Barra annunci — design handoff (variante luce: sfondo fg #1C1915, testo bianco, DM Sans 12px, tracking 0.08em) */
+.announcement-bar {
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+}
+
+.announcement-bar .announcement-bar__text {
+  letter-spacing: 0.08em;
+}
+
+.announcement-bar .announcement-bar__slides {
+  max-width: none;
+}
