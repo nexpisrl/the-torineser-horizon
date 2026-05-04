@@ -842,6 +842,7 @@
 .section-wrapper:has(.footer-content) .torineser-footer-social .social-icons__wrapper {
   flex-direction: column;
   align-items: flex-start;
+  justify-content: flex-start;
   gap: 10px;
 }
 
@@ -853,21 +854,9 @@
   height: auto;
 }
 
-.section-wrapper:has(.footer-content) .torineser-footer-social .social-icons__icon {
-  display: none !important;
-}
-
-.section-wrapper:has(.footer-content) .torineser-footer-social .social-icons__icon-label {
-  display: inline !important;
-}
-
 .section-wrapper:has(.footer-content) .torineser-footer-social .social-icons__wrapper a {
   color: #1C1915;
   text-decoration: none;
-}
-
-.section-wrapper:has(.footer-content) .torineser-footer-social .social-icons__wrapper a::after {
-  content: " →";
 }
 
 .footer-utilities .utilities {
