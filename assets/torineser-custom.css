@@ -477,6 +477,111 @@
   color: #1C1915;
 }
 
+/* ─── Sezione "Gift card + Eventi" ─────────────────────────────────────────────── */
+.torineser-gift-events.section {
+  --padding-block-start: 120px;
+  --padding-block-end: 80px;
+  padding-inline: 48px;
+}
+
+.section-wrapper:has(> .torineser-gift-events) > .section-background {
+  background-color: #FAF7F2;
+}
+
+.torineser-gift-events [data-testid='section-content'] {
+  --gap: 40px !important;
+  align-items: stretch;
+}
+
+.torineser-gift-card.group-block {
+  background: #F2EDE5;
+  border: 1px solid #E8E4DF;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.torineser-gift-card.group-block > .group-block-content {
+  --gap: 0 !important;
+  min-height: 460px;
+  align-items: stretch;
+}
+
+.torineser-gift-card-copy.group-block > .group-block-content {
+  padding: 56px 48px;
+  justify-content: center;
+}
+
+.torineser-gift-card .torineser-gift-card-title > * {
+  margin: 0 0 20px;
+  font-family: "Cormorant Garamond", var(--font-heading--family), serif;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.1;
+  color: #1C1915;
+}
+
+.torineser-gift-card .torineser-gift-card-description > * {
+  margin: 0 0 32px;
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: #8C857C;
+  max-inline-size: 430px;
+}
+
+.torineser-gift-card .button:not(.button-secondary) {
+  --button-color: #ffffff;
+  --button-background-color: #C04C35;
+  --button-border-color: transparent;
+  --button-border-width: 0;
+  border-radius: 100px;
+  padding-block: 14px;
+  padding-inline: 28px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.torineser-gift-card .button:not(.button-secondary):hover {
+  --button-background-color: #a8442f;
+}
+
+.torineser-gift-card .image-block,
+.torineser-gift-card .image-block__image {
+  height: 100%;
+}
+
+.torineser-gift-card .image-block__image {
+  width: 100%;
+  aspect-ratio: auto;
+  object-fit: cover;
+}
+
+.torineser-events-card .notizie-preview {
+  background: #F7F5F3;
+  border-color: #E8E4DF;
+}
+
+@media screen and (max-width: 989px) {
+  .torineser-gift-events.section {
+    --padding-block-start: 96px;
+    --padding-block-end: 64px;
+    padding-inline: 24px;
+  }
+
+  .torineser-gift-events [data-testid='section-content'] {
+    --gap: 24px !important;
+  }
+
+  .torineser-gift-card-copy.group-block > .group-block-content {
+    padding: 44px 28px;
+  }
+
+  .torineser-gift-card .torineser-gift-card-title > * {
+    font-size: 38px;
+  }
+}
+
 /* ─── Sezione "Progetto (BIG)" ─────────────────────────────────────────────────── */
 .torineser-project-big.section {
   padding-inline: 48px;
