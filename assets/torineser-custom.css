@@ -118,6 +118,12 @@
   box-shadow: none;
 }
 
+/* Bordo inferiore header come mockup desktop */
+#header-component {
+  border-bottom: 1px solid #E8E4DF;
+  transition: border-color 0.3s ease;
+}
+
 /* ─── Header layout handoff (Nav desktop): 13px testo, gap 26px, padding verticale 18px, separatore prima delle icône ─── */
 @media screen and (min-width: 750px) {
   /* Padding verticale contenitore nav mockup: 18px */
@@ -158,6 +164,7 @@
   --color-scheme-top-row: rgb(var(--color-background-rgb));
   --color-scheme-bottom-row: rgb(var(--color-background-rgb));
   background-color: rgb(var(--color-background-rgb)) !important;
+  border-bottom-color: #E8E4DF;
 }
 
 #header-component[data-sticky-state='active'] .header__row,
