@@ -5,7 +5,7 @@
 {% else %}
   {% liquid
     assign is_torineser_latest_section = false
-    if section.id contains 'product_list_97iLf8'
+    if section.settings.custom_class contains 'torineser-home-latest'
       assign is_torineser_latest_section = true
     endif
   %}
