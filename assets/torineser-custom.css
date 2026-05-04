@@ -172,43 +172,44 @@
 }
 
 /* ─── Hero home handoff — testo e bottoni ─── */
-#Hero-hero_jVaWmY .hero__content-wrapper {
+[id^='Hero-'][id*='hero_jVaWmY'] .hero__content-wrapper {
   justify-content: flex-end;
   gap: 0;
+  padding-inline: 48px;
 }
 
-#Hero-hero_jVaWmY .the_torineser-pre_title {
+[id^='Hero-'][id*='hero_jVaWmY'] .the_torineser-pre_title {
   margin-bottom: 20px;
 }
 
-#Hero-hero_jVaWmY .the_torineser-hero-title {
+[id^='Hero-'][id*='hero_jVaWmY'] .the_torineser-hero-title {
   --width: min(100%, 680px);
 }
 
-#Hero-hero_jVaWmY .the_torineser-hero-title > * {
+[id^='Hero-'][id*='hero_jVaWmY'] .the_torineser-hero-title > * {
   font-family: "Cormorant Garamond", var(--font-heading--family), serif;
-  font-weight: 300;
-  font-size: 5.5rem;
-  line-height: 1.02;
-  letter-spacing: -0.01em;
-  color: #FAF7F2;
+  font-weight: 300 !important;
+  font-size: 5.75rem !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.01em !important;
+  color: #FAF7F2 !important;
   margin-bottom: 24px;
 }
 
-#Hero-hero_jVaWmY .the_torineser-hero-description {
+[id^='Hero-'][id*='hero_jVaWmY'] .the_torineser-hero-description {
   --width: min(100%, 520px);
 }
 
-#Hero-hero_jVaWmY .the_torineser-hero-description > * {
+[id^='Hero-'][id*='hero_jVaWmY'] .the_torineser-hero-description > * {
   font-family: "DM Sans", var(--font-body--family), sans-serif;
-  font-weight: 300;
-  font-size: 1.0625rem;
-  line-height: 1.6;
-  color: rgba(250, 247, 242, 0.78);
+  font-weight: 300 !important;
+  font-size: 1.0625rem !important;
+  line-height: 1.6 !important;
+  color: rgba(250, 247, 242, 0.78) !important;
   margin-bottom: 40px;
 }
 
-#Hero-hero_jVaWmY .button--button_mpMAb8 {
+[id^='Hero-'][id*='hero_jVaWmY'] .group-block .button:not(.button-secondary) {
   --button-color: #FAF7F2;
   --button-background-color: #C04C35;
   --button-border-color: transparent;
@@ -223,14 +224,14 @@
   text-transform: none;
 }
 
-#Hero-hero_jVaWmY .button--button_mpMAb8:hover,
-#Hero-hero_jVaWmY .button--button_mpMAb8:focus-visible {
+[id^='Hero-'][id*='hero_jVaWmY'] .group-block .button:not(.button-secondary):hover,
+[id^='Hero-'][id*='hero_jVaWmY'] .group-block .button:not(.button-secondary):focus-visible {
   --button-color: #FAF7F2;
   --button-background-color: #a8442f;
   --button-border-color: transparent;
 }
 
-#Hero-hero_jVaWmY .button-secondary--button_DE3Wew {
+[id^='Hero-'][id*='hero_jVaWmY'] .group-block .button-secondary {
   --button-color: #FAF7F2;
   --button-background-color: transparent;
   --button-border-color: rgba(250, 247, 242, 0.35);
@@ -244,9 +245,38 @@
   text-transform: none;
 }
 
-#Hero-hero_jVaWmY .button-secondary--button_DE3Wew:hover,
-#Hero-hero_jVaWmY .button-secondary--button_DE3Wew:focus-visible {
+[id^='Hero-'][id*='hero_jVaWmY'] .group-block .button-secondary:hover,
+[id^='Hero-'][id*='hero_jVaWmY'] .group-block .button-secondary:focus-visible {
   --button-color: #FAF7F2;
   --button-background-color: transparent;
   --button-border-color: rgba(250, 247, 242, 0.35);
+}
+
+@media screen and (max-width: 1199px) {
+  [id^='Hero-'][id*='hero_jVaWmY'] .hero__content-wrapper {
+    padding-inline: 32px;
+  }
+
+  [id^='Hero-'][id*='hero_jVaWmY'] .the_torineser-hero-title > * {
+    font-size: 4.75rem !important;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  [id^='Hero-'][id*='hero_jVaWmY'] .hero__content-wrapper {
+    padding-inline: 20px;
+  }
+
+  [id^='Hero-'][id*='hero_jVaWmY'] .the_torineser-hero-title {
+    --width: min(100%, 92vw);
+  }
+
+  [id^='Hero-'][id*='hero_jVaWmY'] .the_torineser-hero-title > * {
+    font-size: 3rem !important;
+    line-height: 1.05 !important;
+  }
+
+  [id^='Hero-'][id*='hero_jVaWmY'] .the_torineser-hero-description {
+    --width: min(100%, 92vw);
+  }
 }
