@@ -149,3 +149,11 @@
     margin-inline: 0;
   }
 }
+
+/*
+ * Sticky (scroll): la row top deve restare opaca come il resto dell’header.
+ * Horizon usa background trasparente sulle row e gli underlay; in sticky quel layering può sembrare “vetro”.
+ */
+#header-component[data-sticky-state='active'] .header__row--top {
+  background-color: rgb(var(--color-background-rgb));
+}
