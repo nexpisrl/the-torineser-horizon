@@ -790,12 +790,13 @@
 }
 
 @media screen and (min-width: 990px) {
-  .section-wrapper:has(.footer-content) .footer-content[style*='--grid-columns: 5'] {
-    grid-template-columns: 1.5fr repeat(3, 1fr) 1.2fr;
+  .section-wrapper:has(.footer-content) .footer-content {
+    grid-template-columns: 1.5fr repeat(3, 1fr) 1.2fr !important;
   }
 
+  .section-wrapper:has(.footer-content) .footer-content > :last-child,
   .section-wrapper:has(.footer-content) .footer-content--isolated-grid-item-desktop > :last-child {
-    grid-column: auto;
+    grid-column: auto !important;
   }
 }
 
