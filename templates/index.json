@@ -43,7 +43,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<p>Ogni angolo <em>racconta</em><br/>una storia.</p>",
+            "text": "<p>Ogni angolo<br/><em>racconta</em><br/>una storia.</p>",
             "width": "fit-content",
             "max_width": "none",
             "alignment": "left",
