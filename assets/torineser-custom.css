@@ -483,10 +483,14 @@
   --gap: 0 !important;
 }
 
-.torineser-project-left.group-block .group-block-content {
+.torineser-project-left.group-block > .group-block-content {
   padding: 80px;
   margin: 0;
   justify-content: flex-start;
+}
+
+.torineser-project-left.group-block > .group-block-content .group-block > .group-block-content {
+  padding: 2rem 0;
 }
 
 .torineser-project-left.group-block {
@@ -583,7 +587,7 @@
     padding-inline: 24px;
   }
 
-  .torineser-project-left.group-block .group-block-content {
+  .torineser-project-left.group-block > .group-block-content {
     padding: 48px 28px;
   }
 
