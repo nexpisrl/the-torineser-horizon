@@ -654,15 +654,22 @@
   --button-background-color: transparent;
   --button-border-color: #E8E4DF;
   --button-border-width: 1.5px;
-  background: transparent;
-  color: #1C1915;
-  border: 1.5px solid #E8E4DF;
-  border-radius: 100px;
-  padding-block: 15px;
-  padding-inline: 28px;
+  background: transparent !important;
+  color: #1C1915 !important;
+  border: 1.5px solid #E8E4DF !important;
+  border-radius: 100px !important;
+  padding: 15px 28px !important;
+  box-shadow: none !important;
   font-size: 14px;
   font-weight: 400;
+  line-height: 1.2;
+  min-height: 0;
   cursor: pointer;
+}
+
+.torineser-open-call .torineser-open-call-actions .button.button-secondary::before,
+.torineser-open-call .torineser-open-call-actions .button.button-secondary::after {
+  display: none !important;
 }
 
 @media screen and (max-width: 989px) {
