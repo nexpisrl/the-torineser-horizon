@@ -70,7 +70,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>Oltre 109 opere originali, numerate e firmate da artisti che vivono Torino ogni giorno.</p>",
+            "text": "<p>Oltre 109 opere originali, numerate e firmate da artisti che vivono<br/>Torino ogni giorno.</p>",
             "width": "fit-content",
             "max_width": "none",
             "alignment": "left",
