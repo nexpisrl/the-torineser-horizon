@@ -2,7 +2,11 @@
   {% content_for 'blocks' %}
 {% endcapture %}
 
-{% render 'group', children: children, settings: block.settings, shopify_attributes: block.shopify_attributes %}
+{% liquid
+  assign group_extra_class = block.settings.custom_class | strip
+%}
+
+{% render 'group', children: children, settings: block.settings, shopify_attributes: block.shopify_attributes, class: group_extra_class %}
 
 {% schema %}
 {
@@ -20,6 +24,11 @@
     }
   ],
   "settings": [
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "t:settings.custom_class"
+    },
     {
       "type": "header",
       "content": "t:content.layout"
