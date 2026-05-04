@@ -170,3 +170,83 @@
 #header-component[data-sticky-state='active'] .header__underlay-open::after {
   background-color: rgb(var(--color-background-rgb));
 }
+
+/* ─── Hero home handoff — testo e bottoni ─── */
+#Hero-hero_jVaWmY .hero__content-wrapper {
+  justify-content: flex-end;
+  gap: 0;
+}
+
+#Hero-hero_jVaWmY .the_torineser-pre_title {
+  margin-bottom: 20px;
+}
+
+#Hero-hero_jVaWmY .the_torineser-hero-title {
+  --width: min(100%, 680px);
+}
+
+#Hero-hero_jVaWmY .the_torineser-hero-title > * {
+  font-family: "Cormorant Garamond", var(--font-heading--family), serif;
+  font-weight: 300;
+  font-size: 5.5rem;
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  color: #FAF7F2;
+  margin-bottom: 24px;
+}
+
+#Hero-hero_jVaWmY .the_torineser-hero-description {
+  --width: min(100%, 520px);
+}
+
+#Hero-hero_jVaWmY .the_torineser-hero-description > * {
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-weight: 300;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: rgba(250, 247, 242, 0.78);
+  margin-bottom: 40px;
+}
+
+#Hero-hero_jVaWmY .button--button_mpMAb8 {
+  --button-color: #FAF7F2;
+  --button-background-color: #C04C35;
+  --button-border-color: transparent;
+  --button-border-width: 0;
+  border-radius: 100px;
+  padding-block: 16px;
+  padding-inline: 32px;
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+#Hero-hero_jVaWmY .button--button_mpMAb8:hover,
+#Hero-hero_jVaWmY .button--button_mpMAb8:focus-visible {
+  --button-color: #FAF7F2;
+  --button-background-color: #a8442f;
+  --button-border-color: transparent;
+}
+
+#Hero-hero_jVaWmY .button-secondary--button_DE3Wew {
+  --button-color: #FAF7F2;
+  --button-background-color: transparent;
+  --button-border-color: rgba(250, 247, 242, 0.35);
+  --button-border-width: 1px;
+  border-radius: 100px;
+  padding-block: 16px;
+  padding-inline: 28px;
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: none;
+}
+
+#Hero-hero_jVaWmY .button-secondary--button_DE3Wew:hover,
+#Hero-hero_jVaWmY .button-secondary--button_DE3Wew:focus-visible {
+  --button-color: #FAF7F2;
+  --button-background-color: transparent;
+  --button-border-color: rgba(250, 247, 242, 0.35);
+}
