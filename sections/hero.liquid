@@ -327,7 +327,7 @@
   {{ media_slot_2 }}
 
   {% if media_count == 0 %}
-  {{ ' h ero-apparel-1' | placeholder_svg_tag: 'hero__media' }}
+  {{ 'hero-apparel-1' | placeholder_svg_tag: 'hero__media' }}
   {%- endif -%}
   {% endcapture %}
 
@@ -359,7 +359,7 @@
   }}
   {% endif %}
   {% if media_count == 0 %}
-  {{ ' h ero-apparel-1' | placeholder_svg_tag: 'hero__media' }}
+  {{ 'hero-apparel-1' | placeholder_svg_tag: 'hero__media' }}
   {% endif %}
   {% endcapture %}
 
@@ -443,7 +443,7 @@
   }}
   {% endif %}
   {% if media_count == 0 %}
-  {{ ' h ero-apparel-1' | placeholder_svg_tag: 'hero__media' }}
+  {{ 'hero-apparel-1' | placeholder_svg_tag: 'hero__media' }}
   {% endif %}
   {% endif %}
   {% endif %}
@@ -1027,7 +1027,7 @@
   "id": "align_baseline",
   "label": "t:settings.align_baseline",
   "default": false,
-  "visible_if": "{{ section.settings.vertical_alignment == ' f lex-end' }}"
+  "visible_if": "{{ section.settings.vertical_alignment == 'flex-end' }}"
   },
   {
   "type": "select",
@@ -1502,3 +1502,4 @@
   ]
   }
   {% endschema %}
+
