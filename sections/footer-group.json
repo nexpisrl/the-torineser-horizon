@@ -171,7 +171,7 @@
           },
           "blocks": {}
         },
-        "group_mzbAD7": {
+        "group_FbTGdK": {
           "type": "group",
           "name": "t:names.group",
           "settings": {
@@ -211,7 +211,59 @@
             "padding-inline-start": 0,
             "padding-inline-end": 0
           },
-          "blocks": {}
+          "blocks": {
+            "text_ei37dp": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "custom_class": "",
+                "text": "<p>Seguici</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "social_links_bqafLn": {
+              "type": "social-links",
+              "name": "t:names.social_media_links",
+              "settings": {
+                "facebook_url": "#",
+                "instagram_url": "#",
+                "youtube_url": "",
+                "tiktok_url": "",
+                "twitter_url": "",
+                "threads_url": "",
+                "linkedin_url": "#",
+                "bluesky_url": "",
+                "snapchat_url": "",
+                "pinterest_url": "",
+                "tumblr_url": "",
+                "vimeo_url": "",
+                "custom_url": ""
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_ei37dp",
+            "social_links_bqafLn"
+          ]
         }
       },
       "block_order": [
@@ -219,7 +271,7 @@
         "menu_rWnRkV",
         "menu_dGePYe",
         "menu_FnLMQf",
-        "group_mzbAD7"
+        "group_FbTGdK"
       ],
       "name": "t:names.footer",
       "settings": {
