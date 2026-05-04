@@ -777,12 +777,12 @@
 /* ─── Footer ───────────────────────────────────────────────────────────────────── */
 .section-wrapper:has(.footer-content) > .section-background,
 .footer-utilities > .section-background {
-  background: #1C1915;
+  background: #F7F5F3;
 }
 
 .section-wrapper:has(.footer-content) .section,
 .footer-utilities .section {
-  color: #FAF7F2;
+  color: #1C1915;
 }
 
 .section-wrapper:has(.footer-content) .footer-content {
@@ -799,24 +799,24 @@
   max-inline-size: 320px;
 }
 
-.section-wrapper:has(.footer-content) .footer-content > :first-child .text-block > * {
+.section-wrapper:has(.footer-content) .torineser-footer-brand .text-block > * {
   margin: 0;
   font-family: "DM Sans", var(--font-body--family), sans-serif;
   font-size: 13px;
   font-weight: 300;
   line-height: 1.7;
-  color: rgb(250 247 242 / 0.6);
+  color: rgb(28 25 21 / 0.6);
   max-inline-size: 280px;
 }
 
 .section-wrapper:has(.footer-content) .menu__heading,
-.section-wrapper:has(.footer-content) .group-block .text-block > p:first-child {
+.section-wrapper:has(.footer-content) .torineser-footer-social .text-block > p:first-child {
   margin: 0 0 18px;
   font-family: "DM Sans", var(--font-body--family), sans-serif;
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgb(250 247 242 / 0.47);
+  color: rgb(28 25 21 / 0.467);
 }
 
 .section-wrapper:has(.footer-content) .menu .details-content {
@@ -831,36 +831,36 @@
 }
 
 .section-wrapper:has(.footer-content) .menu__item a {
-  color: #FAF7F2;
+  color: #1C1915;
   text-decoration: none;
 }
 
-.section-wrapper:has(.footer-content) .social-icons__wrapper {
+.section-wrapper:has(.footer-content) .torineser-footer-social .social-icons__wrapper {
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
 }
 
-.section-wrapper:has(.footer-content) .social-icons__icon {
+.section-wrapper:has(.footer-content) .torineser-footer-social .social-icons__icon {
   display: none !important;
 }
 
-.section-wrapper:has(.footer-content) .social-icons__icon-label {
+.section-wrapper:has(.footer-content) .torineser-footer-social .social-icons__icon-label {
   display: inline !important;
 }
 
-.section-wrapper:has(.footer-content) .social-icons__wrapper a {
-  color: #FAF7F2;
+.section-wrapper:has(.footer-content) .torineser-footer-social .social-icons__wrapper a {
+  color: #1C1915;
   text-decoration: none;
 }
 
-.section-wrapper:has(.footer-content) .social-icons__wrapper a::after {
+.section-wrapper:has(.footer-content) .torineser-footer-social .social-icons__wrapper a::after {
   content: " →";
 }
 
 .footer-utilities .utilities {
-  border-top-color: rgb(250 247 242 / 0.13);
-  color: rgb(250 247 242 / 0.38);
+  border-top-color: rgb(28 25 21 / 0.133);
+  color: rgb(28 25 21 / 0.376);
 }
 
 .footer-utilities .footer-utilities__group-copyright,
@@ -876,7 +876,7 @@
 
 .footer-utilities .footer-policy-list a,
 .footer-utilities .footer-utilities__text {
-  color: rgb(250 247 242 / 0.38);
+  color: rgb(28 25 21 / 0.376);
 }
 
 @media screen and (max-width: 989px) {
