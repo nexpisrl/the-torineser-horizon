@@ -459,3 +459,130 @@
   line-height: 1.3;
   color: #1C1915;
 }
+
+/* ─── Sezione "Progetto (BIG)" ─────────────────────────────────────────────────── */
+.torineser-project-big.section {
+  padding-inline: 48px;
+}
+
+.torineser-project-big .custom-section-content {
+  border-radius: 28px;
+  overflow: hidden;
+  background: #F2EDE5;
+}
+
+.torineser-project-big [data-testid='section-content'] {
+  min-height: 560px;
+  gap: 0;
+}
+
+.torineser-project-big [data-testid='section-content'] > .group-block {
+  width: 50%;
+}
+
+.torineser-project-big [data-testid='section-content'] > .group-block:first-child .group-block-content {
+  padding: 80px;
+  justify-content: center;
+}
+
+.torineser-project-big .torineser-project-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: #C04C35;
+  margin-bottom: 20px;
+}
+
+.torineser-project-big .torineser-project-title > * {
+  font-family: "Cormorant Garamond", var(--font-heading--family), serif;
+  font-weight: 300;
+  font-size: 4rem;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: #1C1915;
+  margin-bottom: 28px;
+}
+
+.torineser-project-big .torineser-project-description > * {
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgb(28 25 21 / 0.67);
+  max-inline-size: 480px;
+  margin-bottom: 36px;
+}
+
+.torineser-project-big .torineser-project-stat {
+  min-width: 72px;
+}
+
+.torineser-project-big .torineser-project-stat p:first-child {
+  font-family: "Cormorant Garamond", var(--font-heading--family), serif;
+  font-size: 44px;
+  line-height: 1;
+  color: #1C1915;
+  margin: 0;
+}
+
+.torineser-project-big .torineser-project-stat p:last-child {
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(28 25 21 / 0.5);
+  margin-top: 6px;
+  margin-bottom: 0;
+}
+
+.torineser-project-big .group-block:has(.torineser-project-stat) .group-block-content {
+  gap: 40px;
+  margin-bottom: 40px;
+  padding-top: 32px;
+  border-top: 1px solid rgb(28 25 21 / 0.13);
+}
+
+.torineser-project-big .group-block .button:not(.button-secondary) {
+  --button-color: #ffffff;
+  --button-background-color: #C04C35;
+  --button-border-color: transparent;
+  --button-border-width: 0;
+  border-radius: 100px;
+  padding-block: 14px;
+  padding-inline: 30px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.torineser-project-big .group-block .button:not(.button-secondary):hover {
+  --button-color: #ffffff;
+  --button-background-color: #a8442f;
+  --button-border-color: transparent;
+}
+
+.torineser-project-big .collection-quad-gallery {
+  aspect-ratio: auto;
+  height: 100%;
+  background: #F7F5F3;
+}
+
+@media screen and (max-width: 989px) {
+  .torineser-project-big.section {
+    padding-inline: 24px;
+  }
+
+  .torineser-project-big [data-testid='section-content'] {
+    min-height: 0;
+  }
+
+  .torineser-project-big [data-testid='section-content'] > .group-block {
+    width: 100%;
+  }
+
+  .torineser-project-big [data-testid='section-content'] > .group-block:first-child .group-block-content {
+    padding: 48px 28px;
+  }
+
+  .torineser-project-big .torineser-project-title > * {
+    font-size: 3rem;
+  }
+}
