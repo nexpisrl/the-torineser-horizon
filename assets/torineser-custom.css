@@ -414,7 +414,8 @@
 }
 
 .torineser-home-latest .resource-list__item .product-card__content {
-  --product-card-gap: 0;
+  --product-card-gap: 0 !important;
+  gap: 0 !important;
 }
 
 .torineser-home-latest .resource-list__item .torineser-product-card-meta__title {
