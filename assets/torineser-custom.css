@@ -649,11 +649,13 @@
   font-weight: 500;
 }
 
-.torineser-open-call .torineser-open-call-actions .button.button-secondary {
+.torineser-open-call .torineser-open-call-actions .button-secondary {
   --button-color: #1C1915;
   --button-background-color: transparent;
   --button-border-color: #E8E4DF;
   --button-border-width: 1.5px;
+  --button-border-radius: 100px;
+  --button-border-scale: 1;
   background: transparent !important;
   color: #1C1915 !important;
   border: 1.5px solid #E8E4DF !important;
@@ -667,8 +669,8 @@
   cursor: pointer;
 }
 
-.torineser-open-call .torineser-open-call-actions .button.button-secondary::before,
-.torineser-open-call .torineser-open-call-actions .button.button-secondary::after {
+.torineser-open-call .torineser-open-call-actions .button-secondary::before,
+.torineser-open-call .torineser-open-call-actions .button-secondary::after {
   display: none !important;
 }
 
