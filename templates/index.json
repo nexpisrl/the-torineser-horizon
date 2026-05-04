@@ -1718,20 +1718,6 @@
         "custom_class": "torineser-open-call"
       }
     },
-    "divider_N6TEYy": {
-      "type": "divider",
-      "name": "t:names.divider_section",
-      "settings": {
-        "color_scheme": "",
-        "section_width": "full-width",
-        "thickness": 1,
-        "corner_radius": "square",
-        "width_percent": 100,
-        "alignment_horizontal": "center",
-        "padding-block-start": 16,
-        "padding-block-end": 16
-      }
-    },
     "section_T8PkXT": {
       "type": "section",
       "blocks": {
@@ -1766,7 +1752,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h2>Ogni nuova stampa,<br/>prima di tutti.</h2>",
+            "text": "<h3>Ogni nuova stampa,<br/><em>prima di tutti.</em></h3>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -1781,7 +1767,7 @@
             "background": false,
             "background_color": "#00000026",
             "corner_radius": 0,
-            "custom_class": "",
+            "custom_class": "torineser-newsletter-title",
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
@@ -1807,7 +1793,7 @@
             "background": false,
             "background_color": "#00000026",
             "corner_radius": 0,
-            "custom_class": "",
+            "custom_class": "torineser-newsletter-description",
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
@@ -1819,7 +1805,7 @@
           "type": "email-signup",
           "settings": {
             "width": "custom",
-            "custom_width": 50,
+            "custom_width": 100,
             "inherit_color_scheme": true,
             "color_scheme": "",
             "heading": "",
@@ -1828,8 +1814,8 @@
             "border_width": 1,
             "border_radius": 100,
             "input_type_preset": "paragraph",
-            "style_class": "button-unstyled",
-            "display_type": "arrow",
+            "style_class": "button",
+            "display_type": "text",
             "label": "Iscriviti",
             "integrated_button": true,
             "button_type_preset": "paragraph",
@@ -1856,11 +1842,11 @@
         "align_baseline": false,
         "horizontal_alignment_flex_direction_column": "center",
         "vertical_alignment_flex_direction_column": "center",
-        "gap": 16,
+        "gap": 0,
         "section_width": "page-width",
         "section_height": "",
         "section_height_custom": 50,
-        "color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
         "background_media": "none",
         "video_position": "cover",
         "background_image_position": "cover",
@@ -1872,8 +1858,9 @@
         "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 40,
-        "padding-block-end": 40
+        "padding-block-start": 80,
+        "padding-block-end": 80,
+        "custom_class": "torineser-newsletter"
       }
     }
   },
@@ -1885,7 +1872,6 @@
     "artists_marquee_bFHik7",
     "section_KfWdWa",
     "section_Yi6ghJ",
-    "divider_N6TEYy",
     "section_T8PkXT"
   ]
 }
