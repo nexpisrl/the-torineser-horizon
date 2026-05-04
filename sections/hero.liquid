@@ -1,4 +1,4 @@
-{% liquid
+﻿{% liquid
   assign media_count = 0
   assign media_count_mobile = 0
   assign fallback_to_desktop = false
@@ -13,52 +13,52 @@
   # For each media slot, check if the media is not blank and the media type matches the slot
   # Need to check both (1) media picker is not blank AND (2) section.setting.media_type because user can toggle between different media types to display, but choosing "Image" doesn't clear a saved "Video" in the theme editor.
   # The alternate setting (section.settings.image_1 when "Video" is selected) is only visually hidden in theme editor.
-  if section.settings.image_1 != blank and section.settings.media_type_1 == ' i mage'
-    assign media_1 = ' i mage'
+  if section.settings.image_1 != blank and section.settings.media_type_1 == 'image'
+    assign media_1 = 'image'
     assign media_count = media_count | plus: 1
   endif
-  if section.settings.video_1 != blank and section.settings.media_type_1 == ' v ideo'
-    assign media_1 = ' v ideo'
+  if section.settings.video_1 != blank and section.settings.media_type_1 == 'video'
+    assign media_1 = 'video'
     assign media_count = media_count | plus: 1
   endif
-  if section.settings.image_2 != blank and section.settings.media_type_2 == ' i mage'
-    assign media_2 = ' i mage'
+  if section.settings.image_2 != blank and section.settings.media_type_2 == 'image'
+    assign media_2 = 'image'
     assign media_count = media_count | plus: 1
   endif
-  if section.settings.video_2 != blank and section.settings.media_type_2 == ' v ideo'
-    assign media_2 = ' v ideo'
+  if section.settings.video_2 != blank and section.settings.media_type_2 == 'video'
+    assign media_2 = 'video'
     assign media_count = media_count | plus: 1
   endif
 
   if section.settings.custom_mobile_media
     # Mobile media checks
     # For each media slot, check if the media is not blank and the media type matches the slot
-    if section.settings.image_1_mobile != blank and section.settings.media_type_1_mobile == ' i mage'
-      assign media_1_mobile = ' i mage'
+    if section.settings.image_1_mobile != blank and section.settings.media_type_1_mobile == 'image'
+      assign media_1_mobile = 'image'
       assign media_count_mobile = media_count_mobile | plus: 1
     endif
-    if section.settings.video_1_mobile != blank and section.settings.media_type_1_mobile == ' v ideo'
-      assign media_1_mobile = ' v ideo'
+    if section.settings.video_1_mobile != blank and section.settings.media_type_1_mobile == 'video'
+      assign media_1_mobile = 'video'
       assign media_count_mobile = media_count_mobile | plus: 1
     endif
-    if section.settings.image_2_mobile != blank and section.settings.media_type_2_mobile == ' i mage'
-      assign media_2_mobile = ' i mage'
+    if section.settings.image_2_mobile != blank and section.settings.media_type_2_mobile == 'image'
+      assign media_2_mobile = 'image'
       assign media_count_mobile = media_count_mobile | plus: 1
     endif
-    if section.settings.video_2_mobile != blank and section.settings.media_type_2_mobile == ' v ideo'
-      assign media_2_mobile = ' v ideo'
+    if section.settings.video_2_mobile != blank and section.settings.media_type_2_mobile == 'video'
+      assign media_2_mobile = 'video'
       assign media_count_mobile = media_count_mobile | plus: 1
     endif
   endif
-  if media_count > 0 and media_1 != ' i mage' and media_2 != ' i mage'
+  if media_count > 0 and media_1 != 'image' and media_2 != 'image'
     assign has_only_video = true
   endif
-  if media_count > 0 and media_count_mobile > 0 and media_1_mobile != ' i mage' and media_2_mobile != ' i mage'
+  if media_count > 0 and media_count_mobile > 0 and media_1_mobile != 'image' and media_2_mobile != 'image'
     assign has_only_video_mobile = true
   endif
 
-  assign media_wrapper_desktop_class = ' h ero__media-wrapper hero__media-wrapper--desktop'
-  assign media_wrapper_mobile_class = ' h ero__media-wrapper hero__media-wrapper--mobile'
+  assign media_wrapper_desktop_class = 'hero__media-wrapper hero__media-wrapper--desktop'
+  assign media_wrapper_mobile_class = 'hero__media-wrapper hero__media-wrapper--mobile'
   # If there is no custom mobile media to show, we add the mobile class to the desktop classes so content is always shown on mobile.
   if section.settings.custom_mobile_media == false or section.settings.custom_mobile_media == true and media_count_mobile == 0
     assign media_wrapper_desktop_class = media_wrapper_desktop_class | append: ' hero__media-wrapper--mobile'
@@ -79,10 +79,10 @@
     endif
   endif
 
-  if media_1 == ' i mage' and media_2 == ' i mage'
-    assign media_width_desktop = ' 5 0vw'
+  if media_1 == 'image' and media_2 == 'image'
+    assign media_width_desktop = '50vw'
   else
-    assign media_width_desktop = ' 1 00vw'
+    assign media_width_desktop = '100vw'
   endif
 
   # If custom mobile media is disabled or no mobile media is present, we need to fallback to desktop media.
@@ -93,29 +93,29 @@
 
   if fallback_to_desktop
     assign media_width_mobile = media_width_desktop
-  elsif section.settings.stack_media_on_mobile or media_1_mobile != ' i mage' or media_2_mobile != ' i mage'
-    assign media_width_mobile = ' 1 00vw'
+  elsif section.settings.stack_media_on_mobile or media_1_mobile != 'image' or media_2_mobile != 'image'
+    assign media_width_mobile = '100vw'
   else
-    assign media_width_mobile = ' 5 0vw'
+    assign media_width_mobile = '50vw'
   endif
 
-  assign sizes = ' ( min-width: 750px) ' | append: media_width_desktop | append: ', ' | append: media_width_mobile
-  assign widths = ' 8 32, 1200, 1600, 1920, 2560, 3840'
+  assign sizes = '(min-width: 750px) ' | append: media_width_desktop | append: ', ' | append: media_width_mobile
+  assign widths = '832, 1200, 1600, 1920, 2560, 3840'
   assign sizes_mobile = media_width_mobile
-  assign mobile_widths = ' 4 16, 600, 800, 1200, 1600'
+  assign mobile_widths = '416, 600, 800, 1200, 1600'
   assign mobile_widths_array = mobile_widths | split: ', '
 
-  assign fetch_priority = ' a uto'
+  assign fetch_priority = 'auto'
 
   if section.index == 1
-    assign fetch_priority = ' h igh'
+    assign fetch_priority = 'high'
   endif
 
   assign section_custom_class = section.settings.custom_class | strip
   %}
 
   {% capture media_slot_1 %}
-  {%- if media_1 == ' i mage' and media_1_mobile == ' i mage' -%}
+  {%- if media_1 == 'image' and media_1_mobile == 'image' -%}
   {%- comment -%} Both desktop and mobile are images. Assume similar images, and this is art direction: use picture element. {%- endcomment -%}
   <picture
   data-testid="hero-picture-1"
@@ -140,13 +140,13 @@
   widths: widths,
   height: section.settings.image_1.height,
   alt: section.settings.image_1.alt,
-  class: ' h ero__media',
+  class: 'hero__media',
   sizes: sizes,
   fetchpriority: fetch_priority,
-  data-testid: ' h ero-desktop-image-1'
+  data-testid: 'hero-desktop-image-1'
   }}
   </picture>
-  {%- elsif media_1 == ' i mage' -%}
+  {%- elsif media_1 == 'image' -%}
   <div class="{{ media_wrapper_desktop_class }}">
   {{
   section.settings.image_1
@@ -156,15 +156,15 @@
   widths: widths,
   height: section.settings.image_1.height,
   alt: section.settings.image_1.alt,
-  class: ' h ero__media',
+  class: 'hero__media',
   sizes: sizes,
   fetchpriority: fetch_priority,
-  data-testid: ' h ero-desktop-image-1'
+  data-testid: 'hero-desktop-image-1'
   }}
   </div>
   {%- endif -%}
 
-  {%- if media_1 == ' v ideo' -%}
+  {%- if media_1 == 'video' -%}
   <div class="{{ media_wrapper_desktop_class }}">
   {{
   section.settings.video_1
@@ -174,15 +174,15 @@
   loop: true,
   controls: false,
   muted: true,
-  class: ' h ero__media',
-  data-testid: ' h ero-desktop-video-1'
+  class: 'hero__media',
+  data-testid: 'hero-desktop-video-1'
   }}
   </div>
   {%- endif -%}
 
   {%- comment -%} Mobile-only slot 1 media (when desktop is different type) {%- endcomment -%}
   {%- if media_count > 0 and media_count_mobile > 0 -%}
-  {%- if media_1_mobile == ' i mage' and media_1 != ' i mage' -%}
+  {%- if media_1_mobile == 'image' and media_1 != 'image' -%}
   <div class="{{ media_wrapper_mobile_class }}">
   {{
   section.settings.image_1_mobile
@@ -192,15 +192,15 @@
   widths: mobile_widths,
   height: section.settings.image_1_mobile.height,
   alt: section.settings.image_1_mobile.alt,
-  class: ' h ero__media',
+  class: 'hero__media',
   sizes: sizes_mobile,
   fetchpriority: fetch_priority,
-  data-testid: ' h ero-mobile-image-1'
+  data-testid: 'hero-mobile-image-1'
   }}
   </div>
   {%- endif -%}
 
-  {%- if media_1_mobile == ' v ideo' -%}
+  {%- if media_1_mobile == 'video' -%}
   <div class="{{ media_wrapper_mobile_class }}">
   {{
   section.settings.video_1_mobile
@@ -210,8 +210,8 @@
   loop: true,
   controls: false,
   muted: true,
-  class: ' h ero__media',
-  data-testid: ' h ero-mobile-video-1'
+  class: 'hero__media',
+  data-testid: 'hero-mobile-video-1'
   }}
   </div>
   {%- endif -%}
@@ -219,7 +219,7 @@
   {% endcapture %}
 
   {% capture media_slot_2 %}
-  {%- if media_2 == ' i mage' and media_2_mobile == ' i mage' -%}
+  {%- if media_2 == 'image' and media_2_mobile == 'image' -%}
   {%- comment -%} Both desktop and mobile are images. Assume this is art direction: use picture element.  {%- endcomment -%}
   <picture
   class="hero__media"
@@ -244,13 +244,13 @@
   widths: widths,
   height: section.settings.image_2.height,
   alt: section.settings.image_2.alt,
-  class: ' h ero__media',
+  class: 'hero__media',
   sizes: sizes,
   fetchpriority: fetch_priority,
-  data-testid: ' h ero-desktop-image-2'
+  data-testid: 'hero-desktop-image-2'
   }}
   </picture>
-  {%- elsif media_2 == ' i mage' -%}
+  {%- elsif media_2 == 'image' -%}
   <div class="{{ media_wrapper_desktop_class }}">
   {{
   section.settings.image_2
@@ -260,15 +260,15 @@
   widths: widths,
   height: section.settings.image_2.height,
   alt: section.settings.image_2.alt,
-  class: ' h ero__media',
+  class: 'hero__media',
   sizes: sizes,
   fetchpriority: fetch_priority,
-  data-testid: ' h ero-desktop-image-2'
+  data-testid: 'hero-desktop-image-2'
   }}
   </div>
   {%- endif -%}
 
-  {%- if media_2 == ' v ideo' -%}
+  {%- if media_2 == 'video' -%}
   <div class="{{ media_wrapper_desktop_class }}">
   {{
   section.settings.video_2
@@ -278,15 +278,15 @@
   loop: true,
   controls: false,
   muted: true,
-  class: ' h ero__media',
-  data-testid: ' h ero-desktop-video-2'
+  class: 'hero__media',
+  data-testid: 'hero-desktop-video-2'
   }}
   </div>
   {%- endif -%}
 
   {%- comment -%} Mobile-only slot 2 media (when desktop is different type) {%- endcomment -%}
   {%- if media_count > 0 and media_count_mobile > 0 -%}
-  {%- if media_2_mobile == ' i mage' and media_2 != ' i mage' -%}
+  {%- if media_2_mobile == 'image' and media_2 != 'image' -%}
   <div class="{{ media_wrapper_mobile_class }}">
   {{
   section.settings.image_2_mobile
@@ -296,15 +296,15 @@
   widths: mobile_widths,
   height: section.settings.image_2_mobile.height,
   alt: section.settings.image_2_mobile.alt,
-  class: ' h ero__media',
+  class: 'hero__media',
   sizes: sizes_mobile,
   fetchpriority: fetch_priority,
-  data-testid: ' h ero-mobile-image-2'
+  data-testid: 'hero-mobile-image-2'
   }}
   </div>
   {%- endif -%}
 
-  {%- if media_2_mobile == ' v ideo' -%}
+  {%- if media_2_mobile == 'video' -%}
   <div class="{{ media_wrapper_mobile_class }}">
   {{
   section.settings.video_2_mobile
@@ -314,8 +314,8 @@
   loop: true,
   controls: false,
   muted: true,
-  class: ' h ero__media',
-  data-testid: ' h ero-mobile-video-2'
+  class: 'hero__media',
+  data-testid: 'hero-mobile-video-2'
   }}
   </div>
   {%- endif -%}
@@ -327,12 +327,12 @@
   {{ media_slot_2 }}
 
   {% if media_count == 0 %}
-  {{ ' h ero-apparel-1' | placeholder_svg_tag: ' h ero__media' }}
+  {{ 'hero-apparel-1' | placeholder_svg_tag: 'hero__media' }}
   {%- endif -%}
   {% endcapture %}
 
   {% capture media_blurred %}
-  {% if media_1 == ' i mage' %}
+  {% if media_1 == 'image' %}
   {{
   section.settings.image_1
   | image_url: width: 3840
@@ -341,11 +341,11 @@
   widths: widths,
   height: section.settings.image_1.height,
   alt: '',
-  class: ' h ero__media',
+  class: 'hero__media',
   sizes: sizes
   }}
   {% endif %}
-  {% if media_2 == ' i mage' %}
+  {% if media_2 == 'image' %}
   {{
   section.settings.image_2
   | image_url: width: 3840
@@ -354,12 +354,12 @@
   widths: widths,
   height: section.settings.image_2.height,
   alt: '',
-  class: ' h ero__media',
+  class: 'hero__media',
   sizes: sizes
   }}
   {% endif %}
   {% if media_count == 0 %}
-  {{ ' h ero-apparel-1' | placeholder_svg_tag: ' h ero__media' }}
+  {{ 'hero-apparel-1' | placeholder_svg_tag: 'hero__media' }}
   {% endif %}
   {% endcapture %}
 
@@ -371,25 +371,25 @@
   {%- endcomment -%}
   {% if section.settings.stack_media_on_mobile == false %}
   {% if section.settings.custom_mobile_media == true and fallback_to_desktop == false %}
-  {% if media_1_mobile == ' i mage' %}
+  {% if media_1_mobile == 'image' %}
   {{ section.settings.image_1_mobile
   | image_url: width: 1600
   | image_tag: width: section.settings.image_1_mobile.width,
   widths: mobile_widths,
   height: section.settings.image_1_mobile.height,
   alt: '',
-  class: ' h ero__media',
+  class: 'hero__media',
   sizes: sizes_mobile
   }}
   {% endif %}
-  {% if media_2_mobile == ' i mage' %}
+  {% if media_2_mobile == 'image' %}
   {{ section.settings.image_2_mobile
   | image_url: width: 1600
   | image_tag: width: section.settings.image_2_mobile.width,
   widths: mobile_widths,
   height: section.settings.image_2_mobile.height,
   alt: '',
-  class: ' h ero__media',
+  class: 'hero__media',
   sizes: sizes_mobile
   }}
   {% endif %}
@@ -398,52 +398,52 @@
   {% endif %}
   {% elsif section.settings.stack_media_on_mobile == true %}
   {% if section.settings.custom_mobile_media == true and fallback_to_desktop == false %}
-  {% if media_2_mobile == ' i mage' %}
+  {% if media_2_mobile == 'image' %}
   {{ section.settings.image_2_mobile
   | image_url: width: 1600
   | image_tag: width: section.settings.image_2_mobile.width,
   widths: mobile_widths,
   height: section.settings.image_2_mobile.height,
   alt: '',
-  class: ' h ero__media',
+  class: 'hero__media',
   sizes: sizes_mobile
   }}
-  {% elsif media_1_mobile == ' i mage' %}
+  {% elsif media_1_mobile == 'image' %}
   {{ section.settings.image_1_mobile
   | image_url: width: 1600
   | image_tag: width: section.settings.image_1_mobile.width,
   widths: mobile_widths,
   height: section.settings.image_1_mobile.height,
   alt: '',
-  class: ' h ero__media',
+  class: 'hero__media',
   sizes: sizes_mobile
   }}
   {% endif %}
   {% elsif fallback_to_desktop %}
   {% if media_count > 0 %}
-  {% if media_2 == ' i mage' %}
+  {% if media_2 == 'image' %}
   {{ section.settings.image_2
   | image_url: width: 1600
   | image_tag: width: section.settings.image_2.width,
   widths: widths,
   height: section.settings.image_2.height,
   alt: '',
-  class: ' h ero__media',
+  class: 'hero__media',
   sizes: sizes
   }}
-  {% elsif media_1 == ' i mage' %}
+  {% elsif media_1 == 'image' %}
   {{ section.settings.image_1
   | image_url: width: 1600
   | image_tag: width: section.settings.image_1.width,
   widths: widths,
   height: section.settings.image_1.height,
   alt: '',
-  class: ' h ero__media',
+  class: 'hero__media',
   sizes: sizes
   }}
   {% endif %}
   {% if media_count == 0 %}
-  {{ ' h ero-apparel-1' | placeholder_svg_tag: ' h ero__media' }}
+  {{ 'hero-apparel-1' | placeholder_svg_tag: 'hero__media' }}
   {% endif %}
   {% endif %}
   {% endif %}
@@ -452,13 +452,13 @@
 
   <div
   id="Hero-{{ section.id }}"
-  class="hero color-{{ section.settings.color_scheme }}{% if section.blocks.size == 0 and section.settings.section_height == ' a uto' %} hero--no-blocks-auto-height{% endif %}{% if section.settings.stack_media_on_mobile %} hero--stack-mobile{% endif %} {{ section_custom_class }}"
+  class="hero color-{{ section.settings.color_scheme }}{% if section.blocks.size == 0 and section.settings.section_height == 'auto' %} hero--no-blocks-auto-height{% endif %}{% if section.settings.stack_media_on_mobile %} hero--stack-mobile{% endif %} {{ section_custom_class }}"
   style="
   --hero-border-style: {{ section.settings.border }};
   --hero-border-width: {{ section.settings.border_width }}px;
   --hero-border-opacity: {{ section.settings.border_opacity }}%;
   --blur-opacity: {{ section.settings.reflection_opacity | divided_by: 100.0 }};
-  {% if section.settings.section_height == ' c ustom' %}
+  {% if section.settings.section_height == 'custom' %}
   --hero-min-height: {{ section.settings.section_height_custom }}svh;
   {% elsif section.settings.section_height == "full-screen" %}
   --hero-min-height: 100svh;
@@ -499,7 +499,7 @@
 
   <div
   class="hero__container spacing-style section section--full-width"
-  style="{% render ' s pacing-style', settings: section.settings %}"
+  style="{% render 'spacing-style', settings: section.settings %}"
   >
   {%- if section.settings.link != blank -%}
   <a
@@ -515,29 +515,29 @@
   style="--hero-media-count: {{ media_count }};--hero-media-count-mobile: {{ media_count_mobile }};{%- if section.settings.image_1 != blank -%} --hero-media-aspect-ratio: {{ section.settings.image_1.aspect_ratio }};{% endif %}"
   data-testid="hero-media-wrapper"
   >
-  {% liquid
-  if section.settings.toggle_overlay
-    render ' o verlay', settings: section.settings
-  endif
-  %}
-  {{ media }}
+      {% liquid
+        if section.settings.toggle_overlay
+          render 'overlay', settings: section.settings
+        endif
+      %}
+      {{ media }}
+    </div>
+    <div
+      class="
+        hero__content-wrapper
+        layout-panel-flex
+        layout-panel-flex--{{ section.settings.content_direction }}
+        {% if section.settings.vertical_on_mobile %}mobile-column{% endif %}
+        section-content-wrapper
+        {{ section.settings.section_width }}
+        {% if request.design_mode %}hero__content-wrapper--design-mode{% endif %}
+      "
+      style="{% render 'layout-panel-style', settings: section.settings %}"
+    >
+      {% content_for 'blocks' %}
+    </div>
   </div>
-  <div
-  class="
-  hero__content-wrapper
-  layout-panel-flex
-  layout-panel-flex--{{ section.settings.content_direction }}
-  {% if section.settings.vertical_on_mobile %}mobile-column{% endif %}
-  section-content-wrapper
-  {{section.settings.section_width}}
-  {% if request.design_mode %}hero__content-wrapper--design-mode{% endif %}
-  "
-  style="{% render ' l ayout-panel-style', settings: section.settings %}"
-  >
-  {% content_for ' b locks' %}
-  </div>
-  </div>
-  </div>
+</div>
 
   {% stylesheet %}
   .hero-wrapper {
@@ -810,13 +810,13 @@
   "type": "image_picker",
   "id": "image_1",
   "label": "t:settings.image",
-  "visible_if": "{{ section.settings.media_type_1 == ' i mage' }}"
+  "visible_if": "{{ section.settings.media_type_1 == 'image' }}"
   },
   {
   "type": "video",
   "id": "video_1",
   "label": "t:settings.video",
-  "visible_if": "{{ section.settings.media_type_1 == ' v ideo' }}"
+  "visible_if": "{{ section.settings.media_type_1 == 'video' }}"
   },
   {
   "type": "header",
@@ -842,13 +842,13 @@
   "type": "image_picker",
   "id": "image_2",
   "label": "t:settings.image",
-  "visible_if": "{{ section.settings.media_type_2 == ' i mage' }}"
+  "visible_if": "{{ section.settings.media_type_2 == 'image' }}"
   },
   {
   "type": "video",
   "id": "video_2",
   "label": "t:settings.video",
-  "visible_if": "{{ section.settings.media_type_2 == ' v ideo' }}"
+  "visible_if": "{{ section.settings.media_type_2 == 'video' }}"
   },
   {
   "type": "header",
@@ -892,13 +892,13 @@
   "type": "image_picker",
   "id": "image_1_mobile",
   "label": "t:settings.image",
-  "visible_if": "{{ section.settings.custom_mobile_media and section.settings.media_type_1_mobile == ' i mage' }}"
+  "visible_if": "{{ section.settings.custom_mobile_media and section.settings.media_type_1_mobile == 'image' }}"
   },
   {
   "type": "video",
   "id": "video_1_mobile",
   "label": "t:settings.video",
-  "visible_if": "{{ section.settings.custom_mobile_media and section.settings.media_type_1_mobile == ' v ideo' }}"
+  "visible_if": "{{ section.settings.custom_mobile_media and section.settings.media_type_1_mobile == 'video' }}"
   },
   {
   "type": "header",
@@ -926,13 +926,13 @@
   "type": "image_picker",
   "id": "image_2_mobile",
   "label": "t:settings.image",
-  "visible_if": "{{ section.settings.custom_mobile_media and section.settings.media_type_2_mobile == ' i mage' }}"
+  "visible_if": "{{ section.settings.custom_mobile_media and section.settings.media_type_2_mobile == 'image' }}"
   },
   {
   "type": "video",
   "id": "video_2_mobile",
   "label": "t:settings.video",
-  "visible_if": "{{ section.settings.custom_mobile_media and section.settings.media_type_2_mobile == ' v ideo' }}"
+  "visible_if": "{{ section.settings.custom_mobile_media and section.settings.media_type_2_mobile == 'video' }}"
   },
   {
   "type": "header",
@@ -974,7 +974,7 @@
   "id": "vertical_on_mobile",
   "label": "t:settings.vertical_on_mobile",
   "default": true,
-  "visible_if": "{{ section.settings.content_direction == ' r ow' }}"
+  "visible_if": "{{ section.settings.content_direction == 'row' }}"
   },
   {
   "type": "select",
@@ -999,7 +999,7 @@
   }
   ],
   "default": "flex-start",
-  "visible_if": "{{ section.settings.content_direction == ' r ow' }}"
+  "visible_if": "{{ section.settings.content_direction == 'row' }}"
   },
   {
   "type": "select",
@@ -1020,14 +1020,14 @@
   }
   ],
   "default": "center",
-  "visible_if": "{{ section.settings.content_direction == ' r ow' }}"
+  "visible_if": "{{ section.settings.content_direction == 'row' }}"
   },
   {
   "type": "checkbox",
   "id": "align_baseline",
   "label": "t:settings.align_baseline",
   "default": false,
-  "visible_if": "{{ section.settings.vertical_alignment == ' f lex-end' }}"
+  "visible_if": "{{ section.settings.vertical_alignment == 'flex-end' }}"
   },
   {
   "type": "select",
@@ -1048,7 +1048,7 @@
   }
   ],
   "default": "flex-start",
-  "visible_if": "{{ section.settings.content_direction != ' r ow' }}"
+  "visible_if": "{{ section.settings.content_direction != 'row' }}"
   },
   {
   "type": "select",
@@ -1073,7 +1073,7 @@
   }
   ],
   "default": "center",
-  "visible_if": "{{ section.settings.content_direction == ' c olumn' }}"
+  "visible_if": "{{ section.settings.content_direction == 'column' }}"
   },
   {
   "type": "range",
@@ -1142,7 +1142,7 @@
   "step": 1,
   "default": 50,
   "unit": "%",
-  "visible_if": "{{ section.settings.section_height == ' c ustom' }}"
+  "visible_if": "{{ section.settings.section_height == 'custom' }}"
   },
   {
   "type": "header",
@@ -1199,7 +1199,7 @@
   }
   ],
   "default": "to top",
-  "visible_if": "{{ section.settings.toggle_overlay and section.settings.overlay_style == ' g radient' }}"
+  "visible_if": "{{ section.settings.toggle_overlay and section.settings.overlay_style == 'gradient' }}"
   },
   {
   "type": "checkbox",
@@ -1207,7 +1207,7 @@
   "label": "t:settings.blurred_reflection",
   "default": false,
   "info": "t:info.applies_on_image_only",
-  "visible_if": "{{ section.settings.media_type_1 != ' v ideo' or section.settings.media_type_2 != ' v ideo' or section.settings.media_type_1_mobile != ' v ideo' or section.settings.media_type_2_mobile != ' v ideo' }}"
+  "visible_if": "{{ section.settings.media_type_1 != 'video' or section.settings.media_type_2 != 'video' or section.settings.media_type_1_mobile != 'video' or section.settings.media_type_2_mobile != 'video' }}"
   },
   {
   "type": "range",
@@ -1218,16 +1218,7 @@
   "step": 1,
   "unit": "%",
   "default": 75,
-  "visible_if": "{{ section.settings.blurred_reflection and section.settings.media_type_1 != ' v ideo' or section.settings.media_type_2 != ' v ideo' }}"
-  },
-  {
-  "type": "header",
-  "content": "t:content.custom_css_classes"
-  },
-  {
-  "type": "text",
-  "id": "custom_class",
-  "label": "t:settings.custom_class"
+  "visible_if": "{{ section.settings.blurred_reflection and section.settings.media_type_1 != 'video' or section.settings.media_type_2 != 'video' }}"
   },
   {
   "type": "header",
@@ -1511,3 +1502,4 @@
   ]
   }
   {% endschema %}
+

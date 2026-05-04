@@ -23,7 +23,7 @@
   style="{% render 'spacing-style', settings: section.settings %}"
 >
   {% if section.settings.heading != blank %}
-    <p class="artists-marquee__subtitle">
+    <p class="artists-marquee__subtitle the_torineser-pre_title">
       {{- section.settings.heading | escape -}}
     </p>
   {% endif %}
@@ -60,7 +60,7 @@
                   <span
                     class="artists-marquee__sep"
                     aria-hidden="true"
-                    > · </span
+                    >·</span
                   >
                 </span>
               {% endif %}
@@ -82,20 +82,27 @@
   }
 
   .artists-marquee__subtitle {
-    font-family: var(--font-body--family);
-    font-size: clamp(0.625rem, 0.72vw + 0.55rem, 0.6875rem);
+    font-family: "DM Sans", var(--font-body--family), sans-serif;
+    font-size: 11px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     text-align: center;
-    color: var(--color-primary);
+    color: #C04C35;
     margin-block: 0 20px;
     padding-inline: var(--padding-sm);
     line-height: 1.3;
   }
 
+  .artists-marquee-section > .section {
+    max-width: 100%;
+  }
+
   .section .artists-marquee {
     display: block;
     width: 100%;
+    inline-size: 100vw;
+    max-inline-size: 100vw;
+    margin-inline: calc(50% - 50vw);
     overflow: hidden;
   }
 
@@ -149,9 +156,10 @@
   }
 
   .artists-marquee__sep {
-    color: var(--color-primary);
+    color: #C04C35;
     font-style: normal;
-    padding-inline-start: var(--padding-4xs, 2px);
+    margin-inline: 14px 0;
+    opacity: 1;
   }
 
   .artists-marquee__empty {
