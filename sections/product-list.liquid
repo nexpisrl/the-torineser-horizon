@@ -12,6 +12,7 @@
     section-resource-list
     spacing-style
     gap-style
+    {{ section.settings.custom_class }}
   "
   style="
     {% render 'spacing-style', settings: section.settings %}
@@ -314,6 +315,11 @@
       "id": "color_scheme",
       "label": "t:settings.color_scheme",
       "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom class"
     },
     {
       "type": "header",
