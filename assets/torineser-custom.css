@@ -577,11 +577,20 @@
 }
 
 .torineser-open-call .the_torineser-pre_title {
-  margin-bottom: 20px;
+  margin: 0 0 20px;
+}
+
+.torineser-open-call .the_torineser-pre_title > * {
+  margin: 0;
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #C04C35;
 }
 
 .torineser-open-call .torineser-open-call-title > * {
-  margin: 0 0 24px;
+  margin: 0;
   font-family: "Cormorant Garamond", var(--font-heading--family), serif;
   font-size: 64px;
   font-weight: 400;
@@ -591,15 +600,23 @@
   text-align: center;
 }
 
+.torineser-open-call .torineser-open-call-title {
+  margin: 0 0 24px;
+}
+
 .torineser-open-call .torineser-open-call-description > * {
-  margin: 0 auto 36px;
-  max-inline-size: 560px;
+  margin: 0;
   font-family: "DM Sans", var(--font-body--family), sans-serif;
   font-size: 16px;
   font-weight: 300;
   line-height: 1.7;
   color: #8C857C;
   text-align: center;
+}
+
+.torineser-open-call .torineser-open-call-description {
+  margin: 0 auto 36px;
+  max-inline-size: 560px;
 }
 
 .torineser-open-call .torineser-open-call-actions > .group-block-content {
@@ -609,11 +626,22 @@
   --gap: 14px;
 }
 
+.torineser-open-call .torineser-open-call-actions .button {
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1.2;
+  box-shadow: none;
+}
+
 .torineser-open-call .torineser-open-call-actions .button:not(.button-secondary) {
   --button-color: #ffffff;
   --button-background-color: #C04C35;
   --button-border-color: transparent;
   --button-border-width: 0;
+  background: #C04C35;
+  color: #ffffff;
+  border: none;
   border-radius: 100px;
   padding-block: 15px;
   padding-inline: 32px;
@@ -626,11 +654,15 @@
   --button-background-color: transparent;
   --button-border-color: #E8E4DF;
   --button-border-width: 1.5px;
+  background: transparent;
+  color: #1C1915;
+  border: 1.5px solid #E8E4DF;
   border-radius: 100px;
   padding-block: 15px;
   padding-inline: 28px;
   font-size: 14px;
   font-weight: 400;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 989px) {
