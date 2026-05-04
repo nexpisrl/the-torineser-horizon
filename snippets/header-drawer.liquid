@@ -102,7 +102,17 @@
             {% assign first_accordion_open = false %}
             {% assign animation_index = 0 %}
             {%- for link in linklist.links -%}
-              {% assign animation_index = animation_index | plus: 1 %}
+              {% liquid
+                assign animation_index = animation_index | plus: 1
+                assign torineser_nav_href = link.url
+                if link.handle == 'per-colore' or link.handle == 'la-mappa'
+                  assign torineser_nav_href = '#'
+                endif
+                assign torineser_link_has_submenu = false
+                if link.links != blank and link.handle != 'per-colore'
+                  assign torineser_link_has_submenu = true
+                endif
+              %}
               <li
                 style="--menu-drawer-animation-index: {{ animation_index }};"
                 class="{%- if block_settings.drawer_accordion -%}menu-drawer__list-item--deep{%- else -%}menu-drawer__list-item--flat{%- endif -%}{% if block_settings.drawer_dividers %} menu-drawer__list-item--divider{% endif %}"
@@ -124,7 +134,7 @@
                     >
                       <summary
                         id="HeaderDrawer-{{ link.handle }}"
-                        class="menu-drawer__menu-item menu-drawer__menu-item--mainlist menu-drawer__animated-element focus-inset"
+                        class="menu-drawer__menu-item menu-drawer__menu-item--mainlist menu-drawer__animated-element focus-inset{% if link.handle == 'per-colore' or link.handle == 'la-mappa' %} menu-drawer__menu-item--torineser-accent{% endif %}"
                       >
                         {% render 'menu-link-torineser-nav', link: link %}
                         <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | escape }}</span>
@@ -238,8 +248,8 @@
                   {%- endcomment -%}
                   <a
                     id="HeaderDrawer-{{ link.handle }}"
-                    href="{{ link.url }}"
-                    class="menu-drawer__menu-item menu-drawer__menu-item--mainlist menu-drawer__animated-element focus-inset"
+                    href="{{ torineser_nav_href }}"
+                    class="menu-drawer__menu-item menu-drawer__menu-item--mainlist menu-drawer__animated-element focus-inset{% if link.handle == 'per-colore' or link.handle == 'la-mappa' %} menu-drawer__menu-item--torineser-accent{% endif %}"
                     {% if link.current %}
                       aria-current="page"
                     {% endif %}
@@ -257,12 +267,22 @@
             {%- endcomment -%}
             {% assign animation_index = 0 %}
             {%- for link in linklist.links -%}
-              {% assign animation_index = animation_index | plus: 1 %}
+              {% liquid
+                assign animation_index = animation_index | plus: 1
+                assign torineser_nav_href = link.url
+                if link.handle == 'per-colore' or link.handle == 'la-mappa'
+                  assign torineser_nav_href = '#'
+                endif
+                assign torineser_link_has_submenu = false
+                if link.links != blank and link.handle != 'per-colore'
+                  assign torineser_link_has_submenu = true
+                endif
+              %}
               <li
                 class="menu-drawer__list-item"
                 style="--menu-drawer-animation-index: {{ animation_index }};"
               >
-                {%- if link.links != blank -%}
+                {%- if torineser_link_has_submenu -%}
                   {%- comment -%}
                     Regardless of the Accordion setting, in menus with 3 levels of links, we use a details element to handle the top level of the menu for links that have children.
                   {%- endcomment -%}
@@ -272,7 +292,7 @@
                   >
                     <summary
                       id="HeaderDrawer-{{ link.handle }}"
-                      class="menu-drawer__menu-item menu-drawer__menu-item--mainlist menu-drawer__animated-element focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}"
+                      class="menu-drawer__menu-item menu-drawer__menu-item--mainlist menu-drawer__animated-element focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}{% if link.handle == 'per-colore' or link.handle == 'la-mappa' %} menu-drawer__menu-item--torineser-accent{% endif %}"
                       on:click="header-drawer/open/submenu"
                     >
                       {% render 'menu-link-torineser-nav', link: link %}
@@ -561,8 +581,8 @@
                   {%- endcomment -%}
                   <a
                     id="HeaderDrawer-{{ link.handle }}"
-                    href="{{ link.url }}"
-                    class="menu-drawer__menu-item menu-drawer__menu-item--mainlist menu-drawer__animated-element focus-inset"
+                    href="{{ torineser_nav_href }}"
+                    class="menu-drawer__menu-item menu-drawer__menu-item--mainlist menu-drawer__animated-element focus-inset{% if link.handle == 'per-colore' or link.handle == 'la-mappa' %} menu-drawer__menu-item--torineser-accent{% endif %}"
                     {% if link.current %}
                       aria-current="page"
                     {% endif %}
