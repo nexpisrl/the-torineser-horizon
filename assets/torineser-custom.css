@@ -303,7 +303,11 @@
 
 /* ─── Sezione "Le più amate" — sfondo grigio chiaro come demo ─────────────────── */
 .torineser-home-beloved.section-resource-list {
-  background: #F7F5F3;
+  background-color: #F7F5F3 !important;
+}
+
+.ui-test-product-list:has(> .torineser-home-beloved) > .section-background {
+  background-color: #F7F5F3 !important;
 }
 
 .torineser-home-latest .section-resource-list__header {
