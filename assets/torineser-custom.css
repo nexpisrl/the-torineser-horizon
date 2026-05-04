@@ -488,45 +488,30 @@
 }
 
 .torineser-project-left .torineser-project-eyebrow {
-  --max-width: none;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: #C04C35;
   margin-bottom: 20px;
 }
 
-.torineser-project-left .torineser-project-eyebrow > * {
-  margin: 0;
-  font-family: "DM Sans", var(--font-body--family), sans-serif;
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: #C04C35;
-}
-
-.torineser-project-left .torineser-project-title {
-  --max-width: none;
-}
-
 .torineser-project-left .torineser-project-title > * {
-  margin: 0 0 28px;
   font-family: "Cormorant Garamond", var(--font-heading--family), serif;
   font-weight: 300;
   font-size: 4rem;
   line-height: 1.05;
   letter-spacing: -0.01em;
   color: #1C1915;
-}
-
-.torineser-project-left .torineser-project-description {
-  --max-width: none;
+  margin-bottom: 28px;
 }
 
 .torineser-project-left .torineser-project-description > * {
-  margin: 0 0 36px;
   font-family: "DM Sans", var(--font-body--family), sans-serif;
   font-weight: 300;
   font-size: 15px;
   line-height: 1.8;
-  color: rgb(28 25 21 / 0.667);
+  color: rgb(28 25 21 / 0.67);
   max-inline-size: 480px;
+  margin-bottom: 36px;
 }
 
 .torineser-project-left .torineser-project-stat {
@@ -567,10 +552,8 @@
   border-radius: 100px;
   padding-block: 14px;
   padding-inline: 30px;
-  font-family: "DM Sans", var(--font-body--family), sans-serif;
   font-size: 14px;
   font-weight: 500;
-  align-self: flex-start;
 }
 
 .torineser-project-left .button:not(.button-secondary):hover {
