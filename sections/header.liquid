@@ -191,9 +191,9 @@
 
   {% capture localization_markup %}
   {% liquid
-  assign localization_font = ' - -menu-localization-font: var(--font-[localization_font]--family); ' | replace: ' [localization_font]', section.settings.localization_font
-  assign localization_font_size = ' - -menu-localization-font-size: [localization_font_size]; ' | replace: ' [localization_font_size]', section.settings.localization_font_size
-  assign color_shadow = ' - -color-shadow: rgb(var(--color-foreground-rgb) / var(--opacity-10-25));'
+  assign localization_font = '--menu-localization-font: var(--font-[localization_font]--family); ' | replace: ' [localization_font]', section.settings.localization_font
+  assign localization_font_size = '--menu-localization-font-size: [localization_font_size]; ' | replace: ' [localization_font_size]', section.settings.localization_font_size
+  assign color_shadow = '--color-shadow: rgb(var(--color-foreground-rgb) / var(--opacity-10-25));'
   assign form_style = localization_font | append: localization_font_size | append: color_shadow
   %}
   {% if show_language and show_country == false %}
@@ -356,15 +356,15 @@
       assign border_bottom_setting_id = 'border_width'
   endcase
 
-  assign style = ' - -border-bottom-width: [width]px; ' | replace: ' [width]', section.settings[border_bottom_setting_id]
+  assign style = '--border-bottom-width: [width]px; ' | replace: ' [width]', section.settings[border_bottom_setting_id]
 
   if row == 'top'
-    assign style = style | append: ' - -border-bottom-width-mobile: [width]px; ' | replace: ' [width]', section.settings.border_width
+    assign style = style | append: '--border-bottom-width-mobile: [width]px; ' | replace: ' [width]', section.settings.border_width
   endif
   %}
 
   {% capture content %}
-  {% render ' h eader-row',
+  {% render 'header-row',
   row: row,
   order: order,
   settings: section.settings,
@@ -403,7 +403,7 @@
   </header-component>
 
   <script
-  src="{{ ' h eader.js' | asset_url }}"
+  src="{{ 'header.js' | asset_url }}"
   type="module"
   ></script>
 
