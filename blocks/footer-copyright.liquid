@@ -8,13 +8,19 @@
   style="{% render 'typography-style', preset: 'custom', settings: block_settings %}"
   {{ block.shopify_attributes }}
 >
-  <span class="footer-utilities__text">
-    &copy; {{ 'now' | date: '%Y' }}
-    {{ shop.name | link_to: routes.root_url -}}
-    {%- if block_settings.show_powered_by -%}
-      , {{ powered_by_link }}
-    {%- endif -%}
-  </span>
+  {% if block_settings.custom_text != blank %}
+    <span class="footer-utilities__text">
+      {{ block_settings.custom_text }}
+    </span>
+  {% else %}
+    <span class="footer-utilities__text">
+      &copy; {{ 'now' | date: '%Y' }}
+      {{ shop.name | link_to: routes.root_url -}}
+      {%- if block_settings.show_powered_by -%}
+        , {{ powered_by_link }}
+      {%- endif -%}
+    </span>
+  {% endif %}
 </div>
 
 {% schema %}
@@ -27,6 +33,11 @@
       "id": "show_powered_by",
       "label": "t:settings.show_powered_by_shopify",
       "default": true
+    },
+    {
+      "type": "text",
+      "id": "custom_text",
+      "label": "Custom text"
     },
     {
       "type": "paragraph",
