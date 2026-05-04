@@ -62,7 +62,7 @@
           "settings": {
             "menu": "men-header-sinistra",
             "color_scheme": "",
-            "type_font_primary_size": "0.875rem",
+            "type_font_primary_size": "0.8125rem",
             "menu_font_style": "inverse",
             "type_font_primary_link": "body",
             "type_case_primary_link": "none",
@@ -84,7 +84,7 @@
           "settings": {
             "menu": "men-header-destra",
             "color_scheme": "",
-            "type_font_primary_size": "0.875rem",
+            "type_font_primary_size": "0.8125rem",
             "menu_font_style": "inverse",
             "type_font_primary_link": "body",
             "type_case_primary_link": "none",
@@ -113,7 +113,7 @@
         "country_selector_style": false,
         "show_language": true,
         "localization_font": "heading",
-        "localization_font_size": "0.875rem",
+        "localization_font_size": "0.8125rem",
         "localization_position": "right",
         "localization_row": "top",
         "section_width": "page-width",

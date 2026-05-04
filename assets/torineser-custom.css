@@ -117,3 +117,40 @@
 #header-component .dropdown-localization__button.button {
   box-shadow: none;
 }
+
+/* ─── Header layout handoff (Nav desktop): 13px testo, gap 26px, padding verticale 18px, separatore prima delle icône ─── */
+@media screen and (min-width: 750px) {
+  #header-component[data-menu-style='menu']:not(.header--compact) .header__row--top .header__columns {
+    --padding-block-start: 18px;
+    --padding-block-end: 18px;
+  }
+
+  /* Gap tra le voci di un menu (mockup: gap 26) */
+  #header-component .header-menu .menu-list {
+    --menu-horizontal-gap: 26px;
+  }
+
+  /* Letter-spacing navigazione mockup */
+  #header-component .menu-list__link {
+    letter-spacing: 0.02em;
+  }
+
+  /*
+    Bordo dopo il menu di destra (prima di lingua / ricerca / account / carrello).
+    Equivalente al mockup: borderLeft sul contenitore delle icone + padding 14px.
+  */
+  #header-component .header__column--right > .header-menu {
+    border-inline-end: 1px solid var(--color-border);
+    padding-inline-end: 14px;
+    margin-inline-end: 2px;
+  }
+
+  /* Icone utility più vicine come nel mockup (gap 14 tra pulsanti) */
+  #header-component .header__column--right header-actions {
+    gap: 14px;
+  }
+
+  #header-component .header__column--right .search-action button.header-actions__action {
+    margin-inline: 0;
+  }
+}
