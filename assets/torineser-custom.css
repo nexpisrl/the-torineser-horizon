@@ -474,43 +474,21 @@
 .torineser-project-big [data-testid='section-content'] {
   min-height: 560px;
   --gap: 0 !important;
-  gap: 0;
-  align-items: stretch;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
 }
 
-.torineser-project-big [data-testid='section-content'] > .group-block {
-  width: auto;
-  min-width: 0;
-}
-
-.torineser-project-big [data-testid='section-content'] > .group-block:nth-child(2) {
-  align-self: stretch;
-  position: relative;
-  background: #F7F5F3;
-}
-
-.torineser-project-big [data-testid='section-content'] > .group-block:nth-child(2) .group-block-content {
-  position: relative;
-  height: 100%;
-  display: block;
-  padding: 0;
-}
-
-.torineser-project-big [data-testid='section-content'] > .group-block:first-child .group-block-content {
+.torineser-project-left.group-block .group-block-content {
   padding: 80px;
   justify-content: center;
 }
 
-.torineser-project-big .torineser-project-eyebrow {
+.torineser-project-left .torineser-project-eyebrow {
   font-size: 11px;
   letter-spacing: 0.22em;
   color: #C04C35;
   margin-bottom: 20px;
 }
 
-.torineser-project-big .torineser-project-title > * {
+.torineser-project-left .torineser-project-title > * {
   font-family: "Cormorant Garamond", var(--font-heading--family), serif;
   font-weight: 300;
   font-size: 4rem;
@@ -520,7 +498,7 @@
   margin-bottom: 28px;
 }
 
-.torineser-project-big .torineser-project-description > * {
+.torineser-project-left .torineser-project-description > * {
   font-family: "DM Sans", var(--font-body--family), sans-serif;
   font-weight: 300;
   font-size: 15px;
@@ -530,11 +508,11 @@
   margin-bottom: 36px;
 }
 
-.torineser-project-big .torineser-project-stat {
+.torineser-project-left .torineser-project-stat {
   min-width: 72px;
 }
 
-.torineser-project-big .torineser-project-stat p:first-child {
+.torineser-project-left .torineser-project-stat p:first-child {
   font-family: "Cormorant Garamond", var(--font-heading--family), serif;
   font-size: 44px;
   line-height: 1;
@@ -542,7 +520,7 @@
   margin: 0;
 }
 
-.torineser-project-big .torineser-project-stat p:last-child {
+.torineser-project-left .torineser-project-stat p:last-child {
   font-family: "DM Sans", var(--font-body--family), sans-serif;
   font-size: 11px;
   letter-spacing: 0.12em;
@@ -552,14 +530,15 @@
   margin-bottom: 0;
 }
 
-.torineser-project-big [data-testid='section-content'] > .group-block:nth-child(1) .group-block-content > .group-block:nth-child(5) .group-block-content {
+.torineser-project-stats .group-block-content {
   gap: 40px;
   margin-bottom: 40px;
   padding-top: 32px;
   border-top: 1px solid rgb(28 25 21 / 0.13);
+  align-items: flex-start;
 }
 
-.torineser-project-big .group-block .button:not(.button-secondary) {
+.torineser-project-left .button:not(.button-secondary) {
   --button-color: #ffffff;
   --button-background-color: #C04C35;
   --button-border-color: transparent;
@@ -571,20 +550,10 @@
   font-weight: 500;
 }
 
-.torineser-project-big .group-block .button:not(.button-secondary):hover {
+.torineser-project-left .button:not(.button-secondary):hover {
   --button-color: #ffffff;
   --button-background-color: #a8442f;
   --button-border-color: transparent;
-}
-
-.torineser-project-big .collection-quad-gallery {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  min-height: 0;
-  aspect-ratio: auto !important;
-  background: transparent !important;
 }
 
 @media screen and (max-width: 989px) {
@@ -592,24 +561,11 @@
     padding-inline: 24px;
   }
 
-  .torineser-project-big [data-testid='section-content'] {
-    min-height: 0;
-    display: flex;
-  }
-
-  .torineser-project-big [data-testid='section-content'] > .group-block {
-    width: 100%;
-  }
-
-  .torineser-project-big [data-testid='section-content'] > .group-block:first-child .group-block-content {
+  .torineser-project-left.group-block .group-block-content {
     padding: 48px 28px;
   }
 
-  .torineser-project-big .torineser-project-title > * {
+  .torineser-project-left .torineser-project-title > * {
     font-size: 3rem;
-  }
-
-  .torineser-project-big .collection-quad-gallery {
-    min-height: 340px;
   }
 }
