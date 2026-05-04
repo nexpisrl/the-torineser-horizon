@@ -466,9 +466,9 @@
 }
 
 .torineser-project-big .custom-section-content {
-  border-radius: 28px;
-  overflow: hidden;
-  background: #F2EDE5;
+  border-radius: 0;
+  overflow: visible;
+  background: transparent;
 }
 
 .torineser-project-big [data-testid='section-content'] {
@@ -479,6 +479,12 @@
 .torineser-project-left.group-block .group-block-content {
   padding: 80px;
   justify-content: center;
+}
+
+.torineser-project-left.group-block {
+  background: #F2EDE5;
+  border-radius: 28px 0 0 28px;
+  overflow: hidden;
 }
 
 .torineser-project-left .torineser-project-eyebrow {
