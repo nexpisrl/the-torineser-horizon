@@ -1,4 +1,4 @@
-﻿{% liquid
+{% liquid
   assign media_count = 0
   assign media_count_mobile = 0
   assign fallback_to_desktop = false
@@ -112,9 +112,7 @@
   endif
 
   assign section_custom_class = section.settings.custom_class | strip
-  %}
-
-  {% capture media_slot_1 %}
+  %}{% capture media_slot_1 %}
   {%- if media_1 == 'image' and media_1_mobile == 'image' -%}
   {%- comment -%} Both desktop and mobile are images. Assume similar images, and this is art direction: use picture element. {%- endcomment -%}
   <picture
