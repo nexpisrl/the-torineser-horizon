@@ -1213,7 +1213,7 @@
 
   .torineser-project-stats .group-block-content {
     gap: 24px;
-    margin-bottom: 24px;
+    margin-bottom: 0;
     padding-top: 20px;
   }
 
