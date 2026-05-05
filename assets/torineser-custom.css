@@ -1235,7 +1235,7 @@
   /* ─── Gift + Eventi — mobile padding + gift layout ─── */
   .torineser-gift-events.section {
     /* Evita somma padding (section + content) su mobile */
-    padding-inline: 16px;
+    padding-inline: 0;
   }
 
   .torineser-gift-events [data-testid='section-content'] {
