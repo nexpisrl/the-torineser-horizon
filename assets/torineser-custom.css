@@ -1280,6 +1280,13 @@
     font-size: 13px;
   }
 
+  /* ─── Eventi list — default collapsed (no "expanded" excerpt) ─── */
+  .torineser-events-card .notizie-preview__meta {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   /* ─── Open Call — mobile ─── */
   .torineser-open-call [data-testid='section-content'] {
     padding: 40px 28px !important;
