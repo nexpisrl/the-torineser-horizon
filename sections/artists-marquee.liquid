@@ -20,7 +20,7 @@
 
 <div
   class="section spacing-style color-{{ section.settings.color_scheme }}{% if section.settings.show_section_borders %} artists-marquee--bordered{% endif %}"
-  style="{% render 'spacing-style', settings: section.settings %}"
+  style="{% render 'spacing-style', settings: section.settings %}; overflow:hidden;"
 >
   {% if section.settings.heading != blank %}
     <p class="artists-marquee__subtitle the_torineser-pre_title">
