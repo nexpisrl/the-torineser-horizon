@@ -789,6 +789,7 @@
           "type": "group",
           "name": "t:names.group",
           "settings": {
+            "custom_class": "torineser-project-gallery",
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
@@ -853,7 +854,7 @@
       "name": "t:names.custom_section",
       "settings": {
         "content_direction": "row",
-        "vertical_on_mobile": false,
+        "vertical_on_mobile": true,
         "horizontal_alignment": "flex-start",
         "vertical_alignment": "center",
         "align_baseline": false,
@@ -1202,7 +1203,7 @@
           "name": "t:names.group",
           "settings": {
             "content_direction": "row",
-            "vertical_on_mobile": false,
+            "vertical_on_mobile": true,
             "horizontal_alignment": "space-between",
             "vertical_alignment": "center",
             "align_baseline": false,
