@@ -277,21 +277,63 @@
 }
 
 @media screen and (max-width: 749px) {
+  .torineser-home-hero.hero {
+    /* Mobile handoff: hero non full-screen */
+    min-height: 560px;
+  }
+
+  .torineser-home-hero .hero__container {
+    padding-bottom: 36px;
+  }
+
   .torineser-home-hero .hero__content-wrapper {
-    padding-inline: 20px;
+    padding-inline: 22px;
   }
 
   .torineser-home-hero .the_torineser-hero-title {
     --width: min(100%, 92vw);
   }
 
+  .torineser-home-hero .the_torineser-pre_title,
+  .torineser-home-hero .the_torineser-pre_title > * {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+  }
+
+  .torineser-home-hero .the_torineser-pre_title {
+    margin-bottom: 14px;
+  }
+
   .torineser-home-hero .the_torineser-hero-title > * {
     font-size: 3rem !important;
     line-height: 1.05 !important;
+    margin-bottom: 16px;
   }
 
   .torineser-home-hero .the_torineser-hero-description {
     --width: min(100%, 92vw);
+  }
+
+  .torineser-home-hero .the_torineser-hero-description > * {
+    font-size: 13px !important;
+    margin-bottom: 24px;
+  }
+
+  .torineser-home-hero .torineser-hero-cta.group-block > .group-block-content {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .torineser-home-hero .torineser-hero-cta .button:not(.button-secondary) {
+    padding-block: 12px;
+    padding-inline: 22px;
+    font-size: 13px;
+  }
+
+  .torineser-home-hero .torineser-hero-cta .button-secondary {
+    padding-block: 12px;
+    padding-inline: 18px;
+    font-size: 13px;
   }
 }
 
@@ -1051,5 +1093,195 @@
 
   .torineser-project-left .torineser-project-title > * {
     font-size: 3rem;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  /* ─── Product list (latest + beloved) — mobile paddings/typography ─── */
+  .torineser-home-latest.section-resource-list,
+  .torineser-home-beloved.section-resource-list {
+    padding-block: 48px 32px;
+  }
+
+  .torineser-home-latest .section-resource-list__header,
+  .torineser-home-beloved .section-resource-list__header {
+    margin-bottom: 22px;
+  }
+
+  .torineser-home-latest .section-resource-list__header .the_torineser-pre_title,
+  .torineser-home-beloved .section-resource-list__header .the_torineser-pre_title {
+    margin-bottom: 8px;
+  }
+
+  .torineser-home-latest .section-resource-list__header .the_torineser-section-title > *,
+  .torineser-home-beloved .section-resource-list__header .the_torineser-section-title > * {
+    font-size: 32px;
+    line-height: 1.05;
+    margin-bottom: 10px;
+  }
+
+  .torineser-home-latest .section-resource-list__header .the_torineser-section-description > *,
+  .torineser-home-beloved .section-resource-list__header .the_torineser-section-description > * {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .torineser-home-latest .resource-list__item .torineser-product-card-meta__title,
+  .torineser-home-beloved .resource-list__item .torineser-product-card-meta__title {
+    font-size: 18px;
+  }
+
+  .torineser-home-latest .resource-list__item .torineser-product-card-price-row__artist,
+  .torineser-home-beloved .resource-list__item .torineser-product-card-price-row__artist {
+    font-size: 11px;
+  }
+
+  .torineser-home-latest .resource-list__item .torineser-product-card-price-row__value .price,
+  .torineser-home-beloved .resource-list__item .torineser-product-card-price-row__value .price {
+    font-size: 12px;
+  }
+
+  /* ─── Progetto (BIG) — mobile: stacked + hide gallery ─── */
+  .torineser-project-big.section {
+    padding-inline: 16px;
+  }
+
+  .torineser-project-big [data-testid='section-content'] {
+    min-height: auto;
+  }
+
+  .torineser-project-gallery {
+    display: none;
+  }
+
+  .torineser-project-left.group-block {
+    border-radius: 22px;
+  }
+
+  .torineser-project-left.group-block > .group-block-content {
+    padding: 34px 28px 32px;
+  }
+
+  .torineser-project-left .torineser-project-eyebrow {
+    margin-bottom: 14px;
+  }
+
+  .torineser-project-left .torineser-project-title > * {
+    font-size: 38px;
+  }
+
+  .torineser-project-left .torineser-project-title {
+    margin-bottom: 16px;
+  }
+
+  .torineser-project-left .torineser-project-description > * {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .torineser-project-left .torineser-project-description {
+    margin-bottom: 24px;
+  }
+
+  .torineser-project-stats .group-block-content {
+    gap: 24px;
+    margin-bottom: 24px;
+    padding-top: 20px;
+  }
+
+  .torineser-project-left .torineser-project-stat p:first-child {
+    font-size: 30px;
+  }
+
+  .torineser-project-left .torineser-project-stat p:last-child {
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+  }
+
+  .torineser-project-left .button:not(.button-secondary) {
+    padding-block: 12px;
+    padding-inline: 24px;
+    font-size: 13px;
+  }
+
+  /* ─── Gift + Eventi — mobile padding + gift layout ─── */
+  .torineser-gift-events [data-testid='section-content'] {
+    padding: 32px 16px;
+  }
+
+  .torineser-gift-card.group-block > .group-block-content {
+    min-height: auto;
+  }
+
+  .torineser-gift-card.group-block > .group-block-content > .image-block {
+    order: -1; /* Mobile handoff: immagine sopra al copy */
+  }
+
+  .torineser-gift-card .image-block,
+  .torineser-gift-card .image-block__image {
+    height: auto;
+  }
+
+  .torineser-gift-card .image-block__image {
+    aspect-ratio: 1 / 0.65;
+  }
+
+  .torineser-gift-card-copy.group-block {
+    padding: 28px;
+  }
+
+  .torineser-gift-card .torineser-gift-card-title > * {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+
+  .torineser-gift-card .torineser-gift-card-description > * {
+    font-size: 13px;
+    line-height: 1.65;
+    margin-bottom: 22px;
+  }
+
+  .torineser-gift-card .button:not(.button-secondary) {
+    padding-block: 12px;
+    padding-inline: 22px;
+    font-size: 13px;
+  }
+
+  /* ─── Open Call — mobile ─── */
+  .torineser-open-call [data-testid='section-content'] {
+    padding: 40px 28px !important;
+  }
+
+  .torineser-open-call .torineser-open-call-title > * {
+    font-size: 38px;
+  }
+
+  .torineser-open-call .torineser-open-call-description > * {
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  /* ─── Newsletter — mobile ─── */
+  .torineser-newsletter [data-testid='section-content'] {
+    padding: 40px 22px;
+  }
+
+  .torineser-newsletter .torineser-newsletter-title > * {
+    font-size: 30px;
+  }
+
+  .torineser-newsletter .torineser-newsletter-description > * {
+    font-size: 12px;
+  }
+
+  .torineser-newsletter .email-signup__input-group--integrated .email-signup__input {
+    padding: 13px 18px;
+    font-size: 13px;
+    min-width: 0;
+  }
+
+  .torineser-newsletter .email-signup__button--integrated.email-signup__button--text {
+    padding: 0 20px;
+    font-size: 12px;
   }
 }
