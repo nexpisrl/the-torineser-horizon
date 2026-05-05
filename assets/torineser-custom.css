@@ -1171,7 +1171,7 @@
 
   /* ─── Progetto (BIG) — mobile: stacked + hide gallery ─── */
   .torineser-project-big.section {
-    padding-inline: 16px;
+    padding-inline: 0;
   }
 
   .torineser-project-big [data-testid='section-content'] {
