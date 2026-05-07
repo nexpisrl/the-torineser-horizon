@@ -97,8 +97,9 @@
           "type": "group",
           "name": "t:names.group",
           "settings": {
+            "custom_class": "torineser-hero-cta",
             "content_direction": "row",
-            "vertical_on_mobile": true,
+            "vertical_on_mobile": false,
             "horizontal_alignment": "flex-start",
             "vertical_alignment": "center",
             "align_baseline": false,
@@ -638,7 +639,7 @@
               "settings": {
                 "custom_class": "torineser-project-stats",
                 "content_direction": "row",
-                "vertical_on_mobile": true,
+                "vertical_on_mobile": false,
                 "horizontal_alignment": "flex-start",
                 "vertical_alignment": "center",
                 "align_baseline": false,
@@ -789,6 +790,7 @@
           "type": "group",
           "name": "t:names.group",
           "settings": {
+            "custom_class": "torineser-project-gallery",
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
@@ -853,7 +855,7 @@
       "name": "t:names.custom_section",
       "settings": {
         "content_direction": "row",
-        "vertical_on_mobile": false,
+        "vertical_on_mobile": true,
         "horizontal_alignment": "flex-start",
         "vertical_alignment": "center",
         "align_baseline": false,
@@ -1202,8 +1204,8 @@
           "name": "t:names.group",
           "settings": {
             "content_direction": "row",
-            "vertical_on_mobile": false,
-            "horizontal_alignment": "space-between",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
             "vertical_alignment": "center",
             "align_baseline": false,
             "horizontal_alignment_flex_direction_column": "flex-start",
