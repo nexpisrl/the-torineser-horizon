@@ -1325,3 +1325,126 @@
     font-size: 12px;
   }
 }
+
+/* ─── Esplora (due card): solo mobile ─── */
+@media screen and (min-width: 787px) {
+  .shopify-section:has(.section.only-mobile) {
+    display: none !important;
+  }
+}
+
+.shopify-section:has(.torineser-esplora-mobile) .section-background,
+.shopify-section:has(.torineser-esplora-mobile) .section.torineser-esplora-mobile {
+  background-color: rgb(255, 255, 255);
+}
+
+.torineser-esplora-mobile [data-testid='section-content'] {
+  padding-block-start: 40px;
+  padding-block-end: 32px;
+  padding-inline: 16px;
+}
+
+.torineser-esplora-mobile .section-content-wrapper.layout-panel-flex--row > .torineser-esplora-card {
+  min-width: 0;
+}
+
+.torineser-esplora-card.group-block {
+  min-height: 188px;
+  border-radius: 16px;
+  background: rgb(247, 245, 243);
+  border: 1px solid rgb(232, 228, 223);
+  box-sizing: border-box;
+}
+
+.torineser-esplora-swatches {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.torineser-esplora-swatches span {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid rgb(247, 245, 243);
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.torineser-esplora-swatches span:nth-child(1) {
+  margin-left: 0;
+  background: rgb(139, 30, 45);
+}
+
+.torineser-esplora-swatches span:nth-child(2) {
+  margin-left: -8px;
+  background: rgb(30, 58, 95);
+}
+
+.torineser-esplora-swatches span:nth-child(3) {
+  margin-left: -8px;
+  background: rgb(201, 162, 90);
+}
+
+.torineser-esplora-swatches span:nth-child(4) {
+  margin-left: -8px;
+  background: rgb(62, 92, 59);
+}
+
+.torineser-esplora-swatches span:nth-child(5) {
+  margin-left: -8px;
+  background: rgb(26, 20, 16);
+}
+
+.torineser-esplora-map-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 14px;
+  position: relative;
+  height: 26px;
+}
+
+.torineser-esplora-map-icon svg {
+  display: block;
+}
+
+.torineser-esplora-eyebrow > * {
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgb(192, 76, 53);
+  text-align: center;
+  margin: 0 0 8px;
+}
+
+.torineser-esplora-heading > * {
+  font-family: "Cormorant Garamond", var(--font-heading--family), serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: rgb(28, 25, 21);
+  line-height: 1.1;
+  text-align: center;
+  margin: 0 0 8px;
+}
+
+.torineser-esplora-desc > * {
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-weight: 300;
+  font-size: 11.5px;
+  color: rgb(140, 133, 124);
+  line-height: 1.5;
+  text-align: center;
+  margin: 0;
+}
+
+.torineser-esplora-footer > * {
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: rgb(192, 76, 53);
+  text-align: center;
+  margin: 14px 0 0;
+  letter-spacing: 0.04em;
+}
