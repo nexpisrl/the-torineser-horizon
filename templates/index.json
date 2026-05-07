@@ -16,6 +16,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
+            "custom_class": "the_torineser-pre_title",
             "text": "<p>Stampe Artistiche · Dal 2020</p>",
             "width": "fit-content",
             "max_width": "normal",
@@ -31,7 +32,6 @@
             "background": false,
             "background_color": "#00000026",
             "corner_radius": 0,
-            "custom_class": "the_torineser-pre_title",
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
@@ -43,6 +43,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
+            "custom_class": "the_torineser-hero-title",
             "text": "<p>Ogni angolo<br/><em>racconta</em><br/>una storia.</p>",
             "width": "fit-content",
             "max_width": "none",
@@ -58,7 +59,6 @@
             "background": false,
             "background_color": "#00000026",
             "corner_radius": 0,
-            "custom_class": "the_torineser-hero-title",
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
@@ -70,6 +70,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
+            "custom_class": "the_torineser-hero-description",
             "text": "<p>Oltre 109 opere originali, numerate e firmate da artisti che vivono<br/>Torino ogni giorno.</p>",
             "width": "fit-content",
             "max_width": "none",
@@ -85,7 +86,6 @@
             "background": false,
             "background_color": "#00000026",
             "corner_radius": 0,
-            "custom_class": "the_torineser-hero-description",
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
@@ -179,6 +179,7 @@
       ],
       "name": "t:names.hero",
       "settings": {
+        "custom_class": "torineser-home-hero",
         "media_type_1": "image",
         "image_1": "shopify://shop_images/the_torineser_intro_2026.jpg",
         "media_type_2": "image",
@@ -206,9 +207,199 @@
         "gradient_direction": "to bottom",
         "blurred_reflection": false,
         "reflection_opacity": 75,
-        "custom_class": "torineser-home-hero",
         "padding-block-start": 0,
         "padding-block-end": 80
+      }
+    },
+    "section_jkgFmq": {
+      "type": "section",
+      "blocks": {
+        "group_Gxix7y": {
+          "type": "group",
+          "name": "t:names.group",
+          "settings": {
+            "custom_class": "",
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "custom_liquid_fnQgiH": {
+              "type": "custom-liquid",
+              "name": "t:names.custom_liquid",
+              "settings": {
+                "custom_liquid": ""
+              },
+              "blocks": {}
+            },
+            "text_pE6V9E": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "custom_class": "",
+                "text": "<p>Per Colore</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_pFmbEL": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "custom_class": "",
+                "text": "<h2>Ricerca per colore</h2>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_cRw4QN": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "custom_class": "",
+                "text": "<p>Trova la stampa che si abbian al tuo arredo.</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "button_YTny4R": {
+              "type": "button",
+              "name": "t:names.button",
+              "settings": {
+                "label": "Esplora",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style_class": "button",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "custom_liquid_fnQgiH",
+            "text_pE6V9E",
+            "text_pFmbEL",
+            "text_cRw4QN",
+            "button_YTny4R"
+          ]
+        }
+      },
+      "block_order": [
+        "group_Gxix7y"
+      ],
+      "name": "t:names.custom_section",
+      "settings": {
+        "custom_class": "",
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "small",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     },
     "product_list_97iLf8": {
@@ -252,6 +443,7 @@
               "type": "group",
               "name": "t:names.group",
               "settings": {
+                "custom_class": "",
                 "content_direction": "column",
                 "vertical_on_mobile": true,
                 "horizontal_alignment": "flex-start",
@@ -292,6 +484,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
+                    "custom_class": "the_torineser-pre_title",
                     "text": "<p>Nuove uscite</p>",
                     "width": "fit-content",
                     "max_width": "normal",
@@ -307,7 +500,6 @@
                     "background": false,
                     "background_color": "#00000026",
                     "corner_radius": 0,
-                    "custom_class": "the_torineser-pre_title",
                     "padding-block-start": 0,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
@@ -319,6 +511,7 @@
                   "type": "text",
                   "name": "t:names.heading",
                   "settings": {
+                    "custom_class": "the_torineser-section-title",
                     "text": "<h2>Le ultime stampe</h2>",
                     "width": "fit-content",
                     "max_width": "normal",
@@ -334,7 +527,6 @@
                     "background": false,
                     "background_color": "#00000026",
                     "corner_radius": 0,
-                    "custom_class": "the_torineser-section-title",
                     "padding-block-start": 0,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
@@ -346,6 +538,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
+                    "custom_class": "the_torineser-section-description",
                     "text": "<p>Ogni mese un nuovo artista, un nuovo angolo di città. Le copertine più recenti del catalogo.</p>",
                     "width": "fit-content",
                     "max_width": "normal",
@@ -361,7 +554,6 @@
                     "background": false,
                     "background_color": "#00000026",
                     "corner_radius": 0,
-                    "custom_class": "the_torineser-section-description",
                     "padding-block-start": 0,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
@@ -488,6 +680,7 @@
       },
       "name": "t:names.products_grid",
       "settings": {
+        "custom_class": "torineser-home-latest",
         "collection": "ultime-uscite",
         "layout_type": "grid",
         "carousel_on_mobile": false,
@@ -503,7 +696,6 @@
         "horizontal_alignment": "flex-start",
         "gap": 28,
         "color_scheme": "scheme-1",
-        "custom_class": "torineser-home-latest",
         "padding-block-start": 100,
         "padding-block-end": 80
       }
@@ -556,6 +748,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
+                "custom_class": "the_torineser-pre_title torineser-project-eyebrow",
                 "text": "<p>Dal 2020 · Oltre 100 artisti</p>",
                 "width": "fit-content",
                 "max_width": "normal",
@@ -571,7 +764,6 @@
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
-                "custom_class": "the_torineser-pre_title torineser-project-eyebrow",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -583,6 +775,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
+                "custom_class": "torineser-project-title",
                 "text": "<h2>Un progetto<br/>fatto di <em>passione.</em></h2>",
                 "width": "fit-content",
                 "max_width": "normal",
@@ -598,7 +791,6 @@
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
-                "custom_class": "torineser-project-title",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -610,6 +802,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
+                "custom_class": "torineser-project-description",
                 "text": "<p>Ogni copertina racconta un angolo di Torino attraverso gli occhi di artisti che la vivono ogni giorno. Stampe numerate, in edizione limitata, nate dalla nostra Open Call mensile — aperta a tutti, non solo ai torinesi di nascita.</p>",
                 "width": "fit-content",
                 "max_width": "normal",
@@ -625,7 +818,6 @@
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
-                "custom_class": "torineser-project-description",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -678,6 +870,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
+                    "custom_class": "torineser-project-stat",
                     "text": "<p>109</p><p>Stampe</p>",
                     "width": "fit-content",
                     "max_width": "normal",
@@ -693,7 +886,6 @@
                     "background": false,
                     "background_color": "#00000026",
                     "corner_radius": 0,
-                    "custom_class": "torineser-project-stat",
                     "padding-block-start": 0,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
@@ -705,6 +897,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
+                    "custom_class": "torineser-project-stat",
                     "text": "<p>100+</p><p>Artisti</p>",
                     "width": "fit-content",
                     "max_width": "normal",
@@ -720,7 +913,6 @@
                     "background": false,
                     "background_color": "#00000026",
                     "corner_radius": 0,
-                    "custom_class": "torineser-project-stat",
                     "padding-block-start": 0,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
@@ -732,6 +924,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
+                    "custom_class": "torineser-project-stat",
                     "text": "<p>6</p><p>Anni</p>",
                     "width": "fit-content",
                     "max_width": "normal",
@@ -747,7 +940,6 @@
                     "background": false,
                     "background_color": "#00000026",
                     "corner_radius": 0,
-                    "custom_class": "torineser-project-stat",
                     "padding-block-start": 0,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
@@ -854,6 +1046,7 @@
       ],
       "name": "t:names.custom_section",
       "settings": {
+        "custom_class": "torineser-project-big",
         "content_direction": "row",
         "vertical_on_mobile": true,
         "horizontal_alignment": "flex-start",
@@ -877,7 +1070,6 @@
         "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "custom_class": "torineser-project-big",
         "padding-block-start": 40,
         "padding-block-end": 40
       }
@@ -923,6 +1115,7 @@
               "type": "group",
               "name": "t:names.group",
               "settings": {
+                "custom_class": "",
                 "content_direction": "column",
                 "vertical_on_mobile": true,
                 "horizontal_alignment": "flex-start",
@@ -963,6 +1156,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
+                    "custom_class": "the_torineser-pre_title",
                     "text": "<p>Il meglio del catalogo</p>",
                     "width": "fit-content",
                     "max_width": "normal",
@@ -978,7 +1172,6 @@
                     "background": false,
                     "background_color": "#00000026",
                     "corner_radius": 0,
-                    "custom_class": "the_torineser-pre_title",
                     "padding-block-start": 0,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
@@ -990,6 +1183,7 @@
                   "type": "text",
                   "name": "t:names.heading",
                   "settings": {
+                    "custom_class": "the_torineser-section-title",
                     "text": "<h2>Le più amate</h2>",
                     "width": "fit-content",
                     "max_width": "normal",
@@ -1005,7 +1199,6 @@
                     "background": false,
                     "background_color": "#00000026",
                     "corner_radius": 0,
-                    "custom_class": "the_torineser-section-title",
                     "padding-block-start": 0,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
@@ -1017,6 +1210,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
+                    "custom_class": "the_torineser-section-description",
                     "text": "<p>I preferiti della community. Le stampe che continuano a far battere il cuore dei torineser.</p>",
                     "width": "fit-content",
                     "max_width": "normal",
@@ -1032,7 +1226,6 @@
                     "background": false,
                     "background_color": "#00000026",
                     "corner_radius": 0,
-                    "custom_class": "the_torineser-section-description",
                     "padding-block-start": 0,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
@@ -1159,6 +1352,7 @@
       },
       "name": "t:names.products_grid",
       "settings": {
+        "custom_class": "torineser-home-beloved torineser-home-latest",
         "collection": "le-piu-amate",
         "layout_type": "grid",
         "carousel_on_mobile": false,
@@ -1175,8 +1369,7 @@
         "gap": 28,
         "color_scheme": "scheme-1",
         "padding-block-start": 100,
-        "padding-block-end": 80,
-        "custom_class": "torineser-home-beloved torineser-home-latest"
+        "padding-block-end": 80
       }
     },
     "artists_marquee_bFHik7": {
@@ -1203,6 +1396,7 @@
           "type": "group",
           "name": "t:names.group",
           "settings": {
+            "custom_class": "torineser-gift-card",
             "content_direction": "row",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
@@ -1233,7 +1427,6 @@
             "link": "",
             "open_in_new_tab": false,
             "placeholder": "",
-            "custom_class": "torineser-gift-card",
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
@@ -1244,6 +1437,7 @@
               "type": "group",
               "name": "t:names.group",
               "settings": {
+                "custom_class": "torineser-gift-card-copy",
                 "content_direction": "column",
                 "vertical_on_mobile": true,
                 "horizontal_alignment": "flex-start",
@@ -1274,7 +1468,6 @@
                 "link": "",
                 "open_in_new_tab": false,
                 "placeholder": "",
-                "custom_class": "torineser-gift-card-copy",
                 "padding-block-start": 56,
                 "padding-block-end": 56,
                 "padding-inline-start": 48,
@@ -1285,6 +1478,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
+                    "custom_class": "the_torineser-pre_title",
                     "text": "<p>Il regalo perfetto</p>",
                     "width": "fit-content",
                     "max_width": "normal",
@@ -1300,7 +1494,6 @@
                     "background": false,
                     "background_color": "#00000026",
                     "corner_radius": 0,
-                    "custom_class": "the_torineser-pre_title",
                     "padding-block-start": 0,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
@@ -1312,6 +1505,7 @@
                   "type": "text",
                   "name": "t:names.heading",
                   "settings": {
+                    "custom_class": "torineser-gift-card-title",
                     "text": "<h2>Regala un pezzetto<br/>di <em>Torino.</em></h2>",
                     "width": "fit-content",
                     "max_width": "normal",
@@ -1327,7 +1521,6 @@
                     "background": false,
                     "background_color": "#00000026",
                     "corner_radius": 0,
-                    "custom_class": "torineser-gift-card-title",
                     "padding-block-start": 0,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
@@ -1339,6 +1532,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
+                    "custom_class": "torineser-gift-card-description",
                     "text": "<p>Con la nostra gift card, lascia che sia chi ami a scegliere la sua anima torineser(a).</p>",
                     "width": "fit-content",
                     "max_width": "normal",
@@ -1354,7 +1548,6 @@
                     "background": false,
                     "background_color": "#00000026",
                     "corner_radius": 0,
-                    "custom_class": "torineser-gift-card-description",
                     "padding-block-start": 0,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
@@ -1418,6 +1611,7 @@
           "type": "group",
           "name": "t:names.group",
           "settings": {
+            "custom_class": "torineser-events-card",
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
@@ -1448,7 +1642,6 @@
             "link": "",
             "open_in_new_tab": false,
             "placeholder": "",
-            "custom_class": "torineser-events-card",
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
@@ -1494,6 +1687,7 @@
       ],
       "name": "t:names.custom_section",
       "settings": {
+        "custom_class": "torineser-gift-events",
         "content_direction": "row",
         "vertical_on_mobile": true,
         "horizontal_alignment": "flex-start",
@@ -1518,8 +1712,7 @@
         "overlay_style": "solid",
         "gradient_direction": "to top",
         "padding-block-start": 100,
-        "padding-block-end": 80,
-        "custom_class": "torineser-gift-events"
+        "padding-block-end": 80
       }
     },
     "section_Yi6ghJ": {
@@ -1529,6 +1722,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
+            "custom_class": "the_torineser-pre_title",
             "text": "<p>Open Call attiva</p>",
             "width": "fit-content",
             "max_width": "normal",
@@ -1544,7 +1738,6 @@
             "background": false,
             "background_color": "#00000026",
             "corner_radius": 0,
-            "custom_class": "the_torineser-pre_title",
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
@@ -1556,6 +1749,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
+            "custom_class": "torineser-open-call-title",
             "text": "<h2>Vuoi realizzare<br/>una <em>copertina?</em></h2>",
             "width": "fit-content",
             "max_width": "normal",
@@ -1571,7 +1765,6 @@
             "background": false,
             "background_color": "#00000026",
             "corner_radius": 0,
-            "custom_class": "torineser-open-call-title",
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
@@ -1583,6 +1776,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
+            "custom_class": "torineser-open-call-description",
             "text": "<p>La partecipazione è gratuita e aperta a tutti — non è necessario essere di Torino, basta sentirne l'anima.</p>",
             "width": "fit-content",
             "max_width": "normal",
@@ -1598,7 +1792,6 @@
             "background": false,
             "background_color": "#00000026",
             "corner_radius": 0,
-            "custom_class": "torineser-open-call-description",
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
@@ -1610,6 +1803,7 @@
           "type": "group",
           "name": "t:names.group",
           "settings": {
+            "custom_class": "torineser-open-call-actions",
             "content_direction": "row",
             "vertical_on_mobile": true,
             "horizontal_alignment": "center",
@@ -1640,7 +1834,6 @@
             "link": "",
             "open_in_new_tab": false,
             "placeholder": "",
-            "custom_class": "torineser-open-call-actions",
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
@@ -1692,6 +1885,7 @@
       ],
       "name": "t:names.rich_text_section",
       "settings": {
+        "custom_class": "torineser-open-call",
         "content_direction": "column",
         "vertical_on_mobile": true,
         "horizontal_alignment": "flex-start",
@@ -1716,8 +1910,7 @@
         "overlay_style": "solid",
         "gradient_direction": "to top",
         "padding-block-start": 40,
-        "padding-block-end": 80,
-        "custom_class": "torineser-open-call"
+        "padding-block-end": 80
       }
     },
     "section_T8PkXT": {
@@ -1727,6 +1920,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
+            "custom_class": "the_torineser-pre_title",
             "text": "<p>Newsletter</p>",
             "width": "fit-content",
             "max_width": "normal",
@@ -1742,7 +1936,6 @@
             "background": false,
             "background_color": "#00000026",
             "corner_radius": 0,
-            "custom_class": "the_torineser-pre_title",
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
@@ -1754,6 +1947,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
+            "custom_class": "torineser-newsletter-title",
             "text": "<h3>Ogni nuova stampa,<br/><em>prima di tutti.</em></h3>",
             "width": "100%",
             "max_width": "normal",
@@ -1769,7 +1963,6 @@
             "background": false,
             "background_color": "#00000026",
             "corner_radius": 0,
-            "custom_class": "torineser-newsletter-title",
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
@@ -1780,6 +1973,7 @@
         "text_dGmUFn": {
           "type": "text",
           "settings": {
+            "custom_class": "torineser-newsletter-description",
             "text": "<p>Iscriviti per non perder nulla.</p>",
             "width": "100%",
             "max_width": "normal",
@@ -1795,7 +1989,6 @@
             "background": false,
             "background_color": "#00000026",
             "corner_radius": 0,
-            "custom_class": "torineser-newsletter-description",
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
@@ -1837,6 +2030,7 @@
       ],
       "name": "t:names.email_signup",
       "settings": {
+        "custom_class": "torineser-newsletter",
         "content_direction": "column",
         "vertical_on_mobile": true,
         "horizontal_alignment": "flex-start",
@@ -1861,13 +2055,13 @@
         "overlay_style": "solid",
         "gradient_direction": "to top",
         "padding-block-start": 80,
-        "padding-block-end": 80,
-        "custom_class": "torineser-newsletter"
+        "padding-block-end": 80
       }
     }
   },
   "order": [
     "hero_jVaWmY",
+    "section_jkgFmq",
     "product_list_97iLf8",
     "section_wXzB9V",
     "product_list_weKyhA",
