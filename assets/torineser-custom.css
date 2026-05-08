@@ -1578,13 +1578,14 @@
 
 
 /** Cornici **/
+/*
 .RB_Product_Card, .RB_PC_Media img, .RB_PC_Media{
   border-radius: 0 !important;
 }
 .RB_PC_Media{
   border: none !important;
 }
-/** disabilita aggiungi al carrello nella pagina prodotto */
+
 [data-product-id="9966711210321"] product-form.product-form,
 [data-product-id="9966709637457"] product-form.product-form,
 [data-product-id="9966711669073"] product-form.product-form
@@ -1633,11 +1634,7 @@
   font-weight: bold !important;
     text-transform: none;
 }
-/** checkbox **/
 
-/*.RB_Addon_Wrapper .RB_Product_List{
-pointer-events: all;
-}*/
 .RB_Addon_Wrapper .RB_Product_Card .RB_PC_Media{
   position: initial !important;
   pointer-events:none;
@@ -1704,6 +1701,10 @@ display: none;
   content: 'Abbinato';
   background-image: none;
 }
+
+*/
+
+
 /* Cookie Banner - Torineser Style */
 .shopify-pc__banner__dialog.shopify-pc__banner__dialog {
   border-radius: 8px !important;
