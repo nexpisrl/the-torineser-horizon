@@ -7,7 +7,7 @@
 {% else %}
   {% liquid
     assign is_torineser_latest_section = false
-    if section.settings.custom_class contains 'torineser-home-latest'
+    if section.settings.custom_class contains 'torineser-home-latest' or section.settings.custom_class contains 'torineser-product-cards'
       assign is_torineser_latest_section = true
     endif
   %}

@@ -3,7 +3,7 @@
   assign product_resource = closest.product
   assign selected_variant = product_resource.selected_or_first_available_variant
   assign is_torineser_latest_section = false
-  if section.settings.custom_class contains 'torineser-home-latest'
+  if section.settings.custom_class contains 'torineser-home-latest' or section.settings.custom_class contains 'torineser-product-cards'
     assign is_torineser_latest_section = true
   endif
 
