@@ -4,7 +4,8 @@
   {% unless product == blank %}
     {% liquid
       assign torineser_artwork_number = ''
-      if section.settings.custom_class contains 'torineser-home-latest' or section.settings.custom_class contains 'torineser-product-cards'
+      assign cc = section.settings.custom_class | default: ''
+      if cc contains 'torineser-home-latest' or cc contains 'torineser-product-cards'
         assign first_char = product.title | slice: 0, 1
         if first_char == '#'
           assign torineser_artwork_number = product.title | split: ' ' | first | strip

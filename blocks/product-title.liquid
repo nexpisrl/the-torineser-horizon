@@ -6,8 +6,9 @@
     , block: block %}
 {% else %}
   {% liquid
+    assign cc = section.settings.custom_class | default: ''
     assign is_torineser_latest_section = false
-    if section.settings.custom_class contains 'torineser-home-latest' or section.settings.custom_class contains 'torineser-product-cards'
+    if cc contains 'torineser-home-latest' or cc contains 'torineser-product-cards'
       assign is_torineser_latest_section = true
     endif
   %}
