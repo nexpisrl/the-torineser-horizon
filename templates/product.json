@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
     "main": {
       "type": "product-information",
@@ -25,6 +25,7 @@
             "slideshow_mobile_controls_style": "dots",
             "thumbnail_position": "right",
             "thumbnail_width": 44,
+            "thumbnail_radius": 0,
             "aspect_ratio": "adapt",
             "constrain_to_viewport": true,
             "media_fit": "contain",
@@ -71,8 +72,7 @@
               "type": "group",
               "name": "Header",
               "settings": {
-                "link": "",
-                "open_in_new_tab": false,
+                "custom_class": "",
                 "content_direction": "column",
                 "vertical_on_mobile": true,
                 "horizontal_alignment": "flex-start",
@@ -96,11 +96,13 @@
                 "border_width": 1,
                 "border_opacity": 100,
                 "border_radius": 0,
-                "placeholder": "",
                 "toggle_overlay": false,
                 "overlay_color": "#00000026",
                 "overlay_style": "solid",
                 "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -111,6 +113,7 @@
                   "type": "text",
                   "name": "t:names.title",
                   "settings": {
+                    "custom_class": "",
                     "text": "<h1>{{ closest.product.title }}</h1>",
                     "width": "fit-content",
                     "max_width": "normal",
@@ -221,10 +224,15 @@
               },
               "block_order": []
             },
+            "rebolt_bundle_upsell_addon_product_DQmqBR": {
+              "type": "shopify://apps/rebolt-bundle-upsell/blocks/addon-product/0a9e67ff-0413-4374-921d-e70fb17c7dbc",
+              "settings": {}
+            },
             "text_aEtTtq": {
               "type": "text",
               "name": "Product description",
               "settings": {
+                "custom_class": "",
                 "text": "{{ closest.product.description }}",
                 "width": "100%",
                 "max_width": "normal",
@@ -253,6 +261,7 @@
             "divider_VJhene",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
+            "rebolt_bundle_upsell_addon_product_DQmqBR",
             "text_aEtTtq"
           ]
         }
@@ -263,6 +272,7 @@
         "equal_columns": false,
         "limit_details_width": false,
         "gap": 48,
+        "enable_sticky_add_to_cart": true,
         "color_scheme": "",
         "padding-block-start": 0,
         "padding-block-end": 0
@@ -275,6 +285,7 @@
           "type": "text",
           "name": "t:names.header",
           "settings": {
+            "custom_class": "",
             "text": "<h3>You may also like </h3>",
             "width": "fit-content",
             "max_width": "normal",
