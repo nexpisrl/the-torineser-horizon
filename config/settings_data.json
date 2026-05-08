@@ -45,6 +45,7 @@
     "page_width": "narrow",
     "page_transition_enabled": false,
     "transition_to_main_product": false,
+    "add_to_cart_animation": false,
     "card_hover_effect": "none",
     "badge_position": "top-right",
     "badge_corner_radius": 100,
@@ -68,6 +69,7 @@
     "currency_code_enabled_product_pages": false,
     "currency_code_enabled_product_cards": false,
     "currency_code_enabled_cart_items": false,
+    "quick_add": false,
     "product_corner_radius": 0,
     "card_corner_radius": 4,
     "show_variant_image": false,
@@ -82,7 +84,7 @@
     "blocks": {
       "2369874457889669609": {
         "type": "shopify://apps/rebolt-bundle-upsell/blocks/app-embed/0a9e67ff-0413-4374-921d-e70fb17c7dbc",
-        "disabled": true,
+        "disabled": false,
         "settings": {}
       }
     },
