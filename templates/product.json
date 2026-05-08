@@ -12,6 +12,10 @@
     "main": {
       "type": "product-information",
       "blocks": {
+        "rebolt_bundle_upsell_addon_product_x64QKA": {
+          "type": "shopify://apps/rebolt-bundle-upsell/blocks/addon-product/0a9e67ff-0413-4374-921d-e70fb17c7dbc",
+          "settings": {}
+        },
         "media-gallery": {
           "type": "_product-media-gallery",
           "static": true,
@@ -268,6 +272,9 @@
           ]
         }
       },
+      "block_order": [
+        "rebolt_bundle_upsell_addon_product_x64QKA"
+      ],
       "settings": {
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
