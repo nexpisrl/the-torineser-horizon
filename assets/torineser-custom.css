@@ -1681,6 +1681,11 @@ input[type=checkbox]:not(.switch):after{
 display: none;
 
 }
+
+.RB_Product_Layout_3 .RB_Product_Card{
+  flex-direction: column !important;
+}
+
 .RB_Product_Card{
     padding-top: 25px !important;
     border: 1px solid #fff;

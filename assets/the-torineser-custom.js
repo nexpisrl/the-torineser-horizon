@@ -61,12 +61,11 @@ function attachMutationObserver(selectedValue) {
   observer.observe(document.body, { childList: true, subtree: true });
 }
 
-// Listener per quando cambia la dimensione nei radio di .swatch-group
+// Listener: cambio taglia dai radio del variant picker principale (solo .product-information)
 document.addEventListener('change', function (event) {
   const target = event.target;
   if (!(target instanceof HTMLInputElement)) return;
-  // Verifica che l'evento provenga da un input radio all'interno di .swatch-group
-  if (target.matches('.swatch-group input[type="radio"]')) {
+  if (target.matches('.product-information variant-picker input[type="radio"]')) {
     const selectedValue = target.value.trim();
     console.log("Dimensione selezionata:", selectedValue);
 
@@ -78,9 +77,9 @@ document.addEventListener('change', function (event) {
   }
 });
 
-// All'avvio della pagina, controlliamo se ci sono radio già selezionati
+// All'avvio: radio già selezionato nel picker principale
 document.addEventListener('DOMContentLoaded', function() {
-  const checkedRadio = document.querySelector('.swatch-group input[type="radio"]:checked');
+  const checkedRadio = document.querySelector('.product-information variant-picker input[type="radio"]:checked');
   if (checkedRadio instanceof HTMLInputElement) {
     const selectedValue = checkedRadio.value.trim();
     console.log("Dimensione selezionata (load):", selectedValue);
