@@ -1599,7 +1599,7 @@
   display:none !important;
 }
 
-.RB_PC_Content_Head .RB_PC_Title a{
+.RB_PC_Content .RB_PC_Title a{
   pointer-events: none !important;
 } 
 
@@ -1612,7 +1612,7 @@
   font-weight: bold !important;
     letter-spacing: -0.5px;
 }
-.RB_PC_Content_Head{
+.RB_PC_Content{
   margin-top:     10px;
 }
 @media screen and (min-width: 768px) {
