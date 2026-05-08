@@ -1604,8 +1604,8 @@
 } 
 
 .RB_Product_Card[data-status="true"]{
-  background-color:#000;
   color: #fff !Important;
+  border: 1px solid #000;
 }
 
 .RB_Product_Card .RB_PC_Title a {
@@ -1683,6 +1683,7 @@ display: none;
 }
 .RB_Product_Card{
     padding-top: 25px !important;
+    border: 1px solid #fff;
   }
 
 .RB_Product_Card[data-status="true"] input.RB_PC_Media_Checkbox,
