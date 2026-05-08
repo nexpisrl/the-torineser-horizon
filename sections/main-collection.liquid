@@ -20,10 +20,13 @@
   }
 {% endjavascript %}
 
+{% liquid
+  assign section_custom_class = section.settings.custom_class | strip
+%}
 {% comment %} We always render this full-width, as the child blocks have width: page/full settings {% endcomment %}
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <results-list
-  class="section product-grid-container color-{{ section.settings.color_scheme }}"
+  class="section product-grid-container color-{{ section.settings.color_scheme }} {{ section_custom_class }}"
   style="--padding-block-start: {{ section.settings.padding-block-start }}px; --padding-block-end: {{ section.settings.padding-block-end }}px;"
   section-id="{{ section.id }}"
   infinite-scroll="{{ section.settings.enable_infinite_scroll }}"
@@ -240,6 +243,12 @@
       "id": "color_scheme",
       "label": "t:settings.color_scheme",
       "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom CSS class",
+      "info": "Aggiungi classi per stili custom (es. torineser-product-cards per card come in homepage)."
     },
     {
       "type": "range",

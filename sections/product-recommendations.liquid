@@ -1,3 +1,6 @@
+{% liquid
+  assign section_custom_class = section.settings.custom_class | strip
+%}
 <script
   src="{{ 'product-recommendations.js' | asset_url }}"
   type="module"
@@ -44,6 +47,7 @@
       section-resource-list
       spacing-style
       gap-style
+      {{ section_custom_class }}
     "
     style="
       {%  render 'spacing-style', settings: section.settings %}
@@ -226,6 +230,11 @@
         }
       ],
       "default": "related"
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "t:settings.custom_class"
     },
     {
       "type": "paragraph",

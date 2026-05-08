@@ -12,8 +12,9 @@
   assign product = closest.product
   assign block_settings = block.settings
   assign image_sizes = '(min-width: 750px) 50vw, 100vw'
+  assign cc = section.settings.custom_class | default: ''
   assign is_torineser_latest_section = false
-  if section.settings.custom_class contains 'torineser-home-latest'
+  if cc contains 'torineser-home-latest' or cc contains 'torineser-product-cards'
     assign is_torineser_latest_section = true
   endif
 
@@ -100,6 +101,10 @@
 
       if product.media.size > 2 and generic_media_size > 0
         assign show_arrows = true
+      endif
+
+      if is_torineser_latest_section
+        assign show_arrows = false
       endif
 
       # Don't overfetch media if we don't need to
