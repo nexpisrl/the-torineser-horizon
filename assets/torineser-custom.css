@@ -1,3 +1,5 @@
+
+
 /* Regole progetto Torineser (aggiungi qui gli stili per classi dai blocchi tema). */
 .the_torineser-pre_title{
   font-family: "DM Sans";
@@ -1568,4 +1570,223 @@
   text-align: center;
   margin: 14px 0 0;
   letter-spacing: 0.04em;
+}
+
+
+
+
+
+
+/** Cornici **/
+.RB_Product_Card, .RB_PC_Media img, .RB_PC_Media{
+  border-radius: 0 !important;
+}
+.RB_PC_Media{
+  border: none !important;
+}
+/** disabilita aggiungi al carrello nella pagina prodotto */
+[data-product-id="9966711210321"] product-form.product-form,
+[data-product-id="9966709637457"] product-form.product-form,
+[data-product-id="9966711669073"] product-form.product-form
+{
+  display:none !important;
+}
+
+.RB_PC_VariantBox .RB_PC_Selector{
+  display: none !important;
+}
+.RB_PC_VariantBox [data-option="Taglia"]{
+  display:none !important;
+}
+
+.RB_PC_Content_Head .RB_PC_Title a{
+  pointer-events: none !important;
+} 
+
+.RB_Product_Card[data-status="true"]{
+  background-color:#000;
+  color: #fff !Important;
+}
+
+.RB_Product_Card .RB_PC_Title a {
+  font-weight: bold !important;
+    letter-spacing: -0.5px;
+}
+.RB_PC_Content_Head{
+  margin-top:     10px;
+}
+@media screen and (min-width: 768px) {
+  .RB_Addon_Wrapper .RB_Product_View.RB_PV_Index_1{
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .RB_Product_Card .RB_PC_Title a {
+    font-size: 14px !important;
+  }
+  .RB_PC_Sale_Price, .RB_PC_CompareAt_Price{
+    font-size: 13px !important;
+  }
+}
+
+.RB_Section_Tilte h4{
+  font-size: 15px !important;
+  font-weight: bold !important;
+    text-transform: none;
+}
+/** checkbox **/
+
+/*.RB_Addon_Wrapper .RB_Product_List{
+pointer-events: all;
+}*/
+.RB_Addon_Wrapper .RB_Product_Card .RB_PC_Media{
+  position: initial !important;
+  pointer-events:none;
+}
+.RB_PC_Variants_Legend{
+  display: none !important;
+}
+input.RB_PC_Media_Checkbox{
+  pointer-events: all;
+  border:none !important;
+
+      accent-color: rgb(0, 0, 0);
+    right: 46px !important;
+    top: 7px !important;
+    background: transparent;
+  
+}
+input.RB_PC_Media_Checkbox:focus{
+        outline:0 !important;
+      box-shadow: none !Important;
+ }
+
+input.RB_PC_Media_Checkbox:before {
+    content: 'Abbina';
+    display: flex;
+    font-size: 10px;
+        padding-left: 20px;
+
+    background-image : url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Layer_1" version="1.1" viewBox="0 0 23 23"><defs><style> .st0 { fill: none; stroke: %231d1d1b; stroke-linecap: round; stroke-linejoin: round; } </style></defs><polyline class="st0" points=".5 1.6 2.8 1.6 7.8 17.9 20 17.9"></polyline><polyline class="st0" points="3.7 4.5 22.5 4.5 19.8 14.4 6.8 14.4"></polyline><line class="st0" x1="13.1" y1="6.5" x2="13.1" y2="12.5"></line><line class="st0" x1="10" y1="9.5" x2="16.1" y2="9.5"></line><circle class="st0" cx="8.8" cy="19.8" r="1.9"></circle><circle class="st0" cx="20" cy="19.8" r="1.9"></circle></svg>');
+  background-repeat: no-repeat;
+  background-position: left;
+  height: 15px;
+    line-height: 15px;
+  
+}
+
+input[type=checkbox]:not(.switch):after{
+  width: 5px !important;
+  top: 0 !Important;
+  content: none;
+display: none;
+
+}
+.RB_Product_Card{
+    padding-top: 25px !important;
+  }
+
+.RB_Product_Card[data-status="true"] input.RB_PC_Media_Checkbox,
+.RB_Product_Card[data-status="true"] input.RB_PC_Media_Checkbox:before,
+.RB_Product_Card[data-status="true"] .RB_PC_Title *,
+.RB_Product_Card[data-status="true"] .RB_PC_Price *
+{
+  background-color:#000;
+  color: #fff !Important;
+}
+
+.RB_Product_Card[data-status="true"]  input.RB_PC_Media_Checkbox:before{
+  content: 'Abbinato';
+  background-image: none;
+}
+/* Cookie Banner - Torineser Style */
+.shopify-pc__banner__dialog.shopify-pc__banner__dialog {
+  border-radius: 8px !important;
+  padding: 14px 20px !important;
+  max-width: 560px !important;
+  bottom: 16px !important;
+  left: 16px !important;
+  top: auto !important;
+}
+
+.shopify-pc__banner__heading {
+  font-size: 9px !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: #999 !important;
+  margin-bottom: 6px !important;
+}
+
+.shopify-pc__banner__body p:first-child,
+.shopify-pc__banner__body p:first-child * {
+  font-style: italic !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+  color: #1a1a1a !important;
+}
+
+.shopify-pc__banner__body p:last-child,
+.shopify-pc__banner__body p:last-child * {
+  font-style: normal !important;
+  font-size: 11px !important;
+  color: #666 !important;
+  margin-top: 3px !important;
+}
+
+.shopify-pc__btn-accept {
+  background: #1a1a1a !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 9px 18px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+}
+
+.shopify-pc__btn-decline {
+  background: none !important;
+  border: none !important;
+  color: #999 !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  text-decoration: underline !important;
+  text-transform: none !important;
+  box-shadow: none !important;
+}
+
+.shopify-pc__banner__btn-manage {
+  font-size: 10px !important;
+  color: #aaa !important;
+  text-transform: none !important;
+}
+
+@media (max-width: 777px) {
+  .shopify-pc__banner__dialog.shopify-pc__banner__dialog {
+    max-width: calc(100% - 32px) !important;
+    bottom: 16px !important;
+    left: 16px !important;
+    right: 16px !important;
+    padding: 12px 16px !important;
+  }
+
+  .shopify-pc__banner__heading {
+    font-size: 8px !important;
+  }
+
+  .shopify-pc__banner__body p:first-child,
+  .shopify-pc__banner__body p:first-child * {
+    font-size: 13px !important;
+  }
+
+  .shopify-pc__banner__body p:last-child,
+  .shopify-pc__banner__body p:last-child * {
+    font-size: 10px !important;
+  }
+
+  .shopify-pc__btn-accept,
+  .shopify-pc__btn-decline {
+    font-size: 12px !important;
+    padding: 8px 14px !important;
+  }
 }
