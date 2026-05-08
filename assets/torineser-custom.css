@@ -508,8 +508,7 @@
   }
 }
 
-/* ─── Sezione "Ultime uscite" — card prodotto ─────────────────────────────────── */
-/* ─── Ultime uscite + griglia collezione (stessa card) ───────────────────────── */
+/* ─── Sezione "Ultime uscite" + griglia collezione (stesse card) ──────────────── */
 .torineser-home-latest .resource-list__item .product-card,
 .torineser-product-cards .product-grid__item .product-card {
   transition: transform 0.3s ease;
