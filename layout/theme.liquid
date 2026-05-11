@@ -139,5 +139,27 @@
     {% if settings.quick_add or settings.mobile_quick_add %}
       {% render 'quick-add-modal' %}
     {% endif %}
+
+    <script>
+      // Wait for Rebolt to be ready
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Check if Rebolt exposes a callback on modal close
+  // Usually the class .RB_ModalClose is used for the close button
+  document.querySelectorAll('.RB_ModalClose').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+
+      // Trigger Horizon's Add to Cart drawer manually
+      // First, get the main Add to Cart button for this product
+      const mainButton = document.querySelector('.product-form .button--addToCart');
+      if(mainButton) {
+        mainButton.click(); // Simulate the click
+      }
+
+    });
+  });
+
+});
+    </script>
   </body>
 </html>
