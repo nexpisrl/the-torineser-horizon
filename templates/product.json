@@ -14,7 +14,6 @@
       "blocks": {
         "rebolt_bundle_upsell_addon_product_mhYbKc": {
           "type": "shopify://apps/rebolt-bundle-upsell/blocks/addon-product/0a9e67ff-0413-4374-921d-e70fb17c7dbc",
-          "disabled": true,
           "settings": {}
         },
         "media-gallery": {
