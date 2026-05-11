@@ -140,13 +140,34 @@
       {% render 'quick-add-modal' %}
     {% endif %}
 
-    <script>
+    {% comment %} <script>
       window.reboltAddonDisplayed = function() {
           document.querySelectorAll('.product-atc-bundle').forEach(function(btn){
             btn.click();
           });
           console.log('click');
       }; 
-    </script>
+    </script> {% endcomment %}
+    <script>
+  // Your callback function
+  window.reboltAddonDisplayed = function() {
+      document.querySelectorAll('.product-atc-bundle').forEach(function(btn){
+        btn.click();
+      });
+      console.log('click');
+  };
+
+  // Add event listeners to both buttons
+  document.addEventListener('DOMContentLoaded', function() {
+      const buttons = document.querySelectorAll('.product-atc-bundle, .sticky-add-to-cart__button');
+      buttons.forEach(function(btn) {
+          btn.addEventListener('click', function(event) {
+              // Prevent infinite loop if button click triggers this again
+              event.stopPropagation();
+              window.reboltAddonDisplayed();
+          });
+      });
+  });
+</script>
   </body>
 </html>
