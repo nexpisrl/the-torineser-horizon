@@ -148,8 +148,24 @@
           console.log('click');
       }; 
     </script> {% endcomment %}
-    <script>
-      
-    </script>
+   <script>
+  // Make sure the function exists
+  window.reboltAddonDisplayed = function() {
+    console.log('click');
+  };
+
+  // Run after DOM is ready
+  document.addEventListener('DOMContentLoaded', function() {
+    // Select all elements for both classes
+    const buttons = document.querySelectorAll('.product-atc-bundle, .sticky-add-to-cart__button');
+    
+    // Attach click listener to each
+    buttons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        window.reboltAddonDisplayed();
+      });
+    });
+  });
+</script>
   </body>
 </html>
