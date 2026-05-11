@@ -151,7 +151,7 @@
     }; 
 </script> 
 <script>
-   // Wait for the DOM to fully load
+// Wait for the DOM to fully load
 document.addEventListener('DOMContentLoaded', function() {
     // Select the sticky add-to-cart button
     var stickyButton = document.querySelector('.sticky-add-to-cart__button');
@@ -163,7 +163,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 bundleBtn.click();
             });
 
-            console.log('.product-atc-bundle triggered via sticky button click');
+            // Call the callback function if it exists
+            if (typeof window.reboltAddonDisplayed === 'function') {
+                window.reboltAddonDisplayed();
+            }
         });
     }
 });
