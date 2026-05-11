@@ -151,7 +151,22 @@
     }; 
 </script> 
 <script>
-   
+   // Wait for the DOM to fully load
+document.addEventListener('DOMContentLoaded', function() {
+    // Select the sticky add-to-cart button
+    var stickyButton = document.querySelector('.sticky-add-to-cart__button');
+    
+    if (stickyButton) {
+        stickyButton.addEventListener('click', function() {
+            // Trigger click on all .product-atc-bundle buttons
+            document.querySelectorAll('.product-atc-bundle').forEach(function(bundleBtn) {
+                bundleBtn.click();
+            });
+
+            console.log('.product-atc-bundle triggered via sticky button click');
+        });
+    }
+});
 </script>
   
   </body>
