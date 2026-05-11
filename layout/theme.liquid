@@ -141,7 +141,21 @@
     {% endif %}
 
     <script>
-      
+      // Ensure your function exists
+window.reboltAddonDisplayed = function() {
+    console.log('click');
+};
+
+// Wait for the DOM to load
+document.addEventListener('DOMContentLoaded', function() {
+    // Select all elements with class .add-to-cart-button
+    document.querySelectorAll('.add-to-cart-button').forEach(function(button) {
+        button.addEventListener('click', function() {
+            // Call your function on click
+            window.reboltAddonDisplayed();
+        });
+    });
+});
     </script>
   </body>
 </html>
