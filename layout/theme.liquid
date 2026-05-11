@@ -154,7 +154,7 @@
 
   // Add event listener to sticky add-to-cart button
   document.addEventListener('DOMContentLoaded', function() {
-    const stickyBtn = document.querySelector('.sticky-add-to-cart__button');
+    const stickyBtn = document.querySelectorAll('.sticky-add-to-cart__button');
     if (stickyBtn) {
       stickyBtn.addEventListener('click', function(e) {
         e.preventDefault(); // prevent default if needed
