@@ -141,21 +141,19 @@
     {% endif %}
 
     <script>
-   // Your existing function
-window.reboltAddonDisplayed = function() {
+ window.reboltAddonDisplayed = function() {
     document.querySelectorAll('.product-atc-bundle').forEach(function(btn){
         btn.click();
     });
     console.log('click');
 };
 
-// Add click listener to .sticky-add-to-cart__button
+// Add single click listener to the first .sticky-add-to-cart__button
 document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.sticky-add-to-cart__button').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-            window.reboltAddonDisplayed();
-        });
-    });
+    const stickyBtn = document.querySelector('.sticky-add-to-cart__button');
+    if (stickyBtn) {
+        stickyBtn.addEventListener('click', window.reboltAddonDisplayed);
+    }
 });
     </script>
   </body>
