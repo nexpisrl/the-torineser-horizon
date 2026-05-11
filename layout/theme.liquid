@@ -140,19 +140,19 @@
       {% render 'quick-add-modal' %}
     {% endif %}
 
-  <script>
-      window.reboltAddonDisplayed = function() {
-          document.querySelectorAll('.product-atc-bundle').forEach(function(btn1){
-            btn1.click();
-          }); 
+<script>
+    window.reboltAddonDisplayed = function() {
+        document.querySelectorAll('.product-atc-bundle').forEach(function(btn1){
+          btn1.click();
+        }); 
 
-          document.querySelectorAll('.sticky-add-to-cart__button').forEach(function(btn2){
-            btn2.click();
-          }); 
-            
-          console.log('click');
-      }; 
-    </script> 
+        document.querySelectorAll('.sticky-add-to-cart__button').forEach(function(btn2){
+          btn2.click();
+        }); 
+          
+        console.log('click');
+    }; 
+</script> 
   
   </body>
 </html>
