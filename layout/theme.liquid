@@ -155,7 +155,7 @@
   el.classList.toggle("is_hide");
   const content = el.nextElementSibling;
   const isVisible = content.style.display === "block";
-  content.style.display = isVisible ? ""none"" : "block";
+  content.style.display = isVisible ? "none" : "block";
   const span = el.querySelector('.rbTriggerSpan');
   if (span) {
     span.innerHTML = isVisible ? 'Show' : 'Hide';
