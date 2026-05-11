@@ -142,12 +142,12 @@
 
   <script>
       window.reboltAddonDisplayed = function() {
-          document.querySelectorAll('.product-atc-bundle').forEach(function(btn){
+          {% comment %} document.querySelectorAll('.product-atc-bundle').forEach(function(btn){
             btn.click();
-          });
-            {% comment %} document.querySelectorAll('.sticky-add-to-cart__button').forEach(function(btnn){
+          }); {% endcomment %}
+            document.querySelectorAll('.sticky-add-to-cart__button').forEach(function(btnn){
         btnn.click();
-    }); {% endcomment %}
+    });
           console.log('click');
       }; 
     </script> 
