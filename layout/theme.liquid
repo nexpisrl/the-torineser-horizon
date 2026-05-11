@@ -140,14 +140,27 @@
       {% render 'quick-add-modal' %}
     {% endif %}
 
-     <script>
+    {% comment %} <script>
       window.reboltAddonDisplayed = function() {
           document.querySelectorAll('.product-atc-bundle').forEach(function(btn){
             btn.click();
           });
           console.log('click');
       }; 
+    </script> {% endcomment %}
+    <script>
+      // Ensure your callback exists
+window.reboltAddonDisplayed = function() {
+    console.log('click');
+};
+
+// Use event delegation on the document
+document.addEventListener('click', function(e) {
+    // Check if the clicked element matches either class
+    if (e.target.matches('.product-atc-bundle, .sticky-add-to-cart__button')) {
+        window.reboltAddonDisplayed();
+    }
+});
     </script>
-    <script></script>
   </body>
 </html>
