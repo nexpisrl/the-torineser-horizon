@@ -144,12 +144,27 @@
     window.reboltAddonDisplayed = function() {
         document.querySelectorAll('.product-atc-bundle').forEach(function(btn1){
           btn1.click();
-          
+        console.log('Product Button');  
         }); 
-        console.log('Product Button');
       
     }; 
 </script> 
+<script>
+  // Make sure the DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Select all sticky add-to-cart buttons
+    const stickyButtons = document.querySelectorAll('.sticky-add-to-cart__button');
+    
+    stickyButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            // Trigger click on all .product-atc-bundle buttons
+            document.querySelectorAll('.product-atc-bundle').forEach(function(bundleBtn) {
+                bundleBtn.click();
+            });
+        });
+    });
+});
+</script>
   
   </body>
 </html>
