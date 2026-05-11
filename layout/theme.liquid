@@ -144,21 +144,12 @@
       // Make sure your function exists
 window.reboltAddonDisplayed = function() {
     console.log('click');
+    document.querySelectorAll('.add-to-cart-button').forEach(function(btn){
+      btn.click();
+    });
 };
 
-// Wait for DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // Select all add-to-cart buttons
-    const addToCartButtons = document.querySelectorAll('.add-to-cart-button');
 
-    // Add click event listener to each button
-    addToCartButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
-            // Call the function on click
-            window.reboltAddonDisplayed();
-        });
-    });
-});
     </script>
   </body>
 </html>
