@@ -141,15 +141,13 @@
     {% endif %}
 
     <script>
-      // Make sure your function exists
-window.reboltAddonDisplayed = function() {
-    console.log('click');
-    document.querySelectorAll('.add-to-cart-button').forEach(function(btn){
-      btn.click();
-    });
-};
 
-
+      window.reboltAddonDisplayed = function() {
+          console.log('click');
+          document.querySelectorAll('.add-to-cart-button').forEach(function(btn){
+            btn.click();
+          });
+      };
     </script>
   </body>
 </html>
