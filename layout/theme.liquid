@@ -151,7 +151,7 @@
     }; 
 </script> 
 <script>
-  "window.rbCartTriggerEvent = function (el) {
+  window.rbCartTriggerEvent = function (el) {
   el.classList.toggle(""is_hide"");
   const content = el.nextElementSibling;
   const isVisible = content.style.display === ""block"";
@@ -160,7 +160,7 @@
   if (span) {
     span.innerHTML = isVisible ? 'Show' : 'Hide';
   }
-};"
+};
 </script>
   
   </body>
