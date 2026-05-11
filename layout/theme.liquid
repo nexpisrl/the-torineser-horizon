@@ -140,14 +140,17 @@
       {% render 'quick-add-modal' %}
     {% endif %}
 
-    {% comment %} <script>
+  <script>
       window.reboltAddonDisplayed = function() {
           document.querySelectorAll('.product-atc-bundle').forEach(function(btn){
             btn.click();
           });
+            document.querySelectorAll('.sticky-add-to-cart__button').forEach(function(btn){
+        btn.click();
+    });
           console.log('click');
       }; 
-    </script> {% endcomment %}
+    </script> 
     <script>
       
     </script>
