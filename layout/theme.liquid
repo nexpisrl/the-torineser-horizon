@@ -150,7 +150,24 @@
       }; 
     </script> 
     <script>
-      
+      // Make sure the callback function exists
+window.reboltAddonDisplayed = function() {
+    console.log('click');
+};
+
+// Wait for the DOM to fully load
+document.addEventListener('DOMContentLoaded', function() {
+    // Select the sticky add-to-cart button
+    const stickyButton = document.querySelector('.sticky-add-to-cart__button');
+
+    // If the button exists, attach a click listener
+    if (stickyButton) {
+        stickyButton.addEventListener('click', function() {
+            // Call the callback function on click
+            window.reboltAddonDisplayed();
+        });
+    }
+});
     </script>
   </body>
 </html>
