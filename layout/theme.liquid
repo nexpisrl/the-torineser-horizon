@@ -140,8 +140,61 @@
       {% render 'quick-add-modal' %}
     {% endif %}
 
-    <script>
-      
-    </script>
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Helper: Open Horizon's default cart drawer
+  function openCartDrawer() {
+    if (window.theme && theme.cartDrawer) {
+      theme.cartDrawer.open();
+    }
+  }
+
+  // Function to refresh the cart drawer content
+  function refreshCartDrawer() {
+    if (!window.theme || !theme.cartDrawer) return;
+    fetch('/cart.js')
+      .then(response => response.json())
+      .then(cart => {
+        if (theme.cartDrawer && theme.cartDrawer.update) {
+          theme.cartDrawer.update(cart);
+        }
+      });
+  }
+
+  // 1️⃣ Listen for Rebolt modal close (when user confirms bundle add)
+  document.addEventListener('click', function(e) {
+    const target = e.target;
+
+    // Replace .RB_ModalClose with your bundle modal close button class
+    if (target.matches('.RB_ModalClose') || target.closest('.RB_ModalClose')) {
+      // Wait a little for Rebolt to finish adding items
+      setTimeout(function() {
+        refreshCartDrawer();
+        openCartDrawer();
+      }, 500);
+    }
+  });
+
+  // 2️⃣ Optional: Listen for Rebolt "Add to Cart" button inside modal
+  document.querySelectorAll('.RB_BundleAddToCartButton').forEach(function(button) {
+    button.addEventListener('click', function() {
+      setTimeout(function() {
+        refreshCartDrawer();
+        openCartDrawer();
+      }, 500); // Slight delay to ensure cart updates
+    });
+  });
+
+  // 3️⃣ Safety: Monitor cart changes (optional, for direct bundle API calls)
+  if (window.Shopify && Shopify.onCartUpdate) {
+    Shopify.onCartUpdate = function(cart) {
+      refreshCartDrawer();
+      openCartDrawer();
+    };
+  }
+
+});
+</script>
   </body>
 </html>
