@@ -141,32 +141,7 @@
     {% endif %}
 
     <script>
-      // Wait for DOM
-document.addEventListener('DOMContentLoaded', function() {
-
-  // Listen for Rebolt bundle add event
-  // Rebolt often triggers a custom event when a bundle is added, e.g., 'rebolt:add'
-  document.addEventListener('rebolt:add', function(e) {
-    // e.detail may contain bundle info, depends on app
-    console.log('Bundle added:', e.detail);
-
-    // Call Horizon theme's drawer open method
-    if (window.theme && theme.cartDrawer) {
-      theme.cartDrawer.open();
-    }
-
-    // Optionally, refresh cart content
-    fetch('/cart.js')
-      .then(response => response.json())
-      .then(cart => {
-        // Update drawer HTML if needed
-        if (theme.cartDrawer && theme.cartDrawer.update) {
-          theme.cartDrawer.update(cart);
-        }
-      });
-  });
-
-}); 
+      
     </script>
   </body>
 </html>
