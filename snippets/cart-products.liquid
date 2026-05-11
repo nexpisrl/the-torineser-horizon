@@ -294,35 +294,35 @@
                   </div>
                 </td>
                 <td>
-                  {%- if item.item_components.size != 0 -%}
-{% assign quantitySum = 0 %}
-{%- for component in item.item_components -%}
-{% assign quantitySum = quantitySum | plus: component.quantity %}
-{%- endfor -%}
-                        
-  <button type="button" class="rb_subItem_trigger" onclick="rbCartTriggerEvent(this)">
-    <span><span class="rbTriggerSpan">Hide</span> {{quantitySum}} items</span>
-    <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.24 11.8a.75.75 0 0 0 1.06-.04l2.7-2.908 2.7 2.908a.75.75 0 1 0 1.1-1.02l-3.25-3.5a.75.75 0 0 0-1.1 0l-3.25 3.5a.75.75 0 0 0 .04 1.06Z"/></svg>
-  </button>
-  <div class="rb_subItemContain" style="display:block">
-    <div class="rb_subItemView">
-      {%- for component in item.item_components -%}
-        {% assign cartTitle = component.title | escape %}
-        {% assign productTitle = component.product.title | escape %}
-        {% assign variantTitle = cartTitle | replace: productTitle, '' %}
-        <div class="rb_subItemList">
-          <div class="rb_sil_media">
-            <img src="{{ component.image | image_url }}" width="40" height="40" alt="{{ component.title }}" />
-          </div>
-          <div class="rb_sil_info">
-            <span class="rb_sil_info_ptitle">{{ component.quantity }} × {{ productTitle }}</span>
-            <span class="rb_sil_info_vtitle">{{ variantTitle | replace_first:'-', '' }}</span>
-          </div>
-        </div>
-      {%- endfor -%}
-    </div>
-  </div>
-{%- endif -%}
+                {%- if item.item_components.size != 0 -%}
+                {% assign quantitySum = 0 %}
+                {%- for component in item.item_components -%}
+                {% assign quantitySum = quantitySum | plus: component.quantity %}
+                {%- endfor -%}
+                                        
+                  <button type="button" class="rb_subItem_trigger" onclick="rbCartTriggerEvent(this)">
+                    <span><span class="rbTriggerSpan">Hide</span> {{quantitySum}} items</span>
+                    <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.24 11.8a.75.75 0 0 0 1.06-.04l2.7-2.908 2.7 2.908a.75.75 0 1 0 1.1-1.02l-3.25-3.5a.75.75 0 0 0-1.1 0l-3.25 3.5a.75.75 0 0 0 .04 1.06Z"/></svg>
+                  </button>
+                  <div class="rb_subItemContain" style="display:block">
+                    <div class="rb_subItemView">
+                      {%- for component in item.item_components -%}
+                        {% assign cartTitle = component.title | escape %}
+                        {% assign productTitle = component.product.title | escape %}
+                        {% assign variantTitle = cartTitle | replace: productTitle, '' %}
+                        <div class="rb_subItemList">
+                          <div class="rb_sil_media">
+                            <img src="{{ component.image | image_url }}" width="40" height="40" alt="{{ component.title }}" />
+                          </div>
+                          <div class="rb_sil_info">
+                            <span class="rb_sil_info_ptitle">{{ component.quantity }} × {{ productTitle }}</span>
+                            <span class="rb_sil_info_vtitle">{{ variantTitle | replace_first:'-', '' }}</span>
+                          </div>
+                        </div>
+                      {%- endfor -%}
+                    </div>
+                  </div>
+                {%- endif -%}
                 </td>
                 <td
                   class="cart-items__quantity"
