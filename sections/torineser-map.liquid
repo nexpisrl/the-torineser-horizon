@@ -5,8 +5,8 @@
   endif
 %}
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+<link rel="stylesheet" href="{{ 'leaflet/leaflet.css' | asset_url }}">
+<script src="{{ 'leaflet/leaflet.js' | asset_url }}" defer></script>
 <script src="{{ 'torineser-map.js' | asset_url }}" defer></script>
 
 {% if coll == blank %}
