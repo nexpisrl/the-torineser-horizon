@@ -54,7 +54,42 @@
   endcapture
 
   capture drawer_menu
-    content_for 'block', type: '_header-menu', id: 'header-menu', variant: 'mobile'
+    assign header_menu_blocks = section.blocks | where: 'type', '_header-menu'
+    assign primary_menu_block = header_menu_blocks | first
+    assign secondary_menu_block = blank
+
+    for menu_block in header_menu_blocks
+      if forloop.index > 1
+        assign secondary_menu_block = menu_block
+        break
+      endif
+    endfor
+
+    assign primary_menu_links = blank
+    if primary_menu_block != blank
+      assign primary_menu_handle = primary_menu_block.settings.menu.handle | default: primary_menu_block.settings.menu
+
+      if primary_menu_handle != blank
+        assign primary_menu_links = linklists[primary_menu_handle]
+      endif
+    endif
+
+    assign secondary_menu_links = blank
+    if secondary_menu_block != blank
+      assign secondary_menu_handle = secondary_menu_block.settings.menu.handle | default: secondary_menu_block.settings.menu
+
+      if secondary_menu_handle != blank
+        assign secondary_menu_links = linklists[secondary_menu_handle]
+      endif
+    endif
+
+    if primary_menu_block != blank and primary_menu_links != blank
+      echo '<div class="header__drawer" ref="headerDrawerContainer" data-hydration-key="header-drawer-mobile">'
+      render 'header-drawer', linklist: primary_menu_links, secondary_linklist: secondary_menu_links, data_header_drawer_type: 'mobile-drawer', block: primary_menu_block, section: section
+      echo '</div>'
+    else
+      content_for 'block', type: '_header-menu', id: 'header-menu', variant: 'mobile'
+    endif
   endcapture
 
   capture navigation_bar
