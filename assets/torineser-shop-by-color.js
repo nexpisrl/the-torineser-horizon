@@ -24,6 +24,7 @@
     { key: 'marrone', name: 'Marrone', hex: '#6B4423' },
   ];
 
+  /** @type {Record<string, { key: string, name: string, hex: string }>} */
   const COLOR_KEY_MAP = Object.fromEntries(COLOR_PALETTE.map((c) => [c.key, c]));
 
   /** Section Rendering: stessa card della bank (non section-rendering-product-card). */
@@ -80,7 +81,7 @@
       };
     }
     const colors = [hexP || hexS, hexS || hexP];
-    const colorKeys = [nearestColorKey(colors[0]), nearestColorKey(colors[1])];
+    const colorKeys = [nearestColorKey(colors[0] ?? ''), nearestColorKey(colors[1] ?? '')];
     return {
       id: Number(raw.id),
       handle: String(raw.handle || ''),
@@ -100,9 +101,11 @@
   }
 
   /** Pallini sulla card: usa hex primario/secondario; se mancanti, classe vuota. */
+  /** @param {ReturnType<typeof normalizeProduct>} p */
   function cardColorDotsHtml(p) {
     const h0 = String(p.hex_primary || '').trim();
     const h1 = String(p.hex_secondary || '').trim();
+    /** @param {string} hex @param {string} title */
     const dot = (hex, title) => {
       const h = String(hex || '').trim();
       const emptyCls = h ? '' : ' torineser-sbc__card-color-dot--empty';
@@ -112,19 +115,28 @@
     return dot(h0, 'Primario') + dot(h1, 'Secondario');
   }
 
-  async function loadAllPages(collectionUrl, view, totalPages, initial) {
+  /**
+   * @param {string} collectionUrl
+   * @param {string} view
+   * @param {number} totalPages
+   * @param {unknown[]} initial
+   * @param {number} pageSize stesso valore del paginate Liquid (bank + collection view JSON)
+   */
+  async function loadAllPages(collectionUrl, view, totalPages, initial, pageSize) {
     const merged = [...initial];
     const max = Math.min(totalPages || 1, 500);
+    const size = pageSize > 0 ? pageSize : 50;
     for (let page = 2; page <= max; page++) {
       try {
         const url = new URL(collectionUrl, window.location.origin);
         url.searchParams.set('view', view);
         url.searchParams.set('page', String(page));
         const res = await fetch(url.toString(), { credentials: 'same-origin' });
+        if (!res.ok) break;
         const chunk = JSON.parse(await res.text());
         if (!Array.isArray(chunk) || chunk.length === 0) break;
         merged.push(...chunk);
-        if (chunk.length < 50) break;
+        if (chunk.length < size) break;
       } catch {
         break;
       }
@@ -132,19 +144,49 @@
     return merged;
   }
 
+  /** Cache solo HTML valido: mai memorizzare stringa vuota (evita fallback “permanente” dopo un errore transitorio). */
+  /** @type {Map<string, string>} */
   const cardHtmlCache = new Map();
 
+  /** @param {string} productUrl */
   async function fetchProductCardOuterHtml(productUrl) {
-    if (cardHtmlCache.has(productUrl)) return cardHtmlCache.get(productUrl);
+    const cached = cardHtmlCache.get(productUrl);
+    if (cached !== undefined) return cached;
     const u = new URL(productUrl, window.location.origin);
     u.searchParams.set('section_id', SBC_FETCH_SECTION_ID);
-    const res = await fetch(u.toString(), { credentials: 'same-origin' });
+    let res;
+    try {
+      res = await fetch(u.toString(), { credentials: 'same-origin' });
+    } catch {
+      return '';
+    }
+    if (!res.ok) return '';
     const text = await res.text();
     const doc = new DOMParser().parseFromString(text, 'text/html');
     const card = doc.querySelector('product-card');
     const html = card ? card.outerHTML : '';
-    cardHtmlCache.set(productUrl, html);
+    if (html) cardHtmlCache.set(productUrl, html);
     return html;
+  }
+
+  /**
+   * Dopo un fetch riuscito, aggiunge uno slot nascosto alla bank così filtri/ordinamenti successivi clonano come i prodotti della prima pagina.
+   * @param {HTMLElement} bankEl
+   * @param {ReturnType<typeof normalizeProduct>} p
+   * @param {string} html outerHTML di product-card
+   */
+  function appendFetchedCardToBank(bankEl, p, html) {
+    if (!html || bankEl.querySelector(`[data-sbc-template][data-product-id="${p.id}"]`)) return;
+    const tpl = document.createElement('div');
+    tpl.setAttribute('data-sbc-template', '');
+    tpl.dataset.productId = String(p.id);
+    tpl.setAttribute('data-product-url', p.url);
+    const slot = document.createElement('div');
+    slot.className = 'torineser-sbc__card-slot';
+    slot.hidden = true;
+    slot.innerHTML = html;
+    tpl.appendChild(slot);
+    bankEl.appendChild(tpl);
   }
 
   /**
@@ -157,6 +199,7 @@
     const collectionUrl = root.dataset.collectionUrl || '';
     const view = root.dataset.jsonView || 'torineser-shop-color-data';
     const totalPages = parseInt(root.dataset.totalPages || '1', 10) || 1;
+    const pageSize = parseInt(root.dataset.sbcPageSize || '50', 10) || 50;
 
     const jsonEl = root.querySelector('[data-torineser-sbc-json]');
     let rawList = [];
@@ -167,20 +210,20 @@
     }
     if (!Array.isArray(rawList)) rawList = [];
 
-    const grid = root.querySelector('[data-sbc-grid]');
-    const bank = root.querySelector('[data-sbc-bank]');
+    const gridEl = root.querySelector('[data-sbc-grid]');
+    const bankEl = root.querySelector('[data-sbc-bank]');
     const countLabel = root.querySelector('[data-sbc-count]');
     const activeWrap = root.querySelector('[data-sbc-active-filters]');
-    const sortSelect = root.querySelector('[data-sbc-sort]');
-    const swPrimary = root.querySelector('[data-sbc-swatches="primary"]');
-    const swSecondary = root.querySelector('[data-sbc-swatches="secondary"]');
-    const yearBar = root.querySelector('[data-sbc-years]');
-    const artistSel = root.querySelector('[data-sbc-artist]');
-    const quartiereSel = root.querySelector('[data-sbc-quartiere]');
-    const resetBtn = root.querySelector('[data-sbc-reset]');
-    const roleToggle = root.querySelector('[data-sbc-role-toggle]');
+    const sortSelect = /** @type {HTMLSelectElement | null} */ (root.querySelector('[data-sbc-sort]'));
+    const swPrimary = /** @type {HTMLElement | null} */ (root.querySelector('[data-sbc-swatches="primary"]'));
+    const swSecondary = /** @type {HTMLElement | null} */ (root.querySelector('[data-sbc-swatches="secondary"]'));
+    const yearBar = /** @type {HTMLElement | null} */ (root.querySelector('[data-sbc-years]'));
+    const artistSel = /** @type {HTMLSelectElement | null} */ (root.querySelector('[data-sbc-artist]'));
+    const quartiereSel = /** @type {HTMLSelectElement | null} */ (root.querySelector('[data-sbc-quartiere]'));
+    const resetBtn = /** @type {HTMLButtonElement | null} */ (root.querySelector('[data-sbc-reset]'));
+    const roleToggle = /** @type {HTMLElement | null} */ (root.querySelector('[data-sbc-role-toggle]'));
 
-    if (!grid || !bank) return;
+    if (!(gridEl instanceof HTMLElement) || !(bankEl instanceof HTMLElement)) return;
 
     const state = {
       primary: new Set(),
@@ -194,6 +237,7 @@
     /** @type {ReturnType<typeof normalizeProduct>[]} */
     let products = [];
 
+    /** @param {ReturnType<typeof normalizeProduct>} c */
     function matches(c) {
       const okP = state.primary.size === 0 || state.primary.has(c.colorKeys[0]);
       const okS = state.secondary.size === 0 || state.secondary.has(c.colorKeys[1]);
@@ -204,6 +248,7 @@
       return okP && okS && okY && okA && okQ;
     }
 
+    /** @param {ReturnType<typeof normalizeProduct>[]} list */
     function sortVisible(list) {
       const sorted = [...list];
       sorted.sort((a, b) => {
@@ -220,6 +265,7 @@
       return sorted;
     }
 
+    /** @param {HTMLElement | null} container @param {'primary'|'secondary'} role */
     function buildSwatches(container, role) {
       if (!container) return;
       container.innerHTML = '';
@@ -242,6 +288,7 @@
       });
     }
 
+    /** @param {'primary'|'secondary'} role */
     function syncSwatches(role) {
       const wrap = role === 'primary' ? swPrimary : swSecondary;
       if (!wrap) return;
@@ -254,6 +301,7 @@
       });
     }
 
+    /** @param {Set<string>} set @param {string} v */
     function toggleSet(set, v) {
       if (v === 'all') {
         set.clear();
@@ -263,9 +311,10 @@
       else set.add(v);
     }
 
+    /** @param {HTMLElement | null} wrap @param {'primary'|'secondary'} role */
     function wireSwatches(wrap, role) {
       if (!wrap) return;
-      wrap.addEventListener('click', (e) => {
+      wrap.addEventListener('click', (/** @type {MouseEvent} */ e) => {
         const sw = /** @type {HTMLElement} */ (e.target).closest('.torineser-sbc__swatch');
         if (!sw || !(sw instanceof HTMLButtonElement)) return;
         const r = /** @type {'primary'|'secondary'} */ (sw.dataset.role || role);
@@ -279,6 +328,7 @@
     function buildYears() {
       if (!yearBar) return;
       yearBar.innerHTML = '';
+      /** @type {Record<string, number>} */
       const counts = {};
       products.forEach((c) => {
         if (c.anno == null || Number.isNaN(c.anno)) return;
@@ -305,6 +355,7 @@
 
     function buildArtistOptions() {
       if (!artistSel) return;
+      /** @type {Record<string, number>} */
       const counts = {};
       products.forEach((c) => {
         if (!c.artist) return;
@@ -323,6 +374,7 @@
 
     function buildQuartiereOptions() {
       if (!quartiereSel) return;
+      /** @type {Record<string, number>} */
       const counts = {};
       products.forEach((c) => {
         if (!c.quartiere) return;
@@ -425,6 +477,8 @@
     }
 
     async function apply() {
+      if (!(gridEl instanceof HTMLElement) || !(bankEl instanceof HTMLElement)) return;
+
       const visible = products.filter(matches);
       const sorted = sortVisible(visible);
 
@@ -437,7 +491,7 @@
 
       renderActiveFilters();
 
-      grid.innerHTML = '';
+      gridEl.innerHTML = '';
 
       if (sorted.length === 0) {
         const emptyLi = document.createElement('li');
@@ -445,7 +499,7 @@
         emptyLi.style.gridColumn = '1 / -1';
         emptyLi.innerHTML =
           '<h3 class="torineser-sbc__empty-title">Nessuna copertina con questi filtri</h3><p class="torineser-sbc__empty-text">Prova ad allargare la selezione o azzera i filtri.</p>';
-        grid.appendChild(emptyLi);
+        gridEl.appendChild(emptyLi);
         return;
       }
 
@@ -457,7 +511,7 @@
         const cell = document.createElement('div');
         cell.className = 'torineser-sbc__cell-wrap';
 
-        const tpl = bank.querySelector(`[data-sbc-template][data-product-id="${p.id}"]`);
+        const tpl = bankEl.querySelector(`[data-sbc-template][data-product-id="${p.id}"]`);
         if (tpl) {
           const inner = tpl.querySelector('.torineser-sbc__card-slot');
           if (inner) {
@@ -470,7 +524,7 @@
             dots.innerHTML = cardColorDotsHtml(p);
             cell.appendChild(dots);
             li.appendChild(cell);
-            grid.appendChild(li);
+            gridEl.appendChild(li);
             continue;
           }
         }
@@ -478,11 +532,12 @@
         li.classList.add('torineser-sbc__grid-item--loading');
         cell.innerHTML = '<div class="torineser-sbc__card-skeleton"></div>';
         li.appendChild(cell);
-        grid.appendChild(li);
+        gridEl.appendChild(li);
         const html = await fetchProductCardOuterHtml(p.url);
         li.classList.remove('torineser-sbc__grid-item--loading');
         cell.innerHTML = '';
         if (html) {
+          appendFetchedCardToBank(bankEl, p, html);
           const wrap = document.createElement('div');
           wrap.className = 'torineser-sbc__card-slot torineser-sbc__card-slot--live';
           wrap.innerHTML = html;
@@ -510,6 +565,7 @@
     wireSwatches(swSecondary, 'secondary');
 
     /** Come il mock HTML: display none/'' oltre a [hidden], così non restano visibili due file di swatch. */
+    /** @param {'primary'|'secondary'} role */
     function setColorSwatchPanel(role) {
       const showPrimary = role === 'primary';
       if (swPrimary) {
@@ -526,7 +582,8 @@
 
     setColorSwatchPanel('primary');
     if (roleToggle) {
-      roleToggle.querySelectorAll('button[data-sbc-color-role]').forEach((btn) => {
+      roleToggle.querySelectorAll('button[data-sbc-color-role]').forEach((btnEl) => {
+        const btn = /** @type {HTMLButtonElement} */ (btnEl);
         btn.addEventListener('click', () => {
           roleToggle.querySelectorAll('button[data-sbc-color-role]').forEach((b) => b.classList.remove('torineser-sbc__role-btn--active'));
           btn.classList.add('torineser-sbc__role-btn--active');
@@ -587,12 +644,11 @@
       });
     }
 
-    loadAllPages(collectionUrl, view, totalPages, rawList).then((merged) => {
+    loadAllPages(collectionUrl, view, totalPages, rawList, pageSize).then((merged) => {
       products = [];
       const seen = new Set();
       merged.forEach((raw) => {
-        const n = normalizeProduct(raw);
-        if (!n) return;
+        const n = normalizeProduct(/** @type {Record<string, unknown>} */ (raw));
         if (seen.has(n.id)) return;
         seen.add(n.id);
         products.push(n);

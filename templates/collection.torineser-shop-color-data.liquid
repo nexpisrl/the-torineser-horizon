@@ -1,5 +1,6 @@
 {% layout none %}
-{% paginate collection.products by 50 %}
+{% comment %} Stesso page_size della sezione shop-by-color (loadAllPages sulle URL collezione). {% endcomment %}
+{% paginate collection.products by 250 %}
 [{% assign first = true %}
 {% for product in collection.products %}
   {% capture pj %}

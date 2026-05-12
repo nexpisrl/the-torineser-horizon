@@ -12,7 +12,8 @@
     <p>{{ section.settings.empty_message }}</p>
   </div>
 {% else %}
-  {% paginate coll.products by 50 %}
+  {% comment %} Max 250 (limite Liquid). Su template Pagina è solo la prima “pagina” di collezione in server render; il JS carica il resto via ?view= sulla URL collezione. {% endcomment %}
+  {% paginate coll.products by 250 %}
     <div
       class="torineser-sbc color-{{ section.settings.color_scheme }} {{ section.settings.section_custom_class | strip }}"
       id="shopify-section-{{ section.id }}"
@@ -21,6 +22,7 @@
       data-collection-url="{{ coll.url }}"
       data-json-view="torineser-shop-color-data"
       data-total-pages="{{ paginate.pages }}"
+      data-sbc-page-size="{{ paginate.page_size }}"
     >
       <script type="application/json" data-torineser-sbc-json>
         [
