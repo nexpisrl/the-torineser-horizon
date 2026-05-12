@@ -1,14 +1,34 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "torineser_map": {
       "type": "torineser-map",
       "settings": {
+        "collection": "catalogo",
         "tagline": "Mappa delle Copertine",
+        "filters_aside_label": "Filtra",
+        "quartiere_label": "Quartiere",
+        "fab_label": "Filtri",
+        "reset_label": "Reset",
+        "map_style_label": "Stile mappa",
+        "map_aria_label": "Mappa delle copertine a Torino",
         "initial_zoom": 14,
         "center_lat": "45.0703",
-        "center_lng": "7.6869"
+        "center_lng": "7.6869",
+        "empty_message": "Seleziona una collezione nelle impostazioni della sezione.",
+        "color_scheme": ""
       }
     }
   },
-  "order": ["torineser_map"]
+  "order": [
+    "torineser_map"
+  ]
 }
