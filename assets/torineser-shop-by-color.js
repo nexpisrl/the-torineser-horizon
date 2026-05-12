@@ -1,9 +1,11 @@
 /**
- * Shop by Color: filtri (palette + artista + anno + quartiere), ordinamento, griglia card.
+ * Shop by Color: filtri (palette per classificazione colori + artista + anno + quartiere), ordinamento, griglia card.
+ * I pallini filtro mostrano solo i colori effettivamente presenti nei metafield dei prodotti caricati.
  */
 (function () {
   'use strict';
 
+  /** Palette di riferimento: `nearestColorKey` classifica gli hex dei metafield; i filtri mostrano solo i colori davvero usati. */
   const COLOR_PALETTE = [
     { key: 'nero', name: 'Nero', hex: '#1A1A1A' },
     { key: 'crema', name: 'Crema', hex: '#F0EBDD' },
@@ -98,6 +100,38 @@
       anno: raw.anno === null || raw.anno === undefined || raw.anno === '' ? null : Number(raw.anno),
       image: raw.image != null ? String(raw.image) : null,
     };
+  }
+
+  /**
+   * Colori filtro: solo chiavi (e hex) davvero usati nei metafield primario/secondario del catalogo caricato.
+   * @param {ReturnType<typeof normalizeProduct>[]} list
+   * @param {'primary'|'secondary'} role
+   * @returns {{ key: string, hex: string, name: string }[]}
+   */
+  function swatchEntriesForRole(list, role) {
+    const idx = role === 'primary' ? 0 : 1;
+    /** @type {Map<string, { key: string, hex: string, name: string }>} */
+    const byKey = new Map();
+    for (const p of list) {
+      const key = p.colorKeys[idx];
+      if (!key || key === UNKNOWN_COLOR_KEY) continue;
+      const hexField = role === 'primary' ? p.hex_primary : p.hex_secondary;
+      let hex = String(hexField || '').trim() || String(p.colors[idx] || '').trim();
+      if (!hex) {
+        const pal = COLOR_KEY_MAP[key];
+        if (pal) hex = pal.hex;
+      }
+      if (!hex) continue;
+      if (!byKey.has(key)) {
+        const pal = COLOR_KEY_MAP[key];
+        byKey.set(key, {
+          key,
+          hex,
+          name: pal ? pal.name : key,
+        });
+      }
+    }
+    return [...byKey.values()].sort((a, b) => a.name.localeCompare(b.name, 'it'));
   }
 
   /** Pallini sulla card: usa hex primario/secondario; se mancanti, classe vuota. */
@@ -265,8 +299,8 @@
       return sorted;
     }
 
-    /** @param {HTMLElement | null} container @param {'primary'|'secondary'} role */
-    function buildSwatches(container, role) {
+    /** @param {HTMLElement | null} container @param {'primary'|'secondary'} role @param {{ key: string, hex: string, name: string }[]} entries */
+    function buildSwatches(container, role, entries) {
       if (!container) return;
       container.innerHTML = '';
       const clearBtn = document.createElement('button');
@@ -276,7 +310,7 @@
       clearBtn.dataset.role = role;
       clearBtn.innerHTML = '<span>×</span><span class="torineser-sbc__swatch-name">Qualsiasi</span>';
       container.appendChild(clearBtn);
-      COLOR_PALETTE.forEach((c) => {
+      entries.forEach((c) => {
         const s = document.createElement('button');
         s.type = 'button';
         s.className = 'torineser-sbc__swatch';
@@ -559,8 +593,6 @@
       }
     }
 
-    buildSwatches(swPrimary, 'primary');
-    buildSwatches(swSecondary, 'secondary');
     wireSwatches(swPrimary, 'primary');
     wireSwatches(swSecondary, 'secondary');
 
@@ -653,6 +685,10 @@
         seen.add(n.id);
         products.push(n);
       });
+      buildSwatches(swPrimary, 'primary', swatchEntriesForRole(products, 'primary'));
+      buildSwatches(swSecondary, 'secondary', swatchEntriesForRole(products, 'secondary'));
+      syncSwatches('primary');
+      syncSwatches('secondary');
       buildYears();
       buildArtistOptions();
       buildQuartiereOptions();
