@@ -26,6 +26,9 @@
 
   const COLOR_KEY_MAP = Object.fromEntries(COLOR_PALETTE.map((c) => [c.key, c]));
 
+  /** Section Rendering: stessa card della bank (non section-rendering-product-card). */
+  const SBC_FETCH_SECTION_ID = 'torineser-shop-color-card';
+
   /** @param {string} hex */
   function nearestColorKey(hex) {
     const h = String(hex || '')
@@ -134,7 +137,7 @@
   async function fetchProductCardOuterHtml(productUrl) {
     if (cardHtmlCache.has(productUrl)) return cardHtmlCache.get(productUrl);
     const u = new URL(productUrl, window.location.origin);
-    u.searchParams.set('section_id', 'section-rendering-product-card');
+    u.searchParams.set('section_id', SBC_FETCH_SECTION_ID);
     const res = await fetch(u.toString(), { credentials: 'same-origin' });
     const text = await res.text();
     const doc = new DOMParser().parseFromString(text, 'text/html');

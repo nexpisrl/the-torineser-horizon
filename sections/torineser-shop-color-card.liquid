@@ -1,0 +1,127 @@
+{% comment %}
+  Section Rendering API: GET /products/{handle}?section_id=torineser-shop-color-card
+  Stessa card (_product-card) usata nella bank di torineser-shop-by-color, con gallery completa.
+  Non aggiungere questa sezione ai template PDP: è pensata solo per il fetch da JS.
+
+  Nel preset, `blocks` è un oggetto con chiavi stabili (come i JSON template Horizon). È il formato richiesto da
+  theme-check ValidSchema. Alcune estensioni VS Code (es. “Liquid Section Schema”) richiedono erroneamente un array:
+  in quel caso ignora l’avviso o disabilita il controllo per questo file.
+{% endcomment %}
+{% if product != blank %}
+  {% # theme-check-disable UniqueStaticBlockId %}
+  {% content_for 'block', type: '_product-card', id: 'torineser-sbc-fetch-card', closest.product: product %}
+  {% # theme-check-enable UniqueStaticBlockId %}
+{% endif %}
+
+{% schema %}
+{
+  "name": "Torineser SBC card",
+  "class": "torineser-shop-color-card-section",
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Non aggiungere questa sezione al template prodotto: è usata solo dalla sezione Shop by color per il fetch delle card (Section Rendering API)."
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Torineser SBC card",
+      "blocks": {
+        "torineser-sbc-fetch-card": {
+          "type": "_product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 16,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "card-gallery": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "image_ratio": "portrait",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 8,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price": {
+              "type": "price",
+              "name": "t:names.product_price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "color": "var(--color-foreground)",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": ["card-gallery", "product_title", "price"]
+        }
+      },
+      "block_order": []
+    }
+  ]
+}
+{% endschema %}
