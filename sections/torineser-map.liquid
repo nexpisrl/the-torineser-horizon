@@ -82,12 +82,6 @@
             <div class="torineser-map__filter-group-content" data-filter-quartieri></div>
           </div>
           <div class="torineser-map__filter-row">
-            <label class="torineser-map__visually-hidden" for="TorineserMapStyle-{{ section.id }}">{{ section.settings.map_style_label }}</label>
-            <select class="torineser-map__style-select" id="TorineserMapStyle-{{ section.id }}" data-map-style-select>
-              <option value="voyager" selected>Voyager</option>
-              <option value="positron">Chiara (Positron)</option>
-              <option value="dark">Scura</option>
-            </select>
             <button type="button" class="torineser-map__filter-reset" data-filter-reset>{{ section.settings.reset_label }}</button>
           </div>
         </div>
@@ -128,17 +122,6 @@
   .torineser-map__empty-msg {
     margin: 0;
     color: var(--torineser-muted);
-  }
-
-  .torineser-map__visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
   }
 
   .torineser-map .leaflet-container {
@@ -274,24 +257,7 @@
   .torineser-map__filter-row {
     display: flex;
     align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
     justify-content: flex-end;
-  }
-
-  .torineser-map__style-select {
-    border: 1px solid var(--torineser-border);
-    background: transparent;
-    border-radius: 100px;
-    padding: 8px 16px;
-    font-family: inherit;
-    font-size: 12px;
-    color: var(--torineser-ink);
-    cursor: pointer;
-  }
-
-  .torineser-map__style-select:hover {
-    border-color: var(--torineser-ink);
   }
 
   .torineser-map__chip {
@@ -829,12 +795,6 @@
       "id": "reset_label",
       "label": "Testo reset filtri",
       "default": "Reset"
-    },
-    {
-      "type": "text",
-      "id": "map_style_label",
-      "label": "Etichetta accessibile stile mappa",
-      "default": "Stile mappa"
     },
     {
       "type": "text",

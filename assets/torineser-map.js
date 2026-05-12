@@ -5,6 +5,12 @@
 (function () {
   'use strict';
 
+  /** Metafield es. "#44" → "44" (solo # iniziali). */
+  function sanitizeNumeroProdotto(raw) {
+    if (raw == null) return '';
+    return String(raw).trim().replace(/^#+/, '').trim();
+  }
+
   /** @param {string} raw */
   function parseCoords(raw) {
     if (!raw || typeof raw !== 'string') return null;
@@ -21,7 +27,7 @@
   function normalizeProduct(p) {
     const coords = parseCoords(String(p.coords_raw || ''));
     if (!coords) return null;
-    const edition = p.edition != null && String(p.edition).trim() !== '' ? String(p.edition).trim() : '';
+    const numeroProdotto = sanitizeNumeroProdotto(p.numero_prodotto);
     return {
       id: Number(p.id),
       title: String(p.title || ''),
@@ -31,7 +37,7 @@
       vendor: String(p.vendor || ''),
       description: String(p.description || ''),
       location_label: String(p.location_label || p.quartiere || ''),
-      edition,
+      numeroProdotto,
       image: p.image != null ? String(p.image) : null,
     };
   }
@@ -105,33 +111,19 @@
 
     if (!mapEl || typeof L === 'undefined') return;
 
-    const tileLayers = {
-      positron: L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-        attribution: '© OpenStreetMap © CARTO',
-        subdomains: 'abcd',
-        maxZoom: 20,
-      }),
-      dark: L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        attribution: '© OpenStreetMap © CARTO',
-        subdomains: 'abcd',
-        maxZoom: 20,
-      }),
-      voyager: L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-        attribution: '© OpenStreetMap © CARTO',
-        subdomains: 'abcd',
-        maxZoom: 20,
-      }),
-    };
+    const baseTile = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      attribution: '© OpenStreetMap © CARTO',
+      subdomains: 'abcd',
+      maxZoom: 20,
+    });
 
     const map = L.map(mapEl, {
       center: [mapCenterLat, mapCenterLng],
       zoom: initialZoom,
       zoomControl: false,
     });
-    tileLayers.voyager.addTo(map);
+    baseTile.addTo(map);
     L.control.zoom({ position: 'bottomright' }).addTo(map);
-
-    let currentTile = 'voyager';
 
     /** @type {Record<number, HTMLDivElement>} */
     const markerEls = {};
@@ -142,7 +134,7 @@
     const filterQuartiere = new Set();
     let activeId = null;
 
-    /** @type {{ id: number, edition: string, markerLabel: string }[]} */
+    /** @type {{ id: number, numeroProdotto: string, markerLabel: string }[]} */
     let covers = [];
 
     function makeChip(value, label, count) {
@@ -195,20 +187,24 @@
       for (const k of Object.keys(markerEls)) delete markerEls[Number(k)];
     }
 
+    /** Testo cerchio: max ~5 caratteri per non rompere il marker. */
+    function markerCircleText(display) {
+      if (display.length <= 5) return display;
+      return display.slice(0, 4) + '\u2026';
+    }
+
     function buildMarkers() {
       clearMarkers();
       covers.forEach((c, idx) => {
-        const label =
-          c.edition && c.edition.length > 0
-            ? c.edition.length > 3
-              ? c.edition.slice(0, 3)
-              : c.edition
-            : String(idx + 1);
-        c.markerLabel = label;
+        const display = c.numeroProdotto.length > 0 ? c.numeroProdotto : String(idx + 1);
+        const label = markerCircleText(display);
+        c.markerLabel = display;
+
+        const tipLead = c.numeroProdotto.length > 0 ? c.numeroProdotto : String(c.id);
 
         const el = document.createElement('div');
         el.className = 'torineser-map__cover-marker';
-        el.innerHTML = `<span>${label}</span><div class="torineser-map__marker-tooltip">#${c.id} — ${escapeHtml(c.title)}</div>`;
+        el.innerHTML = `<span>${escapeHtml(label)}</span><div class="torineser-map__marker-tooltip">${escapeHtml(tipLead)} — ${escapeHtml(c.title)}</div>`;
         el.addEventListener('click', () => openPanel(c.id));
 
         const icon = L.divIcon({ html: el, className: '', iconSize: [36, 36], iconAnchor: [18, 18] });
@@ -235,9 +231,9 @@
       markerEls[id].classList.add('torineser-map__cover-marker--active');
 
       const numLine =
-        c.edition && c.edition.length > 0
-          ? `${escapeHtml(c.edition)} · ${escapeHtml(c.quartiere)}`
-          : `#${c.id} · ${escapeHtml(c.quartiere)}`;
+        c.numeroProdotto.length > 0
+          ? `${escapeHtml(c.numeroProdotto)} · ${escapeHtml(c.quartiere)}`
+          : `${c.id} · ${escapeHtml(c.quartiere)}`;
 
       const imgHtml = c.image
         ? `<img class="torineser-map__panel-cover" src="${escapeHtml(c.image)}" alt="${escapeHtml(c.title)}" loading="lazy" width="600" height="800">`
@@ -348,17 +344,6 @@
       const fab = root.querySelector('[data-filter-fab]');
       if (fab) fab.addEventListener('click', () => root.classList.add('torineser-map--sheet-open'));
       if (sheetBackdrop) sheetBackdrop.addEventListener('click', () => root.classList.remove('torineser-map--sheet-open'));
-
-      const styleSelect = root.querySelector('[data-map-style-select]');
-      if (styleSelect && styleSelect instanceof HTMLSelectElement) {
-        styleSelect.addEventListener('change', () => {
-          const style = styleSelect.value;
-          if (!tileLayers[style] || style === currentTile) return;
-          map.removeLayer(tileLayers[currentTile]);
-          tileLayers[style].addTo(map);
-          currentTile = style;
-        });
-      }
     }
 
     loadAllPages(collectionUrl, view, totalPages, rawList).then((merged) => {

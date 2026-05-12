@@ -13,8 +13,7 @@
     endif
   endif
 
-  assign luogo = product.metafields.the_torineser.luogo.value | default: '' | strip
-  assign edizione = product.metafields.the_torineser.numero_copertina.value | default: '' | strip
+  assign numero_prodotto_raw = product.metafields.the_torineser.numero_prodotto.value | default: '' | strip
 
   assign skip = false
   if nome_q == blank or coord_raw == blank
@@ -22,5 +21,5 @@
   endif
 %}
 {% unless skip %}
-{"id":{{ product.id }},"title":{{ product.title | json }},"url":{{ product.url | json }},"handle":{{ product.handle | json }},"quartiere":{{ nome_q | json }},"coords_raw":{{ coord_raw | json }},"vendor":{{ product.vendor | json }},"description":{{ product.description | strip_html | truncate: 800 | json }},"location_label":{% if luogo != blank %}{{ luogo | json }}{% else %}{{ nome_q | json }}{% endif %},"edition":{{ edizione | json }}{% if product.featured_media %},"image":{{ product.featured_media | image_url: width: 900 | json }}{% else %},"image":null{% endif %}}
+{"id":{{ product.id }},"title":{{ product.title | json }},"url":{{ product.url | json }},"handle":{{ product.handle | json }},"quartiere":{{ nome_q | json }},"coords_raw":{{ coord_raw | json }},"vendor":{{ product.vendor | json }},"description":{{ product.description | strip_html | truncate: 800 | json }},"location_label":{{ nome_q | json }},"numero_prodotto":{{ numero_prodotto_raw | json }}{% if product.featured_media %},"image":{{ product.featured_media | image_url: width: 900 | json }}{% else %},"image":null{% endif %}}
 {% endunless %}
