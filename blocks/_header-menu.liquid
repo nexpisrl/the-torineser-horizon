@@ -19,13 +19,25 @@
 
 {% case variant %}
   {% when 'mobile' %}
+    {% liquid
+      assign drawer_secondary_linklist = blank
+      assign drawer_secondary_menu = block.settings.drawer_secondary_menu | default: 'men-header-destra'
+
+      if drawer_secondary_menu != blank
+        assign drawer_secondary_linklist = linklists[drawer_secondary_menu]
+      endif
+    %}
     <div
       class="header__drawer"
       ref="headerDrawerContainer"
       data-hydration-key="header-drawer-mobile"
       {{ block.shopify_attributes }}
     >
-      {% render 'header-drawer', linklist: menu_links, data_header_drawer_type: 'mobile-drawer' %}
+      {% render 'header-drawer',
+        linklist: menu_links,
+        secondary_linklist: drawer_secondary_linklist,
+        data_header_drawer_type: 'mobile-drawer'
+      %}
     </div>
 
   {% when 'navigation_bar' %}
@@ -903,6 +915,12 @@
     {
       "type": "header",
       "content": "t:content.mobile_layout"
+    },
+    {
+      "type": "link_list",
+      "id": "drawer_secondary_menu",
+      "label": "Menu secondario nel drawer",
+      "default": "men-header-destra"
     },
     {
       "type": "checkbox",
