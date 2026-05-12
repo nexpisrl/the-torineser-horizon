@@ -79,7 +79,7 @@
           },
           "blocks": {}
         },
-            "header-menu-2": {
+        "header-menu-2": {
           "type": "_header-menu",
           "static": true,
           "settings": {
