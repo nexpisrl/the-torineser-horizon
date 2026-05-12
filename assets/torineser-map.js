@@ -200,11 +200,9 @@
         const label = markerCircleText(display);
         c.markerLabel = display;
 
-        const tipLead = c.numeroProdotto.length > 0 ? c.numeroProdotto : String(c.id);
-
         const el = document.createElement('div');
         el.className = 'torineser-map__cover-marker';
-        el.innerHTML = `<span>${escapeHtml(label)}</span><div class="torineser-map__marker-tooltip">${escapeHtml(tipLead)} — ${escapeHtml(c.title)}</div>`;
+        el.innerHTML = `<span>${escapeHtml(label)}</span><div class="torineser-map__marker-tooltip">${escapeHtml(c.title)}</div>`;
         el.addEventListener('click', () => openPanel(c.id));
 
         const icon = L.divIcon({ html: el, className: '', iconSize: [36, 36], iconAnchor: [18, 18] });
