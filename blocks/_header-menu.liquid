@@ -10,7 +10,7 @@
 
   # Ogni ulteriore menu header eredita stile dal primo blocco Menu del tema; i link restano quelli di questo blocco.
   assign primary_menu_block = section.blocks | where: 'type', '_header-menu' | first
-  if primary_menu_block != blank and block.id != primary_menu_block.id
+  if primary_menu_block != blank and block != primary_menu_block
     assign block_settings = primary_menu_block.settings
   endif
 
@@ -19,13 +19,35 @@
 
 {% case variant %}
   {% when 'mobile' %}
+    {% liquid
+      assign secondary_menu_links = blank
+
+      if primary_menu_block != blank and block == primary_menu_block
+        assign secondary_menu_block = blank
+
+        for menu_block in section.blocks
+          if menu_block.type == '_header-menu' and menu_block != primary_menu_block
+            assign secondary_menu_block = menu_block
+            break
+          endif
+        endfor
+
+        if secondary_menu_block != blank
+          assign secondary_menu_links = secondary_menu_block.settings.menu
+        endif
+      endif
+    %}
     <div
       class="header__drawer"
       ref="headerDrawerContainer"
       data-hydration-key="header-drawer-mobile"
       {{ block.shopify_attributes }}
     >
-      {% render 'header-drawer', linklist: menu_links, data_header_drawer_type: 'mobile-drawer' %}
+      {% render 'header-drawer',
+        linklist: menu_links,
+        secondary_linklist: secondary_menu_links,
+        data_header_drawer_type: 'mobile-drawer'
+      %}
     </div>
 
   {% when 'navigation_bar' %}
