@@ -1,0 +1,15 @@
+{% doc %}
+  Estrae hex #RRGGBB da metaobject Shopify shopify--color-pattern (campo color).
+  @param metaobject {object} riferimento metaobject .value
+{% enddoc %}
+{% liquid
+  assign out = ''
+  if metaobject != blank and metaobject.color != blank
+    if metaobject.color.hex != blank
+      assign out = metaobject.color.hex
+    else
+      assign out = metaobject.color | append: '' | strip
+    endif
+  endif
+%}
+{{- out -}}

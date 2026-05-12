@@ -1,0 +1,921 @@
+{% liquid
+  assign coll = section.settings.collection
+  if coll == blank
+    assign coll = collections.all
+  endif
+%}
+
+<script src="{{ 'torineser-shop-by-color.js' | asset_url }}" defer></script>
+
+{% if coll == blank %}
+  <div class="section torineser-sbc torineser-sbc--empty color-{{ section.settings.color_scheme }}">
+    <p>{{ section.settings.empty_message }}</p>
+  </div>
+{% else %}
+  {% paginate coll.products by 50 %}
+    <div
+      class="torineser-sbc color-{{ section.settings.color_scheme }} {{ section.settings.section_custom_class | strip }}"
+      id="shopify-section-{{ section.id }}"
+      data-torineser-shop-by-color
+      data-section-id="{{ section.id }}"
+      data-collection-url="{{ coll.url }}"
+      data-json-view="torineser-shop-color-data"
+      data-total-pages="{{ paginate.pages }}"
+    >
+      <script type="application/json" data-torineser-sbc-json>
+        [
+          {%- assign first = true -%}
+          {%- for product in coll.products -%}
+            {%- capture pj -%}
+              {% render 'torineser-shop-color-product-json', product: product %}
+            {%- endcapture -%}
+            {%- assign pj = pj | strip -%}
+            {%- if pj != blank -%}
+              {%- unless first -%},{%- endunless -%}
+              {{ pj }}
+              {%- assign first = false -%}
+            {%- endif -%}
+          {%- endfor -%}
+        ]
+      </script>
+
+      <header class="torineser-sbc__hero">
+        {% if section.settings.hero_eyebrow != blank %}
+          <p class="torineser-sbc__eyebrow">{{ section.settings.hero_eyebrow }}</p>
+        {% endif %}
+        {% if section.settings.hero_heading != blank %}
+          <div class="torineser-sbc__hero-title rte">{{ section.settings.hero_heading }}</div>
+        {% endif %}
+        {% if section.settings.hero_text != blank %}
+          <div class="torineser-sbc__hero-text rte">{{ section.settings.hero_text }}</div>
+        {% endif %}
+      </header>
+
+      <div class="torineser-sbc__layout">
+        <aside class="torineser-sbc__sidebar">
+          <div class="torineser-sbc__sb-section">
+            <div class="torineser-sbc__sb-label">
+              {{ section.settings.label_color }}
+              {% if section.settings.label_color_hint != blank %}
+                <span class="torineser-sbc__sb-hint">{{ section.settings.label_color_hint }}</span>
+              {% endif %}
+            </div>
+            <div class="torineser-sbc__role-toggle" data-sbc-role-toggle>
+              <button type="button" class="torineser-sbc__role-btn torineser-sbc__role-btn--active" data-sbc-color-role="primary">
+                {{ section.settings.label_primary }}
+              </button>
+              <button type="button" class="torineser-sbc__role-btn" data-sbc-color-role="secondary">
+                {{ section.settings.label_secondary }}
+              </button>
+            </div>
+            <div class="torineser-sbc__swatches" data-sbc-swatches="primary" id="torineser-sbc-sw-primary-{{ section.id }}"></div>
+            <div class="torineser-sbc__swatches torineser-sbc__swatches--secondary" data-sbc-swatches="secondary" id="torineser-sbc-sw-secondary-{{ section.id }}" hidden></div>
+          </div>
+
+          <div class="torineser-sbc__sb-section">
+            <div class="torineser-sbc__sb-label">{{ section.settings.label_year }}</div>
+            <div class="torineser-sbc__chips" data-sbc-years></div>
+          </div>
+
+          <div class="torineser-sbc__sb-section">
+            <div class="torineser-sbc__sb-label">{{ section.settings.label_artist }}</div>
+            <select class="torineser-sbc__select" data-sbc-artist aria-label="{{ section.settings.label_artist }}"></select>
+          </div>
+
+          <div class="torineser-sbc__sb-section">
+            <div class="torineser-sbc__sb-label">{{ section.settings.label_quartiere }}</div>
+            <select class="torineser-sbc__select" data-sbc-quartiere aria-label="{{ section.settings.label_quartiere }}"></select>
+          </div>
+
+          <button type="button" class="torineser-sbc__reset" data-sbc-reset>{{ section.settings.reset_label }}</button>
+        </aside>
+
+        <div class="torineser-sbc__main">
+          <div class="torineser-sbc__toolbar">
+            <div class="torineser-sbc__count" data-sbc-count>
+              <strong>—</strong> {{ section.settings.count_suffix | strip }}
+            </div>
+            <div class="torineser-sbc__sort">
+              <label class="torineser-sbc__sort-label" for="torineser-sbc-sort-{{ section.id }}">{{ section.settings.sort_label }}</label>
+              <select class="torineser-sbc__sort-select" id="torineser-sbc-sort-{{ section.id }}" data-sbc-sort>
+                <option value="newest">{{ section.settings.sort_newest }}</option>
+                <option value="oldest">{{ section.settings.sort_oldest }}</option>
+                <option value="title">{{ section.settings.sort_title }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="torineser-sbc__active-filters" data-sbc-active-filters></div>
+          <ul
+            class="torineser-sbc__grid {{ section.settings.grid_custom_class | strip }}"
+            data-sbc-grid
+            role="list"
+            style="--sbc-cols-desktop: {{ section.settings.columns_desktop }}; --sbc-cols-mobile: {{ section.settings.columns_mobile }}; --sbc-grid-gap: 24px;"
+          ></ul>
+        </div>
+      </div>
+
+      <div class="torineser-sbc__bank" data-sbc-bank hidden>
+        {% for product in coll.products %}
+          {% capture pj %}
+            {% render 'torineser-shop-color-product-json', product: product %}
+          {% endcapture %}
+          {% assign pj = pj | strip %}
+          {% if pj != blank %}
+            <div data-sbc-template data-product-id="{{ product.id }}" data-product-url="{{ product.url | escape }}">
+              <div class="torineser-sbc__card-slot" hidden>
+                {% # theme-check-disable UniqueStaticBlockId %}
+                {% content_for 'block', type: '_product-card', id: 'shop-color-card', closest.product: product %}
+                {% # theme-check-enable UniqueStaticBlockId %}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endpaginate %}
+{% endif %}
+
+{% stylesheet %}
+  .torineser-sbc {
+    --sbc-red: #c8342a;
+    --sbc-cream: #f8f5ef;
+    --sbc-ink: #1a1a1a;
+    --sbc-muted: rgba(26, 26, 26, 0.5);
+    --sbc-border: rgba(26, 26, 26, 0.12);
+    --sbc-side: 280px;
+    font-family: var(--font-body--family, 'DM Sans', system-ui, sans-serif);
+    background: var(--sbc-cream);
+    color: var(--sbc-ink);
+  }
+
+  .torineser-sbc--empty {
+    padding: 2rem;
+    text-align: center;
+    color: var(--sbc-muted);
+  }
+
+  .torineser-sbc__hero {
+    padding: 56px 40px 40px;
+    border-bottom: 1px solid var(--sbc-border);
+  }
+
+  .torineser-sbc__eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sbc-red);
+    font-weight: 600;
+    margin: 0 0 14px;
+  }
+
+  .torineser-sbc__hero-title {
+    font-family: var(--font-heading--family, 'Playfair Display', Georgia, serif);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.05;
+    font-weight: 700;
+    max-width: 720px;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  .torineser-sbc__hero-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--sbc-red);
+  }
+
+  .torineser-sbc__hero-text {
+    margin-top: 18px;
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 560px;
+    color: rgba(26, 26, 26, 0.7);
+    font-weight: 300;
+  }
+
+  .torineser-sbc__layout {
+    display: grid;
+    grid-template-columns: var(--sbc-side) 1fr;
+    gap: 0;
+    align-items: start;
+    min-height: 40vh;
+  }
+
+  .torineser-sbc__sidebar {
+    position: sticky;
+    top: 0;
+    padding: 32px 28px 40px;
+    border-right: 1px solid var(--sbc-border);
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+  }
+
+  .torineser-sbc__sb-section {
+    margin-bottom: 28px;
+  }
+
+  .torineser-sbc__sb-section + .torineser-sbc__sb-section {
+    padding-top: 24px;
+    border-top: 1px solid var(--sbc-border);
+  }
+
+  .torineser-sbc__sb-label {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--sbc-ink);
+    font-weight: 700;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .torineser-sbc__sb-hint {
+    font-family: var(--font-heading--family, Georgia, serif);
+    font-style: italic;
+    font-weight: 400;
+    text-transform: lowercase;
+    letter-spacing: 0;
+    font-size: 11px;
+    color: var(--sbc-muted);
+  }
+
+  .torineser-sbc__role-toggle {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 12px;
+    background: rgba(26, 26, 26, 0.05);
+    border-radius: 100px;
+    padding: 3px;
+  }
+
+  .torineser-sbc__role-btn {
+    flex: 1;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 6px 10px;
+    border-radius: 100px;
+    color: var(--sbc-muted);
+  }
+
+  .torineser-sbc__role-btn--active {
+    background: var(--sbc-cream);
+    color: var(--sbc-ink);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  }
+
+  .torineser-sbc__swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .torineser-sbc__swatch {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--sbc-border);
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    position: relative;
+    padding: 0;
+    background-clip: padding-box;
+  }
+
+  .torineser-sbc__swatch:hover {
+    transform: scale(1.15);
+  }
+
+  .torineser-sbc__swatch--active {
+    box-shadow: 0 0 0 2px var(--sbc-cream), 0 0 0 4px var(--sbc-ink);
+    transform: scale(1.1);
+  }
+
+  .torineser-sbc__swatch--clear {
+    background: var(--sbc-cream);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 1;
+    color: var(--sbc-muted);
+  }
+
+  .torineser-sbc__swatch-name {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--sbc-ink);
+    color: var(--sbc-cream);
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 10px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+    z-index: 10;
+  }
+
+  .torineser-sbc__swatch:hover .torineser-sbc__swatch-name {
+    opacity: 1;
+  }
+
+  .torineser-sbc__select {
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    border: 1px solid var(--sbc-border);
+    background: var(--sbc-cream);
+    border-radius: 100px;
+    padding: 10px 36px 10px 16px;
+    font-family: var(--font-heading--family, Georgia, serif);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--sbc-ink);
+    cursor: pointer;
+    background-image: linear-gradient(45deg, transparent 50%, var(--sbc-ink) 50%),
+      linear-gradient(135deg, var(--sbc-ink) 50%, transparent 50%);
+    background-position: calc(100% - 18px) 50%, calc(100% - 12px) 50%;
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+  }
+
+  .torineser-sbc__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .torineser-sbc__chip {
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: 1px solid var(--sbc-border);
+    background: transparent;
+    cursor: pointer;
+    color: var(--sbc-ink);
+    transition: border-color 0.15s, background 0.15s, color 0.15s;
+    font-family: inherit;
+  }
+
+  .torineser-sbc__chip:hover {
+    border-color: var(--sbc-ink);
+  }
+
+  .torineser-sbc__chip--active {
+    background: var(--sbc-ink);
+    color: var(--sbc-cream);
+    border-color: var(--sbc-ink);
+  }
+
+  .torineser-sbc__chip-count {
+    display: inline-block;
+    margin-left: 4px;
+    font-size: 9px;
+    opacity: 0.45;
+    font-weight: 400;
+  }
+
+  .torineser-sbc__reset {
+    width: 100%;
+    margin-top: 12px;
+    background: none;
+    border: 1px solid var(--sbc-border);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sbc-muted);
+    font-weight: 500;
+    padding: 10px;
+    border-radius: 100px;
+  }
+
+  .torineser-sbc__reset:hover {
+    color: var(--sbc-red);
+    border-color: var(--sbc-red);
+  }
+
+  .torineser-sbc__main {
+    padding: 28px 40px 80px;
+    min-width: 0;
+  }
+
+  .torineser-sbc__toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--sbc-border);
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .torineser-sbc__count {
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--sbc-ink);
+    font-weight: 500;
+  }
+
+  .torineser-sbc__count strong {
+    font-weight: 700;
+  }
+
+  .torineser-sbc__count em {
+    font-style: italic;
+    color: var(--sbc-muted);
+    font-family: var(--font-heading--family, Georgia, serif);
+    font-size: 13px;
+    margin-left: 4px;
+  }
+
+  .torineser-sbc__sort {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .torineser-sbc__sort-label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sbc-muted);
+    font-weight: 500;
+  }
+
+  .torineser-sbc__sort-select {
+    border: none;
+    background: transparent;
+    font-family: var(--font-heading--family, Georgia, serif);
+    font-style: italic;
+    font-size: 13px;
+    cursor: pointer;
+    padding: 6px 24px 6px 0;
+    appearance: none;
+    -webkit-appearance: none;
+    color: var(--sbc-ink);
+    background-image: linear-gradient(45deg, transparent 50%, var(--sbc-ink) 50%),
+      linear-gradient(135deg, var(--sbc-ink) 50%, transparent 50%);
+    background-position: calc(100% - 8px) 50%, calc(100% - 4px) 50%;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+  }
+
+  .torineser-sbc__active-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 24px;
+    min-height: 0;
+  }
+
+  .torineser-sbc__active-filters:empty {
+    display: none;
+  }
+
+  .torineser-sbc__active-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 8px 5px 12px;
+    background: var(--sbc-ink);
+    color: var(--sbc-cream);
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .torineser-sbc__pill-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    flex-shrink: 0;
+  }
+
+  .torineser-sbc__pill-remove {
+    background: transparent;
+    border: none;
+    color: var(--sbc-cream);
+    opacity: 0.6;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 1;
+    padding: 0 2px;
+  }
+
+  .torineser-sbc__pill-remove:hover {
+    opacity: 1;
+  }
+
+  .torineser-sbc__grid {
+    display: grid;
+    grid-template-columns: repeat(var(--sbc-cols-mobile, 2), 1fr);
+    gap: var(--sbc-grid-gap, 24px);
+    row-gap: 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .torineser-sbc__grid {
+      grid-template-columns: repeat(var(--sbc-cols-desktop, 4), 1fr);
+    }
+  }
+
+  .torineser-sbc__grid-item {
+    position: relative;
+    min-width: 0;
+  }
+
+  .torineser-sbc__cell-wrap {
+    position: relative;
+    width: 100%;
+  }
+
+  .torineser-sbc__card-slot--live > product-card,
+  .torineser-sbc__card-slot--live .product-card {
+    width: 100%;
+  }
+
+  .torineser-sbc__card-colors {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    display: flex;
+    gap: 4px;
+    background: rgba(248, 245, 239, 0.9);
+    padding: 4px;
+    border-radius: 100px;
+    backdrop-filter: blur(8px);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .torineser-sbc__card-color-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .torineser-sbc__card-color-dot--empty {
+    background: transparent;
+    border-style: dashed;
+    opacity: 0.55;
+  }
+
+  .torineser-sbc__grid-item--loading .torineser-sbc__card-skeleton {
+    aspect-ratio: 3 / 4;
+    background: linear-gradient(90deg, #e8e3da 25%, #f0ebe0 50%, #e8e3da 75%);
+    background-size: 200% 100%;
+    animation: torineser-sbc-shimmer 1.2s infinite;
+    border-radius: 8px;
+  }
+
+  @keyframes torineser-sbc-shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  .torineser-sbc__grid-empty {
+    list-style: none;
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--sbc-muted);
+  }
+
+  .torineser-sbc__empty-title {
+    font-family: var(--font-heading--family, Georgia, serif);
+    font-style: italic;
+    font-size: 28px;
+    color: var(--sbc-ink);
+    margin: 0 0 12px;
+  }
+
+  .torineser-sbc__empty-text {
+    font-size: 14px;
+    margin: 0;
+  }
+
+  .torineser-sbc__fallback {
+    display: block;
+    aspect-ratio: 3 / 4;
+    border: 1px solid var(--sbc-border);
+    border-radius: 8px;
+    padding: 1rem;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  @media screen and (max-width: 900px) {
+    .torineser-sbc__hero {
+      padding: 36px 20px 28px;
+    }
+
+    .torineser-sbc__layout {
+      grid-template-columns: 1fr;
+    }
+
+    .torineser-sbc__sidebar {
+      position: relative;
+      top: auto;
+      max-height: none;
+      border-right: none;
+      border-bottom: 1px solid var(--sbc-border);
+      padding: 20px;
+    }
+
+    .torineser-sbc__main {
+      padding: 24px 20px 60px;
+    }
+
+    .torineser-sbc__grid {
+      row-gap: 24px;
+    }
+
+    .torineser-sbc__toolbar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Shop by color",
+  "tag": "section",
+  "class": "section-wrapper torineser-shop-by-color-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collezione",
+      "info": "Vuoto = Tutti i prodotti (All)."
+    },
+    {
+      "type": "text",
+      "id": "hero_eyebrow",
+      "label": "Eyebrow hero",
+      "default": "Shop"
+    },
+    {
+      "type": "richtext",
+      "id": "hero_heading",
+      "label": "Titolo hero",
+      "default": "<p>Cerca per <em>colore.</em></p>"
+    },
+    {
+      "type": "richtext",
+      "id": "hero_text",
+      "label": "Testo hero (opzionale)"
+    },
+    {
+      "type": "text",
+      "id": "label_color",
+      "label": "Etichetta sezione colore",
+      "default": "Colore"
+    },
+    {
+      "type": "text",
+      "id": "label_color_hint",
+      "label": "Hint colore (corsivo)",
+      "default": "— multipla"
+    },
+    {
+      "type": "text",
+      "id": "label_primary",
+      "label": "Toggle colore primario",
+      "default": "Primario"
+    },
+    {
+      "type": "text",
+      "id": "label_secondary",
+      "label": "Toggle colore secondario",
+      "default": "Secondario"
+    },
+    {
+      "type": "text",
+      "id": "label_year",
+      "label": "Etichetta anno",
+      "default": "Anno"
+    },
+    {
+      "type": "text",
+      "id": "label_artist",
+      "label": "Etichetta artista",
+      "default": "Artista"
+    },
+    {
+      "type": "text",
+      "id": "label_quartiere",
+      "label": "Etichetta quartiere",
+      "default": "Quartiere"
+    },
+    {
+      "type": "text",
+      "id": "reset_label",
+      "label": "Testo pulsante reset",
+      "default": "Azzera filtri"
+    },
+    {
+      "type": "text",
+      "id": "count_suffix",
+      "label": "Testo dopo il numero (HTML)",
+      "default": "copertine <em>disponibili</em>"
+    },
+    {
+      "type": "text",
+      "id": "sort_label",
+      "label": "Etichetta ordinamento",
+      "default": "Ordina per"
+    },
+    {
+      "type": "text",
+      "id": "sort_newest",
+      "label": "Opzione ordinamento: più recenti",
+      "default": "Più recenti"
+    },
+    {
+      "type": "text",
+      "id": "sort_oldest",
+      "label": "Opzione ordinamento: più vecchie",
+      "default": "Più vecchie"
+    },
+    {
+      "type": "text",
+      "id": "sort_title",
+      "label": "Opzione ordinamento: titolo",
+      "default": "Titolo (A–Z)"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "label": "Colonne griglia (desktop)",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "columns_mobile",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Colonne griglia (mobile)",
+      "default": 2
+    },
+    {
+      "type": "text",
+      "id": "grid_custom_class",
+      "label": "Classe CSS griglia prodotti",
+      "default": "torineser-product-cards",
+      "info": "Es. torineser-product-cards per allineare le card alla collezione."
+    },
+    {
+      "type": "text",
+      "id": "section_custom_class",
+      "label": "Classe CSS sezione"
+    },
+    {
+      "type": "text",
+      "id": "empty_message",
+      "label": "Messaggio collezione mancante",
+      "default": "Seleziona una collezione nelle impostazioni."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Combinazione colori",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop by color",
+      "blocks": {
+        "shop-color-card": {
+          "type": "_product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 16,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "card-gallery": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "image_ratio": "portrait",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 8,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price": {
+              "type": "price",
+              "name": "t:names.product_price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "color": "var(--color-foreground)",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": ["card-gallery", "product_title", "price"]
+        }
+      },
+      "block_order": ["shop-color-card"]
+    }
+  ]
+}
+{% endschema %}

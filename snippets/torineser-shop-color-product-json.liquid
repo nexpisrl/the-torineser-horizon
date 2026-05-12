@@ -1,0 +1,47 @@
+{% doc %}
+  JSON singola riga per Shop by Color: include il prodotto se ha almeno un metaobject colore (primario o secondario); hex può essere vuoto se non estraibile.
+{% enddoc %}
+{% liquid
+  assign cp = product.metafields.the_torineser.colore_primario.value
+  assign cs = product.metafields.the_torineser.colore_secondario.value
+
+  capture hex_primary
+    render 'torineser-shop-color-hex', metaobject: cp
+  endcapture
+  assign hex_primary = hex_primary | strip
+
+  capture hex_secondary
+    render 'torineser-shop-color-hex', metaobject: cs
+  endcapture
+  assign hex_secondary = hex_secondary | strip
+
+  # In elenco: almeno un metaobject colore (primario o secondario), anche se l'hex non è estraibile.
+  assign skip = true
+  if cp != blank or cs != blank
+    assign skip = false
+  endif
+
+  assign artist = ''
+  assign art_mf = product.metafields.the_torineser.artista
+  if art_mf != blank and art_mf.value != blank
+    assign ar = art_mf.value
+    if ar.nome_completo != blank
+      assign artist = ar.nome_completo.value | default: ar.nome_completo | strip
+    endif
+  endif
+
+  assign quartiere = ''
+  assign q_mf = product.metafields.the_torineser.quartiere
+  if q_mf != blank and q_mf.value != blank
+    assign moq = q_mf.value
+    if moq.nome_quartiere != blank
+      assign quartiere = moq.nome_quartiere.value | default: moq.nome_quartiere | strip
+    endif
+  endif
+
+  assign anno_val = product.metafields.the_torineser.anno.value
+  assign pd = product.published_at | default: product.created_at
+%}
+{% unless skip %}
+{"id":{{ product.id }},"handle":{{ product.handle | json }},"url":{{ product.url | json }},"title":{{ product.title | json }},"artist":{{ artist | json }},"quartiere":{{ quartiere | json }},"hex_primary":{{ hex_primary | json }},"hex_secondary":{{ hex_secondary | json }},"price":{{ product.selected_or_first_available_variant.price | json }},"published_at":{{ pd | date: '%s' | json }},"anno":{% if anno_val != blank %}{{ anno_val }}{% else %}null{% endif %}{% if product.featured_media %},"image":{{ product.featured_media | image_url: width: 800 | json }}{% else %},"image":null{% endif %}}
+{% endunless %}
