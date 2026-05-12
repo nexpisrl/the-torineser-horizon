@@ -278,6 +278,11 @@
     gap: 8px;
   }
 
+  /* [hidden] da solo può perdere contro altre regole display:flex del tema. */
+  .torineser-sbc__swatches[hidden] {
+    display: none !important;
+  }
+
   .torineser-sbc__swatch {
     width: 28px;
     height: 28px;

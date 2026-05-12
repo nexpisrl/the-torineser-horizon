@@ -506,15 +506,29 @@
     wireSwatches(swPrimary, 'primary');
     wireSwatches(swSecondary, 'secondary');
 
-    if (swSecondary) swSecondary.hidden = true;
+    /** Come il mock HTML: display none/'' oltre a [hidden], così non restano visibili due file di swatch. */
+    function setColorSwatchPanel(role) {
+      const showPrimary = role === 'primary';
+      if (swPrimary) {
+        swPrimary.style.display = showPrimary ? '' : 'none';
+        swPrimary.toggleAttribute('hidden', !showPrimary);
+        swPrimary.setAttribute('aria-hidden', showPrimary ? 'false' : 'true');
+      }
+      if (swSecondary) {
+        swSecondary.style.display = showPrimary ? 'none' : '';
+        swSecondary.toggleAttribute('hidden', showPrimary);
+        swSecondary.setAttribute('aria-hidden', showPrimary ? 'true' : 'false');
+      }
+    }
+
+    setColorSwatchPanel('primary');
     if (roleToggle) {
       roleToggle.querySelectorAll('button[data-sbc-color-role]').forEach((btn) => {
         btn.addEventListener('click', () => {
           roleToggle.querySelectorAll('button[data-sbc-color-role]').forEach((b) => b.classList.remove('torineser-sbc__role-btn--active'));
           btn.classList.add('torineser-sbc__role-btn--active');
-          const role = btn.dataset.sbcColorRole;
-          if (swPrimary) swPrimary.hidden = role !== 'primary';
-          if (swSecondary) swSecondary.hidden = role !== 'secondary';
+          const role = /** @type {'primary'|'secondary'} */ (btn.dataset.sbcColorRole === 'secondary' ? 'secondary' : 'primary');
+          setColorSwatchPanel(role);
         });
       });
     }
@@ -561,6 +575,11 @@
         });
         if (artistSel) artistSel.value = 'all';
         if (quartiereSel) quartiereSel.value = 'all';
+        roleToggle?.querySelectorAll('button[data-sbc-color-role]').forEach((b) => {
+          const el = /** @type {HTMLButtonElement} */ (b);
+          el.classList.toggle('torineser-sbc__role-btn--active', el.dataset.sbcColorRole === 'primary');
+        });
+        setColorSwatchPanel('primary');
         void apply();
       });
     }
