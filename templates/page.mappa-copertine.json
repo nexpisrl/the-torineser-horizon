@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "torineser_map": {
+      "type": "torineser-map",
+      "settings": {
+        "tagline": "Mappa delle Copertine",
+        "initial_zoom": 14,
+        "center_lat": "45.0703",
+        "center_lng": "7.6869"
+      }
+    }
+  },
+  "order": ["torineser_map"]
+}

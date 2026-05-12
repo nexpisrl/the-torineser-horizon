@@ -1,0 +1,16 @@
+{% layout none %}
+{% paginate collection.products by 50 %}
+[{% assign first = true %}
+{% for product in collection.products %}
+  {% capture pj %}
+    {% render 'torineser-map-product-json', product: product %}
+  {% endcapture %}
+  {% assign pj = pj | strip %}
+  {% if pj != blank %}
+    {% unless first %},{% endunless %}
+    {{ pj }}
+    {% assign first = false %}
+  {% endif %}
+{% endfor %}
+]
+{% endpaginate %}

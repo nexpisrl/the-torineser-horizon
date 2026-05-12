@@ -1,0 +1,26 @@
+{% doc %}
+  Output JSON object per un prodotto mappabile (metafield quartiere + coordinate).
+  Nessun output se mancano dati obbligatori.
+{% enddoc %}
+{% liquid
+  assign coord_raw = product.metafields.the_torineser.coordinate.value | default: '' | strip
+  assign q_mf = product.metafields.the_torineser.quartiere
+  assign nome_q = ''
+  if q_mf != blank and q_mf.value != blank
+    assign mo = q_mf.value
+    if mo.nome_quartiere != blank
+      assign nome_q = mo.nome_quartiere.value | default: mo.nome_quartiere | strip
+    endif
+  endif
+
+  assign luogo = product.metafields.the_torineser.luogo.value | default: '' | strip
+  assign edizione = product.metafields.the_torineser.numero_copertina.value | default: '' | strip
+
+  assign skip = false
+  if nome_q == blank or coord_raw == blank
+    assign skip = true
+  endif
+%}
+{% unless skip %}
+{"id":{{ product.id }},"title":{{ product.title | json }},"url":{{ product.url | json }},"handle":{{ product.handle | json }},"quartiere":{{ nome_q | json }},"coords_raw":{{ coord_raw | json }},"vendor":{{ product.vendor | json }},"description":{{ product.description | strip_html | truncate: 800 | json }},"location_label":{% if luogo != blank %}{{ luogo | json }}{% else %}{{ nome_q | json }}{% endif %},"edition":{{ edizione | json }}{% if product.featured_media %},"image":{{ product.featured_media | image_url: width: 900 | json }}{% else %},"image":null{% endif %}}
+{% endunless %}

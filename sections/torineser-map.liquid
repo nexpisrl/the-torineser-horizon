@@ -1,0 +1,885 @@
+{% liquid
+  assign coll = section.settings.collection
+  if coll == blank
+    assign coll = collections.all
+  endif
+%}
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+<script src="{{ 'torineser-map.js' | asset_url }}" defer></script>
+
+{% if coll == blank %}
+  <div class="section torineser-map torineser-map--empty color-{{ section.settings.color_scheme }}">
+    <p class="torineser-map__empty-msg">{{ section.settings.empty_message }}</p>
+  </div>
+{% else %}
+  {% paginate coll.products by 50 %}
+    <div
+      class="torineser-map color-{{ section.settings.color_scheme }}"
+      id="shopify-section-{{ section.id }}"
+      data-torineser-map
+      data-section-id="{{ section.id }}"
+      data-collection-url="{{ coll.url }}"
+      data-json-view="torineser-map-data"
+      data-total-pages="{{ paginate.pages }}"
+      data-initial-zoom="{{ section.settings.initial_zoom }}"
+      data-center-lat="{{ section.settings.center_lat }}"
+      data-center-lng="{{ section.settings.center_lng }}"
+    >
+      <script type="application/json" data-torineser-map-json>
+        [
+          {%- assign first = true -%}
+          {%- for product in coll.products -%}
+            {%- capture pj -%}
+              {% render 'torineser-map-product-json', product: product %}
+            {%- endcapture -%}
+            {%- assign pj = pj | strip -%}
+            {%- if pj != blank -%}
+              {%- unless first -%},{%- endunless -%}
+              {{ pj }}
+              {%- assign first = false -%}
+            {%- endif -%}
+          {%- endfor -%}
+        ]
+      </script>
+
+      <div class="torineser-map__sheet-backdrop" data-sheet-backdrop></div>
+
+      <button type="button" class="torineser-map__filter-fab" data-filter-fab>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M2 4h12M4 8h8M6 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        {{ section.settings.fab_label }}
+        <span class="torineser-map__fab-badge" data-fab-count>—</span>
+      </button>
+
+      <header class="torineser-map__header">
+        <div class="torineser-map__brand">
+          {% if section.settings.logo != blank %}
+            <span class="torineser-map__logo-wrap">
+              {{
+                section.settings.logo
+                | image_url: width: 200
+                | image_tag: class: 'torineser-map__logo', alt: shop.name, loading: 'lazy', widths: '100, 140, 200'
+              }}
+            </span>
+            <span class="torineser-map__divider" aria-hidden="true"></span>
+          {% endif %}
+          <span class="torineser-map__tagline">{{ section.settings.tagline }}</span>
+        </div>
+        <div class="torineser-map__count" data-count-label>—</div>
+      </header>
+
+      <div class="torineser-map__filters">
+        <div class="torineser-map__filter-aside">
+          <div class="torineser-map__sheet-handle" aria-hidden="true"></div>
+          <span class="torineser-map__filter-aside-label">{{ section.settings.filters_aside_label }}</span>
+        </div>
+        <div class="torineser-map__filter-body">
+          <div class="torineser-map__filter-group">
+            <div class="torineser-map__filter-group-label">{{ section.settings.quartiere_label }}</div>
+            <div class="torineser-map__filter-group-content" data-filter-quartieri></div>
+          </div>
+          <div class="torineser-map__filter-row">
+            <label class="torineser-map__visually-hidden" for="TorineserMapStyle-{{ section.id }}">{{ section.settings.map_style_label }}</label>
+            <select class="torineser-map__style-select" id="TorineserMapStyle-{{ section.id }}" data-map-style-select>
+              <option value="voyager" selected>Voyager</option>
+              <option value="positron">Chiara (Positron)</option>
+              <option value="dark">Scura</option>
+            </select>
+            <button type="button" class="torineser-map__filter-reset" data-filter-reset>{{ section.settings.reset_label }}</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="torineser-map__map-wrap">
+        <div class="torineser-map__map" data-torineser-map-canvas role="region" aria-label="{{ section.settings.map_aria_label }}"></div>
+
+        <aside class="torineser-map__panel" data-detail-panel aria-hidden="true">
+          <button type="button" class="torineser-map__panel-close" data-panel-close aria-label="{{ 'accessibility.close_dialog' | t }}">✕</button>
+          <div class="torineser-map__panel-inner" data-detail-panel-content></div>
+        </aside>
+      </div>
+    </div>
+  {% endpaginate %}
+{% endif %}
+
+{% stylesheet %}
+  .torineser-map {
+    --torineser-red: #c8342a;
+    --torineser-cream: #f8f5ef;
+    --torineser-ink: #1a1a1a;
+    --torineser-muted: rgba(26, 26, 26, 0.5);
+    --torineser-border: rgba(26, 26, 26, 0.12);
+    --torineser-panel: 320px;
+    font-family: var(--font-body--family, 'DM Sans', system-ui, sans-serif);
+    background: var(--torineser-cream);
+    color: var(--torineser-ink);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .torineser-map--empty {
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .torineser-map__empty-msg {
+    margin: 0;
+    color: var(--torineser-muted);
+  }
+
+  .torineser-map__visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  .torineser-map .leaflet-container {
+    background: #f0ece4;
+  }
+  .torineser-map .leaflet-popup {
+    display: none !important;
+  }
+
+  .torineser-map__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 52px;
+    border-bottom: 1px solid var(--torineser-border);
+    flex-shrink: 0;
+  }
+
+  .torineser-map__brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+  }
+
+  .torineser-map__logo {
+    height: 28px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  .torineser-map__divider {
+    width: 1px;
+    height: 18px;
+    background: var(--torineser-border);
+    flex-shrink: 0;
+  }
+
+  .torineser-map__tagline {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--torineser-muted);
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .torineser-map__count {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--torineser-muted);
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+
+  .torineser-map__filters {
+    display: flex;
+    border-bottom: 1px solid var(--torineser-border);
+    flex-shrink: 0;
+  }
+
+  .torineser-map__filter-aside {
+    flex-shrink: 0;
+    width: 64px;
+    border-right: 1px solid var(--torineser-border);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 18px;
+  }
+
+  .torineser-map__filter-aside-label {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--torineser-muted);
+    font-weight: 600;
+    padding: 4px 0;
+  }
+
+  .torineser-map__sheet-handle {
+    display: none;
+    width: 36px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--torineser-border);
+    margin: 8px auto 0;
+  }
+
+  .torineser-map__filter-body {
+    flex: 1;
+    min-width: 0;
+    padding: 14px 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .torineser-map__filter-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    min-width: 0;
+  }
+
+  .torineser-map__filter-group-label {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--torineser-ink);
+    font-weight: 700;
+    padding-top: 8px;
+    flex-shrink: 0;
+    width: 110px;
+  }
+
+  .torineser-map__filter-group-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 8px;
+    align-items: center;
+  }
+
+  .torineser-map__filter-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .torineser-map__style-select {
+    border: 1px solid var(--torineser-border);
+    background: transparent;
+    border-radius: 100px;
+    padding: 8px 16px;
+    font-family: inherit;
+    font-size: 12px;
+    color: var(--torineser-ink);
+    cursor: pointer;
+  }
+
+  .torineser-map__style-select:hover {
+    border-color: var(--torineser-ink);
+  }
+
+  .torineser-map__chip {
+    flex-shrink: 0;
+    padding: 7px 14px;
+    border-radius: 100px;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: 1px solid var(--torineser-border);
+    background: transparent;
+    cursor: pointer;
+    color: var(--torineser-ink);
+    transition: border-color 0.18s, background 0.18s, color 0.18s;
+    white-space: nowrap;
+    font-family: inherit;
+  }
+
+  .torineser-map__chip:hover {
+    border-color: var(--torineser-ink);
+  }
+
+  .torineser-map__chip--active {
+    background: var(--torineser-ink);
+    color: var(--torineser-cream);
+    border-color: var(--torineser-ink);
+  }
+
+  .torineser-map__chip-count {
+    display: inline-block;
+    margin-left: 6px;
+    font-size: 9px;
+    opacity: 0.45;
+    font-weight: 400;
+  }
+
+  .torineser-map__filter-reset {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--torineser-muted);
+    font-weight: 500;
+    padding: 4px 0;
+    margin-left: auto;
+  }
+
+  .torineser-map__filter-reset:hover {
+    color: var(--torineser-red);
+  }
+
+  .torineser-map__map-wrap {
+    position: relative;
+    height: min(72vh, 820px);
+    min-height: 360px;
+  }
+
+  .torineser-map__map {
+    position: absolute;
+    inset: 0;
+    right: 0;
+    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+  }
+
+  .torineser-map--panel-open .torineser-map__map {
+    right: var(--torineser-panel);
+  }
+
+  .torineser-map__panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: var(--torineser-panel);
+    background: var(--torineser-cream);
+    border-left: 1px solid var(--torineser-border);
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .torineser-map--panel-open .torineser-map__panel {
+    transform: translateX(0);
+  }
+
+  .torineser-map__panel-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 2;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--torineser-border);
+    background: var(--torineser-cream);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--torineser-muted);
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+
+  .torineser-map__panel-close:hover {
+    background: var(--torineser-ink);
+    color: var(--torineser-cream);
+    border-color: var(--torineser-ink);
+  }
+
+  .torineser-map__panel-inner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .torineser-map__panel-cover {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    display: block;
+    background: #e8e4dc;
+  }
+
+  .torineser-map__panel-cover-placeholder {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background: linear-gradient(135deg, #e8e3da 0%, #d8d2c8 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .torineser-map__panel-cover-num {
+    font-size: 72px;
+    font-weight: 700;
+    color: rgba(26, 26, 26, 0.12);
+    line-height: 1;
+  }
+
+  .torineser-map__panel-cover-label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(26, 26, 26, 0.3);
+    font-weight: 500;
+  }
+
+  .torineser-map__panel-body {
+    padding: 24px 24px 40px;
+    flex: 1;
+  }
+
+  .torineser-map__panel-num {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--torineser-red);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .torineser-map__panel-title {
+    font-size: 26px;
+    line-height: 1.2;
+    margin-bottom: 4px;
+    font-family: var(--font-heading--family, 'Georgia', serif);
+  }
+
+  .torineser-map__panel-artist {
+    font-size: 13px;
+    color: var(--torineser-muted);
+    margin-bottom: 16px;
+    font-weight: 400;
+  }
+
+  .torineser-map__panel-location {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--torineser-ink);
+    font-weight: 500;
+    background: rgba(26, 26, 26, 0.06);
+    padding: 5px 10px;
+    border-radius: 100px;
+    margin-bottom: 18px;
+  }
+
+  .torineser-map__panel-location svg {
+    opacity: 0.5;
+    flex-shrink: 0;
+  }
+
+  .torineser-map__panel-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(26, 26, 26, 0.75);
+    font-weight: 300;
+    white-space: pre-line;
+  }
+
+  .torineser-map__panel-link {
+    margin-top: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--torineser-red);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(200, 52, 42, 0.3);
+    padding-bottom: 1px;
+  }
+
+  .torineser-map__cover-marker {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--torineser-cream);
+    border: 2px solid var(--torineser-ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--torineser-ink);
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s, background 0.15s, color 0.15s, border-color 0.15s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    position: relative;
+    font-family: var(--font-heading--family, 'Georgia', serif);
+  }
+
+  .torineser-map__cover-marker--active,
+  .torineser-map__cover-marker:hover {
+    background: var(--torineser-red);
+    color: var(--torineser-cream);
+    border-color: var(--torineser-red);
+    transform: scale(1.2);
+    box-shadow: 0 4px 16px rgba(200, 52, 42, 0.4);
+    z-index: 999 !important;
+  }
+
+  .torineser-map__cover-marker--dimmed {
+    opacity: 0.2;
+  }
+
+  .torineser-map__marker-tooltip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--torineser-ink);
+    color: var(--torineser-cream);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-family: var(--font-body--family, 'DM Sans', system-ui, sans-serif);
+    font-size: 11px;
+    font-weight: 500;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+
+  .torineser-map__marker-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: var(--torineser-ink);
+  }
+
+  .torineser-map__cover-marker:hover .torineser-map__marker-tooltip {
+    opacity: 1;
+  }
+
+  .torineser-map__filter-fab {
+    display: none;
+    align-items: center;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1500;
+    background: var(--torineser-ink);
+    color: var(--torineser-cream);
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    padding: 14px 20px;
+    font-family: inherit;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    align-items: center;
+    gap: 8px;
+  }
+
+  .torineser-map__fab-badge {
+    background: var(--torineser-red);
+    color: var(--torineser-cream);
+    border-radius: 100px;
+    padding: 2px 7px;
+    font-size: 10px;
+    font-weight: 700;
+    margin-left: 2px;
+  }
+
+  .torineser-map__sheet-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1400;
+    opacity: 0;
+    transition: opacity 0.25s;
+    pointer-events: none;
+  }
+
+  .torineser-map--sheet-open .torineser-map__sheet-backdrop {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  @media screen and (max-width: 767px) {
+    .torineser-map {
+      --torineser-panel: 100%;
+    }
+
+    .torineser-map__header {
+      padding: 0 14px;
+      height: 48px;
+    }
+
+    .torineser-map__logo {
+      height: 22px;
+    }
+
+    .torineser-map__divider {
+      display: none;
+    }
+
+    .torineser-map__tagline {
+      display: none;
+    }
+
+    .torineser-map__count {
+      font-size: 10px;
+    }
+
+    .torineser-map__filters {
+      width: 100%;
+      display: flex;
+      position: fixed;
+      top: auto;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      transform: translateY(100%);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border-bottom: none;
+      border-top: 1px solid var(--torineser-border);
+      border-radius: 16px 16px 0 0;
+      box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.15);
+      max-height: 80vh;
+      overflow: hidden;
+      z-index: 1450;
+      flex-direction: column;
+      background: var(--torineser-cream);
+    }
+
+    .torineser-map--sheet-open .torineser-map__filters {
+      transform: translateY(0);
+    }
+
+    .torineser-map__filter-aside {
+      width: 100%;
+      height: 36px;
+      border-right: none;
+      border-bottom: 1px solid var(--torineser-border);
+      padding: 0;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    .torineser-map__filter-aside-label {
+      writing-mode: horizontal-tb;
+      transform: none;
+      padding: 0;
+    }
+
+    .torineser-map__sheet-handle {
+      display: block;
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .torineser-map__filter-body {
+      flex: 1;
+      min-height: 0;
+      padding: 16px 16px 28px;
+      overflow-y: auto;
+      gap: 18px;
+    }
+
+    .torineser-map__filter-group {
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .torineser-map__filter-group-label {
+      width: auto;
+      padding-top: 0;
+    }
+
+    .torineser-map__filter-group-content {
+      gap: 6px;
+    }
+
+    .torineser-map__filter-row {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .torineser-map__filter-reset {
+      align-self: flex-start;
+      margin-left: 0;
+      margin-top: 8px;
+      padding: 10px 0;
+    }
+
+    .torineser-map__map-wrap {
+      padding-bottom: 80px;
+    }
+
+    .torineser-map--panel-open .torineser-map__map {
+      right: 0;
+    }
+
+    .torineser-map__filter-fab {
+      display: inline-flex;
+    }
+
+    .torineser-map__panel {
+      top: 0;
+      width: 100%;
+      z-index: 1600;
+    }
+
+    .torineser-map__panel-close {
+      top: 12px;
+      right: 12px;
+      width: 40px;
+      height: 40px;
+      background: rgba(248, 245, 239, 0.95);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+      font-size: 16px;
+    }
+
+    .torineser-map__cover-marker {
+      width: 40px;
+      height: 40px;
+      font-size: 12px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Mappa copertine",
+  "tag": "section",
+  "class": "section-wrapper torineser-map-section",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collezione prodotti",
+      "info": "Lasciare vuoto per usare la collezione “Tutti i prodotti” (All)."
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo (opzionale)"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline accanto al logo",
+      "default": "Mappa delle Copertine"
+    },
+    {
+      "type": "text",
+      "id": "filters_aside_label",
+      "label": "Etichetta verticale filtri",
+      "default": "Filtra"
+    },
+    {
+      "type": "text",
+      "id": "quartiere_label",
+      "label": "Etichetta gruppo quartieri",
+      "default": "Quartiere"
+    },
+    {
+      "type": "text",
+      "id": "fab_label",
+      "label": "Testo pulsante filtri (mobile)",
+      "default": "Filtri"
+    },
+    {
+      "type": "text",
+      "id": "reset_label",
+      "label": "Testo reset filtri",
+      "default": "Reset"
+    },
+    {
+      "type": "text",
+      "id": "map_style_label",
+      "label": "Etichetta accessibile stile mappa",
+      "default": "Stile mappa"
+    },
+    {
+      "type": "text",
+      "id": "map_aria_label",
+      "label": "Etichetta accessibile mappa",
+      "default": "Mappa delle copertine a Torino"
+    },
+    {
+      "type": "range",
+      "id": "initial_zoom",
+      "min": 11,
+      "max": 16,
+      "step": 1,
+      "label": "Zoom iniziale",
+      "default": 14
+    },
+    {
+      "type": "text",
+      "id": "center_lat",
+      "label": "Latitudine centro (fallback)",
+      "default": "45.0703"
+    },
+    {
+      "type": "text",
+      "id": "center_lng",
+      "label": "Longitudine centro (fallback)",
+      "default": "7.6869"
+    },
+    {
+      "type": "text",
+      "id": "empty_message",
+      "label": "Messaggio se manca la collezione",
+      "default": "Seleziona una collezione nelle impostazioni della sezione."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Combinazione colori",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mappa copertine"
+    }
+  ]
+}
+{% endschema %}
