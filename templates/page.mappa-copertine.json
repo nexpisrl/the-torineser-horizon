@@ -18,7 +18,6 @@
         "quartiere_label": "Quartiere",
         "fab_label": "Filtri",
         "reset_label": "Reset",
-        "map_style_label": "Stile mappa",
         "map_aria_label": "Mappa delle copertine a Torino",
         "initial_zoom": 14,
         "center_lat": "45.0703",
