@@ -10,7 +10,7 @@
 
   # Ogni ulteriore menu header eredita stile dal primo blocco Menu del tema; i link restano quelli di questo blocco.
   assign primary_menu_block = section.blocks | where: 'type', '_header-menu' | first
-  if primary_menu_block != blank and block != primary_menu_block
+  if primary_menu_block != blank and block.id != primary_menu_block.id
     assign block_settings = primary_menu_block.settings
   endif
 
@@ -22,18 +22,22 @@
     {% liquid
       assign secondary_menu_links = blank
 
-      if primary_menu_block != blank and block == primary_menu_block
+      if primary_menu_block != blank and block.id == primary_menu_block.id
         assign secondary_menu_block = blank
 
         for menu_block in section.blocks
-          if menu_block.type == '_header-menu' and menu_block != primary_menu_block
+          if menu_block.type == '_header-menu' and menu_block.id != primary_menu_block.id
             assign secondary_menu_block = menu_block
             break
           endif
         endfor
 
         if secondary_menu_block != blank
-          assign secondary_menu_links = secondary_menu_block.settings.menu
+          assign secondary_menu_handle = secondary_menu_block.settings.menu.handle | default: secondary_menu_block.settings.menu
+
+          if secondary_menu_handle != blank
+            assign secondary_menu_links = linklists[secondary_menu_handle]
+          endif
         endif
       endif
     %}
