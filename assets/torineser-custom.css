@@ -1662,7 +1662,8 @@
 }
 
 .RB_Addon_Wrapper .RB_Product_Card .RB_PC_Media{
-  position: initial !important;
+  /* relative: ancoraggio per checkbox in position absolute (allineamento a sinistra) */
+  position: relative !important;
   pointer-events:none;
 }
 .RB_PC_Variants_Legend{
@@ -1673,7 +1674,8 @@ input.RB_PC_Media_Checkbox{
   border:none !important;
 
       accent-color: rgb(0, 0, 0);
-    right: 46px !important;
+    left: 7px !important;
+    right: auto !important;
     top: 7px !important;
     background: transparent;
   
