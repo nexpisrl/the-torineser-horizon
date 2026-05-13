@@ -238,7 +238,7 @@
         : `<div class="torineser-map__panel-cover-placeholder"><span class="torineser-map__panel-cover-num">${escapeHtml(c.markerLabel)}</span><span class="torineser-map__panel-cover-label">The Torineser</span></div>`;
 
       const linkHtml = c.url
-        ? `<a href="${escapeHtml(c.url)}" class="torineser-map__panel-link">Scopri →</a>`
+        ? `<a href="${escapeHtml(c.url)}" class="torineser-map__panel-link">Scopri di più</a>`
         : '';
 
       panelContent.innerHTML = `
@@ -253,19 +253,25 @@
             </svg>
             ${escapeHtml(c.location_label)}
           </div>
-          <div class="torineser-map__panel-desc">${escapeHtml(c.description)}</div>
           ${linkHtml}
+          <div class="torineser-map__panel-desc">${escapeHtml(c.description)}</div>
         </div>
       `;
 
       root.classList.add('torineser-map--panel-open');
       map.panTo(c.coords, { animate: true, duration: 0.5 });
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => map.invalidateSize());
+      });
     }
 
     function closePanel() {
       if (activeId != null && markerEls[activeId]) markerEls[activeId].classList.remove('torineser-map__cover-marker--active');
       activeId = null;
       root.classList.remove('torineser-map--panel-open');
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => map.invalidateSize());
+      });
     }
 
     function matches(c) {

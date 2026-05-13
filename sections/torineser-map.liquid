@@ -378,6 +378,7 @@
 
   .torineser-map__panel-inner {
     flex: 1;
+    min-height: 0;
     display: flex;
     flex-direction: column;
   }
@@ -470,21 +471,99 @@
     color: rgba(26, 26, 26, 0.75);
     font-weight: 300;
     white-space: pre-line;
+    margin-top: 14px;
   }
 
   .torineser-map__panel-link {
-    margin-top: 20px;
+    margin-top: 4px;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
     font-size: 11px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--torineser-red);
+    color: var(--torineser-cream);
+    background: var(--torineser-red);
     font-weight: 600;
     text-decoration: none;
-    border-bottom: 1px solid rgba(200, 52, 42, 0.3);
-    padding-bottom: 1px;
+    border-radius: 4px;
+    padding: 11px 18px;
+    align-self: flex-start;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+
+  .torineser-map__panel-link:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+    color: var(--torineser-cream);
+  }
+
+  /* Desktop: pannello più largo, copertina | testo (scroll solo colonna testo), anteprima descrizione */
+  @media screen and (min-width: 768px) {
+    .torineser-map {
+      --torineser-panel: 420px;
+    }
+
+    .torineser-map__panel {
+      overflow: hidden;
+    }
+
+    .torineser-map__panel-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 40%) minmax(0, 1fr);
+      grid-template-rows: minmax(0, 1fr);
+      align-items: stretch;
+    }
+
+    .torineser-map__panel-inner > .torineser-map__panel-cover,
+    .torineser-map__panel-inner > .torineser-map__panel-cover-placeholder {
+      min-height: 0;
+      height: 100%;
+      align-self: stretch;
+    }
+
+    .torineser-map__panel-cover {
+      width: 100%;
+      height: 100%;
+      min-height: 200px;
+      aspect-ratio: unset;
+      object-fit: cover;
+    }
+
+    .torineser-map__panel-cover-placeholder {
+      width: 100%;
+      min-height: 200px;
+      aspect-ratio: unset;
+    }
+
+    .torineser-map__panel-inner > .torineser-map__panel-cover-placeholder .torineser-map__panel-cover-num {
+      font-size: 48px;
+    }
+
+    .torineser-map__panel-body {
+      overflow-y: auto;
+      min-height: 0;
+      padding: 20px 18px 24px 20px;
+      border-left: 1px solid var(--torineser-border);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .torineser-map__panel-title {
+      font-size: 21px;
+    }
+
+    .torineser-map__panel-desc {
+      margin-top: 12px;
+      white-space: normal;
+      word-break: break-word;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 5;
+      line-clamp: 5;
+      overflow: hidden;
+    }
   }
 
   .torineser-map__cover-marker {
