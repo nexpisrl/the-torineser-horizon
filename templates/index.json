@@ -1561,6 +1561,7 @@
         "nome_field": "nome_completo",
         "show_section_borders": true,
         "movement_direction": "normal",
+        "marquee_speed_factor": 75,
         "color_scheme": "scheme-1",
         "gap_between_segments": 56,
         "padding-block-start": 40,

@@ -35,7 +35,7 @@
         {% render 'gap-style', value: gap_px, name: 'marquee-gap' %}
         --marquee-direction: {{ section.settings.movement_direction }};
       "
-      data-speed-factor="28"
+      data-speed-factor="{{ section.settings.marquee_speed_factor | default: 75 }}"
       data-movement-direction="{{ section.settings.movement_direction }}"
     >
       <div
@@ -226,6 +226,16 @@
       "default": "normal"
     },
     {
+      "type": "range",
+      "id": "marquee_speed_factor",
+      "label": "t:settings.marquee_speed_factor",
+      "info": "t:settings.marquee_speed_factor_info",
+      "min": 10,
+      "max": 150,
+      "step": 1,
+      "default": 75
+    },
+    {
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "t:settings.color_scheme",
@@ -296,6 +306,7 @@
         "nome_field": "nome_completo",
         "show_section_borders": true,
         "movement_direction": "normal",
+        "marquee_speed_factor": 75,
         "color_scheme": "scheme-1",
         "gap_between_segments": 56,
         "padding-block-start": 40,

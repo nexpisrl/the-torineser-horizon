@@ -1010,6 +1010,8 @@
     "mobile_quick_add": "Mobile quick add",
     "motion": "Motion",
     "motion_direction": "Motion direction",
+    "marquee_speed_factor": "Marquee speed",
+    "marquee_speed_factor_info": "Higher values scroll slower. Multiplies the base animation duration set by the theme script.",
     "movement_direction": "Movement direction",
     "navigation": "Navigation",
     "navigation_bar": "Navigation bar",

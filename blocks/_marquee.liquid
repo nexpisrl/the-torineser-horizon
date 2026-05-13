@@ -19,7 +19,7 @@
     --marquee-direction: {{ block_settings.movement_direction }};
     {%- if block_settings.transparent_background == true -%}background-color: transparent;{%- endif -%}
   "
-  data-speed-factor="25"
+  data-speed-factor="{{ block_settings.marquee_speed_factor | default: 75 }}"
   data-movement-direction="{{ block_settings.movement_direction }}"
 >
   <div
@@ -132,6 +132,16 @@
         }
       ],
       "default": "normal"
+    },
+    {
+      "type": "range",
+      "id": "marquee_speed_factor",
+      "label": "t:settings.marquee_speed_factor",
+      "info": "t:settings.marquee_speed_factor_info",
+      "min": 10,
+      "max": 150,
+      "step": 1,
+      "default": 75
     },
     {
       "type": "checkbox",

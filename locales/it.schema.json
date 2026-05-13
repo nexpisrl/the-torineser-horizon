@@ -441,6 +441,8 @@
     "mobile_height": "Altezza su dispositivo mobile",
     "mobile_quick_add": "Aggiunta rapida su dispositivo mobile",
     "motion_direction": "Direzione del movimento",
+    "marquee_speed_factor": "Velocità marquee",
+    "marquee_speed_factor_info": "Valori più alti = scorrimento più lento. Moltiplica la durata base calcolata dallo script del tema.",
     "motion": "Movimento",
     "movement_direction": "Direzione del movimento",
     "navigation_bar_color_scheme": "Schema di colori della barra di navigazione",
