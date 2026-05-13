@@ -87,6 +87,11 @@
         "type": "shopify://apps/rebolt-bundle-upsell/blocks/app-embed/0a9e67ff-0413-4374-921d-e70fb17c7dbc",
         "disabled": false,
         "settings": {}
+      },
+      "15079184273603081885": {
+        "type": "shopify://apps/essential-free-shipping/blocks/app_embed/4125375e-37c8-4137-949d-c4e1a3aac572",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
