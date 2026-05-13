@@ -1716,16 +1716,15 @@ display: none;
     border: 1px solid #fff;
   }
 
-.RB_Product_Card[data-status="true"] input.RB_PC_Media_Checkbox,
-.RB_Product_Card[data-status="true"] input.RB_PC_Media_Checkbox:before,
-.RB_Product_Card[data-status="true"] .RB_PC_Title *,
-.RB_Product_Card[data-status="true"] .RB_PC_Price *
-{
-  background-color:#000;
-  color: #fff !Important;
+.RB_Product_Card[data-status=true] input.RB_PC_Media_Checkbox,
+.RB_Product_Card[data-status=true] input.RB_PC_Media_Checkbox:before,
+.RB_Product_Card[data-status=true] .RB_PC_Title *,
+.RB_Product_Card[data-status=true] .RB_PC_Price * {
+  background-color: white;
+  color: black;
 }
 
-.RB_Product_Card[data-status="true"]  input.RB_PC_Media_Checkbox:before{
+.RB_Product_Card[data-status=true] input.RB_PC_Media_Checkbox:before {
   content: 'Abbinato';
   background-image: none;
 }
