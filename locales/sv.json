@@ -26,11 +26,11 @@
       "post_success": "Tack för att du kontaktar oss. Vi återkommer till dig så snart som möjligt.",
       "error_heading": "Justera följande:"
     },
-    "slider_label": "Bild",
+    "slider_label": "Skjutreglage",
     "notizie_preview": {
-      "badge_open": "Open",
-      "badge_closed": "Closed",
-      "empty_state": "No blog at this handle yet, or no published articles."
+      "badge_open": "Öppet",
+      "badge_closed": "Stängt",
+      "empty_state": "Det finns ingen blogg med den här adressen ännu, eller inga publicerade artiklar."
     }
   },
   "accessibility": {
@@ -326,6 +326,11 @@
     "blog_post_date": "Datum",
     "blog_post_description": "Ett utdrag ur bloggpostens innehåll"
   },
+  "sections": {
+    "artists_marquee": {
+      "empty_state": "Inga artistnamn ännu. Publicera metaobjektposter för din definition eller kontrollera handtagen i sektionsinställningarna."
+    }
+  },
   "products": {
     "product": {
       "add_to_cart": "Lägg till i varukorgen",
@@ -334,7 +339,7 @@
       "add_to_cart_error": "Det uppstod ett fel när artikeln skulle läggas till i varukorgen",
       "quantity_error_max": "Den här artikeln har max {{ maximum }}",
       "sold_out": "Slutsåld",
-      "unavailable": "Inte tillgängliga",
+      "unavailable": "Inte tillgänglig",
       "quantity": "Kvantitet",
       "quantity_increments": "Ökningar i steg om {{ increment }}",
       "quantity_minimum": "Minimum {{ minimum }}",

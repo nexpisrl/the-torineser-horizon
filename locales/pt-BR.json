@@ -28,9 +28,9 @@
     },
     "slider_label": "Controle deslizante",
     "notizie_preview": {
-      "badge_open": "Open",
-      "badge_closed": "Closed",
-      "empty_state": "No blog at this handle yet, or no published articles."
+      "badge_open": "Aberto",
+      "badge_closed": "Fechado",
+      "empty_state": "Não há blog com este identificador ainda, ou não há artigos publicados."
     }
   },
   "accessibility": {
@@ -145,7 +145,7 @@
     "taxes_at_checkout_shipping_at_checkout_with_policy_html": "Tributos, descontos e <a href=\"{{ link }}\">frete</a> calculados no checkout.",
     "taxes_at_checkout_shipping_at_checkout_without_policy": "Tributos, descontos e frete calculados no checkout.",
     "checkout": "Finalizar a compra",
-    "cart_title": "Cart",
+    "cart_title": "Carrinho",
     "product_image": "Imagem do produto",
     "product_information": "Informações do produto",
     "product_total": "Total de produtos",
@@ -230,11 +230,11 @@
     "inventory_in_stock": "Em estoque",
     "inventory_out_of_stock": "Sem estoque",
     "inventory_low_stock_show_count": {
-      "one": "Tempo restante: {{ count }}",
-      "other": "Tempo restante: {{ count }}",
-      "many": "Tempo restante: {{ count }}"
+      "one": "{{ count }} restante",
+      "other": "{{ count }} restantes",
+      "many": "{{ count }} restantes"
     },
-    "powered_by": "Esta loja terá a tecnologia da",
+    "powered_by": "Esta loja utiliza a tecnologia da",
     "store_owner_link_html": "Você é titular da loja? <a href=\"{{ link }}\">Faça login aqui</a>",
     "shipping_discount_error": "Os descontos no frete são exibidos no checkout após a adição de um endereço.",
     "discount_code_error": "O código de desconto não pode ser aplicado ao seu carrinho.",
@@ -308,6 +308,11 @@
     "blog_post_author": "Autoria",
     "blog_post_date": "Data",
     "blog_post_description": "Um resumo do conteúdo do seu post no blog"
+  },
+  "sections": {
+    "artists_marquee": {
+      "empty_state": "Ainda não há nomes de artistas. Publique entradas de metaobjeto para a definição escolhida ou verifique os handles nas configurações da seção."
+    }
   },
   "products": {
     "product": {
