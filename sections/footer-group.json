@@ -101,11 +101,25 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "payment_icons_cPHhgB": {
+              "type": "payment-icons",
+              "name": "t:names.payment_icons",
+              "settings": {
+                "horizontal_alignment": "flex-start",
+                "gap": 10,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "logo_9iMJyL",
-            "text_k94T3Q"
+            "text_k94T3Q",
+            "payment_icons_cPHhgB"
           ]
         },
         "menu_rWnRkV": {
