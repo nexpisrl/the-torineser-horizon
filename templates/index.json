@@ -2026,7 +2026,7 @@
               "name": "t:names.button",
               "settings": {
                 "label": "Scarica il MediaKit →",
-                "link": "shopify://collections/all",
+                "link": "https://drive.google.com/drive/folders/14aR3hgi8Wv80asAH55AvepuPaWB89Phf",
                 "open_in_new_tab": false,
                 "style_class": "button",
                 "width": "fit-content",
