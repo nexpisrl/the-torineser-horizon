@@ -62,7 +62,7 @@ function attachMutationObserver(selectedValue) {
 }
 
 // Listener: cambio taglia dai radio del variant picker principale (solo .product-information)
-/*document.addEventListener('change', function (event) {
+document.addEventListener('change', function (event) {
   const target = event.target;
   if (!(target instanceof HTMLInputElement)) return;
   if (target.matches('.product-information variant-picker input[type="radio"]')) {
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
 });
-*/
+
 
 
 // Funzione che aggiunge il listener di click
