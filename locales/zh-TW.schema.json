@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin language editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "names": {
     "404": "404",
@@ -55,6 +46,7 @@
     "accordion": "摺疊式",
     "accordion_row": "摺疊式列",
     "animations": "動畫",
+    "artists_marquee": "藝術家跑馬燈",
     "announcement": "公告",
     "announcement_bar": "公告列",
     "badges": "徽章",
@@ -67,6 +59,7 @@
     "collection_card": "商品系列卡片",
     "collection_columns": "商品系列欄",
     "collection_container": "商品系列",
+    "collection_quad_gallery": "商品系列 2×2 圖片",
     "collection_description": "商品系列說明",
     "collection_image": "商品系列圖片",
     "collection_info": "商品系列資訊",
@@ -235,6 +228,8 @@
     "link": "連結",
     "layout_gap": "版面配置間距",
     "make_section_full_width": "將區段設為全寬",
+    "marquee_speed_factor": "跑馬燈速度",
+    "marquee_speed_factor_info": "數值愈大，捲動愈慢。會乘上主題程式碼設定的基礎動畫時間。",
     "minimum_height": "最小高度",
     "opacity": "不透明度",
     "overlay_opacity": "疊加層不透明度",
@@ -334,6 +329,7 @@
     "country_region": "國家/地區",
     "currency_code": "幣別代碼",
     "custom_height": "自訂高度",
+    "custom_class": "額外 CSS 類別",
     "custom_mobile_size": "自訂行動版大小",
     "desktop_height": "電腦版高度",
     "direction": "方向",
@@ -893,6 +889,7 @@
     "carousel_navigation": "輪播導覽",
     "carousel_pagination": "輪播分頁",
     "copyright": "著作權",
+    "custom_css_classes": "自訂 CSS 類別",
     "edit_logo_in_theme_settings": "在[主題設定](/editor?context=theme&category=logo%20and%20favicon)中編輯標誌",
     "edit_price_in_theme_settings": "在[主題設定](/editor?context=theme&category=currency%20code)中調整價格格式",
     "edit_variants_in_theme_settings": "在[主題設定](/editor?context=theme&category=variants)中編輯子類樣式",
@@ -913,6 +910,7 @@
     "media_1": "多媒體檔案 1",
     "media_2": "多媒體檔案 2",
     "menu": "選單",
+    "secondary_menu": "次要選單",
     "mobile_layout": "行動版面配置",
     "padding": "內距",
     "padding_desktop": "電腦版內距",
@@ -1084,6 +1082,7 @@
     "carousel_hover_behavior_not_supported": "當區段類型設定為「輪播」時，不支援游標移過「輪播」的效果",
     "checkout_buttons": "可讓買家更快結帳，有助提升轉換率。[瞭解詳情](https://help.shopify.com/manual/online-store/dynamic-checkout)",
     "custom_heading": "自訂標題",
+    "text_block_custom_class": "在文字區塊外層容器加上以空格分隔的類別（例如 torineser-gift-copy）。樣式請寫在 torineser-custom.css 或 base.css。",
     "edit_presets_in_theme_settings": "在[主題設定](/editor?context=theme&category=typography)中編輯預設值",
     "enable_filtering_info": "使用[Search & Discovery app](https://help.shopify.com/manual/online-store/search-and-discovery/filters)自訂篩選器",
     "grid_layout_on_mobile": "行動裝置會使用網格版面配置",
@@ -1141,6 +1140,18 @@
       "info_mf_open": "Example: custom.evento_aperto (boolean). When true the badge reads Open.",
       "setting_mf_detail": "Subtitle / detail handle",
       "info_mf_detail": "Single-line text under the title. Falls back to excerpt, then publish date."
+    }
+  },
+  "sections": {
+    "artists_marquee": {
+      "info_metaobjects_limit": "會顯示所選定義中 metaobject 條目的名稱。Shopify 迴圈約以 50 筆已發佈條目為上限。",
+      "setting_heading": "標題",
+      "setting_metaobject_type": "Metaobject 定義代碼",
+      "info_metaobject_type": "須與管理後台「內容」→「Metaobjects」中的定義一致（例如：artista）。",
+      "setting_field_key": "名稱欄位代碼",
+      "info_field_key": "用於儲存捲動標籤文字的單行欄位（例如：nome_completo）。",
+      "setting_borders": "上下框線",
+      "setting_gap": "名稱之間的間距"
     }
   }
 }

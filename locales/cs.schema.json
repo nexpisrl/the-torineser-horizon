@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin language editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "names": {
     "404": "404",
@@ -57,6 +48,7 @@
     "accordion": "Rozbalovací panel",
     "accordion_row": "Řádek rozbalovacího panelu",
     "animations": "Animace",
+    "artists_marquee": "Běžící pás umělců",
     "announcement": "Oznámení",
     "announcement_bar": "Oznamovací lišta",
     "badges": "Odznaky",
@@ -69,6 +61,7 @@
     "collection_card": "Karta kolekce",
     "collection_columns": "Sloupce kolekce",
     "collection_container": "Kolekce",
+    "collection_quad_gallery": "Kolekce obrázků 2×2",
     "collection_description": "Popis kolekce",
     "collection_image": "Obrázek kolekce",
     "collection_info": "Informace o kolekci",
@@ -200,6 +193,18 @@
     "layered_slideshow": "Vrstvená prezentace",
     "notizie_preview": "Blog news preview"
   },
+  "sections": {
+    "artists_marquee": {
+      "info_metaobjects_limit": "Zobrazuje jména z položek metaobjektu vybrané definice. Shopify omezuje smyčku na přibližně 50 publikovaných položek.",
+      "setting_heading": "Nadpis nad pruhem",
+      "setting_metaobject_type": "Identifikátor definice metaobjektu",
+      "info_metaobject_type": "Musí odpovídat definici v administraci → Obsah → Metaobjekty (např. artista).",
+      "setting_field_key": "Identifikátor pole se jménem",
+      "info_field_key": "Jednořádkové pole s textem pro běžící štítek (např. nome_completo).",
+      "setting_borders": "Horní a spodní ohraničení",
+      "setting_gap": "Mezery mezi jmény"
+    }
+  },
   "settings": {
     "alignment": "Zarovnání",
     "autoplay": "Automatické přehrávání",
@@ -216,6 +221,7 @@
     "content_position": "Pozice obsahu",
     "cover_image_size": "Velikost úvodního obrázku",
     "cover_image": "Úvodní obrázek",
+    "custom_class": "Další CSS třídy",
     "custom_minimum_height": "Vlastní minimální výška",
     "custom_width": "Vlastní šířka",
     "enable_video_looping": "Opakování videa",
@@ -379,6 +385,8 @@
     "logo": "Logo",
     "loop": "Opakovat",
     "make_details_sticky_desktop": "Přilepit na počítači",
+    "marquee_speed_factor": "Rychlost běžícího textu",
+    "marquee_speed_factor_info": "Vyšší hodnoty znamenají pomalejší posouvání. Násobí základní délku animace nastavenou skriptem motivu.",
     "max_width": "Maximální šířka",
     "media_height": "Výška médií",
     "media_overlay": "Překryv médií",
@@ -891,6 +899,7 @@
     "carousel_navigation": "Navigace karuselu",
     "carousel_pagination": "Stránkování karuselu",
     "copyright": "Copyright",
+    "custom_css_classes": "Vlastní CSS třídy",
     "edit_logo_in_theme_settings": "Upravte logo v [nastavení motivu](/editor?context=theme&category=logo%20and%20favicon)",
     "edit_price_in_theme_settings": "Upravte formát ceny v [nastavení motivu](/editor?context=theme&category=currency%20code)",
     "edit_variants_in_theme_settings": "Upravte vzhled variant v [nastavení motivu](/editor?context=theme&category=variants)",
@@ -911,6 +920,7 @@
     "media_1": "Média 1",
     "media_2": "Média 2",
     "menu": "Nabídka",
+    "secondary_menu": "Druhá nabídka",
     "mobile_layout": "Rozvržení pro mobil",
     "padding": "Vnitřní okraj",
     "padding_desktop": "Vnitřní okraj na počítači",
@@ -1084,6 +1094,7 @@
     "carousel_hover_behavior_not_supported": "Efekt při najetí myší u „Karuselu“ není podporován, pokud je na úrovni sekce zvolen typ „Karusel“",
     "checkout_buttons": "Umožňuje kupujícím zaplatit rychleji a může zlepšit konverzi. [Více informací](https://help.shopify.com/manual/online-store/dynamic-checkout)",
     "custom_heading": "Vlastní nadpis",
+    "text_block_custom_class": "Třídy oddělené mezerami na obalu textového bloku (např. torineser-gift-copy). Styly definujte v souboru torineser-custom.css nebo base.css.",
     "edit_presets_in_theme_settings": "Upravte předvolby v [nastavení motivu](/editor?context=theme&category=typography)",
     "enable_filtering_info": "Přizpůsobte filtry pomocí [aplikace Search & Discovery](https://help.shopify.com/manual/online-store/search-and-discovery/filters)",
     "manage_countries_regions": "[Spravovat země/regiony](/admin/settings/markets)",

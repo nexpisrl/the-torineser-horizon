@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin language editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "names": {
     "404": "404",
@@ -61,6 +52,7 @@
     "animations": "Animaties",
     "announcement": "Aankondiging",
     "announcement_bar": "Aankondigingsbalk",
+    "artists_marquee": "Artiesten-marquee",
     "badges": "Badges",
     "button": "Knop",
     "cart": "Winkelwagen",
@@ -75,6 +67,7 @@
     "collection_image": "Collectieafbeelding",
     "collection_info": "Collectie-informatie",
     "collection_list": "Collectielijst",
+    "collection_quad_gallery": "Collectie 2×2 afbeeldingen",
     "collections": "Collecties",
     "content": "Content",
     "content_grid": "Content-grid",
@@ -200,6 +193,18 @@
     "layered_slideshow": "Gelaagde diavoorstelling",
     "notizie_preview": "Blog news preview"
   },
+  "sections": {
+    "artists_marquee": {
+      "info_metaobjects_limit": "Toont namen uit metaobjectvermeldingen van de gekozen definitie. Shopify beperkt lussen tot ongeveer 50 gepubliceerde vermeldingen.",
+      "setting_heading": "Kop",
+      "setting_metaobject_type": "Handle van de metaobjectdefinitie",
+      "info_metaobject_type": "Moet overeenkomen met de metaobjectdefinitie in Beheer → Content → Metaobjecten (voorbeeld: artista).",
+      "setting_field_key": "Veldhandle voor de naam",
+      "info_field_key": "Enkelregelig veld met het scrollende label (voorbeeld: nome_completo).",
+      "setting_borders": "Randen boven en onder",
+      "setting_gap": "Afstand tussen namen"
+    }
+  },
   "settings": {
     "autoplay": "Automatisch afspelen",
     "background": "Achtergrond",
@@ -219,6 +224,8 @@
     "icon": "Pictogram",
     "image_icon": "Afbeeldingspictogram",
     "make_section_full_width": "Sectie op volledige breedte weergeven",
+    "marquee_speed_factor": "Marqueesnelheid",
+    "marquee_speed_factor_info": "Hogere waarden scrollen langzamer. Vermenigvuldigt de basisanimatieduur die door het themascript is ingesteld.",
     "overlay_opacity": "Dekking overlay",
     "padding": "Padding",
     "product": "Product",
@@ -347,6 +354,7 @@
     "corner_radius": "Hoekradius",
     "country_region": "Land/regio",
     "currency_code": "Valutacode",
+    "custom_class": "Extra CSS-klassen",
     "custom_height": "Aangepaste hoogte",
     "custom_mobile_width": "Aangepaste breedte voor mobiel",
     "desktop_height": "Hoogte op desktop",
@@ -894,6 +902,7 @@
     "carousel_navigation": "Carrouselnavigatie",
     "carousel_pagination": "Carrouselpaginering",
     "copyright": "Auteursrecht",
+    "custom_css_classes": "Aangepaste CSS-klassen",
     "edit_logo_in_theme_settings": "Logo bewerken in [thema-instellingen](/editor?context=theme&category=logo%20and%20favicon)",
     "edit_price_in_theme_settings": "Prijsopmaak bewerken in [thema-instellingen](/editor?context=theme&category=currency%20code)",
     "edit_variants_in_theme_settings": "Variantstijl bewerken in [thema-instellingen](/editor?context=theme&category=variants)",
@@ -922,6 +931,7 @@
     "policies": "Beleid",
     "popup": "Pop-up",
     "search": "Zoeken",
+    "secondary_menu": "Tweede menu",
     "size": "Grootte",
     "social_media": "Social media",
     "submit_button": "Verzendknop",
@@ -1084,6 +1094,7 @@
     "carousel_hover_behavior_not_supported": "‘Carrousel’-hover wordt niet ondersteund wanneer het type ‘Carrousel’ is geselecteerd op sectieniveau",
     "checkout_buttons": "Hiermee kunnen kopers sneller afrekenen, wat de conversie kan verbeteren. [Meer informatie](https://help.shopify.com/manual/online-store/dynamic-checkout)",
     "custom_heading": "Aangepaste kop",
+    "text_block_custom_class": "Spatiegescheiden klassen op de wrapper van het tekstblok (bijv. torineser-gift-copy). Definieer stijlen in torineser-custom.css of base.css.",
     "edit_presets_in_theme_settings": "Voorinstellingen bewerken in [thema-instellingen](/editor?context=theme&category=typography)",
     "enable_filtering_info": "Filters aanpassen met de [Search & Discovery-app](https://help.shopify.com/manual/online-store/search-and-discovery/filters)",
     "grid_layout_on_mobile": "Grid-indeling wordt gebruikt voor mobiel",

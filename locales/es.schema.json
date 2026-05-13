@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin language editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "names": {
     "404": "404",
@@ -58,6 +49,7 @@
     "accordion": "Acordeón",
     "accordion_row": "Fila del acordeón",
     "animations": "Animaciones",
+    "artists_marquee": "Marquesina de artistas",
     "announcement": "Anuncio",
     "announcement_bar": "Barra de anuncios",
     "badges": "Insignias",
@@ -70,6 +62,7 @@
     "collection_card": "Tarjeta de colección",
     "collection_columns": "Columnas de colección",
     "collection_container": "Colección",
+    "collection_quad_gallery": "Colección imágenes 2×2",
     "collection_description": "Descripción de la colección",
     "collection_image": "Imagen de la colección",
     "collection_info": "Información de la colección",
@@ -200,6 +193,18 @@
     "layered_slideshow": "Presentación de diapositivas en capas",
     "notizie_preview": "Blog news preview"
   },
+  "sections": {
+    "artists_marquee": {
+      "info_metaobjects_limit": "Muestra nombres de las entradas del metaobjeto de la definición seleccionada. Shopify limita el bucle a unas 50 entradas publicadas.",
+      "setting_heading": "Título sobre la franja",
+      "setting_metaobject_type": "Handle de la definición de metaobjeto",
+      "info_metaobject_type": "Debe coincidir con la definición en Shopify admin → Contenido → Metaobjetos (por ejemplo, artista).",
+      "setting_field_key": "Handle del campo de nombre",
+      "info_field_key": "Campo de una sola línea con la etiqueta del texto en movimiento (por ejemplo, nome_completo).",
+      "setting_borders": "Bordes superior e inferior",
+      "setting_gap": "Espacio entre nombres"
+    }
+  },
   "settings": {
     "alignment": "Alineación",
     "autoplay": "Reproducción automática",
@@ -216,6 +221,7 @@
     "content_position": "Posición del contenido",
     "cover_image_size": "Tamaño de la imagen de portada",
     "cover_image": "Imagen de portada",
+    "custom_class": "Clases CSS adicionales",
     "custom_minimum_height": "Altura mínima personalizada",
     "custom_width": "Ancho personalizado",
     "enable_video_looping": "Repetición de video",
@@ -393,6 +399,8 @@
     "logo": "Logo",
     "loop": "Bucle",
     "make_details_sticky_desktop": "Fijo en escritorio",
+    "marquee_speed_factor": "Velocidad del texto en movimiento",
+    "marquee_speed_factor_info": "Valores más altos desplazan más despacio. Multiplica la duración base de la animación definida por el script del tema.",
     "max_width": "Ancho máximo",
     "media_height": "Altura de la multimedia",
     "media_overlay": "Sobreposición de la multimedia",
@@ -894,6 +902,7 @@
     "carousel_navigation": "Navegación del carrusel",
     "carousel_pagination": "Paginación del carrusel",
     "copyright": "Derechos de autor",
+    "custom_css_classes": "Clases CSS personalizadas",
     "edit_logo_in_theme_settings": "Edita el logo en [Configuración del tema](/editor?context=theme&category=logo%20and%20favicon)",
     "edit_price_in_theme_settings": "Edita el formato de precios en [Configuración del tema](/editor?context=theme&category=currency%20code)",
     "edit_variants_in_theme_settings": "Edita el estilo de las variantes en [Configuración del tema](/editor?context=theme&category=variants)",
@@ -914,6 +923,7 @@
     "media_1": "Multimedia 1",
     "media_2": "Multimedia 2",
     "menu": "Menú",
+    "secondary_menu": "Segundo menú",
     "mobile_layout": "Diseño para móvil",
     "padding": "Relleno",
     "padding_desktop": "Relleno en escritorio",
@@ -1084,6 +1094,7 @@
     "carousel_hover_behavior_not_supported": "El efecto hover de \"Carousel\" no se admite cuando el tipo \"Carousel\" está seleccionado a nivel de sección",
     "checkout_buttons": "Permite que los compradores paguen más rápido y puede mejorar la conversión. [Más información](https://help.shopify.com/manual/online-store/dynamic-checkout)",
     "custom_heading": "Encabezado personalizado",
+    "text_block_custom_class": "Clases separadas por espacios en el contenedor del bloque de texto (p. ej. torineser-gift-copy). Define los estilos en torineser-custom.css o base.css.",
     "edit_presets_in_theme_settings": "Edita los preajustes en [Configuración del tema](/editor?context=theme&category=typography)",
     "enable_filtering_info": "Personaliza los filtros con la [app Search & Discovery](https://help.shopify.com/manual/online-store/search-and-discovery/filters)",
     "grid_layout_on_mobile": "En móvil se usa el diseño de cuadrícula",

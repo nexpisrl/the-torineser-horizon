@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin language editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "names": {
     "404": "404",
@@ -58,6 +49,7 @@
     "animations": "Animationer",
     "announcement": "Tillkännagivande",
     "announcement_bar": "Meddelandefält",
+    "artists_marquee": "Rullande band med artister",
     "badges": "Brickor",
     "button": "Knapp",
     "cart": "Varukorg",
@@ -72,6 +64,7 @@
     "collection_image": "Produktseriebild",
     "collection_info": "Produktserieinformation",
     "collection_list": "Produktserielista",
+    "collection_quad_gallery": "Produktserie: bilder 2×2",
     "collections": "Produktserier",
     "content": "Innehåll",
     "content_grid": "Innehållsrutnät",
@@ -216,6 +209,7 @@
     "content_position": "Innehållsposition",
     "cover_image_size": "Omslagsbildens storlek",
     "cover_image": "Omslagsbild",
+    "custom_class": "Extra CSS-klasser",
     "custom_minimum_height": "Anpassad minimihöjd",
     "custom_width": "Anpassad bredd",
     "enable_video_looping": "Loopa video",
@@ -389,6 +383,8 @@
     "logo": "Logotyp",
     "loop": "Loopa",
     "make_details_sticky_desktop": "Fäst på dator",
+    "marquee_speed_factor": "Hastighet för rullande text",
+    "marquee_speed_factor_info": "Högre värden gör att texten rullar långsammare. Multiplicerar den grundläggande animationslängd som temats skript anger.",
     "max_width": "Maxbredd",
     "media_height": "Mediehöjd",
     "media_overlay": "Medieöverlagring",
@@ -893,6 +889,7 @@
     "carousel_navigation": "Karusellnavigering",
     "carousel_pagination": "Karusellpaginering",
     "copyright": "Upphovsrätt",
+    "custom_css_classes": "Anpassade CSS-klasser",
     "edit_logo_in_theme_settings": "Redigera logotyp i [temainställningar](/editor?context=theme&category=logo%20and%20favicon)",
     "edit_price_in_theme_settings": "Redigera prisformatering i [temainställningar](/editor?context=theme&category=currency%20code)",
     "edit_variants_in_theme_settings": "Redigera variantutformning i [temainställningar](/editor?context=theme&category=variants)",
@@ -913,6 +910,7 @@
     "media_1": "Media 1",
     "media_2": "Media 2",
     "menu": "Meny",
+    "secondary_menu": "Andra meny",
     "mobile_layout": "Mobillayout",
     "padding": "Utfyllnad",
     "padding_desktop": "Utfyllnad för dator",
@@ -1084,6 +1082,7 @@
     "carousel_hover_behavior_not_supported": "\"Karusell\"-hovring stöds inte när \"Karusell\"-typ är vald på sektionsnivå",
     "checkout_buttons": "Gör det möjligt för köpare att betala snabbare och kan förbättra konverteringen. [Läs mer](https://help.shopify.com/manual/online-store/dynamic-checkout)",
     "custom_heading": "Anpassad rubrik",
+    "text_block_custom_class": "Blankstegsseparerade klasser på textblockets omslutande element (t.ex. torineser-gift-copy). Definiera stilar i torineser-custom.css eller base.css.",
     "edit_presets_in_theme_settings": "Redigera förinställningar i [temainställningar](/editor?context=theme&category=typography)",
     "enable_filtering_info": "Anpassa filter med [appen Sök och upptäck](https://help.shopify.com/manual/online-store/search-and-discovery/filters)",
     "grid_layout_on_mobile": "Rutnätslayout används för mobil",
@@ -1120,6 +1119,18 @@
     "other_sections": "Övrigt",
     "storytelling": "Storytelling",
     "text": "Text"
+  },
+  "sections": {
+    "artists_marquee": {
+      "info_metaobjects_limit": "Visar namn från poster i det valda metaobjektet. Shopify begränsar loopning till cirka 50 publicerade poster.",
+      "setting_heading": "Rubrik",
+      "setting_metaobject_type": "Handtag för metaobjektdefinition",
+      "info_metaobject_type": "Motsvarar metaobjektdefinitionen under Admin → Innehåll → Metaobjekt (exempel: artista).",
+      "setting_field_key": "Handtag för namnfält",
+      "info_field_key": "Enradstext som lagrar den rullande etiketten (exempel: nome_completo).",
+      "setting_borders": "Kantlinjer upptill och nedtill",
+      "setting_gap": "Avstånd mellan namn"
+    }
   },
   "blocks": {
     "notizie_preview": {

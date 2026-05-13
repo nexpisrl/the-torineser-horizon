@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin language editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "names": {
     "404": "404",
@@ -56,6 +47,7 @@
     "accordion": "아코디언",
     "accordion_row": "아코디언 행",
     "animations": "애니메이션",
+    "artists_marquee": "아티스트 스크롤 배너",
     "announcement": "공지",
     "announcement_bar": "공지 표시줄",
     "badges": "배지",
@@ -141,6 +133,7 @@
     "collection_links": "컬렉션 링크",
     "collection_links_spotlight": "컬렉션 링크: Spotlight",
     "collection_links_text": "컬렉션 링크: 텍스트",
+    "collection_quad_gallery": "컬렉션 2×2 이미지",
     "collections_carousel": "컬렉션 목록: 캐러셀",
     "collections_editorial": "컬렉션 목록: 편집",
     "collections_grid": "컬렉션 목록: 그리드",
@@ -562,6 +555,9 @@
     "auto_load_products": "스크롤 시 제품 자동 로드",
     "products_per_page": "페이지당 제품 수",
     "custom_mobile_media": "모바일에서 다른 미디어 표시",
+    "custom_class": "추가 CSS 클래스",
+    "marquee_speed_factor": "스크롤 배너 속도",
+    "marquee_speed_factor_info": "값이 클수록 스크롤이 더 느려집니다. 테마 스크립트가 정한 기본 애니메이션 시간에 곱해 적용됩니다.",
     "stack_media_on_mobile": "미디어 쌓기",
     "media_type_1": "미디어 유형",
     "media_type_2": "미디어 2 유형",
@@ -891,6 +887,7 @@
     "carousel_navigation": "캐러셀 탐색",
     "carousel_pagination": "캐러셀 페이지 매김",
     "copyright": "저작권",
+    "custom_css_classes": "사용자 지정 CSS 클래스",
     "edit_logo_in_theme_settings": "[테마 설정](/editor?context=theme&category=logo%20and%20favicon)에서 로고 편집",
     "edit_price_in_theme_settings": "[테마 설정](/editor?context=theme&category=currency%20code)에서 가격 서식 편집",
     "edit_variants_in_theme_settings": "[테마 설정](/editor?context=theme&category=variants)에서 이형 상품 스타일 편집",
@@ -911,6 +908,7 @@
     "media_1": "미디어 1",
     "media_2": "미디어 2",
     "menu": "메뉴",
+    "secondary_menu": "보조 메뉴",
     "mobile_layout": "모바일 레이아웃",
     "padding": "패딩",
     "padding_desktop": "데스크톱 패딩",
@@ -1084,6 +1082,7 @@
     "carousel_hover_behavior_not_supported": "섹션 수준에서 “캐러셀” 유형을 선택하면 “캐러셀” 마우스오버가 지원되지 않습니다",
     "checkout_buttons": "구매자가 더 빠르게 결제할 수 있도록 하여 전환율을 개선할 수 있습니다. [자세히 알아보기](https://help.shopify.com/manual/online-store/dynamic-checkout)",
     "custom_heading": "사용자 지정 제목",
+    "text_block_custom_class": "텍스트 블록 래퍼에 공백으로 구분한 클래스(예: torineser-gift-copy). 스타일은 torineser-custom.css 또는 base.css에 정의하세요.",
     "edit_presets_in_theme_settings": "[테마 설정](/editor?context=theme&category=typography)에서 사전 설정 편집",
     "enable_filtering_info": "[검색 및 검색 앱](https://help.shopify.com/manual/online-store/search-and-discovery/filters)으로 필터 사용자 지정",
     "grid_layout_on_mobile": "모바일에는 그리드 레이아웃이 사용됩니다",
@@ -1141,6 +1140,18 @@
       "info_mf_open": "Example: custom.evento_aperto (boolean). When true the badge reads Open.",
       "setting_mf_detail": "Subtitle / detail handle",
       "info_mf_detail": "Single-line text under the title. Falls back to excerpt, then publish date."
+    }
+  },
+  "sections": {
+    "artists_marquee": {
+      "info_metaobjects_limit": "선택한 정의의 메타오브젝트 항목에서 이름을 표시합니다. Shopify는 게시된 항목 기준으로 루프를 약 50개까지로 제한합니다.",
+      "setting_heading": "제목",
+      "setting_metaobject_type": "메타오브젝트 정의 핸들",
+      "info_metaobject_type": "관리자 → 콘텐츠 → 메타오브젝트에 있는 정의와 일치해야 합니다(예: artista).",
+      "setting_field_key": "이름 필드 핸들",
+      "info_field_key": "스크롤 레이블을 저장하는 한 줄 텍스트 필드입니다(예: nome_completo).",
+      "setting_borders": "상단·하단 테두리",
+      "setting_gap": "이름 사이 간격"
     }
   }
 }

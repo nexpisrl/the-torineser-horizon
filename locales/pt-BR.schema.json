@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin language editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "names": {
     "404": "404",
@@ -57,6 +48,7 @@
     "animations": "Animações",
     "announcement": "Anúncio",
     "announcement_bar": "Barra de anúncios",
+    "artists_marquee": "Faixa rolante de artistas",
     "badges": "Selos",
     "button": "Botão",
     "cart": "Carrinho",
@@ -71,6 +63,7 @@
     "collection_image": "Imagem da coleção",
     "collection_info": "Informações da coleção",
     "collection_list": "Lista de coleções",
+    "collection_quad_gallery": "Coleção: grade 2×2 de imagens",
     "collections": "Coleções",
     "content": "Conteúdo",
     "content_grid": "Grade de conteúdo",
@@ -333,6 +326,7 @@
     "corner_radius": "Raio do canto",
     "country_region": "País/região",
     "currency_code": "Código da moeda",
+    "custom_class": "Classes CSS adicionais",
     "custom_height": "Altura personalizada",
     "custom_mobile_size": "Tamanho personalizado para celular",
     "desktop_height": "Altura no desktop",
@@ -385,6 +379,8 @@
     "logo": "Logo",
     "loop": "Loop",
     "make_details_sticky_desktop": "Fixo no desktop",
+    "marquee_speed_factor": "Velocidade da faixa rolante",
+    "marquee_speed_factor_info": "Valores maiores deixam a rolagem mais lenta. Multiplica a duração base da animação definida pelo script do tema.",
     "max_width": "Largura máxima",
     "media_height": "Altura da mídia",
     "media_overlay": "Sobreposição de mídia",
@@ -893,6 +889,7 @@
     "carousel_navigation": "Navegação do carrossel",
     "carousel_pagination": "Paginação do carrossel",
     "copyright": "Direitos autorais",
+    "custom_css_classes": "Classes CSS personalizadas",
     "edit_logo_in_theme_settings": "Edite o logo nas [configurações do tema](/editor?context=theme&category=logo%20and%20favicon)",
     "edit_price_in_theme_settings": "Edite a formatação de preço nas [configurações do tema](/editor?context=theme&category=currency%20code)",
     "edit_variants_in_theme_settings": "Edite o estilo da variante nas [configurações do tema](/editor?context=theme&category=variants)",
@@ -913,6 +910,7 @@
     "media_1": "Mídia 1",
     "media_2": "Mídia 2",
     "menu": "Menu",
+    "secondary_menu": "Menu secundário",
     "mobile_layout": "Layout para celular",
     "padding": "Preenchimento",
     "padding_desktop": "Preenchimento para desktop",
@@ -1099,7 +1097,8 @@
     "hide_logo_on_home_page_help": "O logo permanecerá visível quando o cabeçalho fixo estiver ativo",
     "media_type_info": "Os recursos são preenchidos com base nos links do menu",
     "logo_height": "Afeta apenas o logo do cabeçalho",
-    "actions_display_style": "Os ícones são sempre usados em dispositivos móveis"
+    "actions_display_style": "Os ícones são sempre usados em dispositivos móveis",
+    "text_block_custom_class": "Classes separadas por espaço no contêiner do bloco de texto (ex.: torineser-gift-copy). Defina os estilos em torineser-custom.css ou base.css."
   },
   "categories": {
     "basic": "Básico",
@@ -1141,6 +1140,18 @@
       "info_mf_open": "Example: custom.evento_aperto (boolean). When true the badge reads Open.",
       "setting_mf_detail": "Subtitle / detail handle",
       "info_mf_detail": "Single-line text under the title. Falls back to excerpt, then publish date."
+    }
+  },
+  "sections": {
+    "artists_marquee": {
+      "info_metaobjects_limit": "Exibe os nomes das entradas de metaobjeto da definição selecionada. A Shopify limita o loop a cerca de 50 entradas publicadas.",
+      "setting_heading": "Título",
+      "setting_metaobject_type": "Identificador da definição de metaobjeto",
+      "info_metaobject_type": "Deve coincidir com a definição de metaobjeto em Admin → Conteúdo → Metaobjetos (ex.: artista).",
+      "setting_field_key": "Identificador do campo de nome",
+      "info_field_key": "Campo de linha única que armazena o rótulo em rolagem (ex.: nome_completo).",
+      "setting_borders": "Bordas superior e inferior",
+      "setting_gap": "Espaçamento entre os nomes"
     }
   }
 }

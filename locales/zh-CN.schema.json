@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin language editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "names": {
     "404": "404",
@@ -57,6 +48,7 @@
     "accelerated_checkout": "快捷结账",
     "accordion": "手风琴",
     "accordion_row": "手风琴行",
+    "artists_marquee": "艺人滚动横幅",
     "animations": "动画",
     "announcement": "公告",
     "announcement_bar": "公告栏",
@@ -144,6 +136,7 @@
     "collection_links": "产品系列链接",
     "collection_links_spotlight": "产品系列链接：聚焦",
     "collection_links_text": "产品系列链接：文本",
+    "collection_quad_gallery": "产品系列 2×2 图片",
     "collections_carousel": "产品系列列表：轮播",
     "collections_editorial": "产品系列列表：编辑样式",
     "collections_grid": "产品系列列表：网格",
@@ -588,7 +581,10 @@
     "y_position": "垂直位置",
     "enable_sticky_add_to_cart": "悬浮“添加到购物车”栏",
     "sticky_add_to_cart": "悬浮“添加到购物车”",
-    "actions_display_style": "菜单样式"
+    "actions_display_style": "菜单样式",
+    "custom_class": "附加 CSS 类",
+    "marquee_speed_factor": "选取框滚动速度",
+    "marquee_speed_factor_info": "数值越大滚动越慢，会乘以主题脚本中设置的基础动画时长。"
   },
   "options": {
     "apple": "Apple",
@@ -894,6 +890,7 @@
     "carousel_navigation": "轮播导航",
     "carousel_pagination": "轮播分页",
     "copyright": "版权",
+    "custom_css_classes": "自定义 CSS 类",
     "edit_logo_in_theme_settings": "在[模板设置](/editor?context=theme&category=logo%20and%20favicon)中编辑 logo",
     "edit_price_in_theme_settings": "在[模板设置](/editor?context=theme&category=currency%20code)中编辑价格格式",
     "edit_variants_in_theme_settings": "在[模板设置](/editor?context=theme&category=variants)中编辑多属性样式",
@@ -914,6 +911,7 @@
     "media_1": "媒体文件 1",
     "media_2": "媒体文件 2",
     "menu": "菜单",
+    "secondary_menu": "第二菜单",
     "mobile_layout": "移动布局",
     "padding": "内边距",
     "padding_desktop": "桌面版内边距",
@@ -1084,6 +1082,7 @@
     "carousel_hover_behavior_not_supported": "在分区级别选择“轮播”类型时，不支持“轮播”悬停",
     "checkout_buttons": "允许客户更快地结账，并可以提高转化率。[了解更多](https://help.shopify.com/manual/online-store/dynamic-checkout)",
     "custom_heading": "自定义标题",
+    "text_block_custom_class": "在文本区块外层容器上填写以空格分隔的 CSS 类名（例如 torineser-gift-copy）。样式请在 torineser-custom.css 或 base.css 中定义。",
     "edit_presets_in_theme_settings": "在[模板设置](/editor?context=theme&category=typography)中编辑预设",
     "enable_filtering_info": "使用 [Search & Discovery 应用](https://help.shopify.com/manual/online-store/search-and-discovery/filters)自定义筛选器",
     "grid_layout_on_mobile": "在移动设备上使用网格布局",
@@ -1120,6 +1119,18 @@
     "other_sections": "其他",
     "storytelling": "品牌故事",
     "text": "文本"
+  },
+  "sections": {
+    "artists_marquee": {
+      "info_metaobjects_limit": "从所选定义的元对象条目中读取并展示名称。Shopify 对循环列表约限制为 50 条已发布条目。",
+      "setting_heading": "标题",
+      "setting_metaobject_type": "元对象定义句柄",
+      "info_metaobject_type": "需与 Shopify 后台「内容」→「元对象」中的定义句柄一致（例如：artista）。",
+      "setting_field_key": "名称字段句柄",
+      "info_field_key": "用于滚动展示文案的单行文本字段句柄（例如：nome_completo）。",
+      "setting_borders": "上下边框",
+      "setting_gap": "名称间距"
+    }
   },
   "blocks": {
     "notizie_preview": {
