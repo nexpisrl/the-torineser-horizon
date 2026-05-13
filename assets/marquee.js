@@ -24,6 +24,11 @@ class MarqueeComponent extends Component {
     const { marqueeItems } = this.refs;
     if (marqueeItems.length === 0) return;
 
+    // Doppio rAF: evita rootBounds.width === 0 al primo IntersectionObserver (durata 0s → striscia “ferma”).
+    await new Promise((resolve) => {
+      requestAnimationFrame(() => requestAnimationFrame(resolve));
+    });
+
     const { numberOfCopies } = await this.#queryNumberOfCopies();
 
     const speed = this.#calculateSpeed(numberOfCopies);
@@ -105,7 +110,9 @@ class MarqueeComponent extends Component {
    * @param {number} value
    */
   #setSpeed(value) {
-    this.style.setProperty('--marquee-speed', `${value}s`);
+    const seconds = Number(value);
+    const safe = Number.isFinite(seconds) && seconds > 0 ? seconds : 55;
+    this.style.setProperty('--marquee-speed', `${safe}s`);
   }
 
   async #queryNumberOfCopies() {
@@ -123,15 +130,19 @@ class MarqueeComponent extends Component {
           if (!firstEntry) return;
           intersectionObserver.disconnect();
 
-          const { width: marqueeWidth } = firstEntry.rootBounds ?? { width: 0 };
+          const rootBoundsWidth = firstEntry.rootBounds?.width ?? 0;
+          const marqueeWidth =
+            rootBoundsWidth > 0 ? rootBoundsWidth : this.getBoundingClientRect().width;
           const { width: marqueeItemsWidth } = firstEntry.boundingClientRect;
 
           const isHorizontalResize = this.#marqueeWidth !== marqueeWidth;
           this.#marqueeWidth = marqueeWidth;
 
           setTimeout(() => {
+            const raw =
+              marqueeItemsWidth <= 0 ? 1 : Math.ceil(marqueeWidth / marqueeItemsWidth);
             resolve({
-              numberOfCopies: marqueeItemsWidth === 0 ? 1 : Math.ceil(marqueeWidth / marqueeItemsWidth),
+              numberOfCopies: Math.max(1, raw),
               isHorizontalResize,
             });
           }, 0);
@@ -147,14 +158,15 @@ class MarqueeComponent extends Component {
    */
   #calculateSpeed(numberOfCopies) {
     const speedFactor = Number(this.getAttribute('data-speed-factor'));
-    const speed = Math.sqrt(numberOfCopies) * speedFactor;
-
-    return speed;
+    const factor = Number.isFinite(speedFactor) && speedFactor > 0 ? speedFactor : 75;
+    const copies = Math.max(1, numberOfCopies);
+    return Math.sqrt(copies) * factor;
   }
 
   #handleResize = debounce(async () => {
     const { marqueeItems } = this.refs;
-    const { newNumberOfCopies, isHorizontalResize } = await this.#queryNumberOfCopies();
+    const { numberOfCopies: newNumberOfCopies, isHorizontalResize } =
+      await this.#queryNumberOfCopies();
 
     // opt out of marquee manipulation on vertical resizes
     if (!isHorizontalResize) return;

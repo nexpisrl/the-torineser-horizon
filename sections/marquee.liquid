@@ -66,13 +66,13 @@
 
   @media (prefers-reduced-motion: no-preference) {
     marquee-component:not([data-disabled]) .marquee__wrapper {
-      animation: marquee-motion var(--marquee-speed) linear infinite var(--marquee-direction);
+      animation: marquee-motion max(1s, var(--marquee-speed, 55s)) linear infinite var(--marquee-direction);
     }
   }
 
   @keyframes marquee-motion {
     to {
-      transform: translate3d(calc(-50% -(var(--marquee-gap) / 2)), 0, 0);
+      transform: translate3d(calc(-50% - (var(--marquee-gap) / 2)), 0, 0);
     }
   }
 {% endstylesheet %}
