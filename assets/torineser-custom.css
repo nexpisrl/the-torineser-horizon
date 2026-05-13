@@ -1825,3 +1825,8 @@ display: none;
     padding: 8px 14px !important;
   }
 }
+
+.essential_free_shipping_bar_wrapper {
+  margin: 0 !important;
+  padding: 10px !important;
+}
