@@ -2041,7 +2041,7 @@
               "name": "t:names.button",
               "settings": {
                 "label": "Come funziona",
-                "link": "shopify://collections/all",
+                "link": "shopify://pages/crea-la-tua-copertina",
                 "open_in_new_tab": false,
                 "style_class": "button-secondary",
                 "width": "fit-content",
