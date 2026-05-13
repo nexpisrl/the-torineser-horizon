@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 */
 
-/*
+
 // Funzione che aggiunge il listener di click
 // a tutti i .RB_Product_List presenti nel DOM.
 function attachMediaClickHandler() {
@@ -178,5 +178,5 @@ document.addEventListener('DOMContentLoaded', function() {
     attachMutationObserverForMediaClick();
   }
 });
-*/
+/**/
 
