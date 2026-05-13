@@ -961,19 +961,35 @@
   margin-bottom: 64px;
 }
 
+/* Footer mobile: brand a tutta larghezza, menu e social su 2 colonne (~50%) */
+@media screen and (max-width: 749px) {
+  .section-wrapper:has(.footer-content) .footer-content {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .section-wrapper:has(.footer-content) .footer-content > :first-child {
+    grid-column: 1 / -1;
+    max-inline-size: none;
+  }
+
+  .section-wrapper:has(.footer-content) .footer-content > * {
+    min-width: 0;
+  }
+}
+
 @media screen and (min-width: 990px) {
   .section-wrapper:has(.footer-content) .footer-content {
     grid-template-columns: 1.5fr repeat(3, 1fr) 1.2fr !important;
+  }
+
+  .section-wrapper:has(.footer-content) .footer-content > :first-child {
+    max-inline-size: 320px;
   }
 
   .section-wrapper:has(.footer-content) .footer-content > :last-child,
   .section-wrapper:has(.footer-content) .footer-content--isolated-grid-item-desktop > :last-child {
     grid-column: auto !important;
   }
-}
-
-.section-wrapper:has(.footer-content) .footer-content > :first-child {
-  max-inline-size: 320px;
 }
 
 .section-wrapper:has(.footer-content) .torineser-footer-brand .text-block > * {
