@@ -1741,7 +1741,7 @@
                   "name": "t:names.button",
                   "settings": {
                     "label": "Regala una gift card →",
-                    "link": "shopify://collections/all",
+                    "link": "https://www.thetorineser.com/products/the-torineser-buoni-regalo",
                     "open_in_new_tab": false,
                     "style_class": "button",
                     "width": "fit-content",
