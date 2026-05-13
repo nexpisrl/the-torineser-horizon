@@ -1841,7 +1841,7 @@
                 "cta_url": "",
                 "cta_label": "Tutti gli eventi →",
                 "active_tag_handle": "evento-aperto",
-                "metafield_namespace": "custom",
+                "metafield_namespace": "the_torineser",
                 "metafield_open_key": "evento_aperto",
                 "metafield_detail_key": "dettaglio_evento",
                 "color_scheme": "scheme-2",
