@@ -17,7 +17,7 @@
           "name": "t:names.text",
           "settings": {
             "custom_class": "the_torineser-pre_title",
-            "text": "<p>Stampe Artistiche · Dal 2020</p>",
+            "text": "<p><strong>SALONE DEL LIBRO 2026</strong></p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -44,7 +44,7 @@
           "name": "t:names.heading",
           "settings": {
             "custom_class": "the_torineser-hero-title",
-            "text": "<p>Ogni angolo<br/><em>racconta</em><br/>una storia.</p>",
+            "text": "<p>Pad 2 K77</p>",
             "width": "fit-content",
             "max_width": "none",
             "alignment": "left",
@@ -71,7 +71,7 @@
           "name": "t:names.text",
           "settings": {
             "custom_class": "the_torineser-hero-description",
-            "text": "<p>Oltre 109 opere originali, numerate e firmate da artisti che vivono<br/>Torino ogni giorno.</p>",
+            "text": "<p>Ti aspettiamo al Salone! </p>",
             "width": "fit-content",
             "max_width": "none",
             "alignment": "left",
@@ -983,7 +983,7 @@
               "name": "t:names.text",
               "settings": {
                 "custom_class": "torineser-project-description",
-                "text": "<p>Ogni copertina racconta un angolo di Torino attraverso gli occhi di artisti che la vivono ogni giorno. Stampe numerate, in edizione limitata, nate dalla nostra Open Call mensile — aperta a tutti, non solo ai torinesi di nascita.</p>",
+                "text": "<p>Ogni copertina racconta un angolo di Torino attraverso gli occhi di artisti che la vivono ogni giorno. Stampe numerate, in edizione limitata, nate dalla nostra Open Call mensile, aperta a tutti, non solo ai torinesi di nascita.</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -1391,7 +1391,7 @@
                   "name": "t:names.text",
                   "settings": {
                     "custom_class": "the_torineser-section-description",
-                    "text": "<p>I preferiti della community. Le stampe che continuano a far battere il cuore dei torineser.</p>",
+                    "text": "<p><strong>I preferiti della community</strong>. Le stampe che continuano a far battere il cuore dei torineser.</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
