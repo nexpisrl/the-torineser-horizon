@@ -256,6 +256,31 @@
     const quartiereSel = /** @type {HTMLSelectElement | null} */ (root.querySelector('[data-sbc-quartiere]'));
     const resetBtn = /** @type {HTMLButtonElement | null} */ (root.querySelector('[data-sbc-reset]'));
     const roleToggle = /** @type {HTMLElement | null} */ (root.querySelector('[data-sbc-role-toggle]'));
+    const sheetBackdrop = root.querySelector('[data-sbc-sheet-backdrop]');
+    const filterFab = /** @type {HTMLButtonElement | null} */ (root.querySelector('[data-sbc-filter-fab]'));
+    const fabCount = root.querySelector('[data-sbc-fab-count]');
+
+    function closeSbcSheet() {
+      root.classList.remove('torineser-sbc--sheet-open');
+      if (filterFab) filterFab.setAttribute('aria-expanded', 'false');
+    }
+
+    function openSbcSheet() {
+      root.classList.add('torineser-sbc--sheet-open');
+      if (filterFab) filterFab.setAttribute('aria-expanded', 'true');
+    }
+
+    if (filterFab) {
+      filterFab.addEventListener('click', () => openSbcSheet());
+    }
+    if (sheetBackdrop) {
+      sheetBackdrop.addEventListener('click', () => closeSbcSheet());
+    }
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      if (!root.classList.contains('torineser-sbc--sheet-open')) return;
+      closeSbcSheet();
+    });
 
     if (!(gridEl instanceof HTMLElement) || !(bankEl instanceof HTMLElement)) return;
 
@@ -521,6 +546,21 @@
           sorted.length === products.length
             ? `<strong>${products.length}</strong> copertine <em>disponibili</em>`
             : `<strong>${sorted.length}</strong> di ${products.length} copertine`;
+      }
+
+      if (fabCount) {
+        const secondaryActive =
+          state.year.size > 0 || state.artist !== 'all' || state.quartiere !== 'all';
+        if (products.length === 0) {
+          fabCount.textContent = '0';
+          fabCount.classList.add('torineser-sbc__fab-badge--muted');
+        } else if (!secondaryActive) {
+          fabCount.textContent = String(products.length);
+          fabCount.classList.add('torineser-sbc__fab-badge--muted');
+        } else {
+          fabCount.textContent = `${sorted.length}/${products.length}`;
+          fabCount.classList.remove('torineser-sbc__fab-badge--muted');
+        }
       }
 
       renderActiveFilters();

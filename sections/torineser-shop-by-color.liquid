@@ -53,43 +53,72 @@
         {% endif %}
       </header>
 
+      <div class="torineser-sbc__sheet-backdrop" data-sbc-sheet-backdrop tabindex="-1"></div>
+      <button
+        type="button"
+        class="torineser-sbc__filter-fab"
+        data-sbc-filter-fab
+        aria-expanded="false"
+        aria-controls="torineser-sbc-filters-sheet-{{ section.id }}">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M2 4h12M4 8h8M6 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+        </svg>
+        {{ section.settings.mobile_fab_label }}
+        <span class="torineser-sbc__fab-badge" data-sbc-fab-count>—</span>
+      </button>
+
       <div class="torineser-sbc__layout">
         <aside class="torineser-sbc__sidebar">
-          <div class="torineser-sbc__sb-section">
-            <div class="torineser-sbc__sb-label">
-              {{ section.settings.label_color }}
-              {% if section.settings.label_color_hint != blank %}
-                <span class="torineser-sbc__sb-hint">{{ section.settings.label_color_hint }}</span>
-              {% endif %}
+          <div class="torineser-sbc__sidebar-color">
+            <div class="torineser-sbc__sb-section">
+              <div class="torineser-sbc__sb-label">
+                {{ section.settings.label_color }}
+                {% if section.settings.label_color_hint != blank %}
+                  <span class="torineser-sbc__sb-hint">{{ section.settings.label_color_hint }}</span>
+                {% endif %}
+              </div>
+              <div class="torineser-sbc__role-toggle" data-sbc-role-toggle>
+                <button type="button" class="torineser-sbc__role-btn torineser-sbc__role-btn--active" data-sbc-color-role="primary">
+                  {{ section.settings.label_primary }}
+                </button>
+                <button type="button" class="torineser-sbc__role-btn" data-sbc-color-role="secondary">
+                  {{ section.settings.label_secondary }}
+                </button>
+              </div>
+              <div class="torineser-sbc__swatches" data-sbc-swatches="primary" id="torineser-sbc-sw-primary-{{ section.id }}"></div>
+              <div class="torineser-sbc__swatches torineser-sbc__swatches--secondary" data-sbc-swatches="secondary" id="torineser-sbc-sw-secondary-{{ section.id }}" hidden></div>
             </div>
-            <div class="torineser-sbc__role-toggle" data-sbc-role-toggle>
-              <button type="button" class="torineser-sbc__role-btn torineser-sbc__role-btn--active" data-sbc-color-role="primary">
-                {{ section.settings.label_primary }}
-              </button>
-              <button type="button" class="torineser-sbc__role-btn" data-sbc-color-role="secondary">
-                {{ section.settings.label_secondary }}
-              </button>
+          </div>
+
+          <div
+            class="torineser-sbc__filters-sheet"
+            id="torineser-sbc-filters-sheet-{{ section.id }}"
+            data-sbc-filters-sheet
+            role="dialog"
+            aria-label="{{ section.settings.mobile_more_filters_label }}">
+            <div class="torineser-sbc__filter-aside">
+              <div class="torineser-sbc__sheet-handle" aria-hidden="true"></div>
+              <span class="torineser-sbc__filter-aside-label">{{ section.settings.mobile_more_filters_label }}</span>
             </div>
-            <div class="torineser-sbc__swatches" data-sbc-swatches="primary" id="torineser-sbc-sw-primary-{{ section.id }}"></div>
-            <div class="torineser-sbc__swatches torineser-sbc__swatches--secondary" data-sbc-swatches="secondary" id="torineser-sbc-sw-secondary-{{ section.id }}" hidden></div>
-          </div>
+            <div class="torineser-sbc__filter-body">
+              <div class="torineser-sbc__sb-section">
+                <div class="torineser-sbc__sb-label">{{ section.settings.label_quartiere }}</div>
+                <select class="torineser-sbc__select" data-sbc-quartiere aria-label="{{ section.settings.label_quartiere }}"></select>
+              </div>
 
-          <div class="torineser-sbc__sb-section">
-            <div class="torineser-sbc__sb-label">{{ section.settings.label_year }}</div>
-            <div class="torineser-sbc__chips" data-sbc-years></div>
-          </div>
+              <div class="torineser-sbc__sb-section">
+                <div class="torineser-sbc__sb-label">{{ section.settings.label_artist }}</div>
+                <select class="torineser-sbc__select" data-sbc-artist aria-label="{{ section.settings.label_artist }}"></select>
+              </div>
 
-          <div class="torineser-sbc__sb-section">
-            <div class="torineser-sbc__sb-label">{{ section.settings.label_artist }}</div>
-            <select class="torineser-sbc__select" data-sbc-artist aria-label="{{ section.settings.label_artist }}"></select>
-          </div>
+              <div class="torineser-sbc__sb-section">
+                <div class="torineser-sbc__sb-label">{{ section.settings.label_year }}</div>
+                <div class="torineser-sbc__chips" data-sbc-years></div>
+              </div>
 
-          <div class="torineser-sbc__sb-section">
-            <div class="torineser-sbc__sb-label">{{ section.settings.label_quartiere }}</div>
-            <select class="torineser-sbc__select" data-sbc-quartiere aria-label="{{ section.settings.label_quartiere }}"></select>
+              <button type="button" class="torineser-sbc__reset" data-sbc-reset>{{ section.settings.reset_label }}</button>
+            </div>
           </div>
-
-          <button type="button" class="torineser-sbc__reset" data-sbc-reset>{{ section.settings.reset_label }}</button>
         </aside>
 
         <div class="torineser-sbc__main">
@@ -210,6 +239,96 @@
     border-right: 1px solid var(--sbc-border);
     max-height: calc(100vh - 80px);
     overflow-y: auto;
+  }
+
+  .torineser-sbc__sidebar-color {
+    min-width: 0;
+  }
+
+  /* Sheet wrapper: su desktop è flusso normale nella sidebar; su mobile diventa bottom sheet (vedi sotto). */
+  .torineser-sbc__filters-sheet {
+    display: block;
+    min-width: 0;
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--sbc-border);
+  }
+
+  .torineser-sbc__filter-aside {
+    display: none;
+  }
+
+  .torineser-sbc__filter-body {
+    min-width: 0;
+  }
+
+  .torineser-sbc__sheet-handle {
+    display: none;
+    width: 36px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--sbc-border);
+  }
+
+  .torineser-sbc__filter-aside-label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sbc-muted);
+    font-weight: 600;
+  }
+
+  .torineser-sbc__sheet-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1400;
+    opacity: 0;
+    transition: opacity 0.25s;
+    pointer-events: none;
+  }
+
+  .torineser-sbc--sheet-open .torineser-sbc__sheet-backdrop {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .torineser-sbc__filter-fab {
+    display: none;
+    align-items: center;
+    position: fixed;
+    left: 20px;
+    bottom: 24px;
+    z-index: 1500;
+    background: var(--sbc-ink);
+    color: var(--sbc-cream);
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    padding: 10px 14px;
+    font-family: inherit;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    gap: 8px;
+  }
+
+  .torineser-sbc__fab-badge {
+    background: var(--sbc-red);
+    color: var(--sbc-cream);
+    border-radius: 100px;
+    padding: 2px 7px;
+    font-size: 10px;
+    font-weight: 700;
+    margin-left: 2px;
+  }
+
+  .torineser-sbc__fab-badge--muted {
+    background: rgba(255, 255, 255, 0.18);
   }
 
   .torineser-sbc__sb-section {
@@ -656,7 +775,75 @@
     }
 
     .torineser-sbc__main {
-      padding: 24px 20px 60px;
+      padding: 24px 20px 88px;
+    }
+
+    .torineser-sbc__filter-fab {
+      display: inline-flex;
+    }
+
+    .torineser-sbc__filters-sheet {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: auto;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      transform: translateY(100%);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border-top: 1px solid var(--sbc-border);
+      border-radius: 16px 16px 0 0;
+      box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.15);
+      max-height: 80vh;
+      overflow: hidden;
+      z-index: 1450;
+      background: var(--sbc-cream);
+    }
+
+    .torineser-sbc--sheet-open .torineser-sbc__filters-sheet {
+      transform: translateY(0);
+    }
+
+    .torineser-sbc__filter-aside {
+      display: flex;
+      flex-shrink: 0;
+      width: 100%;
+      min-height: 40px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid var(--sbc-border);
+      padding: 10px 0 8px;
+      position: relative;
+    }
+
+    .torineser-sbc__sheet-handle {
+      display: block;
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .torineser-sbc__filter-aside-label {
+      margin-top: 10px;
+      padding: 0 1rem;
+      text-align: center;
+    }
+
+    .torineser-sbc__filter-body {
+      flex: 1;
+      min-height: 0;
+      padding: 16px 16px 28px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
     }
 
     .torineser-sbc__grid {
@@ -743,6 +930,18 @@
       "id": "label_quartiere",
       "label": "Etichetta quartiere",
       "default": "Quartiere"
+    },
+    {
+      "type": "text",
+      "id": "mobile_fab_label",
+      "label": "Testo pulsante filtri (mobile ≤900px)",
+      "default": "Filtri"
+    },
+    {
+      "type": "text",
+      "id": "mobile_more_filters_label",
+      "label": "Titolo pannello altri filtri (mobile)",
+      "default": "Altri filtri"
     },
     {
       "type": "text",
