@@ -2207,6 +2207,7 @@
         "text_dGmUFn",
         "email_signup_Fi8GyG"
       ],
+      "disabled": true,
       "name": "t:names.email_signup",
       "settings": {
         "custom_class": "torineser-newsletter",
