@@ -223,31 +223,54 @@
     /** Allineato a `transition: right` su `.torineser-map__map` in torineser-map.liquid */
     const MAP_INSET_TRANSITION_MS = 350;
 
-    /** Leaflet: ridisegna dopo il cambio larghezza mappa (transizione `right` apertura/chiusura aside). */
-    function invalidateMapAfterInsetTransition() {
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          map.invalidateSize();
-        });
-      });
+    /** @type {((e: TransitionEvent) => void) | null} */
+    let pendingInsetTransitionHandler = null;
+    /** @type {ReturnType<typeof setTimeout> | null} */
+    let pendingInsetTransitionTimeout = null;
+
+    /**
+     * Leaflet: `invalidateSize` solo dopo la fine della transizione CSS su `right`.
+     * Chiamarlo durante l’animazione lascia buchi di tile e il centro sballato.
+     * @param {() => void} [onSettled] — es. pan dopo che il box mappa è stabile (apertura pannello).
+     */
+    function invalidateMapAfterInsetTransition(onSettled) {
+      if (pendingInsetTransitionHandler) {
+        mapEl.removeEventListener('transitionend', pendingInsetTransitionHandler);
+        pendingInsetTransitionHandler = null;
+      }
+      if (pendingInsetTransitionTimeout != null) {
+        clearTimeout(pendingInsetTransitionTimeout);
+        pendingInsetTransitionTimeout = null;
+      }
 
       let settled = false;
       const settle = () => {
         if (settled) return;
         settled = true;
+        if (pendingInsetTransitionHandler) {
+          mapEl.removeEventListener('transitionend', pendingInsetTransitionHandler);
+          pendingInsetTransitionHandler = null;
+        }
+        if (pendingInsetTransitionTimeout != null) {
+          clearTimeout(pendingInsetTransitionTimeout);
+          pendingInsetTransitionTimeout = null;
+        }
         map.invalidateSize();
+        requestAnimationFrame(() => {
+          map.invalidateSize();
+          if (typeof onSettled === 'function') {
+            onSettled();
+          }
+        });
       };
 
       const onTransitionEnd = (e) => {
-        if (e.propertyName !== 'right') return;
-        mapEl.removeEventListener('transitionend', onTransitionEnd);
+        if (e.target !== mapEl || e.propertyName !== 'right') return;
         settle();
       };
+      pendingInsetTransitionHandler = onTransitionEnd;
       mapEl.addEventListener('transitionend', onTransitionEnd);
-      window.setTimeout(() => {
-        mapEl.removeEventListener('transitionend', onTransitionEnd);
-        settle();
-      }, MAP_INSET_TRANSITION_MS + 80);
+      pendingInsetTransitionTimeout = window.setTimeout(settle, MAP_INSET_TRANSITION_MS + 80);
     }
 
     function openPanel(id) {
@@ -289,13 +312,17 @@
       `;
 
       root.classList.add('torineser-map--panel-open');
-      map.panTo(c.coords, { animate: true, duration: 0.5 });
-      invalidateMapAfterInsetTransition();
+      invalidateMapAfterInsetTransition(() => {
+        map.panTo(c.coords, { animate: true, duration: 0.5 });
+      });
     }
 
     function closePanel() {
       if (activeId != null && markerEls[activeId]) markerEls[activeId].classList.remove('torineser-map__cover-marker--active');
       activeId = null;
+      if (typeof map.stop === 'function') {
+        map.stop();
+      }
       root.classList.remove('torineser-map--panel-open');
       invalidateMapAfterInsetTransition();
     }
