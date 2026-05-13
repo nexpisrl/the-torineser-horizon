@@ -54,18 +54,6 @@
       </header>
 
       <div class="torineser-sbc__sheet-backdrop" data-sbc-sheet-backdrop tabindex="-1"></div>
-      <button
-        type="button"
-        class="torineser-sbc__filter-fab"
-        data-sbc-filter-fab
-        aria-expanded="false"
-        aria-controls="torineser-sbc-filters-sheet-{{ section.id }}">
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M2 4h12M4 8h8M6 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-        </svg>
-        {{ section.settings.mobile_fab_label }}
-        <span class="torineser-sbc__fab-badge" data-sbc-fab-count>—</span>
-      </button>
 
       <div class="torineser-sbc__layout">
         <aside class="torineser-sbc__sidebar">
@@ -89,6 +77,19 @@
               <div class="torineser-sbc__swatches torineser-sbc__swatches--secondary" data-sbc-swatches="secondary" id="torineser-sbc-sw-secondary-{{ section.id }}" hidden></div>
             </div>
           </div>
+
+          <button
+            type="button"
+            class="torineser-sbc__filter-fab"
+            data-sbc-filter-fab
+            aria-expanded="false"
+            aria-controls="torineser-sbc-filters-sheet-{{ section.id }}">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M2 4h12M4 8h8M6 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+            {{ section.settings.mobile_fab_label }}
+            <span class="torineser-sbc__fab-badge" data-sbc-fab-count>—</span>
+          </button>
 
           <div
             class="torineser-sbc__filters-sheet"
@@ -233,6 +234,7 @@
   }
 
   .torineser-sbc__sidebar {
+    /* sticky: contesto di posizionamento per il FAB (absolute) anche su desktop; su ≤900px diventa relative */
     position: sticky;
     top: 0;
     padding: 32px 28px 40px;
@@ -298,7 +300,7 @@
   .torineser-sbc__filter-fab {
     display: none;
     align-items: center;
-    position: fixed;
+    position: absolute;
     left: 20px;
     z-index: 1500;
     background: var(--sbc-ink);
@@ -769,6 +771,7 @@
       position: relative;
       top: auto;
       max-height: none;
+      overflow: visible; /* il FAB è absolute: evita clip da overflow-y:auto del desktop */
       border-right: none;
       border-bottom: 1px solid var(--sbc-border);
       padding: 20px;
