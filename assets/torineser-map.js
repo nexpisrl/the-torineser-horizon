@@ -220,6 +220,36 @@
         .replace(/"/g, '&quot;');
     }
 
+    /** Allineato a `transition: right` su `.torineser-map__map` in torineser-map.liquid */
+    const MAP_INSET_TRANSITION_MS = 350;
+
+    /** Leaflet: ridisegna dopo il cambio larghezza mappa (transizione `right` apertura/chiusura aside). */
+    function invalidateMapAfterInsetTransition() {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          map.invalidateSize();
+        });
+      });
+
+      let settled = false;
+      const settle = () => {
+        if (settled) return;
+        settled = true;
+        map.invalidateSize();
+      };
+
+      const onTransitionEnd = (e) => {
+        if (e.propertyName !== 'right') return;
+        mapEl.removeEventListener('transitionend', onTransitionEnd);
+        settle();
+      };
+      mapEl.addEventListener('transitionend', onTransitionEnd);
+      window.setTimeout(() => {
+        mapEl.removeEventListener('transitionend', onTransitionEnd);
+        settle();
+      }, MAP_INSET_TRANSITION_MS + 80);
+    }
+
     function openPanel(id) {
       const c = covers.find((x) => x.id === id);
       if (!c || !panel || !panelContent) return;
@@ -260,18 +290,14 @@
 
       root.classList.add('torineser-map--panel-open');
       map.panTo(c.coords, { animate: true, duration: 0.5 });
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => map.invalidateSize());
-      });
+      invalidateMapAfterInsetTransition();
     }
 
     function closePanel() {
       if (activeId != null && markerEls[activeId]) markerEls[activeId].classList.remove('torineser-map__cover-marker--active');
       activeId = null;
       root.classList.remove('torineser-map--panel-open');
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => map.invalidateSize());
-      });
+      invalidateMapAfterInsetTransition();
     }
 
     function matches(c) {
