@@ -17,7 +17,7 @@
         "announcement_BxgCk9": {
           "type": "_announcement",
           "settings": {
-            "text": "✦ Spedizione gratuita in Italia sopra 60€ · Stampe numerate in edizione limitata ✦",
+            "text": "📚 Siamo al <strong>Salone del Libro di Torino  Stand K77 I Pad2!</strong> dal 14 al 18 maggio — Vieni a trovarci",
             "link": "",
             "font": "var(--font-body--family)",
             "font_size": "0.75rem",
@@ -70,9 +70,9 @@
             "featured_products_aspect_ratio": "4 / 5",
             "featured_collections_aspect_ratio": "16 / 9",
             "image_border_radius": 0,
+            "drawer_secondary_menu": "men-header-destra",
             "navigation_bar": false,
             "color_scheme_navigation_bar": "",
-            "drawer_secondary_menu": "men-header-destra",
             "drawer_accordion": false,
             "drawer_accordion_expand_first": false,
             "drawer_dividers": false
@@ -93,6 +93,7 @@
             "featured_products_aspect_ratio": "4 / 5",
             "featured_collections_aspect_ratio": "16 / 9",
             "image_border_radius": 0,
+            "drawer_secondary_menu": "",
             "navigation_bar": false,
             "color_scheme_navigation_bar": "",
             "drawer_accordion": false,
@@ -106,6 +107,8 @@
         "logo_position": "center",
         "menu_position": "left",
         "menu_row": "top",
+        "menu_2_position": "right",
+        "menu_2_row": "top",
         "customer_account_menu": "",
         "show_search": true,
         "search_position": "right",
