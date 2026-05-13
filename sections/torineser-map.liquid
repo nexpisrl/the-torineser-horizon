@@ -501,8 +501,9 @@
 
   /* Desktop: pannello più largo, copertina | testo (scroll solo colonna testo), anteprima descrizione */
   @media screen and (min-width: 768px) {
+    /* Larghezza fluida sulla mappa: % sul contenitore + limiti in px per usabilità */
     .torineser-map {
-      --torineser-panel: 420px;
+      --torineser-panel: clamp(300px, 42%, 560px);
     }
 
     .torineser-map__panel {
@@ -511,7 +512,7 @@
 
     .torineser-map__panel-inner {
       display: grid;
-      grid-template-columns: minmax(0, 40%) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 54%) minmax(0, 1fr);
       grid-template-rows: minmax(0, 1fr);
       align-items: stretch;
     }
