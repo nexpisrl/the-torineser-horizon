@@ -1616,7 +1616,7 @@
                   "name": "t:names.text",
                   "settings": {
                     "custom_class": "the_torineser-section-description",
-                    "text": "<p><strong>I preferiti della community</strong>. Le stampe che continuano a far battere il cuore dei torineser.</p>",
+                    "text": "<p><strong>I preferiti della community</strong>. <br/>Le stampe che continuano a far battere il cuore dei torineser(s).</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
