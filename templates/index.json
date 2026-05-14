@@ -155,7 +155,7 @@
               "name": "t:names.button",
               "settings": {
                 "label": "Il Progetto",
-                "link": "shopify://collections/all",
+                "link": "shopify://pages/progetto-torineser",
                 "open_in_new_tab": false,
                 "style_class": "button-secondary",
                 "width": "fit-content",
