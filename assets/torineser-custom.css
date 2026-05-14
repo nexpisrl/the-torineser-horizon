@@ -212,17 +212,14 @@ footer{
     padding-block-start: 0.75rem;
   }
 
-  #header-component .menu-drawer__featured-content-list-item:first-child {
-    margin-inline-start: 22px;
-  }
-
-  #header-component .menu-drawer__featured-content-list-item:last-child {
-    margin-inline-end: 22px;
-  }
-
   #header-component .menu-drawer__close-button {
     color: rgb(var(--color-foreground-rgb));
   }
+}
+
+/* Carosello prodotti/collezioni in evidenza nel menu drawer (Horizon): non utilizzato */
+#header-component .menu-drawer__featured-content {
+  display: none !important;
 }
 
 /* Rimuove il «bordo» del .button sulla lingua/valuta (box-shadow inset da base.css) */
@@ -977,6 +974,10 @@ footer{
   .section-wrapper:has(.footer-content) .footer-content > * {
     min-width: 0;
   }
+
+  .footer-utilities .footer-policy-list {
+    gap: 5px 10px;
+  }
 }
 
 @media screen and (min-width: 990px) {
@@ -1004,14 +1005,42 @@ footer{
   max-inline-size: 280px;
 }
 
-.section-wrapper:has(.footer-content) .menu__heading,
-.section-wrapper:has(.footer-content) .torineser-footer-social .text-block > p:first-child {
+.section-wrapper:has(.footer-content) summary.menu__heading.h3,
+.section-wrapper:has(.footer-content) .menu__heading.h3,
+.section-wrapper:has(.footer-content) .torineser-footer-social .text-block > p:first-child,
+.section-wrapper:has(.footer-content) .torineser-footer-social rte-formatter > p:first-child {
   margin: 0 0 18px;
+  padding: 0;
   font-family: "DM Sans", var(--font-body--family), sans-serif;
   font-size: 11px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.25;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: rgb(28 25 21 / 0.467);
+}
+
+/* summary eredita .h3 da Horizon: azzeriamo marker e forziamo coerenza con l’etichetta «Seguici» */
+.section-wrapper:has(.footer-content) summary.menu__heading {
+  list-style: none;
+}
+
+.section-wrapper:has(.footer-content) summary.menu__heading::-webkit-details-marker {
+  display: none;
+}
+
+.section-wrapper:has(.footer-content) summary.menu__heading::marker {
+  content: none;
+}
+
+/* Richieste layout: niente padding sul titolo menu; colonna social allineata a inizio asse principale */
+.section-wrapper:has(.footer-content) .footer-content .menu summary.menu__heading.h3 {
+  padding: 0;
+}
+
+.section-wrapper:has(.footer-content) .torineser-footer-social .group-block-content {
+  justify-content: flex-start;
 }
 
 .section-wrapper:has(.footer-content) .menu .details-content {
@@ -1644,11 +1673,13 @@ footer{
 .RB_PC_Content{
   margin-top:     10px;
 }
-@media screen and (min-width: 768px) {
-  .RB_Addon_Wrapper .RB_Product_View.RB_PV_Index_1{
-    grid-template-columns: repeat(3, 1fr);
-  }
 
+/* Griglia addon: 3 colonne anche sotto i 768px (prima erano solo da tablet+) */
+.RB_Addon_Wrapper .RB_Product_View.RB_PV_Index_1 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media screen and (min-width: 768px) {
   .RB_Product_Card .RB_PC_Title a {
     font-size: 14px !important;
   }
