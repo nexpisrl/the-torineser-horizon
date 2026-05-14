@@ -1,11 +1,11 @@
 /**
- * Shop by Color: filtri (palette per classificazione colori + artista + anno + quartiere), ordinamento, griglia card.
+ * Shop by Color: filtri colore (nome metaobject se presente nel JSON, altrimenti bucket da hex) + artista + anno + quartiere.
  * I pallini filtro mostrano solo i colori effettivamente presenti nei metafield dei prodotti caricati.
  */
 (function () {
   'use strict';
 
-  /** Palette di riferimento: `nearestColorKey` classifica gli hex dei metafield; i filtri mostrano solo i colori davvero usati. */
+  /** Palette di riferimento: `nearestColorKey` solo se manca `label_primary` / `label_secondary` nel JSON. */
   const COLOR_PALETTE = [
     { key: 'nero', name: 'Nero', hex: '#1A1A1A' },
     { key: 'crema', name: 'Crema', hex: '#F0EBDD' },
@@ -60,11 +60,22 @@
 
   const UNKNOWN_COLOR_KEY = '__unknown__';
 
+  /** @param {string} label @param {string} hexSlot come colors[idx] */
+  function colorFilterKey(label, hexSlot) {
+    const t = String(label || '').trim();
+    if (t) return t;
+    const h = String(hexSlot || '').trim();
+    if (!h) return UNKNOWN_COLOR_KEY;
+    return nearestColorKey(h);
+  }
+
   /** @param {Record<string, unknown>} raw */
   function normalizeProduct(raw) {
     const hexP = String(raw.hex_primary || '').trim();
     const hexS = String(raw.hex_secondary || '').trim();
-    if (!hexP && !hexS) {
+    const labelP = String(raw.label_primary ?? raw.labelPrimary ?? '').trim();
+    const labelS = String(raw.label_secondary ?? raw.labelSecondary ?? '').trim();
+    if (!hexP && !hexS && !labelP && !labelS) {
       return {
         id: Number(raw.id),
         handle: String(raw.handle || ''),
@@ -83,7 +94,7 @@
       };
     }
     const colors = [hexP || hexS, hexS || hexP];
-    const colorKeys = [nearestColorKey(colors[0] ?? ''), nearestColorKey(colors[1] ?? '')];
+    const colorKeys = [colorFilterKey(labelP, colors[0] ?? ''), colorFilterKey(labelS, colors[1] ?? '')];
     return {
       id: Number(raw.id),
       handle: String(raw.handle || ''),
@@ -342,7 +353,10 @@
         s.dataset.value = c.key;
         s.dataset.role = role;
         s.style.background = c.hex;
-        s.innerHTML = `<span class="torineser-sbc__swatch-name">${c.name}</span>`;
+        const nm = document.createElement('span');
+        nm.className = 'torineser-sbc__swatch-name';
+        nm.textContent = c.name;
+        s.appendChild(nm);
         container.appendChild(s);
       });
     }
@@ -450,6 +464,18 @@
         });
     }
 
+    /** @param {string} k @param {'primary'|'secondary'} role */
+    function hexForActivePill(k, role) {
+      const pal = COLOR_KEY_MAP[k];
+      if (pal) return pal.hex;
+      const idx = role === 'primary' ? 0 : 1;
+      const hit = products.find((p) => p.colorKeys[idx] === k);
+      if (!hit) return undefined;
+      const raw = role === 'primary' ? hit.hex_primary : hit.hex_secondary;
+      const h = String(raw || '').trim();
+      return h || undefined;
+    }
+
     function renderActiveFilters() {
       if (!activeWrap) return;
       activeWrap.innerHTML = '';
@@ -457,7 +483,7 @@
       const pills = [];
       state.primary.forEach((k) => {
         pills.push({
-          dot: COLOR_KEY_MAP[k]?.hex,
+          dot: hexForActivePill(k, 'primary'),
           label: COLOR_KEY_MAP[k]?.name || k,
           remove: () => {
             state.primary.delete(k);
@@ -467,7 +493,7 @@
       });
       state.secondary.forEach((k) => {
         pills.push({
-          dot: COLOR_KEY_MAP[k]?.hex,
+          dot: hexForActivePill(k, 'secondary'),
           label: '+ ' + (COLOR_KEY_MAP[k]?.name || k),
           remove: () => {
             state.secondary.delete(k);
