@@ -1,72 +1,43 @@
 /**
- * Shop by Color: filtri colore (nome metaobject se presente nel JSON, altrimenti bucket da hex) + artista + anno + quartiere.
+ * Shop by Color: filtri colore da metaobject (taxonomy + handle + hex serializzati dal tema) + artista + anno + quartiere.
  * I pallini filtro mostrano solo i colori effettivamente presenti nei metafield dei prodotti caricati.
  */
 (function () {
   'use strict';
 
-  /** Palette di riferimento: `nearestColorKey` solo se manca `label_primary` / `label_secondary` nel JSON. */
-  const COLOR_PALETTE = [
-    { key: 'nero', name: 'Nero', hex: '#1A1A1A' },
-    { key: 'crema', name: 'Crema', hex: '#F0EBDD' },
-    { key: 'grigio', name: 'Grigio', hex: '#9A9489' },
-    { key: 'sabbia', name: 'Sabbia', hex: '#D9C9A3' },
-    { key: 'giallo', name: 'Giallo', hex: '#F2C84B' },
-    { key: 'ocra', name: 'Ocra', hex: '#B89020' },
-    { key: 'arancio', name: 'Arancio', hex: '#E8853A' },
-    { key: 'rame', name: 'Rame', hex: '#C4642A' },
-    { key: 'rosa', name: 'Rosa', hex: '#E89898' },
-    { key: 'rosso', name: 'Rosso', hex: '#C8342A' },
-    { key: 'magenta', name: 'Magenta', hex: '#D88BB0' },
-    { key: 'lilla', name: 'Lilla', hex: '#B5A8D6' },
-    { key: 'viola', name: 'Viola', hex: '#4A148C' },
-    { key: 'blu', name: 'Blu', hex: '#1B4D8E' },
-    { key: 'verde', name: 'Verde', hex: '#2D6A4F' },
-    { key: 'turchese', name: 'Turchese', hex: '#3A8C8C' },
-    { key: 'marrone', name: 'Marrone', hex: '#6B4423' },
-  ];
-
-  /** @type {Record<string, { key: string, name: string, hex: string }>} */
-  const COLOR_KEY_MAP = Object.fromEntries(COLOR_PALETTE.map((c) => [c.key, c]));
-
   /** Section Rendering: stessa card della bank (non section-rendering-product-card). */
   const SBC_FETCH_SECTION_ID = 'torineser-shop-color-card';
 
-  /** @param {string} hex */
-  function nearestColorKey(hex) {
-    const h = String(hex || '')
-      .replace('#', '')
-      .trim();
-    if (h.length < 6) return 'nero';
-    const r = parseInt(h.slice(0, 2), 16);
-    const g = parseInt(h.slice(2, 4), 16);
-    const b = parseInt(h.slice(4, 6), 16);
-    if (!Number.isFinite(r) || !Number.isFinite(g) || !Number.isFinite(b)) return 'nero';
-    let best = 'nero';
-    let bestD = Infinity;
-    COLOR_PALETTE.forEach((p) => {
-      const ph = p.hex.replace('#', '');
-      const pr = parseInt(ph.slice(0, 2), 16);
-      const pg = parseInt(ph.slice(2, 4), 16);
-      const pb = parseInt(ph.slice(4, 6), 16);
-      const d = (r - pr) ** 2 + (g - pg) ** 2 + (b - pb) ** 2;
-      if (d < bestD) {
-        bestD = d;
-        best = p.key;
-      }
-    });
-    return best;
-  }
-
   const UNKNOWN_COLOR_KEY = '__unknown__';
 
-  /** @param {string} label @param {string} hexSlot come colors[idx] */
-  function colorFilterKey(label, hexSlot) {
-    const t = String(label || '').trim();
+  /**
+   * Chiave filtro: nome taxonomy → handle metaobject (`mo:`) → bucket da hex (`hex:`).
+   * @param {string} taxonomyLabel
+   * @param {string} moHandle system.handle del metaobject colore
+   * @param {string} hexSlot come colors[idx]
+   */
+  function colorFilterKey(taxonomyLabel, moHandle, hexSlot) {
+    const t = String(taxonomyLabel || '').trim();
     if (t) return t;
-    const h = String(hexSlot || '').trim();
-    if (!h) return UNKNOWN_COLOR_KEY;
-    return nearestColorKey(h);
+    const h = String(moHandle || '').trim();
+    if (h) return `mo:${h}`;
+    const x = String(hexSlot || '')
+      .replace('#', '')
+      .trim();
+    if (x.length >= 6) return `hex:${x.slice(0, 6).toLowerCase()}`;
+    return UNKNOWN_COLOR_KEY;
+  }
+
+  /** Testo UI (swatch / pill): taxonomy, altrimenti handle leggibile.
+   * @param {string} taxonomyLabel
+   * @param {string} moHandle
+   */
+  function colorUiName(taxonomyLabel, moHandle) {
+    const t = String(taxonomyLabel || '').trim();
+    if (t) return t;
+    const h = String(moHandle || '').trim();
+    if (h) return h.replace(/-/g, ' ');
+    return '';
   }
 
   /** @param {Record<string, unknown>} raw */
@@ -75,7 +46,9 @@
     const hexS = String(raw.hex_secondary || '').trim();
     const labelP = String(raw.label_primary ?? raw.labelPrimary ?? '').trim();
     const labelS = String(raw.label_secondary ?? raw.labelSecondary ?? '').trim();
-    if (!hexP && !hexS && !labelP && !labelS) {
+    const hdlP = String(raw.mo_handle_primary ?? raw.moHandlePrimary ?? '').trim();
+    const hdlS = String(raw.mo_handle_secondary ?? raw.moHandleSecondary ?? '').trim();
+    if (!hexP && !hexS && !labelP && !labelS && !hdlP && !hdlS) {
       return {
         id: Number(raw.id),
         handle: String(raw.handle || ''),
@@ -87,6 +60,8 @@
         hex_secondary: '',
         colors: ['', ''],
         colorKeys: [UNKNOWN_COLOR_KEY, UNKNOWN_COLOR_KEY],
+        colorUiPrimary: '',
+        colorUiSecondary: '',
         price: Number(raw.price) || 0,
         published_at: Number(raw.published_at) || 0,
         anno: raw.anno === null || raw.anno === undefined || raw.anno === '' ? null : Number(raw.anno),
@@ -94,7 +69,10 @@
       };
     }
     const colors = [hexP || hexS, hexS || hexP];
-    const colorKeys = [colorFilterKey(labelP, colors[0] ?? ''), colorFilterKey(labelS, colors[1] ?? '')];
+    const colorKeys = [
+      colorFilterKey(labelP, hdlP, colors[0] ?? ''),
+      colorFilterKey(labelS, hdlS, colors[1] ?? ''),
+    ];
     return {
       id: Number(raw.id),
       handle: String(raw.handle || ''),
@@ -106,6 +84,8 @@
       hex_secondary: hexS,
       colors,
       colorKeys,
+      colorUiPrimary: colorUiName(labelP, hdlP),
+      colorUiSecondary: colorUiName(labelS, hdlS),
       price: Number(raw.price) || 0,
       published_at: Number(raw.published_at) || 0,
       anno: raw.anno === null || raw.anno === undefined || raw.anno === '' ? null : Number(raw.anno),
@@ -127,18 +107,21 @@
       const key = p.colorKeys[idx];
       if (!key || key === UNKNOWN_COLOR_KEY) continue;
       const hexField = role === 'primary' ? p.hex_primary : p.hex_secondary;
-      let hex = String(hexField || '').trim() || String(p.colors[idx] || '').trim();
-      if (!hex) {
-        const pal = COLOR_KEY_MAP[key];
-        if (pal) hex = pal.hex;
-      }
+      const hex = String(hexField || '').trim() || String(p.colors[idx] || '').trim();
       if (!hex) continue;
       if (!byKey.has(key)) {
-        const pal = COLOR_KEY_MAP[key];
+        const ui = role === 'primary' ? p.colorUiPrimary : p.colorUiSecondary;
+        const prettyKey = key.startsWith('hex:')
+          ? `#${key.slice(4)}`
+          : key.startsWith('mo:')
+            ? key
+                .slice(3)
+                .replace(/-/g, ' ')
+            : key;
         byKey.set(key, {
           key,
           hex,
-          name: pal ? pal.name : key,
+          name: ui || prettyKey,
         });
       }
     }
@@ -466,14 +449,24 @@
 
     /** @param {string} k @param {'primary'|'secondary'} role */
     function hexForActivePill(k, role) {
-      const pal = COLOR_KEY_MAP[k];
-      if (pal) return pal.hex;
       const idx = role === 'primary' ? 0 : 1;
       const hit = products.find((p) => p.colorKeys[idx] === k);
       if (!hit) return undefined;
       const raw = role === 'primary' ? hit.hex_primary : hit.hex_secondary;
       const h = String(raw || '').trim();
       return h || undefined;
+    }
+
+    /** @param {string} k @param {'primary'|'secondary'} role */
+    function uiLabelForFilterKey(k, role) {
+      if (!k || k === UNKNOWN_COLOR_KEY) return k;
+      const idx = role === 'primary' ? 0 : 1;
+      const hit = products.find((p) => p.colorKeys[idx] === k);
+      if (!hit) return k.startsWith('hex:') ? `#${k.slice(4)}` : k.replace(/^mo:/, '');
+      const ui = role === 'primary' ? hit.colorUiPrimary : hit.colorUiSecondary;
+      if (ui) return ui;
+      if (k.startsWith('hex:')) return `#${k.slice(4)}`;
+      return k.replace(/^mo:/, '');
     }
 
     function renderActiveFilters() {
@@ -484,7 +477,7 @@
       state.primary.forEach((k) => {
         pills.push({
           dot: hexForActivePill(k, 'primary'),
-          label: COLOR_KEY_MAP[k]?.name || k,
+          label: uiLabelForFilterKey(k, 'primary'),
           remove: () => {
             state.primary.delete(k);
             syncSwatches('primary');
@@ -494,7 +487,7 @@
       state.secondary.forEach((k) => {
         pills.push({
           dot: hexForActivePill(k, 'secondary'),
-          label: '+ ' + (COLOR_KEY_MAP[k]?.name || k),
+          label: '+ ' + uiLabelForFilterKey(k, 'secondary'),
           remove: () => {
             state.secondary.delete(k);
             syncSwatches('secondary');

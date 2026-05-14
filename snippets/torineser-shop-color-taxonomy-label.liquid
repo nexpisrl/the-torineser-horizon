@@ -1,0 +1,21 @@
+{% doc %}
+  Label da color_taxonomy_reference (metaobject shopify--color-pattern).
+  Supporta lista di valori taxonomy o singolo valore con .name
+  @param metaobject {object} .value del metafield colore
+{% enddoc %}
+{% assign out = '' %}
+{% if metaobject != blank and metaobject.color_taxonomy_reference != blank %}
+  {% assign tr = metaobject.color_taxonomy_reference.value %}
+  {% if tr != blank %}
+    {% for node in tr %}
+      {% if node.name != blank %}
+        {% assign out = node.name | strip %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+    {% if out == blank and tr.name != blank %}
+      {% assign out = tr.name | strip %}
+    {% endif %}
+  {% endif %}
+{% endif %}
+{{- out -}}

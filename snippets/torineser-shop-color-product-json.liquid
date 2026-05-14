@@ -1,18 +1,29 @@
 {% doc %}
-  JSON singola riga per Shop by Color: include il prodotto se ha almeno un metaobject colore (primario o secondario); hex può essere vuoto se non estraibile. label_* = display_name del metaobject (filtri/nomi swatch).
+  JSON singola riga per Shop by Color: include il prodotto se ha almeno un metaobject colore (primario o secondario); hex può essere vuoto se non estraibile.
+  label_* = nome taxonomy (campo color_taxonomy_reference); mo_handle_* = system.handle del metaobject (chiave stabile se manca la taxonomy).
 {% enddoc %}
 {% liquid
   assign cp = product.metafields.the_torineser.colore_primario.value
   assign cs = product.metafields.the_torineser.colore_secondario.value
 
-  assign label_primary = ''
-  assign label_secondary = ''
-  if cp != blank and cp.display_name != blank
-    assign label_primary = cp.display_name | strip
+  assign mo_handle_primary = ''
+  assign mo_handle_secondary = ''
+  if cp != blank and cp.system.handle != blank
+    assign mo_handle_primary = cp.system.handle
   endif
-  if cs != blank and cs.display_name != blank
-    assign label_secondary = cs.display_name | strip
+  if cs != blank and cs.system.handle != blank
+    assign mo_handle_secondary = cs.system.handle
   endif
+
+  capture label_primary
+    render 'torineser-shop-color-taxonomy-label', metaobject: cp
+  endcapture
+  assign label_primary = label_primary | strip
+
+  capture label_secondary
+    render 'torineser-shop-color-taxonomy-label', metaobject: cs
+  endcapture
+  assign label_secondary = label_secondary | strip
 
   capture hex_primary
     render 'torineser-shop-color-hex', metaobject: cp
@@ -52,5 +63,5 @@
   assign pd = product.published_at | default: product.created_at
 %}
 {% unless skip %}
-{"id":{{ product.id }},"handle":{{ product.handle | json }},"url":{{ product.url | json }},"title":{{ product.title | json }},"artist":{{ artist | json }},"quartiere":{{ quartiere | json }},"hex_primary":{{ hex_primary | json }},"hex_secondary":{{ hex_secondary | json }},"label_primary":{{ label_primary | json }},"label_secondary":{{ label_secondary | json }},"price":{{ product.selected_or_first_available_variant.price | json }},"published_at":{{ pd | date: '%s' | json }},"anno":{% if anno_val != blank %}{{ anno_val }}{% else %}null{% endif %}{% if product.featured_media %},"image":{{ product.featured_media | image_url: width: 800 | json }}{% else %},"image":null{% endif %}}
+{"id":{{ product.id }},"handle":{{ product.handle | json }},"url":{{ product.url | json }},"title":{{ product.title | json }},"artist":{{ artist | json }},"quartiere":{{ quartiere | json }},"hex_primary":{{ hex_primary | json }},"hex_secondary":{{ hex_secondary | json }},"label_primary":{{ label_primary | json }},"label_secondary":{{ label_secondary | json }},"mo_handle_primary":{{ mo_handle_primary | json }},"mo_handle_secondary":{{ mo_handle_secondary | json }},"price":{{ product.selected_or_first_available_variant.price | json }},"published_at":{{ pd | date: '%s' | json }},"anno":{% if anno_val != blank %}{{ anno_val }}{% else %}null{% endif %}{% if product.featured_media %},"image":{{ product.featured_media | image_url: width: 800 | json }}{% else %},"image":null{% endif %}}
 {% endunless %}
