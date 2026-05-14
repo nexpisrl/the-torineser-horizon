@@ -8,11 +8,11 @@
 
   assign mo_handle_primary = ''
   assign mo_handle_secondary = ''
-  if cp != blank and cp.system.handle != blank
-    assign mo_handle_primary = cp.system.handle
+  if cp != blank
+    assign mo_handle_primary = cp.system.handle | default: cp.handle | strip
   endif
-  if cs != blank and cs.system.handle != blank
-    assign mo_handle_secondary = cs.system.handle
+  if cs != blank
+    assign mo_handle_secondary = cs.system.handle | default: cs.handle | strip
   endif
 
   capture label_primary

@@ -69,9 +69,12 @@
       };
     }
     const colors = [hexP || hexS, hexS || hexP];
+    /** Meta (taxonomy + handle) dello stesso metaobject da cui proviene l'hex nello slot (evita hex: duplicati se manca solo il primario). */
+    const slot0Meta = hexP ? { lab: labelP, hdl: hdlP } : { lab: labelS, hdl: hdlS };
+    const slot1Meta = hexS ? { lab: labelS, hdl: hdlS } : { lab: labelP, hdl: hdlP };
     const colorKeys = [
-      colorFilterKey(labelP, hdlP, colors[0] ?? ''),
-      colorFilterKey(labelS, hdlS, colors[1] ?? ''),
+      colorFilterKey(slot0Meta.lab, slot0Meta.hdl, colors[0] ?? ''),
+      colorFilterKey(slot1Meta.lab, slot1Meta.hdl, colors[1] ?? ''),
     ];
     return {
       id: Number(raw.id),
@@ -84,8 +87,8 @@
       hex_secondary: hexS,
       colors,
       colorKeys,
-      colorUiPrimary: colorUiName(labelP, hdlP),
-      colorUiSecondary: colorUiName(labelS, hdlS),
+      colorUiPrimary: colorUiName(slot0Meta.lab, slot0Meta.hdl),
+      colorUiSecondary: colorUiName(slot1Meta.lab, slot1Meta.hdl),
       price: Number(raw.price) || 0,
       published_at: Number(raw.published_at) || 0,
       anno: raw.anno === null || raw.anno === undefined || raw.anno === '' ? null : Number(raw.anno),
