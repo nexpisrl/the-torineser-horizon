@@ -53,15 +53,9 @@
             role="list"
           >
             {% for link in menu_links.links %}
-              {% liquid
-                assign torineser_nav_href = link.url
-                if link.handle == 'per-colore' or link.handle == 'la-mappa'
-                  assign torineser_nav_href = '#'
-                endif
-              %}
               <li>
                 <a
-                  href="{{ torineser_nav_href }}"
+                  href="{{ link.url }}"
                   id="MenuItem-{{ link.handle }}"
                   class="menu-list__item{% if link.handle == 'per-colore' or link.handle == 'la-mappa' %} menu-list__item--torineser-accent{% endif %}"
                   {% if link.current %}
@@ -107,12 +101,8 @@
       {% assign submenu_uid = block.id | default: 'header-menu' %}
       {% for link in menu_links.links %}
         {% liquid
-          assign torineser_nav_href = link.url
-          if link.handle == 'per-colore' or link.handle == 'la-mappa'
-            assign torineser_nav_href = '#'
-          endif
           assign torineser_link_has_submenu = false
-          if link.links != blank and link.handle != 'per-colore'
+          if link.links != blank
             assign torineser_link_has_submenu = true
           endif
         %}
@@ -125,7 +115,7 @@
           on:pointerleave="/deactivate"
         >
           <a
-            href="{{ torineser_nav_href }}"
+            href="{{ link.url }}"
             data-skip-node-update="true"
             class="menu-list__link{% if link.active %} menu-list__link--active{% endif %}{% if link.handle == 'per-colore' or link.handle == 'la-mappa' %} menu-list__link--torineser-accent{% endif %}"
             {%- if torineser_link_has_submenu -%}

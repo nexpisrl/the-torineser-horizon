@@ -105,12 +105,8 @@
             {%- for link in linklist.links -%}
               {% liquid
                 assign animation_index = animation_index | plus: 1
-                assign torineser_nav_href = link.url
-                if link.handle == 'per-colore' or link.handle == 'la-mappa'
-                  assign torineser_nav_href = '#'
-                endif
                 assign torineser_link_has_submenu = false
-                if link.links != blank and link.handle != 'per-colore'
+                if link.links != blank
                   assign torineser_link_has_submenu = true
                 endif
               %}
@@ -193,7 +189,7 @@
                   {%- endcomment -%}
                   <a
                     id="HeaderDrawer-{{ link.handle }}"
-                    href="{{ torineser_nav_href }}"
+                    href="{{ link.url }}"
                     class="menu-drawer__menu-item menu-drawer__menu-item--mainlist menu-drawer__animated-element focus-inset{% if link.handle == 'per-colore' %} menu-drawer__menu-item--per-colore{% endif %}{% if link.handle == 'per-colore' or link.handle == 'la-mappa' %} menu-drawer__menu-item--torineser-accent{% endif %}"
                     {% if link.current %}
                       aria-current="page"
@@ -249,7 +245,7 @@
                   {%- endcomment -%}
                   <a
                     id="HeaderDrawer-{{ link.handle }}"
-                    href="{{ torineser_nav_href }}"
+                    href="{{ link.url }}"
                     class="menu-drawer__menu-item menu-drawer__menu-item--mainlist menu-drawer__animated-element focus-inset{% if link.handle == 'per-colore' %} menu-drawer__menu-item--per-colore{% endif %}{% if link.handle == 'per-colore' or link.handle == 'la-mappa' %} menu-drawer__menu-item--torineser-accent{% endif %}"
                     {% if link.current %}
                       aria-current="page"
@@ -270,12 +266,8 @@
             {%- for link in linklist.links -%}
               {% liquid
                 assign animation_index = animation_index | plus: 1
-                assign torineser_nav_href = link.url
-                if link.handle == 'per-colore' or link.handle == 'la-mappa'
-                  assign torineser_nav_href = '#'
-                endif
                 assign torineser_link_has_submenu = false
-                if link.links != blank and link.handle != 'per-colore'
+                if link.links != blank
                   assign torineser_link_has_submenu = true
                 endif
               %}
@@ -582,7 +574,7 @@
                   {%- endcomment -%}
                   <a
                     id="HeaderDrawer-{{ link.handle }}"
-                    href="{{ torineser_nav_href }}"
+                    href="{{ link.url }}"
                     class="menu-drawer__menu-item menu-drawer__menu-item--mainlist menu-drawer__animated-element focus-inset{% if link.handle == 'per-colore' %} menu-drawer__menu-item--per-colore{% endif %}{% if link.handle == 'per-colore' or link.handle == 'la-mappa' %} menu-drawer__menu-item--torineser-accent{% endif %}"
                     {% if link.current %}
                       aria-current="page"
@@ -606,10 +598,6 @@
             {%- for link in secondary_linklist.links -%}
               {% liquid
                 assign secondary_animation_index = secondary_animation_index | plus: 1
-                assign torineser_nav_href = link.url
-                if link.handle == 'per-colore' or link.handle == 'la-mappa'
-                  assign torineser_nav_href = '#'
-                endif
               %}
               <li
                 style="--menu-drawer-animation-index: {{ secondary_animation_index }};"
@@ -617,7 +605,7 @@
               >
                 <a
                   id="HeaderDrawerSecondary-{{ link.handle }}"
-                  href="{{ torineser_nav_href }}"
+                  href="{{ link.url }}"
                   class="menu-drawer__menu-item menu-drawer__menu-item--mainlist menu-drawer__animated-element focus-inset{% if link.handle == 'per-colore' %} menu-drawer__menu-item--per-colore{% endif %}{% if link.handle == 'per-colore' or link.handle == 'la-mappa' %} menu-drawer__menu-item--torineser-accent{% endif %}"
                   {% if link.current %}
                     aria-current="page"
