@@ -1616,7 +1616,7 @@
                   "name": "t:names.text",
                   "settings": {
                     "custom_class": "the_torineser-section-description",
-                    "text": "<p><strong>I preferiti della community</strong>. Le stampe che continuano a far battere il cuore dei torineser.</p>",
+                    "text": "<p><strong>I preferiti della community</strong>. <br/>Le stampe che continuano a far battere il cuore dei torineser(s).</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -2183,7 +2183,7 @@
           "name": "t:names.text",
           "settings": {
             "custom_class": "torineser-open-call-description",
-            "text": "<p>La partecipazione è gratuita e aperta a tutti — non è necessario essere di Torino, basta sentirne l'anima.</p>",
+            "text": "<p>La partecipazione è gratuita e aperta a tutti, non è necessario essere di Torino, basta sentirne l'anima.</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
