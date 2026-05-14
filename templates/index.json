@@ -2183,7 +2183,7 @@
           "name": "t:names.text",
           "settings": {
             "custom_class": "torineser-open-call-description",
-            "text": "<p>La partecipazione è gratuita e aperta a tutti — non è necessario essere di Torino, basta sentirne l'anima.</p>",
+            "text": "<p>La partecipazione è gratuita e aperta a tutti, non è necessario essere di Torino, basta sentirne l'anima.</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
