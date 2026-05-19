@@ -72,7 +72,7 @@
           "name": "t:names.text",
           "settings": {
             "custom_class": "the_torineser-hero-description",
-            "text": "<p>Perditi tra più di 110 copertine </p>",
+            "text": "<p>Cento e più Torino, una per copertina</p>",
             "width": "fit-content",
             "max_width": "none",
             "alignment": "left",
