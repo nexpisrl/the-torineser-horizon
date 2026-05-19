@@ -1912,7 +1912,7 @@
                   "name": "t:names.heading",
                   "settings": {
                     "custom_class": "torineser-gift-card-title",
-                    "text": "<p>Una gift card. La copertina la sceglie chi la riceve</p>",
+                    "text": "<p>Una gift card. La copertina la sceglie <br/>chi la riceve</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
