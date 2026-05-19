@@ -1181,7 +1181,7 @@
               "name": "t:names.heading",
               "settings": {
                 "custom_class": "torineser-project-title",
-                "text": "<h2>Un progetto<br/>fatto di <em>passione.</em></h2>",
+                "text": "<p>Torino, una copertina dopo l'altra</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
