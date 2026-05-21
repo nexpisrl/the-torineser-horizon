@@ -1330,7 +1330,7 @@
                   "name": "t:names.text",
                   "settings": {
                     "custom_class": "torineser-project-stat",
-                    "text": "<p>6</p><p>Anni</p>",
+                    "text": "<p>4</p><p>Anni</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
