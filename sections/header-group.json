@@ -17,8 +17,8 @@
         "announcement_BxgCk9": {
           "type": "_announcement",
           "settings": {
-            "text": "📚 Siamo al <strong>Salone del Libro di Torino  Stand K77 I Pad2!</strong> dal 14 al 18 maggio — Vieni a trovarci",
-            "link": "shopify://pages/the-torineser-al-salone-del-libro-2026",
+            "text": "Facciamo Ponte ☀️ ci rivediamo il 3!",
+            "link": "shopify://pages/orari-aperture",
             "font": "var(--font-body--family)",
             "font_size": "0.75rem",
             "weight": "",
@@ -31,7 +31,6 @@
       "block_order": [
         "announcement_BxgCk9"
       ],
-      "disabled": true,
       "name": "t:names.announcement_bar",
       "settings": {
         "speed": 5,
