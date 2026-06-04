@@ -9,6 +9,25 @@
       assign preview_image = block_settings.video_1.preview_image
     endif
 
+    assign has_desktop_image = false
+    if block_settings.image_1 != blank and block_settings.media_type_1 == 'image'
+      assign has_desktop_image = true
+    endif
+
+    assign show_custom_mobile_media = false
+    if block_settings.custom_mobile_media
+      if block_settings.image_1_mobile != blank and block_settings.media_type_1_mobile == 'image'
+        assign show_custom_mobile_media = true
+      elsif block_settings.video_1_mobile != blank and block_settings.media_type_1_mobile == 'video'
+        assign show_custom_mobile_media = true
+      endif
+    endif
+
+    assign slide_media_wrapper_desktop_class = 'slide__media-wrapper slide__media-wrapper--desktop'
+    if block_settings.custom_mobile_media == false or show_custom_mobile_media == false
+      assign slide_media_wrapper_desktop_class = slide_media_wrapper_desktop_class | append: ' slide__media-wrapper--mobile'
+    endif
+
     assign rounded_image_corners = false
     if block_settings.inherit_color_scheme == true or block_settings.inherit_color_scheme == false and section.settings.color_scheme.settings.background.rgb == block_settings.color_scheme.settings.background.rgb
       assign rounded_image_corners = true
@@ -31,14 +50,14 @@
     {%- if block_settings.toggle_overlay -%}
       {% render 'overlay', settings: block_settings %}
     {%- endif -%}
-    {%- if preview_image -%}
+    {%- if preview_image or has_desktop_image or show_custom_mobile_media -%}
       {%- liquid
-        assign height = preview_image.width | divided_by: preview_image.aspect_ratio | round
         assign media_width_desktop = '100vw'
         assign media_width_mobile = '100vw'
         assign sizes = '(min-width: 750px) ' | append: media_width_desktop | append: ', ' | append: media_width_mobile
         assign lazy_sizes = 'auto, ' | append: sizes
         assign widths = '832, 1200, 1600, 1920, 2560, 3840'
+        assign mobile_widths = '480, 750, 1100, 1500, 1600'
       %}
 
       {%- liquid
@@ -55,31 +74,76 @@
         endif
       -%}
 
-      {%- if block_settings.media_type_1 == 'image' -%}
-        {{
-          block_settings.image_1
-          | image_url: width: 3840
-          | image_tag: height: height, sizes: sizes, widths: widths, class: 'slide__image', loading: loading, fetchpriority: fetchpriority
-        }}
-      {%- else -%}
-        {%- if block_settings.video_1.preview_image -%}
+      {%- if has_desktop_image or block_settings.media_type_1 == 'video' and block_settings.video_1 != blank -%}
+        <div class="{{ slide_media_wrapper_desktop_class }}">
+          {%- if block_settings.media_type_1 == 'image' and has_desktop_image -%}
+            {{
+              block_settings.image_1
+              | image_url: width: 3840
+              | image_tag:
+                widths: widths,
+                alt: block_settings.image_1.alt,
+                class: 'slide__image',
+                sizes: sizes,
+                loading: loading,
+                fetchpriority: fetchpriority
+            }}
+          {%- elsif block_settings.media_type_1 == 'video' and block_settings.video_1 != blank -%}
+            {%- if block_settings.video_1.preview_image -%}
+              {{
+                block_settings.video_1.preview_image
+                | image_url: width: 3840
+                | image_tag:
+                  widths: widths,
+                  alt: '',
+                  class: 'slide__video-poster',
+                  sizes: sizes,
+                  loading: loading,
+                  fetchpriority: fetchpriority
+              }}
+            {%- endif -%}
+            {{
+              block_settings.video_1
+              | video_tag: poster: nil, autoplay: true, loop: true, controls: false, muted: true, class: 'slide__video'
+            }}
+          {%- endif -%}
+        </div>
+      {%- endif -%}
 
-          {{
-            block_settings.video_1.preview_image
-            | image_url: width: 3840
-            | image_tag:
-              height: height,
-              sizes: sizes,
-              widths: widths,
-              loading: loading,
-              class: 'slide__video-poster',
-              fetchpriority: fetchpriority
-          }}
-        {%- endif -%}
-        {{
-          block_settings.video_1
-          | video_tag: poster: nil, autoplay: true, loop: true, controls: false, muted: true, class: 'slide__video'
-        }}
+      {%- if show_custom_mobile_media -%}
+        <div class="slide__media-wrapper slide__media-wrapper--mobile">
+          {%- if block_settings.media_type_1_mobile == 'image' and block_settings.image_1_mobile != blank -%}
+            {{
+              block_settings.image_1_mobile
+              | image_url: width: 3840
+              | image_tag:
+                widths: mobile_widths,
+                alt: block_settings.image_1_mobile.alt,
+                class: 'slide__image',
+                sizes: media_width_mobile,
+                loading: loading,
+                fetchpriority: fetchpriority
+            }}
+          {%- elsif block_settings.media_type_1_mobile == 'video' and block_settings.video_1_mobile != blank -%}
+            {%- if block_settings.video_1_mobile.preview_image -%}
+              {{
+                block_settings.video_1_mobile.preview_image
+                | image_url: width: 3840
+                | image_tag:
+                  widths: mobile_widths,
+                  alt: '',
+                  class: 'slide__video-poster',
+                  sizes: media_width_mobile,
+                  loading: loading,
+                  fetchpriority: fetchpriority
+              }}
+            {%- endif -%}
+            {{
+              block_settings.video_1_mobile
+              | video_tag: poster: nil, autoplay: true, loop: true, controls: false, muted: true, class: 'slide__video'
+            }}
+          {%- endif -%}
+        </div>
       {%- endif -%}
     {%- else -%}
       {%- liquid
@@ -143,20 +207,47 @@
     height: 100%;
     overflow: hidden;
     position: absolute;
+    inset: 0;
   }
 
-  .slide__image-container > .slide__image,
-  .slide__image-container > .slide__video,
-  .slide__image-container > .slide__video-poster {
-    position: relative;
+  .slide__image-container :is(.slide__image, .slide__video, .slide__video-poster) {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
+    max-width: none;
     object-fit: cover;
     object-position: center center;
   }
 
-  .slide__image-container > .slide__video-poster {
+  .slide__media-wrapper {
     position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .slide__media-wrapper--mobile {
+    display: none;
+  }
+
+  .slide__media-wrapper--desktop {
+    display: block;
+  }
+
+  @media screen and (max-width: 749px) {
+    .slide__media-wrapper--desktop:not(.slide__media-wrapper--mobile) {
+      display: none;
+    }
+
+    .slide__media-wrapper--mobile {
+      display: block;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .slide__media-wrapper--mobile {
+      display: none;
+    }
   }
 {% endstylesheet %}
 
@@ -224,6 +315,50 @@
       "id": "video_1",
       "label": "t:settings.video",
       "visible_if": "{{ block.settings.media_type_1 == 'video' }}"
+    },
+    {
+      "type": "header",
+      "content": "t:content.mobile_media"
+    },
+    {
+      "type": "checkbox",
+      "id": "custom_mobile_media",
+      "label": "t:settings.custom_mobile_media",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:content.mobile_media_1",
+      "visible_if": "{{ block.settings.custom_mobile_media }}"
+    },
+    {
+      "type": "select",
+      "id": "media_type_1_mobile",
+      "label": "t:settings.type",
+      "options": [
+        {
+          "value": "image",
+          "label": "t:options.image"
+        },
+        {
+          "value": "video",
+          "label": "t:options.video"
+        }
+      ],
+      "default": "image",
+      "visible_if": "{{ block.settings.custom_mobile_media }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1_mobile",
+      "label": "t:settings.image",
+      "visible_if": "{{ block.settings.custom_mobile_media and block.settings.media_type_1_mobile == 'image' }}"
+    },
+    {
+      "type": "video",
+      "id": "video_1_mobile",
+      "label": "t:settings.video",
+      "visible_if": "{{ block.settings.custom_mobile_media and block.settings.media_type_1_mobile == 'video' }}"
     },
     {
       "type": "header",

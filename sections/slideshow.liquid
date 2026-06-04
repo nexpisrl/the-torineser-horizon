@@ -59,9 +59,13 @@
   endif
 %}
 
+{% liquid
+  assign section_custom_class = section.settings.custom_class | strip
+%}
+
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <div
-  class="slideshow-section spacing-style section {{ section_width_class }} color-{{ section.settings.color_scheme }} disable-section-top-offset"
+  class="slideshow-section spacing-style section {{ section_width_class }} color-{{ section.settings.color_scheme }} disable-section-top-offset {{ section_custom_class }}"
   style="{% render 'spacing-padding', settings: section.settings %}; --slideshow-gap: {{ section.settings.slideshow_gap }}px;{% if rounded_slide_corners %} --corner-radius: {{ section.settings.corner_radius }}px;{% endif %}"
 >
   {% render 'slideshow',
@@ -179,6 +183,11 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "t:settings.custom_class"
+    },
     {
       "type": "select",
       "id": "display_mode",

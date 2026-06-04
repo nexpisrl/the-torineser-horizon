@@ -446,6 +446,177 @@ footer{
   }
 }
 
+/* ─── Slideshow home (clone hero, sotto hero) ─── */
+.torineser-home-slideshow slideshow-component,
+.torineser-home-slideshow slideshow-container,
+.torineser-home-slideshow slideshow-slides {
+  min-height: 100dvh;
+  height: 100dvh;
+}
+
+.torineser-home-slideshow slideshow-slides {
+  align-items: stretch;
+}
+
+.torineser-home-slideshow slideshow-slide {
+  min-height: 100%;
+  height: 100%;
+  align-self: stretch;
+}
+
+.torineser-home-slideshow .slide__image-container {
+  position: absolute;
+  inset: 0;
+}
+
+.torineser-home-slideshow .slide__content {
+  position: absolute;
+  inset: 0;
+  z-index: var(--layer-flat);
+  display: flex;
+  align-items: flex-end;
+  padding-block-start: 0;
+  padding-block-end: 80px;
+}
+
+/* Replica la colonna centrale della griglia hero: usa la stessa variabile
+   che il tema computa per grid-column: 2/3 nelle section full-width */
+.torineser-home-slideshow .slide__content > .group-block-content {
+  width: var(--full-page-grid-central-column-width);
+  max-width: 100%;
+  margin-inline: auto;
+  margin-block: 0;
+  padding-inline: 48px;
+  justify-content: flex-end;
+  gap: 0;
+  box-sizing: border-box;
+}
+
+.torineser-home-slideshow .the_torineser-pre_title {
+  margin-bottom: 20px;
+}
+
+.torineser-home-slideshow .the_torineser-hero-title {
+  --width: min(100%, 680px);
+}
+
+.torineser-home-slideshow .the_torineser-hero-title > * {
+  font-family: "Cormorant Garamond", var(--font-heading--family), serif;
+  font-weight: 300 !important;
+  font-size: 5.75rem !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.01em !important;
+  color: #FAF7F2 !important;
+  margin-bottom: 24px;
+}
+
+.torineser-home-slideshow .the_torineser-hero-description {
+  --width: min(100%, 520px);
+}
+
+.torineser-home-slideshow .the_torineser-hero-description > * {
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-weight: 300 !important;
+  font-size: 1.0625rem !important;
+  line-height: 1.6 !important;
+  color: rgba(250, 247, 242, 0.78) !important;
+  margin-bottom: 40px;
+}
+
+.torineser-home-slideshow .group-block .button:not(.button-secondary) {
+  --button-color: #FAF7F2;
+  --button-background-color: #C04C35;
+  --button-border-color: transparent;
+  --button-border-width: 0;
+  border-radius: 100px;
+  padding-block: 16px;
+  padding-inline: 32px;
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.torineser-home-slideshow .group-block .button-secondary {
+  --button-color: #FAF7F2;
+  --button-background-color: transparent;
+  --button-border-color: rgba(250, 247, 242, 0.35);
+  --button-border-width: 1px;
+  border-radius: 100px;
+  padding-block: 16px;
+  padding-inline: 28px;
+  font-family: "DM Sans", var(--font-body--family), sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: none;
+}
+
+@media screen and (min-width: 750px) {
+  .torineser-home-slideshow .the_torineser-hero-title > * {
+    max-inline-size: 680px !important;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  .torineser-home-slideshow .slide__content > .group-block-content {
+    padding-inline: 32px;
+  }
+
+  .torineser-home-slideshow .the_torineser-hero-title > * {
+    font-size: 4.75rem !important;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .torineser-home-slideshow slideshow-component,
+  .torineser-home-slideshow slideshow-container,
+  .torineser-home-slideshow slideshow-slides {
+    min-height: 560px;
+    height: 560px;
+  }
+
+  .torineser-home-slideshow .slide__content {
+    padding-block-end: 36px;
+  }
+
+  .torineser-home-slideshow .slide__content > .group-block-content {
+    padding-inline: 22px;
+  }
+
+  .torineser-home-slideshow .the_torineser-hero-title {
+    --width: min(100%, 92vw);
+  }
+
+  .torineser-home-slideshow .the_torineser-hero-title > * {
+    font-size: 3rem !important;
+    line-height: 1.05 !important;
+    margin-bottom: 16px;
+  }
+
+  .torineser-home-slideshow .the_torineser-hero-description > * {
+    font-size: 13px !important;
+    margin-bottom: 24px;
+  }
+
+  .torineser-home-slideshow .torineser-hero-cta.group-block > .group-block-content {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .torineser-home-slideshow .torineser-hero-cta .button:not(.button-secondary) {
+    padding-block: 12px;
+    padding-inline: 22px;
+    font-size: 13px;
+  }
+
+  .torineser-home-slideshow .torineser-hero-cta .button-secondary {
+    padding-block: 12px;
+    padding-inline: 18px;
+    font-size: 13px;
+  }
+}
+
 /* ─── Sezione "Ultime uscite" (solo testi + spaziature) ───────────────────────── */
 .torineser-home-latest.section-resource-list {
   --padding-block-start: 120px;

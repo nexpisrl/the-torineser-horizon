@@ -183,8 +183,6 @@
         "custom_class": "torineser-home-hero",
         "media_type_1": "image",
         "image_1": "shopify://shop_images/the_torineser_intro_2026.jpg",
-        "media_type_2": "image",
-        "image_2": "shopify://shop_images/FABI7005.webp",
         "stack_media_on_mobile": false,
         "custom_mobile_media": true,
         "media_type_1_mobile": "image",
@@ -220,7 +218,11 @@
         "slide_WYqeDB": {
           "type": "_slide",
           "settings": {
-            "media_type_1": "image",
+        "media_type_1": "image",
+        "image_1": "shopify://shop_images/the_torineser_intro_2026.jpg",
+        "custom_mobile_media": true,
+            "media_type_1_mobile": "image",
+            "image_1_mobile": "shopify://shop_images/the_torineser_intro_2026.jpg",
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
@@ -228,25 +230,26 @@
             "align_baseline": false,
             "horizontal_alignment_flex_direction_column": "flex-start",
             "vertical_alignment_flex_direction_column": "flex-end",
-            "gap": 12,
+            "gap": 24,
             "inherit_color_scheme": false,
             "color_scheme": "scheme-6",
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
+            "toggle_overlay": true,
+            "overlay_color": "#12121266",
             "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "padding-block-start": 48,
-            "padding-block-end": 48,
-            "padding-inline-start": 48,
-            "padding-inline-end": 48
+            "gradient_direction": "to bottom",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
           },
           "blocks": {
-            "text_LHAJDy": {
+            "text_rxzjtE_slideshow": {
               "type": "text",
-              "name": "t:names.heading",
+              "name": "t:names.text",
+              "disabled": true,
               "settings": {
-                "custom_class": "",
-                "text": "<h2>Nuovi arrivi</h2>",
+                "custom_class": "the_torineser-pre_title",
+                "text": "<p><strong>SALONE DEL LIBRO 2026</strong></p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -268,94 +271,23 @@
               },
               "blocks": {}
             },
-            "text_6BKyjq": {
-              "type": "text",
-              "settings": {
-                "custom_class": "",
-                "text": "<p>Ti presentiamo i nostri ultimi prodotti, realizzati appositamente per la stagione. Acquista i tuoi preferiti prima che finiscano!</p>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 20,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "button_KCMMLh": {
-              "type": "button",
-              "settings": {
-                "label": "Acquista ora",
-                "link": "shopify://collections/all",
-                "open_in_new_tab": false,
-                "style_class": "button",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "text_LHAJDy",
-            "text_6BKyjq",
-            "button_KCMMLh"
-          ]
-        },
-        "slide_zpy8cy": {
-          "type": "_slide",
-          "settings": {
-            "media_type_1": "image",
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "center",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "inherit_color_scheme": false,
-            "color_scheme": "scheme-6",
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "padding-block-start": 48,
-            "padding-block-end": 48,
-            "padding-inline-start": 48,
-            "padding-inline-end": 48
-          },
-          "blocks": {
-            "text_cWNEnA": {
+            "text_YLPk4p_slideshow": {
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "custom_class": "",
-                "text": "<h2>Bestseller</h2>",
+                "custom_class": "the_torineser-hero-title",
+                "text": "<p>Sfoglia il  catalogo</p>",
                 "width": "fit-content",
-                "max_width": "normal",
+                "max_width": "none",
                 "alignment": "left",
-                "type_preset": "rte",
+                "type_preset": "h2",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
-                "color": "var(--color-foreground)",
+                "color": "var(--color-foreground-heading)",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -366,13 +298,14 @@
               },
               "blocks": {}
             },
-            "text_mCdNUF": {
+            "text_MJCXqi_slideshow": {
               "type": "text",
+              "name": "t:names.text",
               "settings": {
-                "custom_class": "",
-                "text": "<p>Scopri i bestseller che hanno conquistato i nostri clienti con il loro mix perfetto di funzionalità e stile.</p>",
+                "custom_class": "the_torineser-hero-description",
+                "text": "<p>Cento e più Torino, una per copertina</p>",
                 "width": "fit-content",
-                "max_width": "normal",
+                "max_width": "none",
                 "alignment": "left",
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
@@ -385,51 +318,114 @@
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 20,
+                "padding-block-start": 8,
+                "padding-block-end": 24,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
               "blocks": {}
             },
-            "button_EC7WDT": {
-              "type": "button",
+            "group_3cjPcT_slideshow": {
+              "type": "group",
+              "name": "t:names.group",
               "settings": {
-                "label": "Acquista ora",
-                "link": "shopify://collections/all",
+                "custom_class": "torineser-hero-cta",
+                "content_direction": "row",
+                "vertical_on_mobile": false,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 14,
+                "width": "custom",
+                "custom_width": 55,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "",
                 "open_in_new_tab": false,
-                "style_class": "button",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
               },
-              "blocks": {}
+              "blocks": {
+                "button_mpMAb8_slideshow": {
+                  "type": "button",
+                  "name": "t:names.button",
+                  "settings": {
+                    "label": "Sfoglia il catalogo →",
+                    "link": "shopify://collections/all",
+                    "open_in_new_tab": false,
+                    "style_class": "button",
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 100
+                  },
+                  "blocks": {}
+                },
+                "button_DE3Wew_slideshow": {
+                  "type": "button",
+                  "name": "t:names.button",
+                  "settings": {
+                    "label": "Il Progetto",
+                    "link": "shopify://pages/progetto-torineser",
+                    "open_in_new_tab": false,
+                    "style_class": "button-secondary",
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 100
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "button_mpMAb8_slideshow",
+                "button_DE3Wew_slideshow"
+              ]
             }
           },
           "block_order": [
-            "text_cWNEnA",
-            "text_mCdNUF",
-            "button_EC7WDT"
+            "text_rxzjtE_slideshow",
+            "text_YLPk4p_slideshow",
+            "text_MJCXqi_slideshow",
+            "group_3cjPcT_slideshow"
           ]
         }
       },
       "block_order": [
-        "slide_WYqeDB",
-        "slide_zpy8cy"
+        "slide_WYqeDB"
       ],
-      "disabled": true,
       "name": "t:names.slideshow_full_frame",
       "settings": {
+        "custom_class": "torineser-home-slideshow",
         "display_mode": "full_frame",
         "section_width": "full-width",
         "full_frame_on_mobile": false,
-        "slideshow_gap": 12,
+        "slideshow_gap": 0,
         "corner_radius": 0,
-        "slide_height": "medium",
+        "slide_height": "large",
         "content_position": "on-media",
-        "color_scheme": "",
-        "icons_style": "arrows_large",
+        "color_scheme": "scheme-6",
+        "icons_style": "none",
         "icons_shape": "none",
         "slideshow_controls_style": "dots",
         "autoplay": false,
