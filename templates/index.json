@@ -178,11 +178,13 @@
         "text_MJCXqi",
         "group_3cjPcT"
       ],
+      "disabled": true,
       "name": "t:names.hero",
       "settings": {
         "custom_class": "torineser-home-hero",
         "media_type_1": "image",
         "image_1": "shopify://shop_images/the_torineser_intro_2026.jpg",
+        "media_type_2": "image",
         "stack_media_on_mobile": false,
         "custom_mobile_media": true,
         "media_type_1_mobile": "image",
@@ -218,9 +220,9 @@
         "slide_WYqeDB": {
           "type": "_slide",
           "settings": {
-        "media_type_1": "image",
-        "image_1": "shopify://shop_images/the_torineser_intro_2026.jpg",
-        "custom_mobile_media": true,
+            "media_type_1": "image",
+            "image_1": "shopify://shop_images/the_torineser_intro_2026.jpg",
+            "custom_mobile_media": true,
             "media_type_1_mobile": "image",
             "image_1_mobile": "shopify://shop_images/the_torineser_intro_2026.jpg",
             "content_direction": "column",
