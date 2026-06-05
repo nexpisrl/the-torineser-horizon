@@ -16,9 +16,8 @@
       "blocks": {
         "announcement_BxgCk9": {
           "type": "_announcement",
-          "disabled": true,
           "settings": {
-            "text": "Facciamo Ponte ☀️ ci rivediamo il 3!",
+            "text": "Avvisi su orari e aperture ☀️",
             "link": "shopify://pages/orari-aperture",
             "font": "var(--font-body--family)",
             "font_size": "0.75rem",
