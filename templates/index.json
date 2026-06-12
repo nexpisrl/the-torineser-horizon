@@ -1275,7 +1275,7 @@
                   "name": "t:names.text",
                   "settings": {
                     "custom_class": "torineser-project-stat",
-                    "text": "<p>109</p><p>Stampe</p>",
+                    "text": "<p>113</p><p>Stampe</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
