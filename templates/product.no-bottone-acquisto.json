@@ -193,43 +193,6 @@
               "type": "shopify://apps/rebolt-bundle-upsell/blocks/addon-product/0a9e67ff-0413-4374-921d-e70fb17c7dbc",
               "settings": {}
             },
-            "buy_buttons_eYQEYi": {
-              "type": "buy-buttons",
-              "settings": {
-                "stacking": true,
-                "show_pickup_availability": false,
-                "gift_card_form": true,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {
-                "quantity": {
-                  "type": "quantity",
-                  "disabled": true,
-                  "static": true,
-                  "settings": {},
-                  "blocks": {}
-                },
-                "add-to-cart": {
-                  "type": "add-to-cart",
-                  "static": true,
-                  "settings": {
-                    "style_class": "button"
-                  },
-                  "blocks": {}
-                },
-                "accelerated-checkout": {
-                  "type": "accelerated-checkout",
-                  "disabled": true,
-                  "static": true,
-                  "settings": {},
-                  "blocks": {}
-                }
-              },
-              "block_order": []
-            },
             "text_aEtTtq": {
               "type": "text",
               "name": "Product description",
@@ -263,7 +226,6 @@
             "divider_VJhene",
             "variant_picker_R3rGDr",
             "rebolt_bundle_upsell_addon_product_nQTNRp",
-            "buy_buttons_eYQEYi",
             "text_aEtTtq"
           ]
         }
