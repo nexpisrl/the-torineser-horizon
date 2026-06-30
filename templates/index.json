@@ -568,7 +568,7 @@
                   "name": "t:names.button",
                   "settings": {
                     "label": "Esplora la mappa →",
-                    "link": "shopify://collections/all",
+                    "link": "shopify://pages/mappa",
                     "open_in_new_tab": false,
                     "style_class": "button",
                     "width": "fit-content",
@@ -583,7 +583,7 @@
                   "name": "t:names.button",
                   "settings": {
                     "label": "Cerca per Quartiere",
-                    "link": "shopify://pages/progetto-torineser",
+                    "link": "shopify://pages/mappa",
                     "open_in_new_tab": false,
                     "style_class": "button-secondary",
                     "width": "fit-content",
