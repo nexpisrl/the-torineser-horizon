@@ -411,10 +411,206 @@
             "text_MJCXqi_slideshow",
             "group_3cjPcT_slideshow"
           ]
+        },
+        "slide_GCPPAn": {
+          "type": "_slide",
+          "settings": {
+            "media_type_1": "image",
+            "image_1": "shopify://shop_images/Slideshow_the_torineser.jpg",
+            "custom_mobile_media": true,
+            "media_type_1_mobile": "image",
+            "image_1_mobile": "shopify://shop_images/Slider-mobile.jpg",
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "flex-end",
+            "gap": 24,
+            "inherit_color_scheme": false,
+            "color_scheme": "scheme-6",
+            "toggle_overlay": true,
+            "overlay_color": "#12121266",
+            "overlay_style": "solid",
+            "gradient_direction": "to bottom",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_3pgYQM": {
+              "type": "text",
+              "name": "t:names.text",
+              "disabled": true,
+              "settings": {
+                "custom_class": "the_torineser-pre_title",
+                "text": "<p><strong>SALONE DEL LIBRO 2026</strong></p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_8Upbfy": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "custom_class": "the_torineser-hero-title",
+                "text": "<p>Sfoglia il  catalogo</p>",
+                "width": "fit-content",
+                "max_width": "none",
+                "alignment": "left",
+                "type_preset": "h2",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground-heading)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_7p4xp3": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "custom_class": "the_torineser-hero-description",
+                "text": "<p>Cento e più Torino, una per copertina</p>",
+                "width": "fit-content",
+                "max_width": "none",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 8,
+                "padding-block-end": 24,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "group_WmraxC": {
+              "type": "group",
+              "name": "t:names.group",
+              "settings": {
+                "custom_class": "torineser-hero-cta",
+                "content_direction": "row",
+                "vertical_on_mobile": false,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 14,
+                "width": "custom",
+                "custom_width": 55,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "button_GCjxFe": {
+                  "type": "button",
+                  "name": "t:names.button",
+                  "settings": {
+                    "label": "Sfoglia il catalogo →",
+                    "link": "shopify://collections/all",
+                    "open_in_new_tab": false,
+                    "style_class": "button",
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 100
+                  },
+                  "blocks": {}
+                },
+                "button_zjhJBh": {
+                  "type": "button",
+                  "name": "t:names.button",
+                  "settings": {
+                    "label": "Il Progetto",
+                    "link": "shopify://pages/progetto-torineser",
+                    "open_in_new_tab": false,
+                    "style_class": "button-secondary",
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 100
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "button_GCjxFe",
+                "button_zjhJBh"
+              ]
+            }
+          },
+          "block_order": [
+            "text_3pgYQM",
+            "text_8Upbfy",
+            "text_7p4xp3",
+            "group_WmraxC"
+          ]
         }
       },
       "block_order": [
-        "slide_WYqeDB"
+        "slide_WYqeDB",
+        "slide_GCPPAn"
       ],
       "name": "t:names.slideshow_full_frame",
       "settings": {
