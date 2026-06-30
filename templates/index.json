@@ -414,10 +414,9 @@
         },
         "slide_GCPPAn": {
           "type": "_slide",
-          "disabled": true,
           "settings": {
             "media_type_1": "image",
-            "image_1": "shopify://shop_images/The_torineser_here_desk_map.webp",
+            "image_1": "shopify://shop_images/The_Torineser_Web_desktop.webp",
             "custom_mobile_media": true,
             "media_type_1_mobile": "image",
             "image_1_mobile": "shopify://shop_images/Slider-mobile.jpg",
