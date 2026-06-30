@@ -414,7 +414,6 @@
         },
         "slide_GCPPAn": {
           "type": "_slide",
-          "disabled": true,
           "settings": {
             "media_type_1": "image",
             "image_1": "shopify://shop_images/The_Torineser_Web_desktop.webp",
@@ -474,7 +473,7 @@
               "name": "t:names.heading",
               "settings": {
                 "custom_class": "the_torineser-hero-title",
-                "text": "<p>Sfoglia il  catalogo</p>",
+                "text": "<p>Cerca la tua Torino</p>",
                 "width": "fit-content",
                 "max_width": "none",
                 "alignment": "left",
@@ -501,7 +500,7 @@
               "name": "t:names.text",
               "settings": {
                 "custom_class": "the_torineser-hero-description",
-                "text": "<p>Cento e più Torino, una per copertina</p>",
+                "text": "<p>Cento e più Torino, ognuna al suo posto.</p>",
                 "width": "fit-content",
                 "max_width": "none",
                 "alignment": "left",
@@ -568,7 +567,7 @@
                   "type": "button",
                   "name": "t:names.button",
                   "settings": {
-                    "label": "Sfoglia il catalogo →",
+                    "label": "Esplora la mappa →",
                     "link": "shopify://collections/all",
                     "open_in_new_tab": false,
                     "style_class": "button",
@@ -583,7 +582,7 @@
                   "type": "button",
                   "name": "t:names.button",
                   "settings": {
-                    "label": "Il Progetto",
+                    "label": "Cerca per Quartiere",
                     "link": "shopify://pages/progetto-torineser",
                     "open_in_new_tab": false,
                     "style_class": "button-secondary",
