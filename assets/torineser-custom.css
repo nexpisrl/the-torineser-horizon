@@ -450,8 +450,8 @@ footer{
 .torineser-home-slideshow slideshow-component,
 .torineser-home-slideshow slideshow-container,
 .torineser-home-slideshow slideshow-slides {
-  min-height: 100dvh;
-  height: 100dvh;
+  min-height: 70dvh;
+  height: 70dvh;
 }
 
 .torineser-home-slideshow slideshow-slides {
