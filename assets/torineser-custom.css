@@ -572,8 +572,8 @@ footer{
   .torineser-home-slideshow slideshow-component,
   .torineser-home-slideshow slideshow-container,
   .torineser-home-slideshow slideshow-slides {
-    min-height: 560px;
-    height: 560px;
+    min-height: 65dvh;
+    height: 65dvh;
   }
 
   .torineser-home-slideshow .slide__content {
